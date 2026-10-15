@@ -17,7 +17,7 @@
         "modules": ["image#cover", "custom/media-prev", "mpris", "custom/media-next", "custom/media"]
     },
     "image#cover": {
-        "exec": "cat ~/.cache/nostromo/cover-path 2>/dev/null",
+        "exec": "cat ~/.cache/nostromo/cover-path 2>/dev/null | grep . || echo /nonexistent",
         "size": 20,
         "interval": 5,
         "signal": 8,
