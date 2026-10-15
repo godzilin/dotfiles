@@ -8,10 +8,10 @@ import sys
 sys.path.insert(0, os.path.expanduser("~/.config/dotfiles/wallpapers"))
 from skulls import HEAD, NOSE  # noqa: E402
 
-COLS, ROWS = 28, 36  # pixels; two pixel rows per text line -> 18 lines
+COLS, ROWS = 30, 26  # wide and short: same height as the info column
 X0, Y0, UW, UH = -50, -60, 100, 128  # skull units shown
 
-svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{COLS * 8}" height="{ROWS * 8}" viewBox="{X0} {Y0} {UW} {UH}">'
+svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{COLS * 8}" height="{ROWS * 8}" viewBox="{X0} {Y0} {UW} {UH}" preserveAspectRatio="none">'
        f'<rect x="{X0}" y="{Y0}" width="{UW}" height="{UH}" fill="black"/>'
        f'<path d="{HEAD}" fill="white"/>'
        '<ellipse cx="-19" cy="12" rx="13" ry="12" fill="black"/><ellipse cx="19" cy="12" rx="13" ry="12" fill="black"/>'
