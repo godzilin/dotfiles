@@ -51,10 +51,6 @@
   --button-primary-bgcolor: var(--n-amber) !important;
   --button-primary-color: var(--n-bg0) !important;
   --toolbarseparator-color: var(--n-line) !important;
-  --menu-background-color: var(--n-bg) !important;
-  --menu-color: var(--n-text) !important;
-  --menu-border-color: var(--n-line) !important;
-  --menuitem-hover-background-color: var(--n-bg2) !important;
 }
 
 /* ── Frame ─────────────────────────────────────────────── */
@@ -193,7 +189,22 @@ toolbarbutton.bookmark-item[container] > .toolbarbutton-icon { display: none !im
 
 /* ── Menus and panels ──────────────────────────────────── */
 
-menupopup, panel { --panel-border-radius: var(--n-radius) !important; }
+/* Context menus and panels: Firefox paints them with the GTK system colours (Menu/MenuText) unless overridden here */
+menupopup, panel {
+  --panel-background-color: var(--n-bg) !important;
+  --panel-text-color: var(--n-text) !important;
+  --panel-border-color: var(--n-line) !important;
+  --panel-border-radius: var(--n-radius) !important;
+  --panel-separator-color: var(--n-line) !important;
+}
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) {
+  background-color: var(--n-bg2) !important;
+  color: var(--n-text) !important;
+  box-shadow: inset 3px 0 var(--n-amber);
+}
+menupopup > :is(menu, menuitem)[disabled] { color: var(--n-faint) !important; }
+menupopup > menuseparator::before { border-color: var(--n-line) !important; }
+menupopup .menu-accel, menupopup .menu-text[accesskey] + .menu-accel-container { color: var(--n-muted) !important; }
 menupopup, menupopup menu, menupopup menuitem { font-family: var(--n-sans) !important; }
 .panel-header > h1, .subviewbutton-iconic[label] .toolbarbutton-text,
 #appMenu-fxa-label2, .panel-subview-body .subview-subheader {
@@ -223,3 +234,12 @@ menupopup, menupopup menu, menupopup menuitem { font-family: var(--n-sans) !impo
 /* Find bar */
 .findbar-container { font-family: var(--n-mono) !important; }
 findbar { background: var(--n-bg0) !important; border-top: 1px solid var(--n-line) !important; }
+
+/* Menu bar (Alt): the open menu was GTK blue */
+#main-menubar > menu[_moz-menuactive] {
+  background-color: var(--n-bg2) !important;
+  color: var(--n-text) !important;
+  border-color: var(--n-amber) !important;
+  box-shadow: inset 0 -2px var(--n-amber) !important;
+}
+#main-menubar > menu { border-radius: 5px 5px 0 0; }
