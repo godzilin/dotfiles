@@ -45,6 +45,16 @@ ICONS = {"prev": "󰒮", "next": "󰒭", "play": "󰐊", "pause": "󰏤", "shuff
 COVER = 132
 
 
+def cached_cover():
+    """Cover that waybar's media.py extracted for players without mpris:artUrl (cmus)."""
+    try:
+        with open(os.path.expanduser("~/.cache/nostromo/cover-path")) as f:
+            path = f.read().strip()
+    except OSError:
+        return ""
+    return "file://" + path if path else ""
+
+
 def clock(us):
     s = max(int(us // 1_000_000), 0)
     return f"{s // 60}:{s % 60:02d}"
@@ -57,6 +67,7 @@ class Popup(Gtk.Window):
         self.player = None
         self.seeking = False
         self.cover_url = None
+        self.art_url = ""
 
         provider = Gtk.CssProvider()
         provider.load_from_data(CSS)
@@ -221,7 +232,8 @@ class Popup(Gtk.Window):
         self.title.set_text(meta.get("xesam:title") or "—")
         self.artist.set_text(", ".join(meta.get("xesam:artist") or []))
         self.album.set_text(meta.get("xesam:album") or "")
-        self._set_cover(meta.get("mpris:artUrl", ""))
+        self.art_url = meta.get("mpris:artUrl", "")
+        self._set_cover(self.art_url or cached_cover())
         self.length = meta.get("mpris:length") or 0
         self.scale.set_range(0, max(self.length, 1))
         self.scale.set_sensitive(bool(self.length) and p.props.can_seek)
@@ -256,6 +268,8 @@ class Popup(Gtk.Window):
             self.scale.set_value(pos)
             self.elapsed.set_text(clock(pos))
             self.remaining.set_text(f"-{clock(self.length - pos)}" if self.length else "")
+            if not self.art_url:  # waybar's media.py may write the cover a moment after the track changes
+                self._set_cover(cached_cover())
         return True
 
 
