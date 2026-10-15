@@ -1,0 +1,20 @@
+/* Paleta "Nostromo" (~/.config/hypr/colors.lua) sobre music.apple.com */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #e9a23b !important; --keyColorBG: #e9a23b !important;
+    --keyColor-rgb: 233,162,59 !important; --keyColor-rollover: #e0c36a !important;
+    --keyColor-pressed: #d9652b !important; --keyColor-disabled: #e9a23b59 !important;
+    --pageBG: #1a1814 !important; --pageBG-dark: #1a1814 !important; --pageBG-dark-rgb: 26,24,20 !important;
+    --navSidebarBG: #121110 !important; --playerBackground: #24211b !important;
+    --playerBackgroundFallback: #24211b !important; --miniPlayerBackground: #24211b !important;
+    --glassMaterialBackground: #24211bee !important; --systemGroupedBackgroundSecondary: #24211b !important;
+    --systemPrimary: #e8dfc8 !important; --systemPrimary-onDark: #e8dfc8 !important;
+    --systemSecondary: #b3a891 !important; --systemSecondary-onDark: #b3a891 !important;
+    --systemTertiary: #857c69 !important; --systemTertiary-onDark: #857c69 !important;
+    --systemQuaternary-onDark: #3d382d !important;
+    --labelDivider: #3d382d !important;
+    font-family: "IBM Plex Sans", sans-serif !important;
+  }
+  body { background: #1a1814 !important; color: #e8dfc8 !important; }
+  ::selection { background: #e9a23b; color: #121110; }
+}

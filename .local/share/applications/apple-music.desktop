@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Apple Music
+Comment=music.apple.com en un perfil propio de Firefox
+Exec=firefox --name apple-music --class apple-music --no-remote --profile /home/godzilin/.local/share/apple-music https://music.apple.com/es/home
+Icon=music-app
+Categories=AudioVideo;Audio;Player;
+StartupWMClass=apple-music
