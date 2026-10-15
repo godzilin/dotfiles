@@ -80,9 +80,9 @@ def render(year, month, today):
     busy = {d for d, _, _ in EVENTS if d.year == year and d.month == month}
     out = []
 
-    title = rgb(AMBER, "󰯈 " + MONTHS[month - 1], True) + rgb(SUB, f" {year}")
+    title = rgb(AMBER, MONTHS[month - 1], True) + rgb(SUB, f" {year}")
     info = f"SEM {today.isocalendar().week:02d} · DÍA {today.timetuple().tm_yday:03d}"
-    out.append("  " + title + " " * (width - len(MONTHS[month - 1]) - 7 - len(info)) + rgb(MUTED, info))
+    out.append("  " + title + " " * (width - len(MONTHS[month - 1]) - 5 - len(info)) + rgb(MUTED, info))
     out.append("  " + "".join(rgb(c, "━" * (width // 4 + (i < width % 4))) for i, c in enumerate(STRIPES)))
     out.append("  " + "".join(rgb(MUTED if i < 5 else FAINT, w.rjust(cell - 2) + "  ") for i, w in enumerate(WEEKDAYS)))
     for week in calendar.Calendar(0).monthdatescalendar(year, month):

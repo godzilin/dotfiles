@@ -4,6 +4,7 @@ import math
 import subprocess
 from pathlib import Path
 
+import machines
 import skulls
 from skulls import skull
 
@@ -196,7 +197,7 @@ for name, art, model, side in [("a-stripes", stripes(), "MOD. N-1200", "SIDE A")
                                ("f-radar", radar(), "MOD. M-0426", "SIDE B"),
                                ("g-spectrum", spectrum(), "MOD. E-1016", "SIDE A"),
                                ("h-orbit", orbit(), "MOD. L-0426", "SIDE B"),
-                               *((n, f(), m, sd) for n, f, m, sd in skulls.ALL)]:
+                               *((n, f(), m, sd) for n, f, m, sd in skulls.ALL + machines.ALL)]:
     png = out / f"{name}.png"
     subprocess.run(["rsvg-convert", "-o", png], input=frame(art, model, side).encode(), check=True)
     print(png)

@@ -77,7 +77,7 @@ class Popup(Gtk.Window):
         self.add(root)
 
         head = Gtk.Box(spacing=6)
-        dot = Gtk.Label(label="󰯈"); dot.get_style_context().add_class("head-dot")
+        dot = Gtk.Label(label="▮"); dot.get_style_context().add_class("head-dot")
         self.head = Gtk.Label(xalign=0); self.head.get_style_context().add_class("head")
         head.pack_start(dot, False, False, 0); head.pack_start(self.head, True, True, 0)
         root.pack_start(head, False, False, 0)
