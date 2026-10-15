@@ -31,7 +31,7 @@
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
   .search-wrapper::before {
-    content: "󰯈  COMPUTAH  ·  THINKPAD P14S GEN 5";
+    content: "󰯇  COMPUTAH  ·  THINKPAD P14S GEN 5";
     display: block;
     text-align: center;
     margin-bottom: 28px;
