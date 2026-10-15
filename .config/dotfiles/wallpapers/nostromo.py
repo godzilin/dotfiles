@@ -28,8 +28,8 @@ def frame(art, model, side):
         *marks,
         # One <text> with a tspan so the subtitle always starts after the name, whatever its length
         f'<text x="96" y="104" {FONT} font-size="15" font-weight="600" fill="{STRIPES[1]}">COMPUTAH'
-        f'<tspan dx="28" font-weight="400" fill="{MUTED}">PERSONAL COMPUTING SYSTEM</tspan></text>',
-        f'<line x1="96" y1="122" x2="620" y2="122" stroke="{FAINT}" stroke-width="1"/>',
+        f'<tspan dx="28" font-weight="400" fill="{MUTED}">SUPER+SPACE RUN · SUPER+E FILES · SUPER+V CLIPBOARD · SUPER+L LOCK</tspan></text>',
+        f'<line x1="96" y1="122" x2="1010" y2="122" stroke="{FAINT}" stroke-width="1"/>',
         f'<text x="96" y="146" {FONT} font-size="12" fill="{FAINT}">HYPRLAND · ARCH/CACHYOS · LENOVO THINKPAD</text>',
         f'<text x="{W-96}" y="{H-92}" {FONT} font-size="12" fill="{FAINT}" text-anchor="end">{model} · {side} · TYPE II · 90 MIN</text>',
         '</svg>',
