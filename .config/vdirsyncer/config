@@ -18,7 +18,8 @@ fileext = ".ics"
 
 [storage icloud_remote]
 type = "caldav"
-url = "https://caldav.icloud.com/"
+# caldav.icloud.com answers 401 to valid app passwords; the partition host works
+url = "https://p01-caldav.icloud.com/"
 read_only = true
 username.fetch = ["command", "secret-tool", "lookup", "service", "icloud-caldav", "field", "username"]
 password.fetch = ["command", "secret-tool", "lookup", "service", "icloud-caldav", "field", "password"]
