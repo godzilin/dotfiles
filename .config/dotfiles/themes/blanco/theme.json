@@ -36,6 +36,6 @@
   "kde_colors": "Blanco",
   "buttons": "close,minimize,maximize:",
   "daemons": [
-    "nwg-dock-hyprland -x -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-mac'"
+    "nwg-dock-hyprland -d -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-mac'"
   ]
 }

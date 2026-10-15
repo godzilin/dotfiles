@@ -62,7 +62,8 @@ hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 4, bezier = "m
 
 -- Translucent menu bar, Dock, Spotlight and notifications
 hl.layer_rule({ name = "blur-waybar", match = { namespace = "^waybar$" },             blur = true, ignore_alpha = 0.1 })
-hl.layer_rule({ name = "blur-dock",   match = { namespace = "^nwg-dock$" },           blur = true, ignore_alpha = 0.1 })
+-- The Dock hides itself (nwg-dock -d) and slides up from the bottom edge when the pointer touches it
+hl.layer_rule({ name = "dock",        match = { namespace = "^nwg-dock$" },           blur = true, ignore_alpha = 0.1, animation = "slide bottom" })
 hl.layer_rule({ name = "blur-fuzzel", match = { namespace = "^launcher$" },           blur = true, ignore_alpha = 0.1 })
 hl.layer_rule({ name = "blur-swaync", match = { namespace = "^swaync-.*$" },          blur = true, ignore_alpha = 0.1 })
 
