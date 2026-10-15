@@ -20,7 +20,7 @@ window#waybar {
 tooltip { background: #efe6d2; border: 3px solid #141414; }
 tooltip label { color: #141414; font-family: "PT Sans"; font-size: 13px; }
 
-/* Red wedge with the word, cut diagonally on the right */
+/* Red wedge with the word (ЦЕХ), cut diagonally on the right */
 #custom-taller {
     font-family: "Russo One";
     font-size: 19px;

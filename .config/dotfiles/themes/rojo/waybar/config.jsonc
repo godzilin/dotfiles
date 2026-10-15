@@ -9,9 +9,9 @@
     "modules-center": ["custom/clock"],
     "modules-right": ["tray", "custom/weather", "network", "pulseaudio", "backlight", "battery", "custom/power"],
 
-    // The red wedge on the left: opens the launcher
+    // The red wedge on the left (ЦЕХ, "workshop"): opens the launcher
     "custom/taller": {
-        "format": "TALLER",
+        "format": "ЦЕХ",
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },
@@ -28,7 +28,7 @@
         "tooltip": false
     },
 
-    // Clock in a red parallelogram, date in capitals beside it
+    // Clock in a paper parallelogram, date in Russian beside it
     "custom/clock": {
         "exec": "~/.config/dotfiles/themes/current/scripts/clock.sh",
         "interval": 5,
@@ -44,28 +44,28 @@
         "on-click": "~/.config/hypr/scripts/weather.sh"
     },
     "network": {
-        "format-wifi": "<span color='#d42a1e'>RED</span> {essid}",
-        "format-ethernet": "<span color='#d42a1e'>RED</span> CABLE",
-        "format-disconnected": "<span color='#d42a1e'>RED</span> —",
+        "format-wifi": "<span color='#d42a1e'>СЕТЬ</span> {essid}",
+        "format-ethernet": "<span color='#d42a1e'>СЕТЬ</span> КАБЕЛЬ",
+        "format-disconnected": "<span color='#d42a1e'>СЕТЬ</span> —",
         "tooltip-format": "{ifname} · {ipaddr} · {signalStrength}%",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "pulseaudio": {
-        "format": "<span color='#d42a1e'>VOZ</span> {volume}",
-        "format-muted": "<span color='#d42a1e'>VOZ</span> 0",
+        "format": "<span color='#d42a1e'>ЗВУК</span> {volume}",
+        "format-muted": "<span color='#d42a1e'>ЗВУК</span> 0",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5,
         "tooltip-format": "{desc}"
     },
     "backlight": {
-        "format": "<span color='#d42a1e'>LUZ</span> {percent}"
+        "format": "<span color='#d42a1e'>СВЕТ</span> {percent}"
     },
     "battery": {
         "states": { "warning": 25, "critical": 10 },
-        "format": "<span color='#d42a1e'>ENERGÍA</span> {capacity}",
-        "format-charging": "<span color='#d42a1e'>ENERGÍA</span> {capacity}▲",
-        "format-plugged": "<span color='#d42a1e'>ENERGÍA</span> {capacity}■",
+        "format": "<span color='#d42a1e'>ЭНЕРГИЯ</span> {capacity}",
+        "format-charging": "<span color='#d42a1e'>ЭНЕРГИЯ</span> {capacity}▲",
+        "format-plugged": "<span color='#d42a1e'>ЭНЕРГИЯ</span> {capacity}■",
         "tooltip-format": "{timeTo} · {power:.1f} W"
     },
     "custom/power": {

@@ -13,15 +13,15 @@
     "color": { "keys": "red", "title": "black", "output": "default" }
   },
   "modules": [
-    { "type": "title", "format": "\u001b[1mTALLER {host-name}\u001b[0m" },
+    { "type": "title", "format": "\u001b[1mЦЕХ {host-name}\u001b[0m" },
     { "type": "custom", "format": "\u001b[31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m" },
-    { "type": "os",       "key": "SISTEMA",  "format": "{pretty-name}" },
-    { "type": "kernel",   "key": "NÚCLEO" },
-    { "type": "host",     "key": "MÁQUINA",  "format": "{family}" },
-    { "type": "cpu",      "key": "MOTOR",    "format": "{name}" },
-    { "type": "memory",   "key": "MEMORIA",  "format": "{used} / {total}" },
-    { "type": "disk",     "key": "ALMACÉN",  "folders": "/", "format": "{size-used} / {size-total}" },
-    { "type": "battery",  "key": "ENERGÍA",  "format": "{capacity}" },
-    { "type": "uptime",   "key": "JORNADA" }
+    { "type": "os",       "key": "СИСТЕМА",  "format": "{pretty-name}" },
+    { "type": "kernel",   "key": "ЯДРО" },
+    { "type": "host",     "key": "МАШИНА",  "format": "{family}" },
+    { "type": "cpu",      "key": "МОТОР",    "format": "{name}" },
+    { "type": "memory",   "key": "ПАМЯТЬ",  "format": "{used} / {total}" },
+    { "type": "disk",     "key": "СКЛАД",  "folders": "/", "format": "{size-used} / {size-total}" },
+    { "type": "battery",  "key": "ЭНЕРГИЯ",  "format": "{capacity}" },
+    { "type": "uptime",   "key": "СМЕНА" }
   ]
 }

@@ -73,8 +73,8 @@ nubes, degradado de instalación, patrones de 8×8 y arenisca. Primera vez: `~/.
 ## rojo: constructivismo
 
 Un cartel de los años 20 (Ródchenko, Lisitski, Klutsis): tres tintas, papel crema, negro y rojo. Barra como
-franja negra con bloques rojos cortados en diagonal ("TALLER", escritorios en numerales, reloj en un paralelogramo de
-papel, lecturas "RED / VOZ / LUZ / ENERGÍA"); ventanas con marco rojo grueso y sombra de tinta dura desplazada;
+franja negra con bloques rojos cortados en diagonal ("ЦЕХ", escritorios en numerales, reloj en un paralelogramo de
+papel, lecturas "СЕТЬ / ЗВУК / СВЕТ / ЭНЕРГИЯ"); todo el texto del tema en ruso (`scripts/ru.sh` pone fechas y nombre en cirílico sin locale ruso); ventanas con marco rojo grueso y sombra de tinta dura desplazada;
 animaciones mecánicas con rebote; terminal de papel e tinta con PT Mono; notificaciones y lanzador como tarjetas con
 marco de tinta; bloqueo compuesto como un cartel; Firefox con pestañas en paralelogramo; carpetas rojas (Papirus).
 

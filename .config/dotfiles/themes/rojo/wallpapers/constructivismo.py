@@ -131,7 +131,7 @@ def cuna():
         s.rect("ink", cx, cy, w, h, a)
     s.rect("ink", 1660, 300, 240, 22, -40, erase=True)  # splinters of white in the black
     s.rect("ink", 1720, 900, 140, 18, 25, erase=True)
-    s.text("ink", "CUÑA", 470, 1090, 74, spacing=6)
+    s.text("ink", "КЛИН", 470, 1090, 74, spacing=6)
     s.text("red", "№ 1", 1720, 160, 40, OSWALD)
     s.render("a-cuna")
 
@@ -164,8 +164,8 @@ def torre():
     for r in (60, 110, 160):
         s.d("red").arc([(x0 - r) * SS, (y - 60 - r) * SS, (x0 + r) * SS, (y - 60 + r) * SS], 200, 340, fill=255, width=6 * SS)
     s.rect("red", 360, 600, 120, 1100, -8)
-    s.text("ink", "RADIO", 360, 600, 120, angle=82, spacing=10)
-    s.text("ink", "ONDAS · SEÑAL · DISTANCIA", 520, 1110, 30, OSWALD, spacing=4)
+    s.text("ink", "РАДИО", 360, 600, 120, angle=82, spacing=10)
+    s.text("ink", "ВОЛНЫ · СИГНАЛ · ДАЛЬ", 520, 1110, 30, OSWALD, spacing=4)
     s.render("b-torre")
 
 
@@ -180,7 +180,7 @@ def rayos():
         s.poly("red", [(ox, oy), (ox + R * math.cos(a0), oy + R * math.sin(a0)), (ox + R * math.cos(a1), oy + R * math.sin(a1))])
     s.rect("ink", 1000, 640, 2600, 210, -24)
     s.rect("red", 1000, 640, 2600, 210, -24, erase=True)  # the band hides the rays, so the letters read as paper
-    s.text("ink", "ENERGÍA", 1060, 610, 150, angle=24, spacing=14, erase=True)
+    s.text("ink", "ЭНЕРГИЯ", 1060, 610, 150, angle=24, spacing=14, erase=True)
     s.circle("ink", 1620, 230, 120)
     s.ring("red", 1620, 230, 175, 14)
     s.render("c-rayos")
@@ -192,8 +192,8 @@ def megafono():
     s.poly("red", [(70, 560), (1920, 40), (1920, 1140), (70, 700)])
     s.rect("ink", 70, 630, 120, 260)
     s.circle("ink", 30, 630, 70)
-    s.text("ink", "¡CONSTRUIR!", 1080, 330, 150, angle=15, spacing=8)
-    s.text("ink", "MÁQUINAS · RITMO · FUTURO", 1220, 860, 70, OSWALD, angle=-17, spacing=6)
+    s.text("ink", "СТРОИТЬ!", 1080, 330, 150, angle=15, spacing=8)
+    s.text("ink", "МАШИНЫ · РИТМ · БУДУЩЕЕ", 1220, 860, 70, OSWALD, angle=-17, spacing=6)
     s.rect("ink", 1500, 600, 600, 12, 0)
     s.render("d-megafono")
 
@@ -216,10 +216,10 @@ def tipografia():
     s = Sheet()
     s.text("ink", "04", 760, 640, 820, OSWALD, angle=0)
     s.rect("red", 1440, 600, 300, 1300)
-    s.text("ink", "TRABAJO", 1440, 600, 170, angle=90, spacing=12)
+    s.text("ink", "ТРУД", 1440, 600, 200, angle=90, spacing=16)
     for y in (140, 170, 200):
         s.rect("ink", 380, y, 600, 8)
-    s.text("red", "EL TALLER DEL FUTURO", 380, 1080, 44, OSWALD, spacing=6)
+    s.text("red", "МАСТЕРСКАЯ БУДУЩЕГО", 380, 1080, 44, OSWALD, spacing=6)
     s.render("f-tipografia")
 
 
@@ -237,7 +237,7 @@ def fabrica():
             y0 = ground - h - 40 - k * 70
             s.rect("red", x + 380 + k * 60, y0 - k * 30, 760, 34, -14 - i * 4)
     s.circle("red", 1640, 260, 150)
-    s.text("ink", "PRODUCCIÓN", 1450, 1050, 92, angle=0, spacing=10, erase=True)
+    s.text("ink", "ПРОИЗВОДСТВО", 1340, 1050, 92, angle=0, spacing=10, erase=True)
     s.render("g-fabrica")
 
 

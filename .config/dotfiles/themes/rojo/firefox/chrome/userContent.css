@@ -8,7 +8,7 @@
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
   .search-wrapper::before {
-    content: "EL TALLER"; display: block; text-align: center; margin-bottom: 26px;
+    content: "ЦЕХ"; display: block; text-align: center; margin-bottom: 26px;
     font: 700 46px "Russo One", sans-serif; letter-spacing: 0.12em; color: #141414;
   }
 }
