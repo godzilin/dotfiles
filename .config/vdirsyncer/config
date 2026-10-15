@@ -1,0 +1,24 @@
+# iCloud calendars -> ~/.local/share/vdirsyncer/icloud (read by khal and the waybar calendar popup).
+# Credentials live in the keyring (secret-tool), never in this file. Set them with:
+#   ~/.config/hypr/scripts/icloud-setup.sh
+[general]
+status_path = "~/.local/share/vdirsyncer/status/"
+
+[pair icloud]
+a = "icloud_local"
+b = "icloud_remote"
+collections = ["from b"]
+metadata = ["displayname", "color"]
+conflict_resolution = "b wins"
+
+[storage icloud_local]
+type = "filesystem"
+path = "~/.local/share/vdirsyncer/icloud/"
+fileext = ".ics"
+
+[storage icloud_remote]
+type = "caldav"
+url = "https://caldav.icloud.com/"
+read_only = true
+username.fetch = ["command", "secret-tool", "lookup", "service", "icloud-caldav", "field", "username"]
+password.fetch = ["command", "secret-tool", "lookup", "service", "icloud-caldav", "field", "password"]

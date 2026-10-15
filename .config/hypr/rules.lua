@@ -48,3 +48,13 @@ hl.window_rule({
 hl.layer_rule({ name = "blur-waybar", match = { namespace = "^waybar$" },     blur = true, ignore_alpha = 0.2 })
 hl.layer_rule({ name = "blur-fuzzel", match = { namespace = "^launcher$" },   blur = true, ignore_alpha = 0.2 })
 hl.layer_rule({ name = "blur-swaync", match = { namespace = "^swaync-.*$" },  blur = true, ignore_alpha = 0.2 })
+
+-- Calendar popup from the waybar clock: floats right under it
+hl.window_rule({
+    name  = "calendar-popup",
+    match = { class = "^nostromo-calendar$" },
+    float = true,
+    pin   = true,
+    size  = "400 440",
+    move  = "760 44",
+})

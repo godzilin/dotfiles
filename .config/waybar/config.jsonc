@@ -34,7 +34,8 @@
     "clock": {
         "locale": "es_ES.utf8",
         "format": "{:L%a %d %b  <span color='#e8dfc8'>%H:%M</span>}",
-        "tooltip-format": "<tt>{calendar}</tt>",
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/calendar.sh",
         "calendar": {
             "mode": "month",
             "format": {

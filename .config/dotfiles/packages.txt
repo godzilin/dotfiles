@@ -33,3 +33,5 @@ gvfs
 tumbler
 thunar-archive-plugin
 thunar-volman
+khal
+vdirsyncer
