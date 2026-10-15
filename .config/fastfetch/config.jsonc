@@ -1,0 +1,30 @@
+{
+  "$schema": "https://github.com/fastfetch-project/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "source": "cachyos_small",
+    "padding": {
+      "top": 0,
+      "bottom": 0
+    }
+  },
+  "display": {
+    "key": {
+      "color": "blue"
+    },
+    "separator": ": "
+  },
+  "modules": [
+    "os",
+    "host",
+    "kernel",
+    "uptime",
+    "shell",
+    "display",
+    "cpu",
+    "gpu",
+    "memory",
+    "disk",
+    "battery",
+    "localip"
+  ]
+}
