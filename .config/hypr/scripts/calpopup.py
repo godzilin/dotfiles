@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Nostromo calendar popup (named calpopup.py so it does not shadow the stdlib calendar module) (opened from the waybar clock).
-Month grid, year progress, moon phase and upcoming events from khal (iCloud via vdirsyncer).
+Month grid, year progress and upcoming events from khal (iCloud via vdirsyncer).
 Keys: left/right or h/l change month, t today, q/Esc close."""
 import calendar
 import datetime as dt
-import math
+import os
 import shutil
 import subprocess
 import sys
@@ -15,10 +15,6 @@ MONTHS = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO",
           "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"]
 WEEKDAYS = ["LU", "MA", "MI", "JU", "VI", "SA", "DO"]
 DAY_NAMES = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB", "DOM"]
-MOON = [("●", "LUNA NUEVA"), ("◔", "CRECIENTE"), ("◑", "CUARTO CRECIENTE"), ("◕", "GIBOSA CRECIENTE"),
-        ("○", "LUNA LLENA"), ("◕", "GIBOSA MENGUANTE"), ("◐", "CUARTO MENGUANTE"), ("◔", "MENGUANTE")]
-
-
 def rgb(hex_color, text, bold=False):
     r, g, b = (int(hex_color[i:i + 2], 16) for i in (1, 3, 5))
     return f"\033[{'1;' if bold else ''}38;2;{r};{g};{b}m{text}\033[0m"
@@ -26,12 +22,6 @@ def rgb(hex_color, text, bold=False):
 
 AMBER, TEXT, SUB, MUTED, FAINT, LINE, RED = "#e9a23b", "#e8dfc8", "#b3a891", "#857c69", "#4a4438", "#3d382d", "#c8553d"
 STRIPES = ["#e0c36a", "#e9a23b", "#d9652b", "#c8553d"]
-
-
-def moon_phase(day):
-    """Fraction of the synodic month since a known new moon (2000-01-06 18:14 UTC)."""
-    days = (dt.datetime.combine(day, dt.time(12)) - dt.datetime(2000, 1, 6, 18, 14)).total_seconds() / 86400
-    return (days % 29.530588853) / 29.530588853
 
 
 def events(start, days):
@@ -79,22 +69,18 @@ def render(year, month, today):
         out.append("  " + " ".join(cells))
     out.append("")
 
-    # Year progress and moon
+    # Year progress
     year_len = 366 if calendar.isleap(today.year) else 365
     pct = today.timetuple().tm_yday / year_len
     filled = round(pct * 24)
     out.append("  " + rgb(MUTED, "AÑO  ") + rgb(AMBER, "▮" * filled) + rgb(LINE, "▯" * (24 - filled)) + rgb(SUB, f" {pct:4.0%}"))
-    phase = moon_phase(today)
-    icon, name = MOON[int((phase * 8) + 0.5) % 8]
-    lit = (1 - math.cos(2 * math.pi * phase)) / 2
-    out.append("  " + rgb(MUTED, "LUNA ") + rgb(TEXT, icon) + rgb(SUB, f"  {name} · {lit:.0%}"))
     out.append("")
 
     # Upcoming events (always from today, whatever month is shown)
     out.append("  " + rgb(MUTED, "PRÓXIMO") + rgb(LINE, " " + "─" * 28))
     upcoming = events(today, 14)
     if upcoming:
-        for d, time, title in upcoming[:6]:
+        for d, time, title in upcoming[:4]:
             when = "HOY" if d == today else "MAÑ" if d == today + dt.timedelta(1) else f"{DAY_NAMES[d.weekday()]} {d.day:02d}"
             out.append("  " + rgb(AMBER if d == today else SUB, f"{when:<6}") + rgb(MUTED, f"{time or 'TODO':>5}  ") + rgb(TEXT, title[:22]))
     elif shutil.which("khal") and subprocess.run(["khal", "printcalendars"], capture_output=True).stdout.strip():
@@ -107,16 +93,9 @@ def render(year, month, today):
 
 
 def read_key():
-    ch = sys.stdin.read(1)
-    if ch == "\033":
-        seq = sys.stdin.read(2) if select_ready() else ""
-        return {"[D": "left", "[C": "right"}.get(seq, "esc")
-    return ch
-
-
-def select_ready():
-    import select
-    return bool(select.select([sys.stdin], [], [], 0.05)[0])
+    # os.read, not sys.stdin.read: Python's buffer would swallow the rest of an arrow-key sequence
+    data = os.read(sys.stdin.fileno(), 8).decode(errors="ignore")
+    return {"\x1b[D": "left", "\x1b[C": "right", "\x1b": "esc"}.get(data, data)
 
 
 def main():

@@ -55,6 +55,6 @@ hl.window_rule({
     match = { class = "^nostromo-calendar$" },
     float = true,
     pin   = true,
-    size  = "400 440",
+    size  = "400 410",
     move  = "760 44",
 })

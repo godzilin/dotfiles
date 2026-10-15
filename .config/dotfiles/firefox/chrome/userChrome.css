@@ -91,7 +91,8 @@
 
 #tabbrowser-arrowscrollbox { counter-reset: tape; }
 .tabbrowser-tab { counter-increment: tape; padding-inline: 2px !important; }
-.tabbrowser-tab:not([pinned]) { max-width: 220px !important; }
+/* only while [fadein]: closing a tab drops it, so Firefox can shrink the tab away and the rest slide left */
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: 220px !important; }
 
 .tab-background {
   margin-block: 6px !important;
