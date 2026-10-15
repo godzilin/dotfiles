@@ -58,7 +58,7 @@
     },
 
     "custom/launcher": {
-        "format": "<span color='#e9a23b'>▮</span> COMPUTAH <span color='#857c69' size='large'>󰯈</span>",
+        "format": "<span color='#e9a23b' size='large'>󰯈</span> COMPUTAH",
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },

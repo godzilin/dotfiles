@@ -4,6 +4,9 @@ import math
 import subprocess
 from pathlib import Path
 
+import skulls
+from skulls import skull
+
 W, H = 1920, 1200
 BG_TOP, BG_BOTTOM = "#1a1814", "#121110"
 GRID, LINE, MUTED, FAINT = "#2a2620", "#3d382d", "#857c69", "#4a4438"
@@ -17,7 +20,7 @@ def frame(art, model, side):
     marks = [f'<path d="M{x-8},{y} h16 M{x},{y-8} v16" stroke="{FAINT}" stroke-width="1.5"/>'
              for x, y in [(64, 64), (W - 64, 64), (64, H - 64), (W - 64, H - 64)]]
     return "\n".join([
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+        f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
         '<defs>',
         f'<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{BG_TOP}"/><stop offset="1" stop-color="{BG_BOTTOM}"/></linearGradient>',
         f'<pattern id="dots" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="24" cy="24" r="1.2" fill="{GRID}"/></pattern>',
@@ -27,7 +30,8 @@ def frame(art, model, side):
         *art,
         *marks,
         # One <text> with a tspan so the subtitle always starts after the name, whatever its length
-        f'<text x="96" y="104" {FONT} font-size="15" font-weight="600" fill="{STRIPES[1]}">COMPUTAH'
+        skull(104, 96, 17, STRIPES[1], "none", 1.4),  # house mark
+        f'<text x="124" y="104" {FONT} font-size="15" font-weight="600" fill="{STRIPES[1]}">COMPUTAH'
         f'<tspan dx="28" font-weight="400" fill="{MUTED}">THINKPAD P14S GEN 5</tspan></text>',
         f'<line x1="96" y1="122" x2="840" y2="122" stroke="{FAINT}" stroke-width="1"/>',
         f'<text x="96" y="146" {FONT} font-size="12" fill="{FAINT}">RYZEN 7 PRO 8840HS · RADEON 780M · 32 GB · 1 TB NVME · CACHYOS · HYPRLAND</text>',
@@ -193,7 +197,8 @@ for name, art, model, side in [("a-stripes", stripes(), "MOD. N-1200", "SIDE A")
                                ("e-horizon", horizon(), "MOD. H-1979", "SIDE A"),
                                ("f-radar", radar(), "MOD. M-0426", "SIDE B"),
                                ("g-spectrum", spectrum(), "MOD. E-1016", "SIDE A"),
-                               ("h-orbit", orbit(), "MOD. L-0426", "SIDE B")]:
+                               ("h-orbit", orbit(), "MOD. L-0426", "SIDE B"),
+                               *((n, f(), m, sd) for n, f, m, sd in skulls.ALL)]:
     png = out / f"{name}.png"
     subprocess.run(["rsvg-convert", "-o", png], input=frame(art, model, side).encode(), check=True)
     print(png)

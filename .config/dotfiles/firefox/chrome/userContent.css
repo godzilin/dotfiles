@@ -31,11 +31,11 @@
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
   .search-wrapper::before {
-    content: "COMPUTAH  ·  THINKPAD P14S GEN 5";
+    content: "󰯈  COMPUTAH  ·  THINKPAD P14S GEN 5";
     display: block;
     text-align: center;
     margin-bottom: 28px;
-    font: 600 13px "IBM Plex Mono", monospace;
+    font: 600 13px "BlexMono Nerd Font", "IBM Plex Mono", monospace;
     letter-spacing: 0.2em;
     color: #e9a23b;
   }
