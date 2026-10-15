@@ -1,0 +1,87 @@
+// Windows 98 taskbar: Start button, desktops, one button per window, sunken tray with the clock
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "spacing": 0,
+
+    "modules-left": ["group/start", "hyprland/workspaces", "wlr/taskbar"],
+    "modules-right": ["group/tray"],
+
+    "group/start": {
+        "orientation": "horizontal",
+        "modules": ["image#start", "custom/start"]
+    },
+    "image#start": {
+        "path": "/home/godzilin/.local/share/icons/Chicago95/places/16/start-here.png",
+        "size": 16,
+        "on-click": "~/.config/dotfiles/themes/current/scripts/launcher.sh",
+        "tooltip": false
+    },
+    "custom/start": {
+        "format": "Inicio",
+        "on-click": "~/.config/dotfiles/themes/current/scripts/launcher.sh",
+        "tooltip": false
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "persistent-workspaces": { "*": 4 },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+    },
+
+    // One raised button per window (pressed = focused); middle click closes
+    "wlr/taskbar": {
+        "format": "{icon} {title:.24}",
+        "icon-size": 16,
+        "icon-theme": "Chicago95",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "ignore-list": ["nostromo-calendar", "nostromo-weather", "nostromo-media"]
+    },
+
+    // System tray ("notification area"): sunken box with app icons, volume, network, battery and the clock
+    "group/tray": {
+        "orientation": "horizontal",
+        "modules": ["tray", "custom/weather", "image#net", "image#vol", "image#bat", "battery", "custom/clock"]
+    },
+    "tray": { "icon-size": 16, "spacing": 4 },
+    "custom/weather": {
+        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "return-type": "json",
+        "interval": 600,
+        "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+    "image#net": {
+        "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh net",
+        "size": 16,
+        "interval": 10,
+        "on-click": "systemsettings kcm_networkmanagement"
+    },
+    "image#vol": {
+        "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh vol",
+        "size": 16,
+        "interval": 2,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+    "image#bat": {
+        "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh bat",
+        "size": 16,
+        "interval": 30
+    },
+    "battery": {
+        "format": "{capacity}%",
+        "tooltip-format": "Energía restante: {capacity}%  ({timeTo})"
+    },
+    "custom/clock": {
+        "exec": "date '+%H:%M'",
+        "interval": 5,
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/calendar.sh"
+    }
+}

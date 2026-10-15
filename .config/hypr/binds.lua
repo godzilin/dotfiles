@@ -1,9 +1,9 @@
 -- Shortcuts kept from KDE where possible. Cheat sheet: see the README in this folder.
 local mod      = "SUPER"
 local terminal = "alacritty"
-local menu     = "fuzzel"
 local scripts  = os.getenv("HOME") .. "/.config/hypr/scripts/"
 local exec     = hl.dsp.exec_cmd
+local launcher = scripts .. "launcher.sh"  -- fuzzel, or the theme's own (azul: Start menu)
 
 -- Apps (same keys as KDE)
 hl.bind(mod .. " + masculine", exec(terminal))  -- Super+º
@@ -16,9 +16,9 @@ hl.bind(mod .. " + C",         exec("systemsettings"))
 hl.bind(mod .. " + E",         exec("thunar"))
 
 -- Launcher: tap Super alone (like KDE), or Super+Space / Alt+F1
-hl.bind(mod .. " + Super_L", exec("pkill fuzzel || " .. menu), { release = true })
-hl.bind(mod .. " + Space",   exec("pkill fuzzel || " .. menu))
-hl.bind("ALT + F1",          exec("pkill fuzzel || " .. menu))
+hl.bind(mod .. " + Super_L", exec(launcher), { release = true })
+hl.bind(mod .. " + Space",   exec(launcher))
+hl.bind("ALT + F1",          exec(launcher))
 
 -- Clipboard history, notifications, power
 hl.bind(mod .. " + V", exec("cliphist list | fuzzel --dmenu --prompt '󰅌 ' | cliphist decode | wl-copy"))

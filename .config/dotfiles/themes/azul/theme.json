@@ -1,0 +1,40 @@
+{
+  "name": "Azul",
+  "description": "Windows 95/98: gris con biseles, títulos azul marino, barra de tareas y menú Inicio",
+  "palette": {
+    "bg0": "#000000",
+    "bg": "#000000",
+    "bg1": "#000080",
+    "bg2": "#555555",
+    "line": "#808080",
+    "faint": "#808080",
+    "muted": "#a8a8a8",
+    "sub": "#c0c0c0",
+    "text": "#ffffff",
+    "accent": "#55ffff",
+    "yellow": "#ffff55",
+    "orange": "#ffaa00",
+    "red": "#ff5555",
+    "green": "#55ff55",
+    "teal": "#00aaaa",
+    "blue": "#5555ff"
+  },
+  "stripes": [
+    "#c0c0c0",
+    "#c0c0c0",
+    "#c0c0c0",
+    "#c0c0c0"
+  ],
+  "font_ui": "W95FA",
+  "font_mono": "DejaVu Sans Mono",
+  "font_size": 12,
+  "gtk_theme": "Chicago95",
+  "color_scheme": "prefer-light",
+  "icons": "Chicago95",
+  "cursor": "Chicago95_Animated_Hourglass_Cursors",
+  "cursor_size": 24,
+  "kde_colors": "Azul",
+  "qt_style": "Windows",
+  "buttons": ":minimize,maximize,close",
+  "daemons": []
+}

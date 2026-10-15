@@ -1,0 +1,70 @@
+/* Default swaync theme + Windows 95 on top: grey dialog with a navy-to-blue title bar (the summary), bevelled edges */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: #c0c0c0;
+  --noti-border-color: #000000;
+  --noti-bg: 192, 192, 192;
+  --noti-bg-alpha: 1;
+  --noti-bg-darker: #c0c0c0;
+  --noti-bg-hover: #c0c0c0;
+  --noti-bg-focus: #c0c0c0;
+  --noti-close-bg: #c0c0c0;
+  --noti-close-bg-hover: #c0c0c0;
+  --text-color: #000000;
+  --text-color-disabled: #808080;
+  --bg-selected: #000080;
+  --border-radius: 0;
+  --notification-icon-size: 32px;
+  --notification-shadow: none;
+  --font-size-body: 16px;
+  --font-size-summary: 16px;
+}
+
+* { font-family: "W95FA", sans-serif; }
+
+.notification-row .notification-background .notification,
+.control-center {
+  border-radius: 0;
+  border: none;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #dfdfdf, inset -2px -2px #808080, inset 2px 2px #ffffff;
+  padding: 3px;
+}
+
+/* Title bar (same long selectors as the default theme, or they win) */
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  color: #ffffff;
+  text-shadow: 1px 0 #ffffff;
+  background-image: linear-gradient(to right, #000080, #1084d0);
+  padding: 1px 4px;
+  margin: 0 0 6px 0;
+}
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time { color: #000000; margin-right: 26px; }
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body { color: #000000; }
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box label { font-family: "W95FA"; font-size: 16px; }
+.notification-row .notification-background .notification .notification-default-action,
+.notification-row .notification-background .notification .notification-default-action:hover {
+  background: #c0c0c0;
+  border-radius: 0;
+}
+
+/* Close: the little bevelled [x] */
+.close-button {
+  border-radius: 0;
+  min-width: 16px;
+  min-height: 14px;
+  margin: 6px 7px 0 0;
+  color: #000000;
+  background: #c0c0c0;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+}
+
+.control-center .widget-title > label { text-shadow: 1px 0 #000000; }
+.control-center .widget-title > button, .widget-dnd > switch {
+  border-radius: 0;
+  background: #c0c0c0;
+  color: #000000;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+}
+.widget-dnd > switch:checked { background: #000080; }
+.widget-dnd > switch slider { border-radius: 0; background: #c0c0c0; }

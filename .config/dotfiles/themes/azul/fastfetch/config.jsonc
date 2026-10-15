@@ -1,0 +1,25 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  // Windows 95 flag (built into fastfetch); keys as in "Propiedades del sistema"
+  "logo": {
+    "source": "Windows 95",
+    "padding": { "top": 1, "left": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 12 },
+    "color": { "keys": "white", "title": "bright_white", "output": "default" }
+  },
+  "modules": [
+    { "type": "title", "format": "Sistema: {user-name}@{host-name}" },
+    { "type": "custom", "format": "" },
+    { "type": "os",       "key": "Sistema",   "format": "{pretty-name}" },
+    { "type": "kernel",   "key": "Versión" },
+    { "type": "host",     "key": "Equipo",    "format": "{family}" },
+    { "type": "cpu",      "key": "Procesador", "format": "{name}" },
+    { "type": "memory",   "key": "Memoria",   "format": "{total} de RAM" },
+    { "type": "disk",     "key": "C:",        "folders": "/", "format": "{size-used} de {size-total}" },
+    { "type": "battery",  "key": "Batería",   "format": "{capacity}" },
+    { "type": "uptime",   "key": "Encendido" }
+  ]
+}

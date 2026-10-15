@@ -1,0 +1,11 @@
+/* Azul: music.apple.com in its light look with the Windows 98 grey and navy; colours of the local-music userscript */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #000080 !important; --keyColorBG: #000080 !important; --keyColor-rgb: 0,0,128 !important;
+    --keyColor-rollover: #1084d0 !important; --keyColor-pressed: #000060 !important;
+    --navSidebarBG: #c0c0c0 !important; --playerBackground: #c0c0c0 !important; --playerBackgroundFallback: #c0c0c0 !important;
+    --lm-stripe-1: #000080; --lm-stripe-2: #000080; --lm-stripe-3: #1084d0; --lm-stripe-4: #1084d0; --lm-error: #ff0000;
+    --lm-text: #000000; --lm-sub: #404040; --lm-muted: #808080; --lm-track: #808080; --lm-surface: #dfdfdf;
+    --lm-accent: #000080; --lm-on-accent: #ffffff;
+  }
+}

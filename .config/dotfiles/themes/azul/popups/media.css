@@ -1,0 +1,26 @@
+/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS: Windows 95 "Reproductor de CD" */
+window { background: #c0c0c0; }
+* { font-family: "W95FA", "Symbols Nerd Font", sans-serif; font-size: 16px; color: #000000; }
+.head { color: #ffffff; font-weight: bold; }
+.head-dot { color: transparent; font-size: 1px; }
+/* the header row becomes a title bar */
+box > box:first-child { background-image: linear-gradient(to right, #000080, #1084d0); padding: 2px 4px; margin: -14px -14px 0 -14px; }
+.stripe-1, .stripe-2, .stripe-3, .stripe-4 { background: transparent; }
+.cover { background: #000000; box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff, inset 2px 2px #0a0a0a, inset -2px -2px #dfdfdf; padding: 2px; }
+/* track info as the black LCD of the CD player */
+.title { color: #00ff00; background: #000000; padding: 2px 4px; }
+.artist { color: #00c000; background: #000000; padding: 0 4px; }
+.album { color: #008000; background: #000000; padding: 0 4px 2px 4px; }
+.time { color: #000000; }
+scale trough { background: #ffffff; min-height: 4px; border-radius: 0; border: none;
+               box-shadow: inset 1px 1px #808080, inset -1px -1px #dfdfdf; }
+scale highlight { background: #000080; border-radius: 0; }
+scale slider { background: #c0c0c0; min-width: 11px; min-height: 20px; border-radius: 0; margin: -9px 0; border: none;
+               box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf; }
+button { background: #c0c0c0; background-image: none; border: none; border-radius: 0; min-width: 40px; min-height: 30px;
+         box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf; }
+button:active { box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #ffffff, inset 2px 2px #808080, inset -2px -2px #dfdfdf; }
+button label { font-size: 14pt; color: #000000; }
+button.main label { color: #000000; }
+button.on label { color: #000080; }
+.vol-label { color: #000000; }

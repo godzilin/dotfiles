@@ -49,13 +49,22 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
     plasma-apply-colorscheme (jq -r .kde_colors $json) >/dev/null
     kwriteconfig6 --file kdeglobals --group Icons --key Theme (jq -r .icons $json)
     kwriteconfig6 --file kdeglobals --group General --key font "$ui[1],$ui[2],-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
+    set -l qs (jq -r '.qt_style // empty' $json)  # e.g. "Windows" for azul; empty = Plasma's default (Breeze)
+    if test -n "$qs"
+        kwriteconfig6 --file kdeglobals --group KDE --key widgetStyle $qs
+    else
+        kwriteconfig6 --file kdeglobals --group KDE --key widgetStyle --delete
+    end
+
+    # Fonts that ship inside the theme (fonts/), seen through ~/.config/fontconfig/conf.d/60-theme-fonts.conf
+    fc-cache -f ~/.config/dotfiles/themes/current/fonts 2>/dev/null
 
     # Live reload of whatever is running
     if set -q HYPRLAND_INSTANCE_SIGNATURE
         hyprctl reload >/dev/null
         hyprctl setcursor (jq -r .cursor $json) (jq -r .cursor_size $json) >/dev/null
         pkill -x waybar; setsid -f waybar >/dev/null 2>&1
-        swaync-client -rs >/dev/null 2>&1
+        pkill -x swaync; setsid -f swaync >/dev/null 2>&1  # restart, not reload: it must see the theme's fonts
         pkill -x hyprpaper; setsid -f hyprpaper >/dev/null 2>&1
         ~/.config/hypr/scripts/theme-daemons.sh start
     end

@@ -1,0 +1,3 @@
+/* Azul: libadwaita apps ignore the GTK theme setting, so load Chicago95's GTK 4 stylesheet here.
+   Path is relative to ~/.config/gtk-4.0. */
+@import url("../../.themes/Chicago95/gtk-4.0/gtk.css");

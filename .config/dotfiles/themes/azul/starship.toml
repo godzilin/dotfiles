@@ -1,0 +1,14 @@
+# MS-DOS Prompt: "C:\USERS\GODZILIN>" (the path in uppercase with backslashes)
+add_newline = false
+format = "${custom.dos}$character"
+
+[custom.dos]
+command = "pwd | sed 's|^/home/|/USERS/|; s|/|\\\\|g' | tr '[:lower:]' '[:upper:]'"
+when = "true"
+format = "C:$output"
+shell = ["sh"]
+
+[character]
+success_symbol = ">"
+error_symbol = ">"
+vimcmd_symbol = ">"

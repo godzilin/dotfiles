@@ -12,6 +12,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 |---|---|
 | `naranja` | **Nostromo**: cassette futurism con la calma de macOS |
 | `blanco` | **macOS**: claro y translúcido, barra de menús con menú Apple, Dock, Spotlight |
+| `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas.
 Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
@@ -53,6 +54,21 @@ Tema GTK [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) (versión
 fuente Inter (lo más cercano a SF Pro que se puede distribuir) y DejaVu Sans Mono (la base de Menlo).
 Primera vez: `~/.config/dotfiles/themes/blanco/install.sh`.
 
+## azul: Windows 95/98
+
+Barra de tareas con botón Inicio, botones de ventana y bandeja con los iconos auténticos; menú Inicio propio
+(GTK3 + gtk-layer-shell) con la franja "Windows98", Programas por categorías, Documentos recientes, Configuración,
+Buscar, Ejecutar y el diálogo "Apagar el sistema"; bordes con el degradado azul de la barra de título de Windows 98,
+sin animaciones ni sombras; terminal "MS-DOS Prompt" con `C:\USERS\GODZILIN>`; inicio de sesión "Bienvenido a
+Windows"; Firefox como Internet Explorer 4; notificaciones como ventanas de Windows; Qt con el estilo "Windows" de Qt.
+
+![Escritorio](../.config/dotfiles/themes/azul/screenshots/desktop.png)
+
+Tema GTK, iconos y cursores [Chicago95](https://github.com/grassmunk/Chicago95) (commit fijado), fuente
+[W95FA](https://fontsource.org/fonts/win95fa) (OFL, viene en el tema y solo existe mientras azul está activo) y
+More Perfect DOS VGA para la terminal. Fondos generados por código (`wallpapers/win95.py`): verde azulado,
+nubes, degradado de instalación, patrones de 8×8 y arenisca. Primera vez: `~/.config/dotfiles/themes/azul/install.sh`.
+
 ## Cómo están organizados los temas
 
 Cada tema vive en `.config/dotfiles/themes/<color>/` y `themes/current` (local, fuera de git) apunta al activo.
@@ -68,7 +84,10 @@ Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los color
 | `gtk-3.0/`, `gtk-4.0/`, `kde/` | apps GTK y Qt |
 | `firefox/`, `apple-music/` | `userChrome.css`/`userContent.css` + `user.js` |
 | `popups/`, `fastfetch/`, `wallpapers/`, `screenshots/` | popup de música, logo, fondos generados por código |
-| `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú Apple, Dock) y su instalación |
+| `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú Apple, Dock, menú Inicio) y su instalación |
+| `scripts/launcher.sh` | si existe, es lo que abre la tecla Super (azul: menú Inicio); si no, fuzzel |
+| `fonts/` | fuentes que solo se ven con ese tema (`.config/fontconfig/conf.d/60-theme-fonts.conf`) |
+| `"qt_style"` en `theme.json` | estilo de widgets Qt (azul: `Windows`); sin él, Breeze |
 | `"daemons"` en `theme.json` | programas que solo corren con ese tema (el Dock); `tema` los para y arranca |
 
 ## Qué hay

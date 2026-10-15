@@ -1,0 +1,106 @@
+[general]
+working_directory = "None"
+live_config_reload = true
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+dimensions = { columns = 100, lines = 30 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 1.0
+blur = false
+padding = { x = 6, y = 4 }
+title = "Alacritty@CachyOS"
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "Light"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "More Perfect DOS VGA", style = "Regular" }
+bold = { family = "More Perfect DOS VGA", style = "Regular" }
+italic = { family = "More Perfect DOS VGA", style = "Regular" }
+bold_italic = { family = "More Perfect DOS VGA", style = "Regular" }
+size = 12.0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+# MS-DOS Prompt: VGA text mode palette, light grey on black
+[colors.primary]
+background = "#000000"
+foreground = "#aaaaaa"
+
+[colors.cursor]
+text = "#000000"
+cursor = "#aaaaaa"
+
+[colors.selection]
+text = "#000000"
+background = "#aaaaaa"
+
+[colors.search.matches]
+foreground = "#000000"
+background = "#aaaa00"
+
+[colors.search.focused_match]
+foreground = "#000000"
+background = "#ffff55"
+
+[colors.normal]
+black = "#000000"
+red = "#aa0000"
+green = "#00aa00"
+yellow = "#aa5500"
+blue = "#0000aa"
+magenta = "#aa00aa"
+cyan = "#00aaaa"
+white = "#aaaaaa"
+
+[colors.bright]
+black = "#555555"
+red = "#ff5555"
+green = "#55ff55"
+yellow = "#ffff55"
+blue = "#5555ff"
+magenta = "#ff55ff"
+cyan = "#55ffff"
+white = "#ffffff"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Underline", blinking = "On" }
+unfocused_hollow = true
+thickness = 0.2
+
+[mouse]
+hide_when_typing = true
+bindings = [
+{ mouse = "Middle", mods = "None", action = "PasteSelection" },
+]
+
+[keyboard]
+bindings = [
+{ key = "Paste", mods = "None", action = "Paste" },
+{ key = "Copy", mods = "None", action = "Copy" },
+{ key = "L", mods = "Control", action = "ClearLogNotice" },
+{ key = "L", mods = "Control", mode = "~Vi", chars = "\f" },
+{ key = "PageUp", mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+{ key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+{ key = "Home", mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+{ key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+{ key = "V", mods = "Control|Shift", action = "Paste" },
+{ key = "C", mods = "Control|Shift", action = "Copy" },
+{ key = "F", mods = "Control|Shift", action = "SearchForward" },
+{ key = "B", mods = "Control|Shift", action = "SearchBackward" },
+{ key = "C", mods = "Control|Shift", mode = "Vi", action = "ClearSelection" },
+{ key = "Key0", mods = "Control", action = "ResetFontSize" },
+{ key = "Return", mods = "Shift", chars = "\u001B\r" },
+]

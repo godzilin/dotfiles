@@ -1,0 +1,106 @@
+/* Azul for Firefox: Internet Explorer 4 / Windows 98. The tab strip is the navy title bar, tabs are raised
+   buttons (the selected one pressed), the window buttons are bevelled [_][□][x], the address bar a sunken field.
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --w-face: #c0c0c0; --w-light: #dfdfdf; --w-hi: #ffffff; --w-shadow: #808080; --w-dark: #0a0a0a;
+  --w-navy: #000080; --w-blue: #1084d0;
+  --w-font: "W95FA", sans-serif;
+  --w-raised: inset -1px -1px var(--w-dark), inset 1px 1px var(--w-hi), inset -2px -2px var(--w-shadow), inset 2px 2px var(--w-light);
+  --w-pressed: inset 1px 1px var(--w-dark), inset -1px -1px var(--w-hi), inset 2px 2px var(--w-shadow), inset -2px -2px var(--w-light);
+  --w-sunken: inset 1px 1px var(--w-shadow), inset -1px -1px var(--w-hi), inset 2px 2px var(--w-dark), inset -2px -2px var(--w-light);
+
+  --toolbar-bgcolor: var(--w-face) !important;
+  --toolbar-color: #000000 !important;
+  --toolbarbutton-icon-fill: #000000 !important;
+  --toolbarbutton-border-radius: 0 !important;
+  --toolbarbutton-hover-background: transparent !important;
+  --toolbarbutton-active-background: transparent !important;
+  --toolbar-field-background-color: #ffffff !important;
+  --toolbar-field-color: #000000 !important;
+  --toolbar-field-focus-background-color: #ffffff !important;
+  --toolbar-field-focus-color: #000000 !important;
+  --toolbar-field-border-color: transparent !important;
+  --toolbar-field-focus-border-color: transparent !important;
+  --tab-border-radius: 0 !important;
+  --tab-selected-bgcolor: var(--w-face) !important;
+  --tab-selected-textcolor: #000000 !important;
+  --focus-outline-color: #000000 !important;
+  --arrowpanel-background: var(--w-face) !important;
+  --arrowpanel-color: #000000 !important;
+  --arrowpanel-border-color: var(--w-dark) !important;
+  --arrowpanel-border-radius: 0 !important;
+  --urlbarView-highlight-background: var(--w-navy) !important;
+  --urlbarView-highlight-color: #ffffff !important;
+  --color-accent-primary: var(--w-navy) !important;
+  --button-primary-bgcolor: var(--w-face) !important;
+  --button-primary-color: #000000 !important;
+  --chrome-content-separator-color: var(--w-shadow) !important;
+}
+
+#navigator-toolbox, #navigator-toolbox * { font-family: var(--w-font) !important; }
+#navigator-toolbox { background: var(--w-face) !important; border-bottom: none !important; font-size: 16px !important; }
+
+/* Title bar */
+#TabsToolbar { background: linear-gradient(to right, var(--w-navy), var(--w-blue)) !important; padding: 2px 2px 3px !important; }
+#titlebar { background: transparent !important; }
+/* Inactive window: the grey title bar of Windows 98, at full opacity (Firefox fades it by default) */
+#TabsToolbar:-moz-window-inactive { background: linear-gradient(to right, #808080, #b5b5b5) !important; }
+#navigator-toolbox :-moz-window-inactive, #TabsToolbar *:-moz-window-inactive { opacity: 1 !important; }
+
+/* Tabs: raised grey buttons on the title bar */
+.tabbrowser-tab { padding-inline: 1px !important; }
+.tab-background { margin-block: 2px !important; background: var(--w-face) !important; box-shadow: var(--w-raised) !important; border: none !important; outline: none !important; }
+.tab-background:is([selected], [multiselected]) { background: #d4d4d4 !important; box-shadow: var(--w-pressed) !important; }
+.tab-label { color: #000000 !important; font-size: 16px !important; }
+.tabbrowser-tab[selected] .tab-label { font-weight: bold !important; }
+.tab-close-button { border-radius: 0 !important; }
+#tabs-newtab-button, #new-tab-button, #alltabs-button { fill: #ffffff !important; }
+
+/* Window buttons: [_][□][x] */
+.titlebar-buttonbox { margin-inline: 4px 2px !important; }
+.titlebar-button { padding: 0 1px !important; background: transparent !important; }
+.titlebar-button > .toolbarbutton-icon {
+  width: 16px !important; height: 14px !important; padding: 2px !important;
+  background: var(--w-face) !important; box-shadow: var(--w-raised) !important; border-radius: 0 !important;
+  fill: #000000 !important; -moz-context-properties: fill, stroke; stroke: #000000 !important;
+}
+.titlebar-close { margin-left: 2px !important; }
+
+.titlebar-min > .toolbarbutton-icon { list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' shape-rendering='crispEdges'%3E%3Crect x='2' y='7' width='6' height='2' fill='black'/%3E%3C/svg%3E") !important; }
+.titlebar-max > .toolbarbutton-icon { list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' shape-rendering='crispEdges'%3E%3Crect x='1.5' y='1.5' width='8' height='7' fill='none' stroke='black'/%3E%3Crect x='1' y='1' width='9' height='2' fill='black'/%3E%3C/svg%3E") !important; }
+.titlebar-restore > .toolbarbutton-icon { list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' shape-rendering='crispEdges'%3E%3Crect x='3.5' y='0.5' width='6' height='5' fill='none' stroke='black'/%3E%3Crect x='0.5' y='3.5' width='6' height='5' fill='%23c0c0c0' stroke='black'/%3E%3Crect x='0' y='3' width='7' height='2' fill='black'/%3E%3C/svg%3E") !important; }
+.titlebar-close > .toolbarbutton-icon { list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' shape-rendering='crispEdges'%3E%3Cpath d='M2 1h2l2 2.5 2-2.5h2l-3 4 3 4h-2l-2-2.5-2 2.5h-2l3-4z' fill='black'/%3E%3C/svg%3E") !important; }
+
+/* Toolbar */
+#nav-bar { padding: 3px 4px !important; box-shadow: inset 0 1px var(--w-hi) !important; border-bottom: 1px solid var(--w-shadow) !important; }
+#nav-bar toolbarbutton:hover > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { box-shadow: var(--w-raised) !important; background: transparent !important; }
+#nav-bar toolbarbutton:hover:active > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack),
+#nav-bar toolbarbutton[open] > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { box-shadow: var(--w-pressed) !important; }
+
+/* Address: "Dirección" label + sunken white field */
+#urlbar .urlbar-background { border-radius: 0 !important; border: none !important; box-shadow: var(--w-sunken) !important; background: #ffffff !important; }
+#urlbar-container::before { content: "Dirección"; align-self: center; margin-inline: 2px 6px; font: 16px var(--w-font); color: #000000; }
+#urlbar-input { font-size: 16px !important; }
+.urlbarView-row { border-radius: 0 !important; }
+
+/* Bookmarks ("Vínculos") */
+#PersonalToolbar { padding: 1px 4px 2px !important; box-shadow: inset 0 1px var(--w-hi) !important; }
+toolbarbutton.bookmark-item { border-radius: 0 !important; color: #000000 !important; }
+toolbarbutton.bookmark-item:hover { box-shadow: var(--w-raised) !important; background: transparent !important; }
+
+/* Menus and panels: grey, raised, navy highlight */
+menupopup, panel {
+  --panel-background-color: var(--w-face) !important;
+  --panel-text-color: #000000 !important;
+  --panel-border-color: var(--w-dark) !important;
+  --panel-border-radius: 0 !important;
+  --panel-separator-color: var(--w-shadow) !important;
+}
+menupopup, menupopup menu, menupopup menuitem { font-family: var(--w-font) !important; font-size: 16px !important; }
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: var(--w-navy) !important; color: #ffffff !important; }
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 0 !important; }
+
+/* Status text: the IE status bar look */
+#statuspanel-label { font: 16px var(--w-font) !important; background: var(--w-face) !important; color: #000000 !important;
+                     border: none !important; border-radius: 0 !important; box-shadow: var(--w-sunken) !important; margin: 0 0 2px 2px !important; }
