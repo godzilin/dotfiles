@@ -1,6 +1,7 @@
 hl.config({
     input = {
         kb_layout    = "es",
+        numlock_by_default = true, -- KDE turned NumLock on at login
         follow_mouse = 1, -- same as FocusFollowsMouse in KDE
         touchpad = {
             natural_scroll       = true,

@@ -13,7 +13,7 @@ hl.bind(mod .. " + D",         exec("discord"))
 hl.bind(mod .. " + S",         exec("steam"))
 hl.bind(mod .. " + X",         exec("lutris"))
 hl.bind(mod .. " + C",         exec("systemsettings"))
-hl.bind(mod .. " + E",         exec("dolphin"))
+hl.bind(mod .. " + E",         exec("thunar"))
 
 -- Launcher: tap Super alone (like KDE), or Super+Space / Alt+F1
 hl.bind(mod .. " + Super_L", exec("pkill fuzzel || " .. menu), { release = true })

@@ -28,3 +28,8 @@ btop
 adw-gtk-theme
 ttf-ibmplex-mono-nerd
 ttf-ibm-plex
+thunar
+gvfs
+tumbler
+thunar-archive-plugin
+thunar-volman

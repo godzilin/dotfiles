@@ -1,4 +1,5 @@
 /* Nostromo palette on top of adw-gtk3-dark. KDE may overwrite this file when you log into Plasma. */
+@import "thunar.css";
 @define-color accent_color #e9a23b;
 @define-color accent_bg_color #e9a23b;
 @define-color accent_fg_color #1a1814;
