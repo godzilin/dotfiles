@@ -35,3 +35,4 @@ thunar-archive-plugin
 thunar-volman
 khal
 vdirsyncer
+python-gobject

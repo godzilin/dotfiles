@@ -111,16 +111,24 @@ hl.bind("XF86AudioPause", exec("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioNext",  exec("playerctl next"),       { locked = true })
 hl.bind("XF86AudioPrev",  exec("playerctl previous"),   { locked = true })
 
--- Calendar popup closes on any click outside it. non_consuming: the click still reaches the app.
--- Clicks on the bar are left alone, so the clock button can toggle it itself.
+-- Bar popups (calendar, now playing) close on any click outside them. non_consuming: the click still reaches the app.
+-- Clicks on the bar are left alone, so its buttons can toggle the popups themselves.
+local popups = {
+    ["nostromo-calendar"] = "pkill -f '^python3 .*calpopup\\.py'",
+    ["nostromo-media"]    = "pkill -f '^python3 .*mediapopup\\.py'",
+}
 local function xy(v) return v.x or v[1], v.y or v[2] end
 hl.bind("mouse:272", function()
-    local cal = hl.get_windows({ class = "nostromo-calendar" })[1]
     local cur = hl.get_cursor_pos()
-    if not cal or not cur or cur.y < 40 then return end
-    local x, y = xy(cal.at)
-    local w, h = xy(cal.size)
-    if cur.x < x or cur.x > x + w or cur.y < y or cur.y > y + h then
-        hl.exec_cmd("pkill -f '^python3 .*calpopup\\.py'")
+    if not cur or cur.y < 40 then return end
+    for class, close in pairs(popups) do
+        local win = hl.get_windows({ class = class })[1]
+        if win then
+            local x, y = xy(win.at)
+            local w, h = xy(win.size)
+            if cur.x < x or cur.x > x + w or cur.y < y or cur.y > y + h then
+                hl.exec_cmd(close)
+            end
+        end
     end
 end, { non_consuming = true })

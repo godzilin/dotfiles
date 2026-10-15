@@ -58,3 +58,13 @@ hl.window_rule({
     size  = "400 410",
     move  = "760 44",
 })
+
+-- Now-playing popup from the waybar media module
+hl.window_rule({
+    name  = "media-popup",
+    match = { class = "^nostromo-media$" },
+    float = true,
+    pin   = true,
+    size  = "420 380",
+    move  = "1080 44",
+})
