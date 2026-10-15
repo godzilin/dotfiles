@@ -1,4 +1,5 @@
-/* Nostromo for Firefox's own pages: new tab, home, settings, add-ons */
+/* Nostromo for Firefox's own pages */
+
 @-moz-document url-prefix("about:") {
   :root {
     --newtab-background-color: #121110 !important;
@@ -14,7 +15,47 @@
     --color-accent-primary-active: #d9652b !important;
     --link-color: #e9a23b !important;
     --focus-outline-color: #e9a23b !important;
+    scrollbar-color: #3d382d transparent;
   }
   body { background-color: var(--background-color-canvas) !important; }
-  @media (prefers-color-scheme: dark) { .home-section, body { --newtab-background-color: #121110 !important; } }
+}
+
+/* New tab / home: the wallpaper's dot grid and label instead of the Firefox logo */
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background-color: #121110 !important;
+    background-image: radial-gradient(circle, #2a2620 1.2px, transparent 1.4px) !important;
+    background-size: 48px 48px !important;
+    background-position: 24px 24px !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper::before {
+    content: "COMPUTAH  ·  PERSONAL COMPUTING SYSTEM";
+    display: block;
+    text-align: center;
+    margin-bottom: 28px;
+    font: 600 13px "IBM Plex Mono", monospace;
+    letter-spacing: 0.3em;
+    color: #e9a23b;
+  }
+  .search-wrapper::after {  /* tape stripes under the search box */
+    content: "";
+    display: block;
+    width: 160px;
+    height: 4px;
+    margin: 26px auto 0;
+    background: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%);
+  }
+  /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
+  .search-inner-wrapper moz-urlbar .urlbar-background {
+    background-color: #1a1814 !important;
+    border: 1px solid #3d382d !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+  }
+  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #e9a23b !important; }
+  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "BlexMono Nerd Font", monospace !important; }
+  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #1a1814 !important; border-radius: 10px !important; }
+  .top-site-outer .title { font-family: "IBM Plex Mono", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #857c69 !important; }
 }
