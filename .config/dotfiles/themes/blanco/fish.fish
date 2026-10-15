@@ -5,7 +5,7 @@ set -g fish_color_command 1d1d1f
 set -g fish_color_param 3c3c43
 set -g fish_color_quote c41a16
 set -g fish_color_error ff3b30
-set -g fish_color_autosuggestion b0b0b5
+set -g fish_color_autosuggestion 8e8e93
 set -g fish_color_comment 8e8e93
 set -g fish_color_operator 007aff
 set -g fish_color_redirection 007aff

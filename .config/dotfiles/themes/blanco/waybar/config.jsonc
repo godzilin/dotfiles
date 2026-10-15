@@ -5,13 +5,20 @@
     "height": 28,
     "spacing": 0,
 
-    "modules-left": ["custom/apple", "hyprland/window"],
+    "modules-left": ["custom/apple", "hyprland/workspaces", "hyprland/window"],
     "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/spotlight", "custom/control", "custom/clock"],
 
     "custom/apple": {
         "format": "",
         "on-click": "~/.config/dotfiles/themes/current/scripts/applemenu.sh",
         "tooltip": false
+    },
+    // Desktops (Spaces): number of each, the current one filled; scroll to move
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "persistent-workspaces": { "*": 4 },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
     },
     // Bold name of the focused app, like the application menu
     "hyprland/window": {
