@@ -7,9 +7,9 @@
     "margin-right": 8,
     "spacing": 0,
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "group/media"],
-    "modules-center": ["clock", "custom/weather"],
-    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
     "group/media": {
@@ -55,6 +55,23 @@
         "return-type": "json",
         "interval": 600,
         "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+
+    // Bluetooth readout: click toggles power, right click opens the KDE Bluetooth settings
+    "bluetooth": {
+        "format": "<span color='#857c69'>BT</span> {status}",
+        "format-on": "<span color='#857c69'>BT</span> ON",
+        "format-off": "<span color='#857c69'>BT</span> OFF",
+        "format-disabled": "<span color='#857c69'>BT</span> OFF",
+        "format-connected": "<span color='#857c69'>BT</span> {device_alias}",
+        "format-connected-battery": "<span color='#857c69'>BT</span> {device_alias} {device_battery_percentage}%",
+        "max-length": 60,  // counts the colour markup too (~30 chars), so names up to ~30 fit
+        "tooltip-format": "{controller_alias} · {status}",
+        "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} · {device_battery_percentage}%",
+        "on-click": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on",
+        "on-click-right": "systemsettings kcm_bluetooth"
     },
 
     "custom/launcher": {

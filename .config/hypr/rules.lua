@@ -66,7 +66,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "420 380",
-    move  = "270 44",
+    move  = "250 44",
 })
 
 -- Weather popup from the waybar weather module
@@ -76,5 +76,5 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "460 580",
-    move  = "800 44",
+    move  = "60 44",
 })
