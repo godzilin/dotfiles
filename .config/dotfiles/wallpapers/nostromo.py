@@ -31,7 +31,7 @@ def frame(art, model, side):
         *marks,
         # One <text> with a tspan so the subtitle always starts after the name, whatever its length
         # house mark: skull and crossbones
-        f'<path d="M94,92 L114,112 M114,92 L94,112" stroke="{STRIPES[1]}" stroke-width="1.6" stroke-linecap="round"/>',
+        f'<path d="M95,93 L113,111 M113,93 L95,111" stroke="{MUTED}" stroke-width="1.3" stroke-linecap="round"/>',
         skull(104, 96, 15, STRIPES[1], BG_TOP, 1.4),
         f'<text x="124" y="104" {FONT} font-size="15" font-weight="600" fill="{STRIPES[1]}">COMPUTAH'
         f'<tspan dx="28" font-weight="400" fill="{MUTED}">THINKPAD P14S GEN 5</tspan></text>',
