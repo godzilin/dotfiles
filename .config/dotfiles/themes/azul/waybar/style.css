@@ -30,7 +30,7 @@ tooltip label { color: #000000; font-size: 14px; }
     box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
 }
 #start:hover { background: #c6c6c6; }
-#image-start { padding: 0 3px 0 2px; }
+#image.start { padding: 0 3px 0 2px; }
 #custom-start { text-shadow: 1px 0 #000000; padding: 0 3px 0 2px; }  /* W95FA has no bold: 1 px smear, like the bitmap bold */
 
 /* Desktops: small raised buttons, the current one pressed */
@@ -72,9 +72,10 @@ tooltip label { color: #000000; font-size: 14px; }
     padding: 0 8px 0 4px;
     box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080;
 }
-#tray, #custom-weather, #image-net, #image-vol, #image-bat, #battery, #custom-clock { padding: 0 4px; color: #000000; }
-#tray { padding-right: 8px; }
-#battery { padding-left: 1px; }
+#tray, #custom-weather, #image.net, #image.vol, #image.bat, #battery, #custom-clock { padding: 0 6px; color: #000000; }
+#tray { padding-right: 12px; }
+#image.bat { padding-right: 2px; }
+#battery { padding-left: 0; }
 #custom-weather { font-size: 15px; }
 #custom-clock { padding-left: 8px; }
 

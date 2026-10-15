@@ -27,14 +27,14 @@ hl.config({
     },
 })
 
--- Popups hang from the system tray, above the taskbar (1920x1200 screen, 30 px taskbar)
+-- Popups hang from the system tray, above the taskbar (1920x1200 screen, 34 px taskbar)
 hl.window_rule({
     name  = "calendar-popup",
     match = { class = "^nostromo-calendar$" },
     float = true,
     pin   = true,
     size  = "400 410",
-    move  = "1514 756",
+    move  = "1514 752",
 })
 hl.window_rule({
     name  = "media-popup",
@@ -42,7 +42,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "400 330",
-    move  = "1300 836",
+    move  = "1300 832",
 })
 hl.window_rule({
     name  = "weather-popup",
@@ -50,7 +50,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "460 580",
-    move  = "1240 586",
+    move  = "1240 582",
 })
 
 -- Start menu dialogs (Ejecutar, Apagar el sistema): small, floating, Run sits bottom-left like in Windows
@@ -63,5 +63,5 @@ hl.window_rule({
 hl.window_rule({
     name  = "win95-run",
     match = { class = "^win95-dialog$", title = "^Ejecutar$" },
-    move  = "8 1040",
+    move  = "8 1036",
 })

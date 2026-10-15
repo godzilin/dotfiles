@@ -2,7 +2,7 @@
 {
     "layer": "top",
     "position": "bottom",
-    "height": 30,
+    "height": 34,
     "spacing": 0,
 
     "modules-left": ["group/start", "hyprland/workspaces", "wlr/taskbar"],
@@ -47,7 +47,7 @@
         "orientation": "horizontal",
         "modules": ["tray", "custom/weather", "image#net", "image#vol", "image#bat", "battery", "custom/clock"]
     },
-    "tray": { "icon-size": 16, "spacing": 4 },
+    "tray": { "icon-size": 20, "spacing": 10 },
     "custom/weather": {
         "exec": "~/.config/hypr/scripts/weather.py bar",
         "return-type": "json",
@@ -56,13 +56,13 @@
     },
     "image#net": {
         "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh net",
-        "size": 16,
+        "size": 24,
         "interval": 10,
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "image#vol": {
         "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh vol",
-        "size": 16,
+        "size": 24,
         "interval": 2,
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
@@ -71,7 +71,7 @@
     },
     "image#bat": {
         "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh bat",
-        "size": 16,
+        "size": 24,
         "interval": 30
     },
     "battery": {

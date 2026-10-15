@@ -16,7 +16,7 @@ gi.require_version("GtkLayerShell", "0.1")
 gi.require_version("PangoCairo", "1.0")
 from gi.repository import Gdk, Gio, GLib, Gtk, GtkLayerShell, PangoCairo  # noqa: E402
 
-TASKBAR = 30  # height of the waybar taskbar the menu sits on
+TASKBAR = 34  # height of the waybar taskbar the menu sits on
 HOME = os.path.expanduser("~")
 USER = (subprocess.run(["getent", "passwd", os.environ.get("USER", "")], capture_output=True, text=True)
         .stdout.split(":")[4:5] or [""])[0].split(",")[0] or os.environ.get("USER", "")
