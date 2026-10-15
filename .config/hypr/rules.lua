@@ -66,5 +66,5 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "420 380",
-    move  = "1080 44",
+    move  = "270 44",
 })

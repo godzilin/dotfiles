@@ -7,9 +7,9 @@
     "margin-right": 8,
     "spacing": 0,
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "group/media"],
     "modules-center": ["clock"],
-    "modules-right": ["group/media", "tray", "pulseaudio", "backlight", "network", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
+    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
     "group/media": {
