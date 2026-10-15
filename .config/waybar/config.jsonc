@@ -8,7 +8,7 @@
     "spacing": 0,
 
     "modules-left": ["custom/launcher", "hyprland/workspaces", "group/media"],
-    "modules-center": ["clock"],
+    "modules-center": ["clock", "custom/weather"],
     "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
@@ -49,8 +49,16 @@
         "on-click": "~/.config/hypr/scripts/media.sh"
     },
 
+    // Weather (Open-Meteo): icon + °C; click for the full forecast
+    "custom/weather": {
+        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "return-type": "json",
+        "interval": 600,
+        "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+
     "custom/launcher": {
-        "format": "<span color='#e9a23b'>▮</span> COMPUTAH",
+        "format": "<span color='#e9a23b'>▮</span> COMPUTAH <span color='#857c69' size='large'>󰯈</span>",
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },

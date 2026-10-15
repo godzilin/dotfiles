@@ -104,3 +104,7 @@ window#waybar.empty #window { padding: 0; }
 #custom-media { padding: 0 12px 0 6px; color: @text; }
 #custom-media.paused { color: @muted; }
 #tray { border-left: 1px solid @line; }
+
+/* Weather, right of the clock */
+#custom-weather { padding: 0 12px 0 4px; color: @text; }
+#custom-weather.offline { color: @muted; }

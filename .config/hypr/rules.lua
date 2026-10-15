@@ -68,3 +68,13 @@ hl.window_rule({
     size  = "420 380",
     move  = "270 44",
 })
+
+-- Weather popup from the waybar weather module
+hl.window_rule({
+    name  = "weather-popup",
+    match = { class = "^nostromo-weather$" },
+    float = true,
+    pin   = true,
+    size  = "460 580",
+    move  = "800 44",
+})
