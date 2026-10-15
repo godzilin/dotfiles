@@ -1,5 +1,5 @@
 #!/bin/sh
-# Link the Nostromo user.js and chrome/ into every Firefox profile. Close Firefox first.
+# Link user.js and chrome/ (they follow the active theme, see `tema`) into every Firefox profile. Close Firefox first.
 src=$(dirname "$(readlink -f "$0")")
 for base in "$HOME/.config/mozilla/firefox" "$HOME/.mozilla/firefox"; do
     [ -f "$base/profiles.ini" ] || continue

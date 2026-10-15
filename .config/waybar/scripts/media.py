@@ -16,6 +16,8 @@ from gi.repository import GLib, Playerctl  # noqa: E402
 CACHE = os.path.expanduser("~/.cache/nostromo")
 COVER_PATH_FILE = os.path.join(CACHE, "cover-path")
 COVER_SIGNAL = 8  # image#cover listens on SIGRTMIN+8
+THEME = json.load(open(os.path.expanduser("~/.config/dotfiles/themes/current/theme.json")))  # active theme (`tema`)
+P = THEME["palette"]
 manager = Playerctl.PlayerManager()
 last_cover = None
 
@@ -97,11 +99,11 @@ def emit(*_):
     playing = p.props.playback_status == Playerctl.PlaybackStatus.PLAYING
 
     esc = GLib.markup_escape_text
-    text = f"{esc(title[:28])}{'…' if len(title) > 28 else ''} <span color='#857c69'>· {esc(artist[:18])}</span>"
+    text = f"{esc(title[:28])}{'…' if len(title) > 28 else ''} <span color='{P['muted']}'>· {esc(artist[:18])}</span>"
     if length:
         filled = min(round(8 * pos / length), 8)
-        bar = f"<span color='#e9a23b'>{'▮' * filled}</span><span color='#3d382d'>{'▮' * (8 - filled)}</span>"
-        text += f"  {bar} <span color='#b3a891'>-{clock(length - pos)}</span>"
+        bar = f"<span color='{P['accent']}'>{'▮' * filled}</span><span color='{P['line']}'>{'▮' * (8 - filled)}</span>"
+        text += f"  {bar} <span color='{P['sub']}'>-{clock(length - pos)}</span>"
     print(json.dumps({"text": text, "class": "playing" if playing else "paused",
                       "tooltip": f"{title}\n{artist}"}), flush=True)
     art = cover_file(meta.get("mpris:artUrl", ""))

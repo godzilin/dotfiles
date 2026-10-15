@@ -1,12 +1,27 @@
 # dotfiles
 
-Hyprland en un ThinkPad con CachyOS. Estética **cassette futurism** con la calma de macOS:
-base oscura cálida, ámbar de fósforo, franjas de cinta de casete y tipografía IBM Plex.
+Hyprland en un ThinkPad con CachyOS, con varios temas intercambiables: cada color es un estilo
+distinto que cambia todo el escritorio (barra, ventanas, terminal, GTK/Qt, Firefox, fondos...).
 
-![Escritorio](../.config/dotfiles/screenshots/desktop.png)
-![Bloqueo](../.config/dotfiles/screenshots/lock.png)
+```fish
+tema            # lista los temas, * = activo
+tema naranja    # cambia de tema y recarga lo que está abierto
+```
 
-## Paleta "Nostromo"
+| Tema | Estilo |
+|---|---|
+| `naranja` | **Nostromo**: cassette futurism con la calma de macOS |
+
+Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas.
+
+## naranja: Nostromo
+
+Base oscura cálida, ámbar de fósforo, franjas de cinta de casete y tipografía IBM Plex.
+
+![Escritorio](../.config/dotfiles/themes/naranja/screenshots/desktop.png)
+![Bloqueo](../.config/dotfiles/themes/naranja/screenshots/lock.png)
+
+### Paleta
 
 | | Color | Uso |
 |---|---|---|
@@ -24,21 +39,30 @@ base oscura cálida, ámbar de fósforo, franjas de cinta de casete y tipografí
 Fuentes: **IBM Plex Sans** (interfaz) y **BlexMono Nerd Font** (terminal, barra, lanzador).
 Iconos: WhiteSur-orange-dark. Cursor: WhiteSur.
 
+## Cómo están organizados los temas
+
+Cada tema vive en `.config/dotfiles/themes/<color>/` y `themes/current` (local, fuera de git) apunta al activo.
+Las rutas que leen las apps (`.config/waybar/style.css`, `.config/hypr/look.lua`, `.config/gtk-3.0/gtk.css`...)
+son enlaces a `themes/current/...`, así que cambiar de tema es mover ese enlace y recargar.
+Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los colores de `themes/current/theme.json`.
+
+| En el tema | Qué es |
+|---|---|
+| `theme.json` | paleta, fuentes, iconos, cursor, tema GTK y esquema KDE (lo aplica `tema`; lo leen los popups) |
+| `hypr/` | `colors.lua`, `look.lua` (bordes, sombras, animaciones), `hyprlock.conf` |
+| `waybar/`, `swaync/`, `fuzzel/`, `alacritty/`, `starship.toml`, `fish.fish` | barra, notificaciones, lanzador, terminal, prompt y colores de la shell |
+| `gtk-3.0/`, `gtk-4.0/`, `kde/` | apps GTK y Qt |
+| `firefox/`, `apple-music/` | `userChrome.css`/`userContent.css` + `user.js` |
+| `popups/`, `fastfetch/`, `wallpapers/`, `screenshots/` | popup de música, logo, fondos generados por código |
+
 ## Qué hay
 
 | Ruta | Qué es |
 |---|---|
-| `.config/hypr/` | Hyprland en Lua (0.56+), hyprlock, hypridle, hyprpaper, scripts. Chuleta de atajos en su `README.md` |
-| `.config/waybar/` | Barra estilo panel de pletina: `VOL`, `LUM`, `NET`, `PWR`, `BAT` |
-| `.config/fuzzel/` | Lanzador, portapapeles y menú de apagado |
-| `.config/swaync/` | Notificaciones (tema por defecto + paleta encima) |
-| `.config/alacritty/` | Terminal |
-| `.config/fish/`, `.config/starship.toml` | Shell y prompt |
-| `.config/fastfetch/` | Logo de casete |
-| `.config/dotfiles/firefox/` | Firefox: `userChrome.css`/`userContent.css` + `user.js`. Instalar con `install.sh` (Firefox cerrado) |
-| `.config/gtk-3.0/`, `.config/gtk-4.0/` | Paleta para apps GTK (adw-gtk3 / libadwaita) |
-| `.local/share/color-schemes/Nostromo.colors` | Paleta para apps Qt/KDE |
-| `.config/dotfiles/wallpapers/` | Fondos generados por código (`nostromo.py`), rotan cada 15 min |
+| `.config/hypr/` | Hyprland en Lua (0.56+), hypridle, hyprpaper, scripts. Chuleta de atajos en su `README.md` |
+| `.config/waybar/scripts/` | Módulo de música de la barra |
+| `.config/fish/` | Shell; `functions/tema.fish` cambia de tema |
+| `.config/dotfiles/firefox/install.sh` | Enlaza el tema activo de Firefox en cada perfil (una vez, con Firefox cerrado) |
 
 ## Instalar
 
@@ -48,8 +72,7 @@ function dots; git --git-dir=$HOME/.dotfiles --work-tree=$HOME $argv; end
 dots checkout          # si se queja de archivos existentes, muévelos antes
 dots config status.showUntrackedFiles no
 sudo pacman -S --needed - < ~/.config/dotfiles/packages.txt
-plasma-apply-colorscheme Nostromo
-gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-dark
+tema naranja           # crea themes/current y aplica GTK, Qt, iconos y cursor
 ```
 
 Los iconos WhiteSur-orange salen de [vinceliuice/WhiteSur-icon-theme](https://github.com/vinceliuice/WhiteSur-icon-theme)

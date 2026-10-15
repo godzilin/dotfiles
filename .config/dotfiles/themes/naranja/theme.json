@@ -1,0 +1,32 @@
+{
+  "name": "Nostromo",
+  "description": "Cassette futurism: base oscura cálida, ámbar de fósforo, franjas de cinta",
+  "palette": {
+    "bg0": "#121110",
+    "bg": "#1a1814",
+    "bg1": "#24211b",
+    "bg2": "#2f2b23",
+    "line": "#3d382d",
+    "faint": "#4a4438",
+    "muted": "#857c69",
+    "sub": "#b3a891",
+    "text": "#e8dfc8",
+    "accent": "#e9a23b",
+    "yellow": "#e0c36a",
+    "orange": "#d9652b",
+    "red": "#c8553d",
+    "green": "#8fae7e",
+    "teal": "#6f9e98",
+    "blue": "#7b93a8"
+  },
+  "stripes": ["#e0c36a", "#e9a23b", "#d9652b", "#c8553d"],
+  "font_ui": "IBM Plex Sans",
+  "font_mono": "BlexMono Nerd Font",
+  "font_size": 10,
+  "gtk_theme": "adw-gtk3-dark",
+  "color_scheme": "prefer-dark",
+  "icons": "WhiteSur-orange-dark",
+  "cursor": "WhiteSur-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Nostromo"
+}

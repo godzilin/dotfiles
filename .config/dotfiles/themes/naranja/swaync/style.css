@@ -1,0 +1,41 @@
+/* Default swaync theme + Nostromo palette on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(26, 24, 20, 0.94);
+  --noti-border-color: #3d382d;
+  --noti-bg: 26, 24, 20;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #121110;
+  --noti-bg-hover: #24211b;
+  --noti-bg-focus: rgba(47, 43, 35, 0.8);
+  --noti-close-bg: #2f2b23;
+  --noti-close-bg-hover: #3d382d;
+  --text-color: #e8dfc8;
+  --text-color-disabled: #857c69;
+  --bg-selected: #e9a23b;
+  --border-radius: 10px;
+  --notification-icon-size: 48px;
+  --notification-shadow: 0 4px 16px rgba(18, 17, 16, 0.6);
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+}
+
+* {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-family: "BlexMono Nerd Font", monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Amber accent strip on the left of every notification */
+.notification-row .notification-background .notification {
+  border-left: 3px solid #e9a23b;
+}
+.notification-row .notification-background .notification.critical {
+  border-left-color: #c8553d;
+}

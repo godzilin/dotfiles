@@ -5,7 +5,7 @@ import os
 import subprocess
 import sys
 
-sys.path.insert(0, os.path.expanduser("~/.config/dotfiles/wallpapers"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "wallpapers"))
 from skulls import HEAD, NOSE  # noqa: E402
 
 COLS, ROWS = 30, 26  # wide and short: same height as the info column
@@ -30,7 +30,7 @@ for r in range(0, ROWS, 2):
     row = "".join("█" if a and b else "▀" if a else "▄" if b else " " for a, b in zip(lit[r], lit[r + 1]))
     if row.strip():
         lines.append(f"${band}{row.rstrip()}")
-here = os.path.dirname(os.path.abspath(__file__))
+here = os.path.dirname(os.path.realpath(__file__))
 with open(os.path.join(here, "skull.txt"), "w") as f:
     f.write("\n".join(lines) + "\n")
 print("\n".join(lines))

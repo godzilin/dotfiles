@@ -14,31 +14,7 @@ from gi.repository import GdkPixbuf, GLib, Gtk, Playerctl  # noqa: E402
 
 GLib.set_prgname("nostromo-media")  # Wayland app_id, matched by the window rule
 
-CSS = b"""
-window { background: #1a1814; }
-* { font-family: "BlexMono Nerd Font", monospace; color: #b3a891; letter-spacing: 1px; }
-.head { font-size: 9pt; color: #857c69; }
-.head-dot { color: #e9a23b; }
-.stripe-1 { background: #e0c36a; } .stripe-2 { background: #e9a23b; }
-.stripe-3 { background: #d9652b; } .stripe-4 { background: #c8553d; }
-.cover { border: 1px solid #3d382d; border-radius: 8px; background: #24211b; }
-.title { font-family: "IBM Plex Sans", sans-serif; font-size: 13pt; font-weight: 600; color: #e8dfc8; letter-spacing: 0; }
-.artist { font-size: 10pt; color: #b3a891; }
-.album { font-size: 9pt; color: #857c69; }
-.time { font-size: 9pt; color: #857c69; }
-scale trough { background: #2f2b23; min-height: 4px; border-radius: 2px; border: none; }
-scale highlight { background: #e9a23b; border-radius: 2px; }
-scale slider { background: #e8dfc8; min-width: 10px; min-height: 10px; border-radius: 5px; margin: -4px; border: none; box-shadow: none; }
-button { background: transparent; border: none; box-shadow: none; border-radius: 8px; padding: 4px 10px; }
-button label { font-size: 16pt; color: #b3a891; }
-button:hover { background: #2f2b23; }
-button:hover label { color: #e8dfc8; }
-button.main { background: #e9a23b; }
-button.main label { color: #121110; }
-button.main:hover { background: #e0c36a; }
-button.on label { color: #e9a23b; }
-.vol-label { font-size: 9pt; color: #857c69; }
-"""
+CSS = os.path.expanduser("~/.config/dotfiles/themes/current/popups/media.css")  # active theme (`tema`)
 
 ICONS = {"prev": "󰒮", "next": "󰒭", "play": "󰐊", "pause": "󰏤", "shuffle": "󰒝", "noshuffle": "󰒞",
          "loop-none": "󰑗", "loop-track": "󰑘", "loop-playlist": "󰑖"}
@@ -70,7 +46,7 @@ class Popup(Gtk.Window):
         self.art_url = ""
 
         provider = Gtk.CssProvider()
-        provider.load_from_data(CSS)
+        provider.load_from_path(CSS)
         Gtk.StyleContext.add_provider_for_screen(self.get_screen(), provider, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
         root = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10, margin=18)

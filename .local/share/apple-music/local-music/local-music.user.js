@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Apple Music: música local
 // @namespace    godzilin
-// @version      3.1
+// @version      3.2
 // @description  "Música local" en la barra lateral de music.apple.com: reproduce ~/Music (servido por server.py en 127.0.0.1:47823)
 // @match        https://music.apple.com/*
 // @grant        GM_xmlhttpRequest
@@ -46,26 +46,26 @@
   page.id = "lm-page";
   const pr = page.attachShadow({ mode: "open" });
   pr.innerHTML = `<style>
-    :host { display: block; font-family: "IBM Plex Sans", sans-serif; color: #e8dfc8; }
+    :host { display: block; color: var(--systemPrimary-onDark); }  /* colours and font come from the theme's userContent.css */
     button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
     .wrap { padding: 32px 40px 140px; }
     header { display: flex; align-items: baseline; gap: 12px; }
     h1 { margin: 0; font-size: 30px; font-weight: 700; }
     .stripe { height: 4px; width: 120px; margin: 10px 0 24px;
-      background: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%); }
-    .sub { color: #857c69; font-size: 13px; }
+      background: linear-gradient(90deg, var(--lm-stripe-1) 0 25%, var(--lm-stripe-2) 25% 50%, var(--lm-stripe-3) 50% 75%, var(--lm-stripe-4) 75%); }
+    .sub { color: var(--systemTertiary-onDark); font-size: 13px; }
     .album { display: grid; grid-template-columns: 200px 1fr; gap: 28px; margin: 0 0 40px; }
     @media (max-width: 700px) { .album { grid-template-columns: 1fr; } }
-    .cover { width: 200px; aspect-ratio: 1; border-radius: 8px; background: #24211b; object-fit: cover; }
+    .cover { width: 200px; aspect-ratio: 1; border-radius: 8px; background: var(--playerBackground); object-fit: cover; }
     .album h2 { margin: 0 0 2px; font-size: 22px; }
     .album .sub { margin-bottom: 14px; }
-    .playall { margin-bottom: 12px; padding: 6px 18px; border-radius: 6px; background: #e9a23b; color: #121110; font-weight: 600; }
+    .playall { margin-bottom: 12px; padding: 6px 18px; border-radius: 6px; background: var(--keyColor); color: var(--navSidebarBG); font-weight: 600; }
     .track { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; width: 100%; text-align: left;
-      padding: 8px; border-radius: 4px; border-bottom: 1px solid #24211b; font-size: 14px; }
-    .track:hover { background: #24211b; }
-    .track.now { color: #e9a23b; }
-    .track .n, .track .d { color: #857c69; font-variant-numeric: tabular-nums; }
-    .err { color: #c8553d; }
+      padding: 8px; border-radius: 4px; border-bottom: 1px solid var(--playerBackground); font-size: 14px; }
+    .track:hover { background: var(--playerBackground); }
+    .track.now { color: var(--keyColor); }
+    .track .n, .track .d { color: var(--systemTertiary-onDark); font-variant-numeric: tabular-nums; }
+    .err { color: var(--lm-error); }
   </style>
   <div class="wrap">
     <header><h1>Música local</h1><span class="sub count"></span></header>

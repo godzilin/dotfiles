@@ -18,9 +18,11 @@ CONF = os.path.expanduser("~/.config/nostromo/weather.conf")
 CACHE = os.path.expanduser("~/.cache/nostromo/weather.json")
 MAX_AGE = 600
 
-AMBER, TEXT, SUB, MUTED, FAINT, LINE = "#e9a23b", "#e8dfc8", "#b3a891", "#857c69", "#4a4438", "#3d382d"
-BLUE, YELLOW, ORANGE, RED = "#7b93a8", "#e0c36a", "#d9652b", "#c8553d"
-STRIPES = [YELLOW, AMBER, ORANGE, RED]
+THEME = json.load(open(os.path.expanduser("~/.config/dotfiles/themes/current/theme.json")))  # active theme (`tema`)
+P = THEME["palette"]
+AMBER, TEXT, SUB, MUTED, FAINT, LINE = (P[k] for k in ("accent", "text", "sub", "muted", "faint", "line"))
+BLUE, YELLOW, ORANGE, RED = (P[k] for k in ("blue", "yellow", "orange", "red"))
+STRIPES = THEME["stripes"]
 DAYS = ["LUN", "MAR", "MIÉ", "JUE", "VIE", "SÁB", "DOM"]
 COMPASS = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"]
 

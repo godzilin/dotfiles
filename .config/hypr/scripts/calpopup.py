@@ -5,6 +5,7 @@ Keys: left/right or h/l change month, t today, q/Esc close.
 Events come from a cache file so the popup opens instantly; khal refreshes it in the background."""
 import calendar
 import datetime as dt
+import json
 import os
 import select
 import shutil
@@ -23,8 +24,10 @@ def rgb(hex_color, text, bold=False):
     return f"\033[{'1;' if bold else ''}38;2;{r};{g};{b}m{text}\033[0m"
 
 
-AMBER, TEXT, SUB, MUTED, FAINT, LINE, RED = "#e9a23b", "#e8dfc8", "#b3a891", "#857c69", "#4a4438", "#3d382d", "#c8553d"
-STRIPES = ["#e0c36a", "#e9a23b", "#d9652b", "#c8553d"]
+THEME = json.load(open(os.path.expanduser("~/.config/dotfiles/themes/current/theme.json")))  # active theme (`tema`)
+P = THEME["palette"]
+AMBER, TEXT, SUB, MUTED, FAINT, LINE, RED = (P[k] for k in ("accent", "text", "sub", "muted", "faint", "line", "red"))
+STRIPES = THEME["stripes"]
 
 
 CACHE = os.path.expanduser("~/.cache/calpopup.tsv")
@@ -90,9 +93,9 @@ def render(year, month, today):
         for d in week:
             label = f"{d.day:2d}"
             if d.month != month:
-                num = rgb("#2f2b23", label)
+                num = rgb(P["bg2"], label)
             elif d == today:
-                num = f"\033[1;48;2;233;162;59;38;2;18;17;16m{label}\033[0m"
+                num = "\033[48;2;%d;%d;%dm" % tuple(int(AMBER[i:i + 2], 16) for i in (1, 3, 5)) + rgb(P["bg0"], label, bold=True)
             else:
                 num = rgb(TEXT if d.weekday() < 5 else MUTED, label)
             mark = rgb(AMBER, "·") if d in busy and d.month == month else " "

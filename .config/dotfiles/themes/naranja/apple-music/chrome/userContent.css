@@ -1,4 +1,4 @@
-/* Paleta "Nostromo" (~/.config/hypr/colors.lua) sobre music.apple.com */
+/* Paleta "Nostromo" (themes/naranja/theme.json) sobre music.apple.com */
 @-moz-document domain("music.apple.com") {
   :root, body {
     --keyColor: #e9a23b !important; --keyColorBG: #e9a23b !important;
@@ -13,6 +13,8 @@
     --systemTertiary: #857c69 !important; --systemTertiary-onDark: #857c69 !important;
     --systemQuaternary-onDark: #3d382d !important;
     --labelDivider: #3d382d !important;
+    /* used by the local-music userscript */
+    --lm-stripe-1: #e0c36a; --lm-stripe-2: #e9a23b; --lm-stripe-3: #d9652b; --lm-stripe-4: #c8553d; --lm-error: #c8553d;
     font-family: "IBM Plex Sans", sans-serif !important;
   }
   body { background: #1a1814 !important; color: #e8dfc8 !important; }
