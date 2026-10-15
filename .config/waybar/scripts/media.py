@@ -52,6 +52,23 @@ def cover_file(url):
     return ""
 
 
+def cmus_cover():
+    """cmus sends no mpris:artUrl: extract the art embedded in the playing file (cached per file)."""
+    try:
+        status = subprocess.run(["cmus-remote", "-Q"], capture_output=True, text=True, timeout=2).stdout
+    except (OSError, subprocess.TimeoutExpired):
+        return ""
+    song = next((line[5:] for line in status.splitlines() if line.startswith("file ")), "")
+    if not song:
+        return ""
+    path = os.path.join(CACHE, "covers", hashlib.md5(song.encode()).hexdigest() + ".jpg")
+    if not os.path.exists(path):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-y", "-i", song, "-an", "-frames:v", "1", path],
+                       capture_output=True, timeout=10)
+    return path if os.path.exists(path) else ""
+
+
 def set_cover(path):
     global last_cover
     if path == last_cover:
@@ -87,7 +104,10 @@ def emit(*_):
         text += f"  {bar} <span color='#b3a891'>-{clock(length - pos)}</span>"
     print(json.dumps({"text": text, "class": "playing" if playing else "paused",
                       "tooltip": f"{title}\n{artist}"}), flush=True)
-    set_cover(cover_file(meta.get("mpris:artUrl", "")))
+    art = cover_file(meta.get("mpris:artUrl", ""))
+    if not art and p.props.player_name == "cmus":
+        art = cmus_cover()
+    set_cover(art)
     return True
 
 
