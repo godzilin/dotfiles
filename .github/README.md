@@ -37,7 +37,7 @@ Iconos: WhiteSur-orange-dark. Cursor: WhiteSur.
 | `.config/fastfetch/` | Logo de casete |
 | `.config/gtk-3.0/`, `.config/gtk-4.0/` | Paleta para apps GTK (adw-gtk3 / libadwaita) |
 | `.local/share/color-schemes/Nostromo.colors` | Paleta para apps Qt/KDE |
-| `.config/dotfiles/wallpapers/` | Fondo generado por código (`nostromo.py`) |
+| `.config/dotfiles/wallpapers/` | Fondos generados por código (`nostromo.py`), rotan cada 15 min |
 
 ## Instalar
 
