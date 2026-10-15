@@ -30,6 +30,7 @@
 | Ctrl+Alt+Supr | Menú de apagado |
 | Impr / Shift+Impr | Captura de zona / pantalla completa |
 | Super+Shift+B | Reiniciar waybar |
+| Super+Alt+W | Siguiente wallpaper (aleatorio) |
 
 ## Reglas para que no se rompa
 

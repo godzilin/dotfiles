@@ -27,6 +27,7 @@ hl.bind(mod .. " + B", exec(scripts .. "powerprofile.sh"))
 hl.bind(mod .. " + L", exec("loginctl lock-session"))
 hl.bind("CTRL + ALT + Delete", exec(scripts .. "powermenu.sh"))
 hl.bind(mod .. " + SHIFT + B", exec("pkill waybar; waybar"))  -- if the bar dies or glitches
+hl.bind(mod .. " + ALT + W", exec("pkill -x hyprpaper; hyprpaper"))  -- next wallpaper: restarting picks a new random one
 
 -- Screenshots (saved to ~/Pictures/Screenshots and copied)
 local shot = "~/Pictures/Screenshots/$(date +%F_%H-%M-%S).png"
