@@ -13,7 +13,7 @@
 <path d="M1848,64 h16 M1856,56 v16" stroke="#4a4438" stroke-width="1.5"/>
 <path d="M56,1136 h16 M64,1128 v16" stroke="#4a4438" stroke-width="1.5"/>
 <path d="M1848,1136 h16 M1856,1128 v16" stroke="#4a4438" stroke-width="1.5"/>
-<text x="96" y="104" font-family="IBM Plex Mono" letter-spacing="3" font-size="15" font-weight="600" fill="#e9a23b">GZ—01</text>
+<text x="96" y="104" font-family="IBM Plex Mono" letter-spacing="3" font-size="15" font-weight="600" fill="#e9a23b">COMPUTAH</text>
 <text x="180" y="104" font-family="IBM Plex Mono" letter-spacing="3" font-size="15" fill="#857c69">PERSONAL COMPUTING SYSTEM</text>
 <line x1="96" y1="122" x2="560" y2="122" stroke="#4a4438" stroke-width="1"/>
 <text x="96" y="146" font-family="IBM Plex Mono" letter-spacing="3" font-size="12" fill="#4a4438">HYPRLAND · ARCH/CACHYOS · LENOVO THINKPAD</text>

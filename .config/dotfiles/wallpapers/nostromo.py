@@ -38,7 +38,7 @@ for x, y in [(64, 64), (W - 64, 64), (64, H - 64), (W - 64, H - 64)]:
 
 font = 'font-family="IBM Plex Mono" letter-spacing="3"'
 parts += [
-    f'<text x="96" y="104" {font} font-size="15" font-weight="600" fill="{STRIPES[1]}">GZ—01</text>',
+    f'<text x="96" y="104" {font} font-size="15" font-weight="600" fill="{STRIPES[1]}">COMPUTAH</text>',
     f'<text x="180" y="104" {font} font-size="15" fill="{MUTED}">PERSONAL COMPUTING SYSTEM</text>',
     f'<line x1="96" y1="122" x2="560" y2="122" stroke="{FAINT}" stroke-width="1"/>',
     f'<text x="96" y="146" {font} font-size="12" fill="{FAINT}">HYPRLAND · ARCH/CACHYOS · LENOVO THINKPAD</text>',

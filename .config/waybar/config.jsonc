@@ -12,7 +12,7 @@
     "modules-right": ["tray", "pulseaudio", "backlight", "network", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
 
     "custom/launcher": {
-        "format": "<span color='#e9a23b'>▮</span> GZ—01",
+        "format": "<span color='#e9a23b'>▮</span> COMPUTAH",
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },
