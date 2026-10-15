@@ -13,6 +13,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `naranja` | **Nostromo**: cassette futurism con la calma de macOS |
 | `blanco` | **macOS**: claro y translúcido, barra de menús con menú Apple, Dock, Spotlight |
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
+| `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas.
 Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
@@ -68,6 +69,20 @@ Tema GTK, iconos y cursores [Chicago95](https://github.com/grassmunk/Chicago95) 
 [W95FA](https://fontsource.org/fonts/win95fa) (OFL, viene en el tema y solo existe mientras azul está activo) y
 More Perfect DOS VGA para la terminal. Fondos generados por código (`wallpapers/win95.py`): verde azulado,
 nubes, degradado de instalación, patrones de 8×8 y arenisca. Primera vez: `~/.config/dotfiles/themes/azul/install.sh`.
+
+## rojo: constructivismo
+
+Un cartel de los años 20 (Ródchenko, Lisitski, Klutsis): tres tintas, papel crema, negro y rojo. Barra como
+franja negra con bloques rojos cortados en diagonal ("TALLER", escritorios en numerales, reloj en un paralelogramo de
+papel, lecturas "RED / VOZ / LUZ / ENERGÍA"); ventanas con marco rojo grueso y sombra de tinta dura desplazada;
+animaciones mecánicas con rebote; terminal de papel e tinta con PT Mono; notificaciones y lanzador como tarjetas con
+marco de tinta; bloqueo compuesto como un cartel; Firefox con pestañas en paralelogramo; carpetas rojas (Papirus).
+
+![Escritorio](../.config/dotfiles/themes/rojo/screenshots/desktop.png)
+
+Fuentes Oswald, Russo One, PT Sans y PT Mono (OFL, dentro del tema). Siete láminas generadas por código
+(`wallpapers/constructivismo.py`): dos planchas de tinta sobre papel con grano, la roja algo fuera de registro, como en
+una imprenta de 1925. Primera vez: `~/.config/dotfiles/themes/rojo/install.sh` (Papirus y el tema de iconos con carpetas rojas).
 
 ## Cómo están organizados los temas
 

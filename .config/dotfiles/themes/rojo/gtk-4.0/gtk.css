@@ -1,0 +1,91 @@
+/* Rojo palette for libadwaita (named colors + CSS variables). */
+@define-color accent_color #d42a1e;
+@define-color accent_bg_color #d42a1e;
+@define-color accent_fg_color #efe6d2;
+@define-color destructive_color #d42a1e;
+@define-color destructive_bg_color #d42a1e;
+@define-color destructive_fg_color #efe6d2;
+@define-color success_color #3b5e3a;
+@define-color success_bg_color #3b5e3a;
+@define-color success_fg_color #efe6d2;
+@define-color warning_color #b8860b;
+@define-color warning_bg_color #b8860b;
+@define-color warning_fg_color #efe6d2;
+@define-color error_color #d42a1e;
+@define-color error_bg_color #d42a1e;
+@define-color error_fg_color #efe6d2;
+@define-color window_bg_color #efe6d2;
+@define-color window_fg_color #141414;
+@define-color view_bg_color #f6efe0;
+@define-color view_fg_color #141414;
+@define-color card_bg_color #f6efe0;
+@define-color card_fg_color #141414;
+@define-color dialog_bg_color #efe6d2;
+@define-color dialog_fg_color #141414;
+@define-color popover_bg_color #efe6d2;
+@define-color popover_fg_color #141414;
+@define-color thumbnail_bg_color #f6efe0;
+@define-color thumbnail_fg_color #141414;
+@define-color sidebar_bg_color #e4d8bf;
+@define-color sidebar_fg_color #141414;
+@define-color headerbar_bg_color #141414;
+@define-color headerbar_fg_color #efe6d2;
+@define-color headerbar_border_color #141414;
+@define-color headerbar_backdrop_color #2a2a2a;
+@define-color headerbar_shade_color rgba(20, 20, 20, 0.18);
+@define-color sidebar_backdrop_color #e4d8bf;
+@define-color sidebar_shade_color rgba(20, 20, 20, 0.18);
+@define-color card_shade_color rgba(20, 20, 20, 0.18);
+@define-color popover_shade_color rgba(20, 20, 20, 0.18);
+@define-color shade_color rgba(20, 20, 20, 0.18);
+@define-color scrollbar_outline_color rgba(20, 20, 20, 0.4);
+
+:root {
+  --accent-color: #d42a1e;
+  --accent-bg-color: #d42a1e;
+  --accent-fg-color: #efe6d2;
+  --destructive-color: #d42a1e;
+  --destructive-bg-color: #d42a1e;
+  --destructive-fg-color: #efe6d2;
+  --success-color: #3b5e3a;
+  --success-bg-color: #3b5e3a;
+  --success-fg-color: #efe6d2;
+  --warning-color: #b8860b;
+  --warning-bg-color: #b8860b;
+  --warning-fg-color: #efe6d2;
+  --error-color: #d42a1e;
+  --error-bg-color: #d42a1e;
+  --error-fg-color: #efe6d2;
+  --window-bg-color: #efe6d2;
+  --window-fg-color: #141414;
+  --view-bg-color: #f6efe0;
+  --view-fg-color: #141414;
+  --card-bg-color: #f6efe0;
+  --card-fg-color: #141414;
+  --dialog-bg-color: #efe6d2;
+  --dialog-fg-color: #141414;
+  --popover-bg-color: #efe6d2;
+  --popover-fg-color: #141414;
+  --thumbnail-bg-color: #f6efe0;
+  --thumbnail-fg-color: #141414;
+  --sidebar-bg-color: #e4d8bf;
+  --sidebar-fg-color: #141414;
+  --headerbar-bg-color: #141414;
+  --headerbar-fg-color: #efe6d2;
+  --headerbar-border-color: #141414;
+  --headerbar-backdrop-color: #2a2a2a;
+  --headerbar-shade-color: rgba(20, 20, 20, 0.18);
+  --sidebar-backdrop-color: #e4d8bf;
+  --sidebar-shade-color: rgba(20, 20, 20, 0.18);
+  --card-shade-color: rgba(20, 20, 20, 0.18);
+  --popover-shade-color: rgba(20, 20, 20, 0.18);
+  --shade-color: rgba(20, 20, 20, 0.18);
+  --scrollbar-outline-color: rgba(20, 20, 20, 0.4);
+  --window-radius: 0;
+}
+
+/* Constructivism: no rounded corners anywhere, ink borders, poster-red selection */
+* { border-radius: 0; }
+headerbar, .titlebar { box-shadow: none; }
+headerbar .title, .title-1, .title-2, .heading { font-family: "Oswald"; font-weight: 600; letter-spacing: 1px; }
+selection, *:selected { background-color: #d42a1e; color: #efe6d2; }

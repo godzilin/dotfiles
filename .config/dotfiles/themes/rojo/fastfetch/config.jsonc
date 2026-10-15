@@ -1,0 +1,27 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  // Red sun crossed by a black bar (make_logo.py); labels in capitals like a poster's small print
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": { "1": "38;2;212;42;30", "2": "38;2;20;20;20" },
+    "padding": { "top": 1, "left": 2, "right": 4 }
+  },
+  "display": {
+    "separator": "  ",
+    "key": { "width": 10 },
+    "color": { "keys": "red", "title": "black", "output": "default" }
+  },
+  "modules": [
+    { "type": "title", "format": "\u001b[1mTALLER {host-name}\u001b[0m" },
+    { "type": "custom", "format": "\u001b[31m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m" },
+    { "type": "os",       "key": "SISTEMA",  "format": "{pretty-name}" },
+    { "type": "kernel",   "key": "NÚCLEO" },
+    { "type": "host",     "key": "MÁQUINA",  "format": "{family}" },
+    { "type": "cpu",      "key": "MOTOR",    "format": "{name}" },
+    { "type": "memory",   "key": "MEMORIA",  "format": "{used} / {total}" },
+    { "type": "disk",     "key": "ALMACÉN",  "folders": "/", "format": "{size-used} / {size-total}" },
+    { "type": "battery",  "key": "ENERGÍA",  "format": "{capacity}" },
+    { "type": "uptime",   "key": "JORNADA" }
+  ]
+}

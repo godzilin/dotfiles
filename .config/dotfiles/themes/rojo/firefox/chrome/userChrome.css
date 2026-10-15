@@ -1,0 +1,94 @@
+/* Rojo for Firefox: a constructivist masthead. Tabs sit on a black band in Oswald capitals, the selected one is a red
+   parallelogram; the address bar is a paper field in a thick ink frame; menus are paper cards with a hard shadow.
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --r-paper: #efe6d2; --r-paper2: #e4d8bf; --r-light: #f6efe0; --r-ink: #141414; --r-grey: #8a8274; --r-red: #d42a1e; --r-red2: #a31d14;
+  --r-head: "Oswald", sans-serif; --r-text: "PT Sans", sans-serif;
+
+  --lwt-accent-color: var(--r-ink) !important;
+  --lwt-text-color: var(--r-paper) !important;
+  --toolbar-bgcolor: var(--r-paper) !important;
+  --toolbar-color: var(--r-ink) !important;
+  --toolbarbutton-icon-fill: var(--r-ink) !important;
+  --toolbarbutton-border-radius: 0 !important;
+  --toolbarbutton-hover-background: var(--r-paper2) !important;
+  --toolbarbutton-active-background: var(--r-red) !important;
+  --toolbar-field-background-color: var(--r-light) !important;
+  --toolbar-field-color: var(--r-ink) !important;
+  --toolbar-field-border-color: var(--r-ink) !important;
+  --toolbar-field-focus-background-color: var(--r-light) !important;
+  --toolbar-field-focus-color: var(--r-ink) !important;
+  --toolbar-field-focus-border-color: var(--r-red) !important;
+  --tab-border-radius: 0 !important;
+  --tab-selected-bgcolor: var(--r-red) !important;
+  --tab-selected-textcolor: var(--r-paper) !important;
+  --focus-outline-color: var(--r-red) !important;
+  --chrome-content-separator-color: var(--r-ink) !important;
+  --arrowpanel-background: var(--r-paper) !important;
+  --arrowpanel-color: var(--r-ink) !important;
+  --arrowpanel-border-color: var(--r-ink) !important;
+  --arrowpanel-border-radius: 0 !important;
+  --urlbarView-highlight-background: var(--r-red) !important;
+  --urlbarView-highlight-color: var(--r-paper) !important;
+  --urlbarView-action-color: var(--r-red) !important;
+  --color-accent-primary: var(--r-red) !important;
+  --button-primary-bgcolor: var(--r-red) !important;
+  --button-primary-color: var(--r-paper) !important;
+}
+
+#navigator-toolbox { background: var(--r-paper) !important; border-bottom: 4px solid var(--r-ink) !important; font-family: var(--r-text) !important; }
+#TabsToolbar { background: var(--r-ink) !important; box-shadow: inset 0 -4px var(--r-red) !important; }
+#titlebar { background: transparent !important; }
+
+/* Tabs: capitals on black; the selected one a red parallelogram */
+.tabbrowser-tab { padding-inline: 0 !important; }
+.tab-background { margin-block: 0 4px !important; border: none !important; box-shadow: none !important; outline: none !important; background: transparent !important; }
+.tab-background:is([selected], [multiselected]) {
+  background: var(--r-red) !important;
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+.tabbrowser-tab:hover .tab-background:not([selected]) { background: #2a2a2a !important; clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%); }
+.tab-label { font-family: var(--r-head) !important; font-weight: 500 !important; font-size: 13px !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--r-grey) !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--r-paper) !important; font-weight: 600 !important; }
+.tab-icon-image { filter: grayscale(1) contrast(1.3); }
+.tabbrowser-tab[selected] .tab-icon-image { filter: none; }
+.tab-close-button { fill: var(--r-paper) !important; border-radius: 0 !important; }
+.tabbrowser-tab:not(:hover, [selected]) .tab-close-button { visibility: collapse !important; }
+#tabs-newtab-button, #new-tab-button, #alltabs-button, #firefox-view-button { fill: var(--r-paper) !important; }
+.titlebar-button { fill: var(--r-paper) !important; }
+.titlebar-close:hover { background: var(--r-red) !important; }
+
+/* Toolbar and address field */
+#nav-bar { padding: 6px 8px !important; border: none !important; box-shadow: none !important; }
+#urlbar .urlbar-background { border-radius: 0 !important; border: 3px solid var(--r-ink) !important; box-shadow: none !important; }
+#urlbar[focused] .urlbar-background { border-color: var(--r-red) !important; box-shadow: 5px 5px 0 var(--r-ink) !important; }
+#urlbar-input { font-family: var(--r-text) !important; font-size: 14px !important; }
+#urlbar .urlbar-input-container::before {
+  content: "▶"; align-self: center; margin-inline: 8px 4px; color: var(--r-red); font: 700 14px var(--r-text);
+}
+.urlbarView { font-family: var(--r-text) !important; }
+.urlbarView-row { border-radius: 0 !important; }
+.urlbarView-url { color: var(--r-red) !important; }
+
+toolbarbutton.bookmark-item { font-family: var(--r-head) !important; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 0 !important; }
+toolbarbutton.bookmark-item:hover { background: var(--r-ink) !important; color: var(--r-paper) !important; }
+
+/* Menus and panels: paper cards, ink frame, hard shadow, red stamp on hover */
+menupopup, panel {
+  --panel-background-color: var(--r-paper) !important;
+  --panel-text-color: var(--r-ink) !important;
+  --panel-border-color: var(--r-ink) !important;
+  --panel-border-radius: 0 !important;
+  --panel-separator-color: var(--r-ink) !important;
+}
+menupopup, menupopup menu, menupopup menuitem { font-family: var(--r-text) !important; }
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: var(--r-red) !important; color: var(--r-paper) !important; }
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 0 !important; }
+.panel-header > h1 { font-family: var(--r-head) !important; text-transform: uppercase; letter-spacing: 0.1em; color: var(--r-red) !important; }
+
+#statuspanel-label {
+  font-family: var(--r-head) !important; font-size: 12px !important; text-transform: uppercase; letter-spacing: 0.06em;
+  background: var(--r-ink) !important; color: var(--r-paper) !important; border: none !important; border-radius: 0 !important;
+  box-shadow: inset 4px 0 var(--r-red) !important; margin: 0 0 10px 10px !important; padding: 3px 10px !important;
+}

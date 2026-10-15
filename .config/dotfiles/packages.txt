@@ -40,3 +40,4 @@ nwg-dock-hyprland
 inter-font
 ttf-nerd-fonts-symbols
 sassc
+papirus-icon-theme

@@ -1,0 +1,77 @@
+// Constructivist band: a black strip with red blocks cut on the diagonal, big numerals, labelled readouts
+{
+    "layer": "top",
+    "position": "top",
+    "height": 44,
+    "spacing": 0,
+
+    "modules-left": ["custom/taller", "hyprland/workspaces", "custom/app"],
+    "modules-center": ["custom/clock"],
+    "modules-right": ["tray", "custom/weather", "network", "pulseaudio", "backlight", "battery", "custom/power"],
+
+    // The red wedge on the left: opens the launcher
+    "custom/taller": {
+        "format": "TALLER",
+        "on-click": "pkill fuzzel || fuzzel",
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": { "1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09", "default": "··" },
+        "persistent-workspaces": { "*": 4 },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+    },
+    "custom/app": {
+        "exec": "~/.config/dotfiles/themes/current/scripts/activewin.sh",
+        "restart-interval": 5,
+        "tooltip": false
+    },
+
+    // Clock in a red parallelogram, date in capitals beside it
+    "custom/clock": {
+        "exec": "~/.config/dotfiles/themes/current/scripts/clock.sh",
+        "interval": 5,
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/calendar.sh"
+    },
+
+    "tray": { "icon-size": 16, "spacing": 10 },
+    "custom/weather": {
+        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "return-type": "json",
+        "interval": 600,
+        "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+    "network": {
+        "format-wifi": "<span color='#d42a1e'>RED</span> {essid}",
+        "format-ethernet": "<span color='#d42a1e'>RED</span> CABLE",
+        "format-disconnected": "<span color='#d42a1e'>RED</span> —",
+        "tooltip-format": "{ifname} · {ipaddr} · {signalStrength}%",
+        "on-click": "systemsettings kcm_networkmanagement"
+    },
+    "pulseaudio": {
+        "format": "<span color='#d42a1e'>VOZ</span> {volume}",
+        "format-muted": "<span color='#d42a1e'>VOZ</span> 0",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5,
+        "tooltip-format": "{desc}"
+    },
+    "backlight": {
+        "format": "<span color='#d42a1e'>LUZ</span> {percent}"
+    },
+    "battery": {
+        "states": { "warning": 25, "critical": 10 },
+        "format": "<span color='#d42a1e'>ENERGÍA</span> {capacity}",
+        "format-charging": "<span color='#d42a1e'>ENERGÍA</span> {capacity}▲",
+        "format-plugged": "<span color='#d42a1e'>ENERGÍA</span> {capacity}■",
+        "tooltip-format": "{timeTo} · {power:.1f} W"
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "~/.config/hypr/scripts/powermenu.sh",
+        "on-click-right": "swaync-client -t -sw",
+        "tooltip": false
+    }
+}

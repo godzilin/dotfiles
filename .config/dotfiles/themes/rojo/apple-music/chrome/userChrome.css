@@ -1,0 +1,4 @@
+/* Sin barras: la ventana es solo la web de Apple Music */
+#TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar, #sidebar-main, #sidebar-box { visibility: collapse !important; }
+:root { --toolbar-bgcolor: #efe6d2 !important; }
+#browser, #appcontent, #tabbrowser-tabpanels { background: #efe6d2 !important; }

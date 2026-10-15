@@ -1,0 +1,66 @@
+/* Default swaync theme + constructivist cards on top: paper, thick ink frame, the summary on a red diagonal band,
+   a hard offset shadow. Long selectors on purpose: the default theme's are that specific. */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: #efe6d2;
+  --noti-border-color: #141414;
+  --noti-bg: 239, 230, 210;
+  --noti-bg-alpha: 1;
+  --noti-bg-darker: #e4d8bf;
+  --noti-bg-hover: #f6efe0;
+  --noti-bg-focus: #f6efe0;
+  --noti-close-bg: #141414;
+  --noti-close-bg-hover: #d42a1e;
+  --text-color: #141414;
+  --text-color-disabled: #8a8274;
+  --bg-selected: #d42a1e;
+  --border-radius: 0;
+  --notification-icon-size: 40px;
+  --notification-shadow: none;
+  --font-size-body: 14px;
+  --font-size-summary: 17px;
+}
+
+* { font-family: "PT Sans", sans-serif; }
+
+.notification-row .notification-background .notification,
+.control-center {
+  border-radius: 0;
+  border: 4px solid #141414;
+  box-shadow: 8px 8px 0 #141414;
+  margin: 0 10px 10px 0;
+}
+.notification-row .notification-background .notification .notification-default-action,
+.notification-row .notification-background .notification .notification-default-action:hover {
+  border-radius: 0;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
+  font-family: "Oswald";
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #efe6d2;
+  padding: 2px 34px 2px 10px;
+  background-image: linear-gradient(110deg, #d42a1e 0%, #d42a1e 90%, transparent 90%);
+}
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time { font-family: "Oswald"; color: #141414; }
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body { color: #141414; margin-top: 6px; }
+
+.close-button {
+  border-radius: 0;
+  color: #efe6d2;
+  background: #141414;
+  min-width: 22px;
+  min-height: 22px;
+}
+.close-button:hover { background: #d42a1e; }
+
+.control-center .widget-title > label { font-family: "Oswald"; font-weight: 700; font-size: 20px; letter-spacing: 2px; }
+.control-center .widget-title > button {
+  border-radius: 0; background: #141414; color: #efe6d2; border: none; box-shadow: none; font-family: "Oswald";
+}
+.control-center .widget-title > button:hover { background: #d42a1e; }
+.widget-dnd > switch { border-radius: 0; background: #c9bda3; }
+.widget-dnd > switch:checked { background: #d42a1e; }
+.widget-dnd > switch slider { border-radius: 0; background: #141414; }

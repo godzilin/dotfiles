@@ -1,0 +1,13 @@
+/* Rojo: music.apple.com on newsprint with poster red; colours of the local-music userscript */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #d42a1e !important; --keyColorBG: #d42a1e !important; --keyColor-rgb: 212,42,30 !important;
+    --keyColor-rollover: #a31d14 !important; --keyColor-pressed: #a31d14 !important;
+    --pageBG: #efe6d2 !important; --navSidebarBG: #e4d8bf !important;
+    --playerBackground: #141414 !important; --playerBackgroundFallback: #141414 !important;
+    --lm-stripe-1: #d42a1e; --lm-stripe-2: #141414; --lm-stripe-3: #d42a1e; --lm-stripe-4: #141414; --lm-error: #d42a1e;
+    --lm-text: #141414; --lm-sub: #2a2a2a; --lm-muted: #5e574b; --lm-track: #8a8274; --lm-surface: #e4d8bf;
+    --lm-accent: #d42a1e; --lm-on-accent: #efe6d2;
+  }
+  body { background: #efe6d2 !important; }
+}
