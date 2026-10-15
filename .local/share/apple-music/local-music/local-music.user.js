@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Apple Music: música local
 // @namespace    godzilin
-// @version      2.3
+// @version      3.1
 // @description  "Música local" en la barra lateral de music.apple.com: reproduce ~/Music (servido por server.py en 127.0.0.1:47823)
 // @match        https://music.apple.com/*
 // @grant        GM_xmlhttpRequest
@@ -31,7 +31,14 @@
   // Lo de Apple se oculta (no se borra) mientras se ve/suena lo local, para que Svelte no se rompa
   document.head.append(Object.assign(document.createElement("style"), { textContent: `
     #scrollable-page.lm-open > :not(#lm-page) { display: none !important; }
-    .player-bar.lm-playing > :not(#lm-bar) { display: none !important; }
+    .player-bar.lm-playing .chrome-player__lcd > :not(#lm-lcd) { display: none !important; }
+    #lm-lcd .lm-progress { cursor: pointer; padding-block: 4px; }
+    #lm-lcd .lm-progress::before { content: ""; display: block; height: 2px; border-radius: 2px; background: var(--systemQuaternary-onDark, #ffffff4d); }
+    #lm-lcd .lm-progress i { position: absolute; left: 0; bottom: 4px; height: 2px; border-radius: 2px; background: var(--systemSecondary-onDark, #ffffffb3); }
+    #lm-lcd .lm-progress { position: relative; }
+    #lm-lcd .player-lcd__artwork { width: 34px; height: 34px; overflow: hidden; }
+    #lm-lcd .player-lcd__artwork img { width: 100%; height: 100%; object-fit: cover; }
+    #lm-lcd .lm-progress:hover::before, #lm-lcd .lm-progress:hover i { height: 4px; }
   ` }));
 
   // ---------- página "Música local", dentro del área de contenido de Apple ----------
@@ -66,40 +73,40 @@
     <div class="list"></div>
   </div>`;
 
-  // ---------- controles locales, dentro de la barra de reproducción de Apple ----------
-  const bar = el("div");
-  bar.id = "lm-bar";
-  const br = bar.attachShadow({ mode: "open" });
-  br.innerHTML = `<style>
-    :host { display: flex; width: 100%; height: 100%; font-family: "IBM Plex Sans", sans-serif; color: #e8dfc8;
-      background: #1a1814e6; backdrop-filter: blur(20px) saturate(140%); border: 1px solid #3d382d; border-radius: 18px; box-sizing: border-box; }
-    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
-    .row { flex: 1; display: flex; align-items: center; gap: 16px; padding: 0 18px; min-width: 0; }
-    .ctl { font-size: 17px; padding: 4px; opacity: .9; } .ctl:hover { color: #e9a23b; }
-    .lcd { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; height: 44px;
-      background: #121110cc; border: 1px solid #3d382d; border-radius: 6px; padding: 0 10px 0 0; overflow: hidden; }
-    .lcd img { width: 44px; height: 44px; object-fit: cover; background: #24211b; }
-    .txt { flex: 1; min-width: 0; font-size: 12px; line-height: 1.3; }
-    .txt div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .txt .a { color: #b3a891; }
-    .seek { width: 100%; height: 3px; margin-top: 3px; background: #3d382d; border-radius: 2px; cursor: pointer; position: relative; }
-    .seek i { position: absolute; inset: 0 auto 0 0; background: #e9a23b; border-radius: 2px; }
-    .t { font-size: 11px; color: #857c69; font-variant-numeric: tabular-nums; }
-    .tag { font-size: 10px; letter-spacing: .12em; color: #e9a23b; }
-  </style>
-  <div class="row">
-    <button class="ctl prev" title="Anterior">⏮</button>
-    <button class="ctl play" title="Play/Pausa">⏸</button>
-    <button class="ctl next" title="Siguiente">⏭</button>
-    <div class="lcd">
-      <img alt="">
-      <div class="txt"><div class="ti">—</div><div class="a"></div><div class="seek"><i></i></div></div>
-      <span class="t">0:00</span>
-    </div>
-    <span class="tag">LOCAL</span>
-    <button class="ctl stop" title="Parar música local">✕</button>
-  </div>`;
-  const $p = s => pr.querySelector(s), $b = s => br.querySelector(s);
+  // ---------- barra de reproducción: la de Apple, con su LCD rellenado con lo local ----------
+  // Los hashes svelte-xxxx cambian en cada despliegue de Apple: se leen de sus hojas de estilo
+  let selectors = "";
+  const hash = cls => {
+    const re = new RegExp(`\\.${cls}\\.(svelte-[a-z0-9]+)`);
+    if (!re.test(selectors)) {
+      const walk = rules => [...rules].flatMap(r => [r.selectorText || "", ...(r.cssRules ? walk(r.cssRules) : [])]);
+      selectors = [...document.styleSheets].flatMap(s => { try { return walk(s.cssRules); } catch { return []; } }).join("\n");
+    }
+    return selectors.match(re)?.[1] || "";
+  };
+
+  function buildLcd() {
+    const [L, A, Q, M, F, P] = ["player-lcd", "artwork-component", "lcd-meta", "marquee--primary", "marquee-line__fragment", "player-lcd__progress"].map(hash);
+    const line = (kind, inner) => `<div class="marquee marquee--${kind} ${M}"><div class="marquee-line-container ${M}"><div class="marquee-line ${M} inactive"><div class="marquee-line__string-container ${M}"><div class="marquee-line__mask ${M}" dir="auto"><div class="marquee-line__scroller ${M}"><div class="marquee-line__scrolling-text-chunk ${M}"><span class="marquee-line__text-content ${M}">${inner}</span></div></div></div></div></div></div></div>`;
+    const lcd = el("div");
+    lcd.id = "lm-lcd";
+    lcd.innerHTML = `<div class="player-lcd ${L}">
+      <div class="player-lcd__artwork ${L}"><div class="artwork-component artwork-component--aspect-ratio artwork-component--orientation-square ${A} artwork-component--fullwidth artwork-component--has-borders artwork-component--downloaded" style="--aspect-ratio: 1; --placeholder-bg-color: transparent;"><picture class="${A}"><img alt="" class="artwork-component__contents artwork-component__image ${A}" width="40" height="40" style="opacity: 1;"></picture></div></div>
+      <div class="player-lcd__metadata ${L}"><div class="metadata"><div class="lcd-meta ${Q}" aria-live="assertive"><div class="lcd-meta__primary-container ${Q}">${line("primary", `<span class="marquee-line__fragment ${F} lm-title"></span>`)}</div>${line("secondary",
+        `<span class="marquee-line__fragment ${F}"><button class="lcd-meta-line__fragment ${F} lm-artist"></button></span><span class="marquee-line__fragment ${F}">—</span><span class="marquee-line__fragment ${F}"><button class="lcd-meta-line__fragment ${F} lm-album"></button></span>`)}</div></div></div>
+      <div class="player-lcd__after-metadata ${L}"></div>
+      <div class="player-lcd__progress ${P || L} lm-progress"><i></i></div>
+    </div>`;
+    lcd.querySelector(".lm-artist").onclick = lcd.querySelector(".lm-album").onclick = () => setOpen(true);
+    lcd.querySelector(".lm-progress").addEventListener("click", e => {
+      const r = e.currentTarget.getBoundingClientRect();
+      if (audio.duration) audio.currentTime = (e.clientX - r.left) / r.width * audio.duration;
+    });
+    return lcd;
+  }
+  let lcd = null;
+  const $l = s => (lcd ||= buildLcd()).querySelector(s);
+  const $p = s => pr.querySelector(s);
 
   const audio = new Audio();
   let queue = [], pos = -1, rows = new Map(), covers = new Map(), loaded = false;
@@ -111,20 +118,51 @@
     return covers.get(t.album);
   };
 
-  // Que no suenen a la vez Apple Music y la música local
+  // Que no suenen a la vez Apple Music y la música local; el volumen es el de la barra de Apple
   const musicKit = () => { try { return unsafeWindow.MusicKit.getInstance(); } catch { return null; } };
   const hookMusicKit = () => {
     const mk = musicKit();
-    if (!mk || mk.__lmHooked) return;
+    if (!mk) return;
+    audio.volume = mk.volume ?? 1;
+    if (mk.__lmHooked) return;
     mk.__lmHooked = true;
     mk.addEventListener("playbackStateDidChange", e => { if (e.state === 2) stop(); });
+    mk.addEventListener("playbackVolumeDidChange", () => { audio.volume = mk.volume; });
   };
+
+  // Botones de Apple: se fuerza el icono play/pausa y se habilitan aunque Apple no tenga cola
+  function syncControls() {
+    const pb = document.querySelector(".player-bar");
+    if (!playing || !pb) return;
+    const on = !audio.paused;
+    const [p, z] = [".playback-play__play", ".playback-play__pause"].map(s => pb.querySelector(s));
+    p?.toggleAttribute("aria-hidden", on); z?.toggleAttribute("aria-hidden", !on);
+    if (p?.getAttribute("aria-hidden") === "") p.setAttribute("aria-hidden", "true");
+    if (z?.getAttribute("aria-hidden") === "") z.setAttribute("aria-hidden", "true");
+    pb.querySelectorAll(".playback-play__play[disabled], .playback-play__pause[disabled]").forEach(b => b.disabled = false);
+    pb.querySelectorAll("amp-playback-controls-item-skip").forEach(s => s.shadowRoot?.querySelectorAll("button[disabled]").forEach(b => b.disabled = false));
+  }
+
+  document.addEventListener("click", e => {
+    if (!playing || !e.target.closest?.(".player-bar")) return;
+    const ctl = e.target.closest("amp-playback-controls-play, amp-playback-controls-item-skip");
+    if (!ctl) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    if (ctl.matches("amp-playback-controls-play")) audio.paused ? audio.play() : audio.pause();
+    else if (ctl.getAttribute("direction") === "next") play(pos + 1);
+    else audio.currentTime > 3 ? (audio.currentTime = 0) : play(pos - 1);
+  }, true);
 
   function stop() {
     audio.pause();
     playing = false;
-    document.querySelector(".player-bar")?.classList.remove("lm-playing");
-    bar.remove();
+    lcd?.remove();
+    const pb = document.querySelector(".player-bar");
+    pb?.classList.remove("lm-playing");
+    pb?.querySelector(".playback-play__play")?.removeAttribute("aria-hidden");
+    pb?.querySelector(".playback-play__pause")?.setAttribute("aria-hidden", "true");
+    rows.forEach(r => r.classList.remove("now"));
+    if ("mediaSession" in navigator) for (const a of ["play", "pause", "previoustrack", "nexttrack"]) navigator.mediaSession.setActionHandler(a, null);
   }
 
   async function play(i) {
@@ -134,41 +172,36 @@
     try { musicKit()?.pause(); } catch {}
     hookMusicKit();
     playing = true;
-    ensure();
     rows.forEach((r, p) => r.classList.toggle("now", p === t.path));
-    $b(".ti").textContent = t.title;
-    $b(".a").textContent = `${t.artist} — ${t.album}`;
+    $l(".lm-title").textContent = t.title;
+    $l(".lm-artist").textContent = t.artist;
+    $l(".lm-album").textContent = t.album;
+    ensure();
     if (audio.src) URL.revokeObjectURL(audio.src);
     try {
       audio.src = await blobUrl("/" + enc(t.path));
-    } catch (e) { $b(".ti").textContent = e.message; return; }
+    } catch (e) { $l(".lm-title").textContent = e.message; return; }
     if (pos !== i) return; // se pulsó otra pista mientras cargaba
     audio.play();
     const art = await cover(t);
-    $b("img").src = art;
+    $l("img").src = art || "/assets/artwork/1x1.gif";
     if ("mediaSession" in navigator) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: t.title, artist: t.artist, album: t.album, artwork: art ? [{ src: art }] : [] });
+      // Si no, las teclas multimedia irían a MusicKit y cortarían lo local
+      navigator.mediaSession.setActionHandler("play", () => audio.play());
+      navigator.mediaSession.setActionHandler("pause", () => audio.pause());
       navigator.mediaSession.setActionHandler("previoustrack", () => play(pos - 1));
       navigator.mediaSession.setActionHandler("nexttrack", () => play(pos + 1));
     }
   }
 
   audio.addEventListener("ended", () => pos + 1 < queue.length ? play(pos + 1) : stop());
-  audio.addEventListener("play", () => $b(".play").textContent = "⏸");
-  audio.addEventListener("pause", () => $b(".play").textContent = "▶");
+  audio.addEventListener("play", syncControls);
+  audio.addEventListener("pause", syncControls);
   audio.addEventListener("timeupdate", () => {
-    $b(".t").textContent = `${time(audio.currentTime)} / ${time(audio.duration)}`;
-    $b(".seek i").style.width = audio.duration ? `${audio.currentTime / audio.duration * 100}%` : "0";
+    $l(".lm-progress i").style.width = audio.duration ? `${audio.currentTime / audio.duration * 100}%` : "0";
   });
-  $b(".seek").addEventListener("click", e => {
-    const r = e.currentTarget.getBoundingClientRect();
-    if (audio.duration) audio.currentTime = (e.clientX - r.left) / r.width * audio.duration;
-  });
-  $b(".play").onclick = () => audio.paused ? audio.play() : audio.pause();
-  $b(".prev").onclick = () => audio.currentTime > 3 ? (audio.currentTime = 0) : play(pos - 1);
-  $b(".next").onclick = () => play(pos + 1);
-  $b(".stop").onclick = stop;
 
   async function load() {
     const list = $p(".list");
@@ -259,10 +292,11 @@
       sp.classList.add("lm-open");
       if (page.parentNode !== sp) sp.prepend(page);
     }
-    const pb = document.querySelector(".player-bar");
-    if (playing && pb) {
-      pb.classList.add("lm-playing");
-      if (bar.parentNode !== pb) pb.append(bar);
+    const slot = document.querySelector(".player-bar .chrome-player__lcd");
+    if (playing && slot) {
+      slot.closest(".player-bar").classList.add("lm-playing");
+      if (lcd && lcd.parentNode !== slot) slot.append(lcd);
+      syncControls();
     }
   }
 
