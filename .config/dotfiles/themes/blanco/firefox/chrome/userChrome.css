@@ -1,0 +1,98 @@
+/* Blanco for Firefox: Safari-ish light shell. Traffic lights come from the WhiteSur GTK theme (left, see gtk settings).
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --m-bg: #f6f6f6; --m-bar: #ececec; --m-field: #e3e3e8; --m-line: #d1d1d6;
+  --m-muted: #8e8e93; --m-sub: #6e6e73; --m-text: #1d1d1f; --m-blue: #007aff;
+  --m-sans: "Inter", sans-serif;
+
+  --lwt-accent-color: var(--m-bar) !important;
+  --lwt-text-color: var(--m-text) !important;
+  --toolbar-bgcolor: var(--m-bg) !important;
+  --toolbar-color: var(--m-text) !important;
+  --toolbarbutton-icon-fill: var(--m-sub) !important;
+  --toolbarbutton-hover-background: rgba(0, 0, 0, 0.06) !important;
+  --toolbarbutton-active-background: rgba(0, 0, 0, 0.1) !important;
+  --toolbarbutton-border-radius: 6px !important;
+  --toolbar-field-background-color: var(--m-field) !important;
+  --toolbar-field-color: var(--m-text) !important;
+  --toolbar-field-border-color: transparent !important;
+  --toolbar-field-focus-background-color: #ffffff !important;
+  --toolbar-field-focus-color: var(--m-text) !important;
+  --toolbar-field-focus-border-color: var(--m-blue) !important;
+  --tab-selected-bgcolor: #ffffff !important;
+  --tab-selected-textcolor: var(--m-text) !important;
+  --tab-hover-background-color: rgba(0, 0, 0, 0.05) !important;
+  --tab-border-radius: 7px !important;
+  --focus-outline-color: rgba(0, 122, 255, 0.5) !important;
+  --chrome-content-separator-color: var(--m-line) !important;
+  --arrowpanel-background: rgba(246, 246, 246, 0.98) !important;
+  --arrowpanel-color: var(--m-text) !important;
+  --arrowpanel-border-color: rgba(0, 0, 0, 0.12) !important;
+  --arrowpanel-border-radius: 10px !important;
+  --urlbarView-highlight-background: var(--m-blue) !important;
+  --urlbarView-highlight-color: #ffffff !important;
+  --color-accent-primary: var(--m-blue) !important;
+  --button-primary-bgcolor: var(--m-blue) !important;
+  --button-primary-color: #ffffff !important;
+}
+
+#navigator-toolbox { background: var(--m-bar) !important; border-bottom: 1px solid var(--m-line) !important; font-family: var(--m-sans) !important; }
+#TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar { background: transparent !important; }
+
+/* Tabs: flat segments, the selected one a white raised pill (Safari) */
+.tabbrowser-tab { padding-inline: 2px !important; }
+.tab-background { margin-block: 5px !important; border: none !important; box-shadow: none !important; }
+.tab-background:is([selected], [multiselected]) {
+  background: #ffffff !important;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+}
+.tab-label { font-size: 12px !important; color: var(--m-sub) !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--m-text) !important; font-weight: 500 !important; }
+.tabbrowser-tab:not([pinned]) .tab-content { justify-content: center; }
+.tabbrowser-tab:not(:hover) .tab-close-button { visibility: collapse !important; }
+
+/* Toolbar and the centered, rounded address field */
+#nav-bar { padding: 3px 8px 5px !important; box-shadow: none !important; border: none !important; }
+#urlbar .urlbar-background { border-radius: 8px !important; border: none !important; box-shadow: none !important; }
+#urlbar[focused] .urlbar-background { box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.35) !important; }
+#urlbar:not([focused]) #urlbar-input { text-align: center !important; }
+#urlbar-input { font-family: var(--m-sans) !important; font-size: 13px !important; }
+.urlbarView { font-family: var(--m-sans) !important; }
+.urlbarView-row { border-radius: 6px !important; }
+
+/* Bookmarks bar like Safari favourites: text only */
+toolbarbutton.bookmark-item { font-size: 12px !important; color: var(--m-text) !important; border-radius: 5px !important; }
+toolbarbutton.bookmark-item:not([container]) > .toolbarbutton-icon { display: none !important; }
+
+/* Menus: macOS-style highlight (blue row, white text), rounded panel */
+menupopup, panel {
+  --panel-background-color: rgba(246, 246, 246, 0.98) !important;
+  --panel-text-color: var(--m-text) !important;
+  --panel-border-color: rgba(0, 0, 0, 0.12) !important;
+  --panel-border-radius: 10px !important;
+  --panel-separator-color: var(--m-line) !important;
+}
+menupopup, menupopup menu, menupopup menuitem { font-family: var(--m-sans) !important; font-size: 13px !important; }
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: var(--m-blue) !important; color: #ffffff !important; }
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 5px !important; }
+
+#statuspanel-label {
+  font-family: var(--m-sans) !important; font-size: 11.5px !important;
+  background: rgba(246, 246, 246, 0.98) !important; color: var(--m-sub) !important;
+  border: 1px solid var(--m-line) !important; border-radius: 6px !important; margin: 0 0 8px 8px !important;
+}
+
+/* Traffic lights: Firefox draws its own titlebar buttons, so paint them as the macOS red/yellow/green circles */
+.titlebar-buttonbox { margin-inline: 10px 6px !important; }
+.titlebar-button { padding: 0 4px !important; background: transparent !important; }
+.titlebar-button > .toolbarbutton-icon {
+  list-style-image: none !important;
+  width: 12px !important; height: 12px !important; padding: 0 !important;
+  border-radius: 50% !important;
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.15) !important;
+}
+.titlebar-close > .toolbarbutton-icon { background: #ff5f57 !important; }
+.titlebar-min > .toolbarbutton-icon { background: #febc2e !important; }
+:is(.titlebar-max, .titlebar-restore) > .toolbarbutton-icon { background: #28c840 !important; }
+:root:-moz-window-inactive .titlebar-button > .toolbarbutton-icon { background: #d9d9de !important; }

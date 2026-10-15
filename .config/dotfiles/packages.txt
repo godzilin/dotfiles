@@ -36,3 +36,7 @@ thunar-volman
 khal
 vdirsyncer
 python-gobject
+nwg-dock-hyprland
+inter-font
+ttf-nerd-fonts-symbols
+sassc

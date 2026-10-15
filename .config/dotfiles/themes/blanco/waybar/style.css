@@ -1,0 +1,97 @@
+/* macOS menu bar: translucent (blurred by Hyprland), no border, SF-like type (Inter) */
+* {
+    font-family: "Inter", "Symbols Nerd Font", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window#waybar {
+    background: rgba(246, 246, 246, 0.62);
+    color: #1d1d1f;
+}
+
+tooltip {
+    background: rgba(246, 246, 246, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}
+tooltip label { color: #1d1d1f; font-size: 12px; }
+
+#custom-apple,
+#window,
+#mpris,
+#custom-weather,
+#bluetooth,
+#network,
+#pulseaudio,
+#battery,
+#custom-spotlight,
+#custom-control,
+#custom-clock,
+#tray {
+    padding: 0 9px;
+    margin: 3px 1px;
+    border-radius: 5px;
+    color: #1d1d1f;
+}
+
+/* Hover/press highlight of menu-bar items */
+#custom-apple:hover,
+#mpris:hover,
+#custom-weather:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-spotlight:hover,
+#custom-control:hover,
+#custom-clock:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#custom-apple {
+    font-family: "Symbols Nerd Font";
+    font-size: 16px;
+    padding: 0 12px 0 14px;
+}
+
+#window {
+    padding-left: 6px;
+}
+/* the module is an icon+label box: the bold has to reach the label */
+#window label {
+    font-weight: 700;
+}
+
+#bluetooth,
+#network,
+#pulseaudio,
+#custom-spotlight,
+#custom-control {
+    font-family: "Symbols Nerd Font";
+    font-size: 15px;
+}
+#custom-spotlight { font-size: 13px; }
+
+#battery.warning:not(.charging) { color: #ff9500; }
+#battery.critical:not(.charging) { color: #ff3b30; }
+
+#custom-clock {
+    padding-right: 14px;
+}
+
+#bluetooth.off,
+#bluetooth.disabled,
+#network.disconnected,
+#pulseaudio.muted { color: #8e8e93; }
+
+#tray menu {
+    background: rgba(246, 246, 246, 0.96);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
+}

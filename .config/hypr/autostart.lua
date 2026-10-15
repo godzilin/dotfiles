@@ -3,6 +3,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("hypridle")
     hl.exec_cmd("swaync")
+    hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/theme-daemons.sh start")  -- Dock etc. of the active theme
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
     hl.exec_cmd("/usr/lib/pam_kwallet_init")
     hl.exec_cmd("/usr/bin/kdeconnectd")

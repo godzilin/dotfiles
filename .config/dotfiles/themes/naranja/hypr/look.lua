@@ -52,3 +52,38 @@ hl.animation({ leaf = "fade",        enabled = true, speed = 3, bezier = "out" }
 hl.animation({ leaf = "layers",      enabled = true, speed = 3, bezier = "out", style = "fade" })
 hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "inout", style = "slide" })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 4, bezier = "out", style = "slidevert" })
+
+-- Blur behind the bar, launcher and notifications
+hl.layer_rule({ name = "blur-waybar", match = { namespace = "^waybar$" },     blur = true, ignore_alpha = 0.2 })
+hl.layer_rule({ name = "blur-fuzzel", match = { namespace = "^launcher$" },   blur = true, ignore_alpha = 0.2 })
+hl.layer_rule({ name = "blur-swaync", match = { namespace = "^swaync-.*$" },  blur = true, ignore_alpha = 0.2 })
+
+-- Calendar popup from the waybar clock: floats right under it
+hl.window_rule({
+    name  = "calendar-popup",
+    match = { class = "^nostromo-calendar$" },
+    float = true,
+    pin   = true,
+    size  = "400 410",
+    move  = "760 44",
+})
+
+-- Now-playing popup from the waybar media module
+hl.window_rule({
+    name  = "media-popup",
+    match = { class = "^nostromo-media$" },
+    float = true,
+    pin   = true,
+    size  = "420 380",
+    move  = "250 44",
+})
+
+-- Weather popup from the waybar weather module
+hl.window_rule({
+    name  = "weather-popup",
+    match = { class = "^nostromo-weather$" },
+    float = true,
+    pin   = true,
+    size  = "460 580",
+    move  = "60 44",
+})

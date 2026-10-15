@@ -15,6 +15,8 @@
     --labelDivider: #3d382d !important;
     /* used by the local-music userscript */
     --lm-stripe-1: #e0c36a; --lm-stripe-2: #e9a23b; --lm-stripe-3: #d9652b; --lm-stripe-4: #c8553d; --lm-error: #c8553d;
+    --lm-text: #e8dfc8; --lm-sub: #b3a891; --lm-muted: #857c69; --lm-track: #3d382d; --lm-surface: #24211b;
+    --lm-accent: #e9a23b; --lm-on-accent: #121110;
     font-family: "IBM Plex Sans", sans-serif !important;
   }
   body { background: #1a1814 !important; color: #e8dfc8 !important; }

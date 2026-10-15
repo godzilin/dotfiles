@@ -1,0 +1,3 @@
+/* Blanco: libadwaita apps ignore the GTK theme setting, so load WhiteSur-Light's GTK 4 stylesheet here
+   (the same thing its installer's -l option does, without overwriting this folder). Path is relative to ~/.config/gtk-4.0. */
+@import url("../../.themes/WhiteSur-Light/gtk-4.0/gtk.css");

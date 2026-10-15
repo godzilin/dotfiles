@@ -19,7 +19,12 @@
     "teal": "#6f9e98",
     "blue": "#7b93a8"
   },
-  "stripes": ["#e0c36a", "#e9a23b", "#d9652b", "#c8553d"],
+  "stripes": [
+    "#e0c36a",
+    "#e9a23b",
+    "#d9652b",
+    "#c8553d"
+  ],
   "font_ui": "IBM Plex Sans",
   "font_mono": "BlexMono Nerd Font",
   "font_size": 10,
@@ -28,5 +33,7 @@
   "icons": "WhiteSur-orange-dark",
   "cursor": "WhiteSur-cursors",
   "cursor_size": 24,
-  "kde_colors": "Nostromo"
+  "kde_colors": "Nostromo",
+  "buttons": ":close",
+  "daemons": []
 }

@@ -1,0 +1,41 @@
+{
+  "name": "Blanco",
+  "description": "macOS: claro, translúcido, barra de menús arriba y Dock abajo",
+  "palette": {
+    "bg0": "#ffffff",
+    "bg": "#f6f6f6",
+    "bg1": "#ececec",
+    "bg2": "#e3e3e8",
+    "line": "#d1d1d6",
+    "faint": "#c7c7cc",
+    "muted": "#8e8e93",
+    "sub": "#6e6e73",
+    "text": "#1d1d1f",
+    "accent": "#007aff",
+    "yellow": "#ffcc00",
+    "orange": "#ff9500",
+    "red": "#ff3b30",
+    "green": "#34c759",
+    "teal": "#30b0c7",
+    "blue": "#007aff"
+  },
+  "stripes": [
+    "#d1d1d6",
+    "#d1d1d6",
+    "#d1d1d6",
+    "#d1d1d6"
+  ],
+  "font_ui": "Inter",
+  "font_mono": "DejaVu Sans Mono",
+  "font_size": 10,
+  "gtk_theme": "WhiteSur-Light",
+  "color_scheme": "prefer-light",
+  "icons": "WhiteSur-light",
+  "cursor": "WhiteSur-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Blanco",
+  "buttons": "close,minimize,maximize:",
+  "daemons": [
+    "nwg-dock-hyprland -x -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-mac'"
+  ]
+}

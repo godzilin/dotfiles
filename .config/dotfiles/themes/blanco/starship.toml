@@ -1,0 +1,36 @@
+# macOS zsh default prompt: "user@host dir % " (plus git branch and duration when they matter)
+add_newline = false
+format = "$username@$hostname $directory$git_branch$git_status$cmd_duration$character"
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "black"
+style_root = "bold red"
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+style = "black"
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+home_symbol = "~"
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "black"
+
+[git_branch]
+format = "[($branch)](bright-black) "
+symbol = ""
+
+[git_status]
+format = "([$all_status$ahead_behind](bright-black) )"
+
+[cmd_duration]
+format = "[$duration](bright-black) "
+
+[character]
+success_symbol = "[%](black)"
+error_symbol = "[%](red)"
+vimcmd_symbol = "[%](black)"

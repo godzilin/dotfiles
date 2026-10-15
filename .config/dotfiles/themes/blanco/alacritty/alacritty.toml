@@ -1,0 +1,106 @@
+[general]
+working_directory = "None"
+live_config_reload = true
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+dimensions = { columns = 100, lines = 30 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 1.0
+blur = false
+padding = { x = 10, y = 8 }
+title = "Alacritty@CachyOS"
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "Light"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "DejaVu Sans Mono", style = "Regular" }
+bold = { family = "DejaVu Sans Mono", style = "Bold" }
+italic = { family = "DejaVu Sans Mono", style = "Italic" }
+bold_italic = { family = "DejaVu Sans Mono", style = "Bold Italic" }
+size = 11.0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+# macOS Terminal.app, "Basic" profile
+[colors.primary]
+background = "#ffffff"
+foreground = "#000000"
+
+[colors.cursor]
+text = "#ffffff"
+cursor = "#7f7f7f"
+
+[colors.selection]
+text = "CellForeground"
+background = "#b4d7ff"
+
+[colors.search.matches]
+foreground = "#000000"
+background = "#fff2a8"
+
+[colors.search.focused_match]
+foreground = "#000000"
+background = "#ffcc00"
+
+[colors.normal]
+black = "#000000"
+red = "#990000"
+green = "#00a600"
+yellow = "#999900"
+blue = "#0000b2"
+magenta = "#b200b2"
+cyan = "#00a6b2"
+white = "#bfbfbf"
+
+[colors.bright]
+black = "#666666"
+red = "#e50000"
+green = "#00d900"
+yellow = "#e5e500"
+blue = "#0000ff"
+magenta = "#e500e5"
+cyan = "#00e5e5"
+white = "#e5e5e5"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+unfocused_hollow = true
+thickness = 0.15
+
+[mouse]
+hide_when_typing = true
+bindings = [
+{ mouse = "Middle", mods = "None", action = "PasteSelection" },
+]
+
+[keyboard]
+bindings = [
+{ key = "Paste", mods = "None", action = "Paste" },
+{ key = "Copy", mods = "None", action = "Copy" },
+{ key = "L", mods = "Control", action = "ClearLogNotice" },
+{ key = "L", mods = "Control", mode = "~Vi", chars = "\f" },
+{ key = "PageUp", mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+{ key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+{ key = "Home", mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+{ key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+{ key = "V", mods = "Control|Shift", action = "Paste" },
+{ key = "C", mods = "Control|Shift", action = "Copy" },
+{ key = "F", mods = "Control|Shift", action = "SearchForward" },
+{ key = "B", mods = "Control|Shift", action = "SearchBackward" },
+{ key = "C", mods = "Control|Shift", mode = "Vi", action = "ClearSelection" },
+{ key = "Key0", mods = "Control", action = "ResetFontSize" },
+{ key = "Return", mods = "Shift", chars = "\u001B\r" },
+]

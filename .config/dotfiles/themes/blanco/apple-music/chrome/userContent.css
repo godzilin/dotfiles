@@ -1,0 +1,8 @@
+/* Blanco: music.apple.com in its own light look; only the colours of the local-music userscript */
+@-moz-document domain("music.apple.com") {
+  :root {
+    --lm-stripe-1: #fa2d48; --lm-stripe-2: #fa2d48; --lm-stripe-3: #fa2d48; --lm-stripe-4: #fa2d48; --lm-error: #ff3b30;
+    --lm-text: #1d1d1f; --lm-sub: #6e6e73; --lm-muted: #8e8e93; --lm-track: #d1d1d6; --lm-surface: #f2f2f7;
+    --lm-accent: #fa2d48; --lm-on-accent: #ffffff;
+  }
+}

@@ -11,8 +11,10 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | Tema | Estilo |
 |---|---|
 | `naranja` | **Nostromo**: cassette futurism con la calma de macOS |
+| `blanco` | **macOS**: claro y translúcido, barra de menús con menú Apple, Dock, Spotlight |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas.
+Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
 
 ## naranja: Nostromo
 
@@ -39,6 +41,18 @@ Base oscura cálida, ámbar de fósforo, franjas de cinta de casete y tipografí
 Fuentes: **IBM Plex Sans** (interfaz) y **BlexMono Nerd Font** (terminal, barra, lanzador).
 Iconos: WhiteSur-orange-dark. Cursor: WhiteSur.
 
+## blanco: macOS
+
+Imitación de macOS Sonoma en claro: barra de menús translúcida (menú Apple, app activa en negrita, extras y reloj),
+Dock con `nwg-dock-hyprland`, Spotlight con fuzzel, notificaciones y bloqueo como en macOS, Terminal.app "Basic"
+con el prompt de zsh, Firefox tipo Safari con semáforos y fondos generados por código (`wallpapers/macos.py`).
+
+![Escritorio](../.config/dotfiles/themes/blanco/screenshots/desktop.png)
+
+Tema GTK [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) (versión fijada), iconos WhiteSur-light,
+fuente Inter (lo más cercano a SF Pro que se puede distribuir) y DejaVu Sans Mono (la base de Menlo).
+Primera vez: `~/.config/dotfiles/themes/blanco/install.sh`.
+
 ## Cómo están organizados los temas
 
 Cada tema vive en `.config/dotfiles/themes/<color>/` y `themes/current` (local, fuera de git) apunta al activo.
@@ -54,6 +68,8 @@ Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los color
 | `gtk-3.0/`, `gtk-4.0/`, `kde/` | apps GTK y Qt |
 | `firefox/`, `apple-music/` | `userChrome.css`/`userContent.css` + `user.js` |
 | `popups/`, `fastfetch/`, `wallpapers/`, `screenshots/` | popup de música, logo, fondos generados por código |
+| `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú Apple, Dock) y su instalación |
+| `"daemons"` en `theme.json` | programas que solo corren con ese tema (el Dock); `tema` los para y arranca |
 
 ## Qué hay
 

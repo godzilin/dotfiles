@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Apple Music: música local
 // @namespace    godzilin
-// @version      3.2
+// @version      3.3
 // @description  "Música local" en la barra lateral de music.apple.com: reproduce ~/Music (servido por server.py en 127.0.0.1:47823)
 // @match        https://music.apple.com/*
 // @grant        GM_xmlhttpRequest
@@ -33,8 +33,8 @@
     #scrollable-page.lm-open > :not(#lm-page) { display: none !important; }
     .player-bar.lm-playing .chrome-player__lcd > :not(#lm-lcd) { display: none !important; }
     #lm-lcd .lm-progress { cursor: pointer; padding-block: 4px; }
-    #lm-lcd .lm-progress::before { content: ""; display: block; height: 2px; border-radius: 2px; background: var(--systemQuaternary-onDark, #ffffff4d); }
-    #lm-lcd .lm-progress i { position: absolute; left: 0; bottom: 4px; height: 2px; border-radius: 2px; background: var(--systemSecondary-onDark, #ffffffb3); }
+    #lm-lcd .lm-progress::before { content: ""; display: block; height: 2px; border-radius: 2px; background: var(--lm-track, #ffffff4d); }
+    #lm-lcd .lm-progress i { position: absolute; left: 0; bottom: 4px; height: 2px; border-radius: 2px; background: var(--lm-sub, #ffffffb3); }
     #lm-lcd .lm-progress { position: relative; }
     #lm-lcd .player-lcd__artwork { width: 34px; height: 34px; overflow: hidden; }
     #lm-lcd .player-lcd__artwork img { width: 100%; height: 100%; object-fit: cover; }
@@ -46,25 +46,25 @@
   page.id = "lm-page";
   const pr = page.attachShadow({ mode: "open" });
   pr.innerHTML = `<style>
-    :host { display: block; color: var(--systemPrimary-onDark); }  /* colours and font come from the theme's userContent.css */
+    :host { display: block; color: var(--lm-text); }  /* --lm-* colours come from the theme's userContent.css */
     button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
     .wrap { padding: 32px 40px 140px; }
     header { display: flex; align-items: baseline; gap: 12px; }
     h1 { margin: 0; font-size: 30px; font-weight: 700; }
     .stripe { height: 4px; width: 120px; margin: 10px 0 24px;
       background: linear-gradient(90deg, var(--lm-stripe-1) 0 25%, var(--lm-stripe-2) 25% 50%, var(--lm-stripe-3) 50% 75%, var(--lm-stripe-4) 75%); }
-    .sub { color: var(--systemTertiary-onDark); font-size: 13px; }
+    .sub { color: var(--lm-muted); font-size: 13px; }
     .album { display: grid; grid-template-columns: 200px 1fr; gap: 28px; margin: 0 0 40px; }
     @media (max-width: 700px) { .album { grid-template-columns: 1fr; } }
-    .cover { width: 200px; aspect-ratio: 1; border-radius: 8px; background: var(--playerBackground); object-fit: cover; }
+    .cover { width: 200px; aspect-ratio: 1; border-radius: 8px; background: var(--lm-surface); object-fit: cover; }
     .album h2 { margin: 0 0 2px; font-size: 22px; }
     .album .sub { margin-bottom: 14px; }
-    .playall { margin-bottom: 12px; padding: 6px 18px; border-radius: 6px; background: var(--keyColor); color: var(--navSidebarBG); font-weight: 600; }
+    .playall { margin-bottom: 12px; padding: 6px 18px; border-radius: 6px; background: var(--lm-accent); color: var(--lm-on-accent); font-weight: 600; }
     .track { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; width: 100%; text-align: left;
-      padding: 8px; border-radius: 4px; border-bottom: 1px solid var(--playerBackground); font-size: 14px; }
-    .track:hover { background: var(--playerBackground); }
-    .track.now { color: var(--keyColor); }
-    .track .n, .track .d { color: var(--systemTertiary-onDark); font-variant-numeric: tabular-nums; }
+      padding: 8px; border-radius: 4px; border-bottom: 1px solid var(--lm-surface); font-size: 14px; }
+    .track:hover { background: var(--lm-surface); }
+    .track.now { color: var(--lm-accent); }
+    .track .n, .track .d { color: var(--lm-muted); font-variant-numeric: tabular-nums; }
     .err { color: var(--lm-error); }
   </style>
   <div class="wrap">

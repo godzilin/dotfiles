@@ -1,0 +1,66 @@
+/* Default swaync theme + macOS light banners on top: frosted, very round, soft shadow, no accents */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(246, 246, 246, 0.72);
+  --noti-border-color: rgba(0, 0, 0, 0.08);
+  --noti-bg: 246, 246, 246;
+  --noti-bg-alpha: 0.82;
+  --noti-bg-darker: rgba(255, 255, 255, 0.6);
+  --noti-bg-hover: rgba(236, 236, 236, 0.9);
+  --noti-bg-focus: rgba(0, 0, 0, 0.04);
+  --noti-close-bg: rgba(255, 255, 255, 0.95);
+  --noti-close-bg-hover: #ffffff;
+  --text-color: #1d1d1f;
+  --text-color-disabled: #8e8e93;
+  --bg-selected: #007aff;
+  --border-radius: 18px;
+  --notification-icon-size: 38px;
+  --notification-group-icon-size: 24px;
+  --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.16);
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.notification .summary {
+  font-weight: 700;
+}
+
+.notification .time {
+  color: #8e8e93;
+  font-size: 12px;
+}
+
+/* The close (x) floats on the top-left corner, like macOS */
+.close-button {
+  color: #6e6e73;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.control-center {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.control-center .widget-title > label {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.control-center .widget-title > button {
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #1d1d1f;
+  border: none;
+  box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+  background: #007aff;
+}

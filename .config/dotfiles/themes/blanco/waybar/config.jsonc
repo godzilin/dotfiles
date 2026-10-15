@@ -1,0 +1,122 @@
+// macOS menu bar: Apple menu and the frontmost app on the left, menu extras and the clock on the right
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 0,
+
+    "modules-left": ["custom/apple", "hyprland/window"],
+    "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/spotlight", "custom/control", "custom/clock"],
+
+    "custom/apple": {
+        "format": "",
+        "on-click": "~/.config/dotfiles/themes/current/scripts/applemenu.sh",
+        "tooltip": false
+    },
+    // Bold name of the focused app, like the application menu
+    "hyprland/window": {
+        "format": "{class}",
+        "icon": false,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Escritorio",
+            "firefox": "Firefox",
+            "Alacritty": "Terminal",
+            "thunar": "Finder",
+            "Thunar": "Finder",
+            "org.kde.dolphin": "Finder",
+            "apple-music": "Música",
+            "discord": "Discord",
+            "steam": "Steam",
+            "code-oss": "Code",
+            "systemsettings": "Ajustes del Sistema",
+            "org.kde.kate": "TextEdit",
+            "org.pulseaudio.pavucontrol": "Sonido",
+            "nostromo-calendar": "Calendario",
+            "nostromo-weather": "Tiempo",
+            "nostromo-media": "Música",
+            "about-this-mac": "Acerca de este Mac"
+        }
+    },
+
+    "mpris": {
+        "format": "󰎆  {title}",
+        "format-paused": "󰎆  {title}",
+        "title-len": 28,
+        "tooltip-format": "{title} · {artist}",
+        "on-click": "~/.config/hypr/scripts/media.sh",
+        "on-click-right": "playerctl play-pause"
+    },
+    "custom/weather": {
+        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "return-type": "json",
+        "interval": 600,
+        "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+    "bluetooth": {
+        "format": "󰂯",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "tooltip-format": "Bluetooth: {status}",
+        "tooltip-format-connected": "Bluetooth\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} · {device_battery_percentage}%",
+        "on-click": "systemsettings kcm_bluetooth"
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤮",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+        "tooltip-format-wifi": "{essid} · {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname} · {ipaddr}",
+        "on-click": "systemsettings kcm_networkmanagement"
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "󰖁",
+        "format-icons": ["󰕿", "󰖀", "󰕾"],
+        "tooltip-format": "Sonido: {volume}%",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5
+    },
+    "battery": {
+        "states": { "warning": 20, "critical": 10 },
+        "format": "{capacity} %  {icon}",
+        "format-charging": "{capacity} %  <span size='small'></span> {icon}",
+        "format-plugged": "{capacity} %  <span size='small'></span> {icon}",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo}"
+    },
+    "custom/spotlight": {
+        "format": "",
+        "on-click": "pkill fuzzel || fuzzel",
+        "tooltip": false
+    },
+    // Control Centre: notifications, Do Not Disturb and quick toggles live in swaync
+    "custom/control": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󱕂",
+            "none": "󱕂",
+            "dnd-notification": "",
+            "dnd-none": ""
+        },
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true,
+        "tooltip": false
+    },
+    // "jue 15 oct  17:31" (waybar's clock can't drop the leading zero of the day, date can)
+    "custom/clock": {
+        "exec": "LC_TIME=es_ES.UTF-8 date '+%a %-d %b  %H:%M'",
+        "interval": 5,
+        "on-click": "~/.config/hypr/scripts/calendar.sh",
+        "tooltip": false
+    },
+    "tray": { "icon-size": 15, "spacing": 10 }
+}
