@@ -1,0 +1,56 @@
+/* Nostromo palette for Firefox. Only colours and a few small touches, so Firefox updates rarely break it. */
+:root {
+  --n-bg0: #121110; --n-bg: #1a1814; --n-bg1: #24211b; --n-bg2: #2f2b23; --n-line: #3d382d;
+  --n-muted: #857c69; --n-sub: #b3a891; --n-text: #e8dfc8; --n-amber: #e9a23b; --n-red: #c8553d;
+
+  --lwt-accent-color: var(--n-bg0) !important;            /* tab strip */
+  --lwt-text-color: var(--n-sub) !important;
+  --lwt-header-image: none !important;              /* drop any add-on theme artwork */
+  --lwt-additional-images: none !important;
+  --toolbar-bgcolor: var(--n-bg) !important;
+  --toolbar-color: var(--n-text) !important;
+  --toolbarbutton-icon-fill: var(--n-sub) !important;
+  --toolbarbutton-hover-background: var(--n-bg2) !important;
+  --toolbarbutton-active-background: var(--n-line) !important;
+  --toolbar-field-background-color: var(--n-bg1) !important;
+  --toolbar-field-color: var(--n-text) !important;
+  --toolbar-field-border-color: var(--n-line) !important;
+  --toolbar-field-focus-background-color: var(--n-bg1) !important;
+  --toolbar-field-focus-color: var(--n-text) !important;
+  --toolbar-field-focus-border-color: var(--n-amber) !important;
+  --tab-selected-bgcolor: var(--n-bg) !important;
+  --tab-selected-textcolor: var(--n-text) !important;
+  --tab-hover-background-color: var(--n-bg1) !important;
+  --focus-outline-color: var(--n-amber) !important;
+  --chrome-content-separator-color: var(--n-line) !important;
+  --arrowpanel-background: var(--n-bg) !important;
+  --arrowpanel-color: var(--n-text) !important;
+  --arrowpanel-border-color: var(--n-line) !important;
+  --panel-separator-color: var(--n-line) !important;
+  --urlbarView-highlight-background: var(--n-bg2) !important;
+  --urlbarView-highlight-color: var(--n-text) !important;
+  --urlbarView-action-color: var(--n-amber) !important;
+  --sidebar-background-color: var(--n-bg) !important;
+  --sidebar-text-color: var(--n-sub) !important;
+  --sidebar-border-color: var(--n-line) !important;
+  --color-accent-primary: var(--n-amber) !important;
+  --button-primary-bgcolor: var(--n-amber) !important;
+  --button-primary-color: var(--n-bg0) !important;
+  --toolbarseparator-color: var(--n-line) !important;
+}
+
+#navigator-toolbox, #titlebar { background-image: none !important; background-color: var(--n-bg0) !important; }
+
+/* Selected tab: amber tape strip along the bottom edge */
+.tab-background:is([selected], [multiselected]) {
+  box-shadow: inset 0 -2px 0 var(--n-amber) !important;
+}
+
+/* Address bar text in the terminal font, like the bar and launcher */
+#urlbar-input, .urlbarView-title, .urlbarView-url {
+  font-family: "BlexMono Nerd Font", monospace !important;
+}
+
+/* Bookmarks and loading throbber in amber */
+#star-button[starred], #pageAction-urlbar-bookmark[starred] { fill: var(--n-amber) !important; }
+.tab-throbber[busy]::before { fill: var(--n-amber) !important; }

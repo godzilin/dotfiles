@@ -35,6 +35,7 @@ Iconos: WhiteSur-orange-dark. Cursor: WhiteSur.
 | `.config/alacritty/` | Terminal |
 | `.config/fish/`, `.config/starship.toml` | Shell y prompt |
 | `.config/fastfetch/` | Logo de casete |
+| `.config/dotfiles/firefox/` | Firefox: `userChrome.css`/`userContent.css` + `user.js`. Instalar con `install.sh` (Firefox cerrado) |
 | `.config/gtk-3.0/`, `.config/gtk-4.0/` | Paleta para apps GTK (adw-gtk3 / libadwaita) |
 | `.local/share/color-schemes/Nostromo.colors` | Paleta para apps Qt/KDE |
 | `.config/dotfiles/wallpapers/` | Fondos generados por código (`nostromo.py`), rotan cada 15 min |

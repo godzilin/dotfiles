@@ -1,0 +1,20 @@
+/* Nostromo for Firefox's own pages: new tab, home, settings, add-ons */
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #121110 !important;
+    --newtab-background-color-secondary: #24211b !important;
+    --newtab-text-primary-color: #e8dfc8 !important;
+    --background-color-canvas: #1a1814 !important;
+    --background-color-box: #24211b !important;
+    --text-color: #e8dfc8 !important;
+    --text-color-deemphasized: #857c69 !important;
+    --border-color: #3d382d !important;
+    --color-accent-primary: #e9a23b !important;
+    --color-accent-primary-hover: #e0c36a !important;
+    --color-accent-primary-active: #d9652b !important;
+    --link-color: #e9a23b !important;
+    --focus-outline-color: #e9a23b !important;
+  }
+  body { background-color: var(--background-color-canvas) !important; }
+  @media (prefers-color-scheme: dark) { .home-section, body { --newtab-background-color: #121110 !important; } }
+}
