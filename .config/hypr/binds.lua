@@ -38,6 +38,7 @@ hl.bind(mod .. " + Q",        hl.dsp.window.close())
 hl.bind("ALT + F4",           hl.dsp.window.close())
 hl.bind(mod .. " + CTRL + Escape", hl.dsp.window.kill())
 hl.bind(mod .. " + F",        hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mod .. " + Prior",    hl.dsp.window.fullscreen({ mode = "maximized" }))  -- Super+PgUp
 hl.bind(mod .. " + F11",      hl.dsp.window.fullscreen())
 hl.bind(mod .. " + T",        hl.dsp.layout("togglesplit"))
