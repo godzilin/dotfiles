@@ -1,4 +1,4 @@
-# dotfiles · COMPUTAH
+# dotfiles
 
 Hyprland en un ThinkPad con CachyOS. Estética **cassette futurism** con la calma de macOS:
 base oscura cálida, ámbar de fósforo, franjas de cinta de casete y tipografía IBM Plex.

@@ -30,7 +30,6 @@ for r in range(0, ROWS, 2):
     row = "".join("█" if a and b else "▀" if a else "▄" if b else " " for a, b in zip(lit[r], lit[r + 1]))
     if row.strip():
         lines.append(f"${band}{row.rstrip()}")
-lines += ["", "$5     COMPUTAH · TYPE II"]
 here = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(here, "skull.txt"), "w") as f:
     f.write("\n".join(lines) + "\n")

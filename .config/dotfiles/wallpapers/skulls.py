@@ -115,7 +115,7 @@ def skull_badge():
     bone = lambda a: (f'<g transform="rotate({a} {cx} {cy + 40})"><line x1="{cx - 260}" y1="{cy + 40}" x2="{cx + 260}" y2="{cy + 40}" '
                       f'stroke="{LINE}" stroke-width="22" stroke-linecap="round"/>'
                       + "".join(f'<circle cx="{cx + s * 262}" cy="{cy + 40 + d * 14}" r="18" fill="{LINE}"/>' for s in (-1, 1) for d in (-1, 1)) + '</g>')
-    text = "MEMENTO MORI · COMPUTAH · TYPE II · " * 2  # letters spaced evenly round the circle
+    text = "MEMENTO MORI · SIDE A · MEMENTO MORI · SIDE B · "  # letters spaced evenly round the circle
     return [f'<circle cx="{cx}" cy="{cy}" r="{r + 70}" fill="none" stroke="{LINE}" stroke-width="2"/>',
             f'<circle cx="{cx}" cy="{cy}" r="{r + 10}" fill="none" stroke="{FAINT}" stroke-width="1"/>',
             # rsvg has no textPath: place each letter round the rim by hand

@@ -29,10 +29,8 @@ def frame(art, model, side):
         f'<rect width="{W}" height="{H}" fill="url(#dots)"/>',
         *art,
         *marks,
-        # One <text> with a tspan so the subtitle always starts after the name, whatever its length
         skull(104, 96, 17, STRIPES[1], "none", 1.4),  # house mark
-        f'<text x="124" y="104" {FONT} font-size="15" font-weight="600" fill="{STRIPES[1]}">COMPUTAH'
-        f'<tspan dx="28" font-weight="400" fill="{MUTED}">THINKPAD P14S GEN 5</tspan></text>',
+        f'<text x="124" y="104" {FONT} font-size="15" font-weight="600" fill="{MUTED}">THINKPAD P14S GEN 5</text>',
         f'<line x1="96" y1="122" x2="840" y2="122" stroke="{FAINT}" stroke-width="1"/>',
         f'<text x="96" y="146" {FONT} font-size="12" fill="{FAINT}">RYZEN 7 PRO 8840HS · RADEON 780M · 32 GB · 1 TB NVME · CACHYOS · HYPRLAND</text>',
         f'<text x="{W-96}" y="{H-92}" {FONT} font-size="12" fill="{FAINT}" text-anchor="end">{model} · {side} · TYPE II · 90 MIN</text>',
