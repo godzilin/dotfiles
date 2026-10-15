@@ -44,6 +44,7 @@
     },
     "custom/media": {
         "exec": "~/.config/waybar/scripts/media.py",
+        "restart-interval": 2,  // libplayerctl aborts the script if a player dies abruptly; respawn it
         "return-type": "json",
         "escape": false,
         "on-click": "~/.config/hypr/scripts/media.sh"
