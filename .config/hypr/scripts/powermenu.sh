@@ -1,11 +1,11 @@
 #!/bin/sh
 # Power menu with fuzzel (Ctrl+Alt+Del)
-choice=$(printf '󰌾  Bloquear\n󰍃  Cerrar sesión\n󰤄  Suspender\n󰜉  Reiniciar\n󰐥  Apagar\n' |
-    fuzzel --dmenu --prompt '' --lines 5 --width 20)
+choice=$(printf 'BLOQUEAR\nCERRAR SESIÓN\nSUSPENDER\nREINICIAR\nAPAGAR\n' |
+    fuzzel --dmenu --prompt '⏻ ' --placeholder 'SYSTEM' --lines 5 --width 24 --no-icons)
 case "$choice" in
-    *Bloquear*)  loginctl lock-session ;;
-    *Cerrar*)    hyprctl dispatch 'hl.dsp.exit()' ;;
-    *Suspender*) systemctl suspend ;;
-    *Reiniciar*) systemctl reboot ;;
-    *Apagar*)    systemctl poweroff ;;
+    BLOQUEAR)        loginctl lock-session ;;
+    "CERRAR SESIÓN") hyprctl dispatch 'hl.dsp.exit()' ;;
+    SUSPENDER)       systemctl suspend ;;
+    REINICIAR)       systemctl reboot ;;
+    APAGAR)          systemctl poweroff ;;
 esac

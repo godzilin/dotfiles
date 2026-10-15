@@ -1,30 +1,27 @@
 {
-  "$schema": "https://github.com/fastfetch-project/fastfetch/raw/master/doc/json_schema.json",
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "source": "cachyos_small",
-    "padding": {
-      "top": 0,
-      "bottom": 0
-    }
+    "type": "file",
+    "source": "~/.config/fastfetch/cassette.txt",
+    "color": { "1": "white", "2": "yellow", "3": "yellow", "4": "red" },
+    "padding": { "top": 1, "left": 1, "right": 3 }
   },
   "display": {
-    "key": {
-      "color": "blue"
-    },
-    "separator": ": "
+    "separator": "",
+    "key": { "width": 9 },
+    "color": { "keys": "white", "title": "yellow", "output": "default" }
   },
   "modules": [
-    "os",
-    "host",
-    "kernel",
-    "uptime",
-    "shell",
-    "display",
-    "cpu",
-    "gpu",
-    "memory",
-    "disk",
-    "battery",
-    "localip"
+    "title",
+    { "type": "custom", "format": "\u001b[90m────────────────────────────\u001b[0m" },
+    { "type": "os",       "key": "OS",     "format": "{pretty-name}" },
+    { "type": "kernel",   "key": "KERNEL" },
+    { "type": "wm",       "key": "WM",     "format": "{pretty-name}" },
+    { "type": "shell",    "key": "SHELL",  "format": "{pretty-name}" },
+    { "type": "cpu",      "key": "CPU",    "format": "{name}" },
+    { "type": "memory",   "key": "MEM",    "format": "{used} / {total}" },
+    { "type": "disk",     "key": "DISK",   "folders": "/", "format": "{size-used} / {size-total}" },
+    { "type": "battery",  "key": "BAT",    "format": "{capacity}" },
+    { "type": "uptime",   "key": "UPTIME" }
   ]
 }

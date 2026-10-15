@@ -1,20 +1,24 @@
--- Catppuccin Mocha. Global so every module can use it: C.mauve, C.base...
+-- "Nostromo" palette: warm dark base, phosphor amber, cassette stripes.
+-- Same values live in waybar/style.css, alacritty, fuzzel, swaync, hyprlock... (see ~/.github/README.md)
 C = {
-    base     = "1e1e2e",
-    mantle   = "181825",
-    crust    = "11111b",
-    surface0 = "313244",
-    surface1 = "45475a",
-    overlay0 = "6c7086",
-    text     = "cdd6f4",
-    mauve    = "cba6f7",
-    lavender = "b4befe",
-    blue     = "89b4fa",
-    pink     = "f5c2e7",
-    red      = "f38ba8",
+    bg0    = "121110", -- deepest
+    bg     = "1a1814", -- base
+    bg1    = "24211b", -- surfaces
+    bg2    = "2f2b23",
+    line   = "3d382d", -- borders, separators
+    muted  = "857c69",
+    sub    = "b3a891",
+    text   = "e8dfc8", -- cream
+    amber  = "e9a23b", -- accent
+    yellow = "e0c36a",
+    orange = "d9652b",
+    red    = "c8553d",
+    green  = "8fae7e",
+    teal   = "6f9e98",
+    blue   = "7b93a8",
 }
 
--- rgba("cba6f7", "ee") -> "rgba(cba6f7ee)"
+-- rgba("e9a23b", "ee") -> "rgba(e9a23bee)"
 function rgba(hex, alpha)
     return "rgba(" .. hex .. (alpha or "ff") .. ")"
 end

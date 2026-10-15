@@ -1,92 +1,100 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 34,
+    "height": 30,
     "margin-top": 6,
-    "margin-left": 10,
-    "margin-right": 10,
-    "spacing": 6,
+    "margin-left": 8,
+    "margin-right": 8,
+    "spacing": 0,
 
     "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio", "backlight", "network", "power-profiles-daemon", "battery", "custom/notifications", "custom/power"],
 
     "custom/launcher": {
-        "format": "",
+        "format": "<span color='#e9a23b'>▮</span> GZ—01",
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },
     "hyprland/workspaces": {
         "format": "{icon}",
-        "format-icons": { "default": "", "active": "", "empty": "" },
+        "format-icons": {
+            "1": "01", "2": "02", "3": "03", "4": "04", "5": "05",
+            "6": "06", "7": "07", "8": "08", "9": "09", "default": "··"
+        },
         "persistent-workspaces": { "*": 4 },
         "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
         "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
     },
     "hyprland/window": {
-        "max-length": 50,
+        "format": "{}",
+        "max-length": 48,
         "separate-outputs": true
     },
     "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%A %d %B, %H:%M}",
+        "locale": "es_ES.utf8",
+        "format": "{:L%a %d %b  <span color='#e8dfc8'>%H:%M</span>}",
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "mode": "month",
-            "format": { "today": "<span color='#cba6f7'><b>{}</b></span>" }
+            "format": {
+                "months": "<span color='#e8dfc8'><b>{}</b></span>",
+                "weekdays": "<span color='#857c69'>{}</span>",
+                "today": "<span color='#e9a23b'><b>{}</b></span>"
+            }
         }
     },
-    "tray": { "icon-size": 16, "spacing": 8 },
+    "tray": { "icon-size": 14, "spacing": 8 },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟",
-        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"], "headphone": "󰋋" },
+        "format": "<span color='#857c69'>VOL</span> {volume}",
+        "format-muted": "<span color='#857c69'>VOL</span> <span color='#c8553d'>MUTE</span>",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "scroll-step": 5
+        "scroll-step": 5,
+        "tooltip-format": "{desc}"
     },
     "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["󰃞", "󰃟", "󰃠"]
+        "format": "<span color='#857c69'>LUM</span> {percent}"
     },
     "network": {
-        "format-wifi": "󰤨 {essid}",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰤭",
-        "tooltip-format": "{ifname} {ipaddr}  {signalStrength}%",
+        "format-wifi": "<span color='#857c69'>NET</span> {essid}",
+        "format-ethernet": "<span color='#857c69'>NET</span> ETH",
+        "format-disconnected": "<span color='#857c69'>NET</span> <span color='#c8553d'>OFF</span>",
+        "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
-        "format": "{icon}",
+        "format": "<span color='#857c69'>PWR</span> {icon}",
         "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
+            "default": "BAL",
+            "performance": "MAX",
+            "balanced": "BAL",
+            "power-saver": "ECO"
         }
     },
     "battery": {
         "states": { "warning": 25, "critical": 10 },
-        "format": "{icon} {capacity}%",
-        "format-charging": "󰂄 {capacity}%",
-        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+        "format": "<span color='#857c69'>BAT</span> {capacity}",
+        "format-charging": "<span color='#857c69'>BAT</span> {capacity}<span color='#e9a23b'>+</span>",
+        "format-plugged": "<span color='#857c69'>BAT</span> {capacity}<span color='#e9a23b'>=</span>",
+        "tooltip-format": "{timeTo}  ·  {power:.1f} W"
     },
     "custom/notifications": {
         "exec": "swaync-client -swb",
         "return-type": "json",
         "format": "{icon}",
         "format-icons": {
-            "notification": "󱅫",
-            "none": "󰂚",
-            "dnd-notification": "󰂛",
-            "dnd-none": "󰂛"
+            "notification": "<span color='#e9a23b'>●</span>",
+            "none": "○",
+            "dnd-notification": "<span color='#e9a23b'>◐</span>",
+            "dnd-none": "◐"
         },
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
     "custom/power": {
-        "format": "󰐥",
+        "format": "⏻",
         "on-click": "~/.config/hypr/scripts/powermenu.sh",
         "tooltip": false
     }
