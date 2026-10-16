@@ -65,7 +65,7 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
         hyprctl setcursor (jq -r .cursor $json) (jq -r .cursor_size $json) >/dev/null
         pkill -x waybar; setsid -f waybar >/dev/null 2>&1
         pkill -x swaync; setsid -f swaync >/dev/null 2>&1  # restart, not reload: it must see the theme's fonts
-        pkill -x hyprpaper; setsid -f hyprpaper >/dev/null 2>&1
+        ~/.config/hypr/scripts/wallpaper.sh apply  # hyprpaper on this theme's pinned or rotating wallpaper
         ~/.config/hypr/scripts/theme-daemons.sh start
     end
     echo "tema: $t ("(jq -r .name $json)"). Firefox, Apple Music y las terminales abiertas lo cogen al reiniciarlas."

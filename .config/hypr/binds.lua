@@ -119,6 +119,7 @@ local popups = {
     ["nostromo-calendar"] = "pkill -f '^python3 .*calpopup\\.py'",
     ["nostromo-media"]    = "pkill -f '^python3 .*mediapopup\\.py'",
     ["nostromo-weather"]  = "pkill -f '^python3 .*weather\\.py popup'",
+    ["nostromo-wallpaper"] = "pkill -f '^python3 .*wallpopup\\.py'",
 }
 local function xy(v) return v.x or v[1], v.y or v[2] end
 hl.bind("mouse:272", function()

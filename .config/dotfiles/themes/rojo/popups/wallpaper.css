@@ -1,0 +1,10 @@
+/* Wallpaper selector (hypr/scripts/wallpopup.py), over media.css: poster proofs pinned to the wall */
+button.thumb { padding: 3px; min-width: 0; min-height: 0; border-radius: 0; border: 3px solid #141414; background: #141414; }
+button.thumb:hover { border-color: #5e574b; }
+button.thumb.on { border-color: #d42a1e; box-shadow: 4px 4px 0 #141414; }
+button.random { min-height: 0; padding: 0 10px; border-radius: 0; background: transparent; }
+button.random label { font-size: 10pt; color: #8a8274; letter-spacing: 2px; }
+button.random.on { background: #d42a1e; }
+button.random.on label { color: #efe6d2; }
+/* media.css styles "box > box:first-child" as the black band; the first stripe also matches it */
+box > box.stripe-1:first-child { background: #d42a1e; margin: 0; padding: 0; }

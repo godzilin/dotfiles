@@ -78,6 +78,16 @@ hl.window_rule({
     move  = "250 44",
 })
 
+-- Wallpaper selector from the waybar wallpaper button
+hl.window_rule({
+    name  = "wallpaper-popup",
+    match = { class = "^nostromo-wallpaper$" },
+    float = true,
+    pin   = true,
+    size  = "580 540",
+    move  = "1330 44",
+})
+
 -- Weather popup from the waybar weather module
 hl.window_rule({
     name  = "weather-popup",

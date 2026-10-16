@@ -72,7 +72,7 @@ tooltip label { color: #000000; font-size: 14px; }
     padding: 0 8px 0 4px;
     box-shadow: inset -1px -1px #ffffff, inset 1px 1px #808080;
 }
-#tray, #custom-weather, #image.net, #image.vol, #image.bat, #battery, #custom-clock { padding: 0 6px; color: #000000; }
+#tray, #custom-weather, #image.net, #image.vol, #image.wall, #image.bat, #battery, #custom-clock { padding: 0 6px; color: #000000; }
 #tray { padding-right: 12px; }
 #image.bat { padding-right: 2px; }
 #battery { padding-left: 0; }

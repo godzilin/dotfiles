@@ -45,6 +45,14 @@ hl.window_rule({
     move  = "1300 832",
 })
 hl.window_rule({
+    name  = "wallpaper-popup",
+    match = { class = "^nostromo-wallpaper$" },
+    float = true,
+    pin   = true,
+    size  = "580 540",
+    move  = "1330 622",
+})
+hl.window_rule({
     name  = "weather-popup",
     match = { class = "^nostromo-weather$" },
     float = true,

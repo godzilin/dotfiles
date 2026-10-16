@@ -46,6 +46,7 @@ tooltip label { color: @text; }
 #bluetooth,
 #power-profiles-daemon,
 #battery,
+#custom-wallpaper,
 #custom-notifications,
 #custom-power {
     padding: 0 12px;
@@ -57,6 +58,7 @@ tooltip label { color: @text; }
 #bluetooth,
 #power-profiles-daemon,
 #battery,
+#custom-wallpaper,
 #custom-notifications {
     border-left: 1px solid @line;
 }
@@ -95,6 +97,8 @@ window#waybar.empty #window { padding: 0; }
 #power-profiles-daemon.power-saver { color: @green; }
 
 #custom-notifications { color: @muted; font-size: 13px; }
+#custom-wallpaper { color: @muted; font-size: 14px; }
+#custom-wallpaper:hover { color: @accent; }
 #custom-power { color: @muted; font-size: 13px; }
 #custom-power:hover { color: @red; }
 

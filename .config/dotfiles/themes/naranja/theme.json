@@ -35,5 +35,9 @@
   "cursor_size": 24,
   "kde_colors": "Nostromo",
   "buttons": ":close",
-  "daemons": []
+  "daemons": [],
+  "wallpaper": {
+    "title": "FONDOS",
+    "random": "ALEATORIO"
+  }
 }

@@ -36,5 +36,9 @@
   "kde_colors": "Azul",
   "qt_style": "Windows",
   "buttons": ":minimize,maximize,close",
-  "daemons": []
+  "daemons": [],
+  "wallpaper": {
+    "title": "Propiedades de Pantalla - Fondo",
+    "random": "Al azar"
+  }
 }

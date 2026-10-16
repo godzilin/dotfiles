@@ -45,7 +45,7 @@
     // System tray ("notification area"): sunken box with app icons, volume, network, battery and the clock
     "group/tray": {
         "orientation": "horizontal",
-        "modules": ["tray", "custom/weather", "image#net", "image#vol", "image#bat", "battery", "custom/clock"]
+        "modules": ["tray", "custom/weather", "image#net", "image#vol", "image#wall", "image#bat", "battery", "custom/clock"]
     },
     "tray": { "icon-size": 20, "spacing": 10 },
     "custom/weather": {
@@ -68,6 +68,12 @@
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+    "image#wall": {
+        "path": "/home/godzilin/.local/share/icons/Chicago95/apps/24/preferences-desktop-wallpaper.png",
+        "size": 24,
+        "on-click": "~/.config/hypr/scripts/wallpaper.sh",
+        "tooltip": false
     },
     "image#bat": {
         "exec": "~/.config/dotfiles/themes/current/scripts/trayicon.sh bat",

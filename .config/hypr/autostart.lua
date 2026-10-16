@@ -1,6 +1,6 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
-    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/wallpaper.sh apply")  -- hyprpaper, on the pinned or rotating wallpaper
     hl.exec_cmd("hypridle")
     hl.exec_cmd("swaync")
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/theme-daemons.sh start")  -- Dock etc. of the active theme

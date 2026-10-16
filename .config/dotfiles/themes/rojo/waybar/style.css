@@ -67,7 +67,7 @@ tooltip label { color: #141414; font-family: "PT Sans"; font-size: 13px; }
 }
 
 /* Readouts: red label, paper value, separated by red rules */
-#tray, #custom-weather, #network, #pulseaudio, #backlight, #battery {
+#tray, #custom-weather, #network, #pulseaudio, #backlight, #battery, #custom-wallpaper {
     padding: 0 14px 4px 14px;
     color: #efe6d2;
     letter-spacing: 1px;

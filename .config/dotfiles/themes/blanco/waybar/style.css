@@ -30,6 +30,7 @@ tooltip label { color: #1d1d1f; font-size: 12px; }
 #network,
 #pulseaudio,
 #battery,
+#custom-wallpaper,
 #custom-spotlight,
 #custom-control,
 #custom-clock,
@@ -48,6 +49,7 @@ tooltip label { color: #1d1d1f; font-size: 12px; }
 #network:hover,
 #pulseaudio:hover,
 #battery:hover,
+#custom-wallpaper:hover,
 #custom-spotlight:hover,
 #custom-control:hover,
 #custom-clock:hover {
@@ -71,12 +73,14 @@ tooltip label { color: #1d1d1f; font-size: 12px; }
 #bluetooth,
 #network,
 #pulseaudio,
+#custom-wallpaper,
 #custom-spotlight,
 #custom-control {
     font-family: "Symbols Nerd Font";
     font-size: 15px;
 }
 #custom-spotlight { font-size: 13px; }
+#custom-wallpaper { font-size: 14px; }
 
 #battery.warning:not(.charging) { color: #ff9500; }
 #battery.critical:not(.charging) { color: #ff3b30; }

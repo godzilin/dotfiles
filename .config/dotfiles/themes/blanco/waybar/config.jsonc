@@ -6,7 +6,7 @@
     "spacing": 0,
 
     "modules-left": ["custom/apple", "hyprland/workspaces", "hyprland/window"],
-    "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/spotlight", "custom/control", "custom/clock"],
+    "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/wallpaper", "custom/spotlight", "custom/control", "custom/clock"],
 
     "custom/apple": {
         "format": "",
@@ -96,6 +96,11 @@
         "format-plugged": "{capacity} %  <span size='small'></span> {icon}",
         "format-icons": ["", "", "", "", ""],
         "tooltip-format": "{timeTo}"
+    },
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "~/.config/hypr/scripts/wallpaper.sh",
+        "tooltip-format": "Fondo de pantalla"
     },
     "custom/spotlight": {
         "format": "",
