@@ -94,7 +94,7 @@ Un bosque al atardecer: base verde casi negra, musgo, luz de sol, corteza y baya
 "cantos rodados" redondeados que flotan sobre el fondo, con iconos de hojas (cada escritorio es un brote; en el
 que estás ha crecido un árbol). Bordes de ventana con degradado musgo→sol, esquinas muy redondas y animaciones
 lentas con un pequeño rebote, como hojas que se posan; bloqueo con la hora en Fraunces y saludo según la hora;
-terminal con JetBrains Mono y un pino en fastfetch; carpetas verdes (Papirus-Verde).
+terminal con JetBrains Mono y una viñeta del Teide entre abetos en fastfetch (`fastfetch/make_logo.py`); carpetas verdes (Papirus-Verde).
 
 ![Escritorio](../.config/dotfiles/themes/verde/screenshots/desktop.png)
 
