@@ -70,7 +70,9 @@ Windows"; Firefox como Internet Explorer 4; notificaciones como ventanas de Wind
 Tema GTK, iconos y cursores [Chicago95](https://github.com/grassmunk/Chicago95) (commit fijado), fuente
 [W95FA](https://fontsource.org/fonts/win95fa) (OFL, viene en el tema y solo existe mientras azul está activo) y
 More Perfect DOS VGA para la terminal. Fondos generados por código (`wallpapers/win95.py`): verde azulado,
-nubes, degradado de instalación, patrones de 8×8 y arenisca. Primera vez: `~/.config/dotfiles/themes/azul/install.sh`.
+nubes, degradado de instalación, patrones de 8×8, arenisca, bloques rojos, burbujas, círculos, remaches azules,
+ondas, estera de paja, baldosas, piedra tallada, y los salvapantallas Tuberías 3D, Campo de estrellas, Mystify y el
+planeta de Plus! Espacio. Primera vez: `~/.config/dotfiles/themes/azul/install.sh`.
 
 ## rojo: constructivismo
 
