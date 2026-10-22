@@ -14,7 +14,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `blanco` | **macOS**: claro y translúcido, barra de menús con menú Apple, Dock, Spotlight |
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
-| `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de laurisilva y montaña |
+| `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
@@ -100,8 +100,9 @@ terminal con JetBrains Mono y un pino en fastfetch; carpetas verdes (Papirus-Ver
 
 Fuentes Nunito, Fraunces y JetBrains Mono (OFL, dentro del tema). Fondos: siete paisajes generados por código
 (`wallpapers/bosque.py`: niebla entre abetos, luciérnagas, helechos, curvas de nivel, lago, hojas, amanecer) y
-dieciséis fotos de Wikimedia Commons (`wallpapers/fotos.py`: laurisilva de Garajonay y Madeira, Teide, hayedos,
-secuoyas, Pirineos, Picos de Europa, fiordos...) con el lugar, autor y licencia en una esquina; créditos en
+treinta fotos de Wikimedia Commons (`wallpapers/fotos.py`: medio Canarias —Anaga, Teno, Garajonay, Caldera de
+Taburiente, pinar canario, Teide, Dragos Gemelos— más laurisilva de Madeira, hayedos, secuoyas, Pirineos, Picos de
+Europa, fiordos...) con el lugar, autor y licencia en una esquina; créditos en
 `wallpapers/FOTOS.md`. Primera vez: `~/.config/dotfiles/themes/verde/install.sh`.
 
 ## Cómo están organizados los temas

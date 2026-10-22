@@ -18,3 +18,17 @@ De Wikimedia Commons; cada una lleva su crédito en la esquina.
 - p16-gavarnie.jpg: [2019 - Parc national des Pyrenees - Vallée de Gavarnie.jpg](https://commons.wikimedia.org/wiki/File:2019_-_Parc_national_des_Pyrenees_-_Vall%C3%A9e_de_Gavarnie.jpg) — Moahim, CC BY-SA 4.0
 - p17-cornion.jpg: [Macizo del Corniòn.jpg](https://commons.wikimedia.org/wiki/File:Macizo_del_Corni%C3%B2n.jpg) — Teseum, CC BY-SA 4.0
 - p18-reine.jpg: [Moltbærtinden and Breiflogtinden over Reinevågen in Moskenes, Nordland, Norway, 2022 June.jpg](https://commons.wikimedia.org/wiki/File:Moltb%C3%A6rtinden_and_Breiflogtinden_over_Reinev%C3%A5gen_in_Moskenes%2C_Nordland%2C_Norway%2C_2022_June.jpg) — Ximonic (Simo Räsänen), CC BY-SA 4.0
+- p19-anaga.jpg: [Macizo de Anaga 01.jpg](https://commons.wikimedia.org/wiki/File:Macizo_de_Anaga_01.jpg) — H. Zell, CC BY-SA 3.0
+- p20-anaga-barrancos.jpg: [Macizo de Anaga 02.jpg](https://commons.wikimedia.org/wiki/File:Macizo_de_Anaga_02.jpg) — H. Zell, CC BY-SA 3.0
+- p21-anaga-laurisilva.jpg: [Parque rural de Anaga, Tenerife, España, 2022-01-09, DD 57-59 HDR.jpg](https://commons.wikimedia.org/wiki/File:Parque_rural_de_Anaga%2C_Tenerife%2C_Espa%C3%B1a%2C_2022-01-09%2C_DD_57-59_HDR.jpg) — Diego Delso, CC BY-SA 4.0
+- p22-anaga-teide.jpg: [Parque rural de Anaga, Tenerife, España, 2022-01-09, DD 69-71 HDR.jpg](https://commons.wikimedia.org/wiki/File:Parque_rural_de_Anaga%2C_Tenerife%2C_Espa%C3%B1a%2C_2022-01-09%2C_DD_69-71_HDR.jpg) — Diego Delso, CC BY-SA 4.0
+- p23-taborno.jpg: [Roque de Taborno - Tenerife 01.jpg](https://commons.wikimedia.org/wiki/File:Roque_de_Taborno_-_Tenerife_01.jpg) — H. Zell, CC BY-SA 3.0
+- p24-garajonay-bosque.jpg: [Bosque Encantado, Parque nacional de Garajonay, La Gomera, España, 2012-12-14, DD 14.jpg](https://commons.wikimedia.org/wiki/File:Bosque_Encantado%2C_Parque_nacional_de_Garajonay%2C_La_Gomera%2C_Espa%C3%B1a%2C_2012-12-14%2C_DD_14.jpg) — Diego Delso, CC BY-SA 3.0
+- p25-garajonay-fayal.jpg: [Bosque Encantado, Parque nacional de Garajonay, La Gomera, España, 2012-12-14, DD 16.jpg](https://commons.wikimedia.org/wiki/File:Bosque_Encantado%2C_Parque_nacional_de_Garajonay%2C_La_Gomera%2C_Espa%C3%B1a%2C_2012-12-14%2C_DD_16.jpg) — Diego Delso, CC BY-SA 3.0
+- p26-laguna-grande.jpg: [Moss on trees - Laguna Grande 02.jpg](https://commons.wikimedia.org/wiki/File:Moss_on_trees_-_Laguna_Grande_02.jpg) — H. Zell, CC BY-SA 3.0
+- p27-taburiente.jpg: [La Palma - Caldera de Taburiente Interior - 3.jpg](https://commons.wikimedia.org/wiki/File:La_Palma_-_Caldera_de_Taburiente_Interior_-_3.jpg) — imehling, CC BY-SA 3.0
+- p28-rio-taburiente.jpg: [La Palma - Rio de Taburiente - 2.jpg](https://commons.wikimedia.org/wiki/File:La_Palma_-_Rio_de_Taburiente_-_2.jpg) — imehling, CC BY-SA 3.0
+- p29-pinar-taburiente.jpg: [View on the Caldera de Taburiente 02.jpg](https://commons.wikimedia.org/wiki/File:View_on_the_Caldera_de_Taburiente_02.jpg) — H. Zell, CC BY-SA 3.0
+- p30-teno.jpg: [Macizo de Teno 01.jpg](https://commons.wikimedia.org/wiki/File:Macizo_de_Teno_01.jpg) — H. Zell, CC BY-SA 3.0
+- p31-chio.jpg: [20250708 Mirador de Chío 02.jpg](https://commons.wikimedia.org/wiki/File:20250708_Mirador_de_Ch%C3%ADo_02.jpg) — Flocci Nivis, CC BY 4.0
+- p32-dragos.jpg: [Los Dragos Gemelos - Breña Alta - La Palma 02.jpg](https://commons.wikimedia.org/wiki/File:Los_Dragos_Gemelos_-_Bre%C3%B1a_Alta_-_La_Palma_02.jpg) — H. Zell, CC BY-SA 3.0

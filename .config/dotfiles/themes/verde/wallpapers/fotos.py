@@ -43,6 +43,25 @@ PHOTOS = [
     ("p17-cornion", "Macizo del Corniòn.jpg", "Macizo del Cornión · Picos de Europa", 0.5),
     ("p18-reine", "Moltbærtinden and Breiflogtinden over Reinevågen in Moskenes, Nordland, Norway, 2022 June.jpg",
      "Reinevågen · Lofoten (Noruega)", 0.5),
+    # Canarias
+    ("p19-anaga", "Macizo de Anaga 01.jpg", "Macizo de Anaga · Tenerife", 0.5),
+    ("p20-anaga-barrancos", "Macizo de Anaga 02.jpg", "Barrancos de Anaga · Tenerife", 0.5),
+    ("p21-anaga-laurisilva", "Parque rural de Anaga, Tenerife, España, 2022-01-09, DD 57-59 HDR.jpg",
+     "Laurisilva · Parque rural de Anaga (Tenerife)", 0.5),
+    ("p22-anaga-teide", "Parque rural de Anaga, Tenerife, España, 2022-01-09, DD 69-71 HDR.jpg",
+     "Anaga con el Teide al fondo · Tenerife", 0.5),
+    ("p23-taborno", "Roque de Taborno - Tenerife 01.jpg", "Roque de Taborno · Anaga (Tenerife)", 0.5),
+    ("p24-garajonay-bosque", "Bosque Encantado, Parque nacional de Garajonay, La Gomera, España, 2012-12-14, DD 14.jpg",
+     "Bosque Encantado · Garajonay (La Gomera)", 0.5),
+    ("p25-garajonay-fayal", "Bosque Encantado, Parque nacional de Garajonay, La Gomera, España, 2012-12-14, DD 16.jpg",
+     "Fayal-brezal · Garajonay (La Gomera)", 0.5),
+    ("p26-laguna-grande", "Moss on trees - Laguna Grande 02.jpg", "Musgo en Laguna Grande · Garajonay (La Gomera)", 0.5),
+    ("p27-taburiente", "La Palma - Caldera de Taburiente Interior - 3.jpg", "Caldera de Taburiente · La Palma", 0.5),
+    ("p28-rio-taburiente", "La Palma - Rio de Taburiente - 2.jpg", "Río de Taburiente · La Palma", 0.5),
+    ("p29-pinar-taburiente", "View on the Caldera de Taburiente 02.jpg", "Pinar canario sobre la Caldera de Taburiente · La Palma", 0.5),
+    ("p30-teno", "Macizo de Teno 01.jpg", "Macizo de Teno · Tenerife", 0.5),
+    ("p31-chio", "20250708 Mirador de Chío 02.jpg", "Pinar y Teide desde el Mirador de Chío · Tenerife", 0.5),
+    ("p32-dragos", "Los Dragos Gemelos - Breña Alta - La Palma 02.jpg", "Los Dragos Gemelos · Breña Alta (La Palma)", 0.5),
 ]
 
 
