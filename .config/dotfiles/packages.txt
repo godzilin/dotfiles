@@ -41,3 +41,4 @@ inter-font
 ttf-nerd-fonts-symbols
 sassc
 papirus-icon-theme
+ttf-3270-nerd

@@ -1,0 +1,170 @@
+// Fósforo: a terminal status line along the bottom edge, like tmux or a 3270 operator information area
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 24,
+    "spacing": 0,
+
+"modules-left": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"],
+    "modules-center": ["clock"],
+    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/notifications", "custom/power"],
+
+    // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
+    "group/media": {
+        "orientation": "horizontal",
+        "modules": ["image#cover", "custom/media-prev", "mpris", "custom/media-next", "custom/media"]
+    },
+    "image#cover": {
+        "exec": "cat ~/.cache/nostromo/cover-path 2>/dev/null | grep . || echo /nonexistent",
+        "size": 20,
+        "interval": 5,
+        "signal": 8,
+        "on-click": "~/.config/hypr/scripts/media.sh"
+    },
+    "custom/media-prev": {
+        "exec": "echo 󰒮",
+        "exec-if": "playerctl status",
+        "interval": 2,
+        "on-click": "playerctl previous",
+        "tooltip": false
+    },
+    "mpris": {
+        "format": "{status_icon}",
+        "status-icons": { "playing": "󰏤", "paused": "󰐊" },
+        "tooltip": false
+    },
+    "custom/media-next": {
+        "exec": "echo 󰒭",
+        "exec-if": "playerctl status",
+        "interval": 2,
+        "on-click": "playerctl next",
+        "tooltip": false
+    },
+    "custom/media": {
+        "exec": "~/.config/waybar/scripts/media.py",
+        "restart-interval": 2,  // libplayerctl aborts the script if a player dies abruptly; respawn it
+        "return-type": "json",
+        "escape": false,
+        "on-click": "~/.config/hypr/scripts/media.sh"
+    },
+
+    // Weather (Open-Meteo): icon + °C; click for the full forecast
+    "custom/weather": {
+        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "return-type": "json",
+        "interval": 600,
+        "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+
+    // Bluetooth readout: click toggles power, right click opens the KDE Bluetooth settings
+    "bluetooth": {
+        "format": "<span color='#3f9147'>BT</span> {status}",
+        "format-on": "<span color='#3f9147'>BT</span> ON",
+        "format-off": "<span color='#3f9147'>BT</span> OFF",
+        "format-disabled": "<span color='#3f9147'>BT</span> OFF",
+        "format-connected": "<span color='#3f9147'>BT</span> {device_alias}",
+        "format-connected-battery": "<span color='#3f9147'>BT</span> {device_alias} {device_battery_percentage}%",
+        "max-length": 60,  // counts the colour markup too (~30 chars), so names up to ~30 fit
+        "tooltip-format": "{controller_alias} · {status}",
+        "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} · {device_battery_percentage}%",
+        "on-click": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on",
+        "on-click-right": "systemsettings kcm_bluetooth"
+    },
+
+    "custom/launcher": {
+        "format": "READY▮",
+        "on-click": "pkill fuzzel || fuzzel",
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+            "6": "6", "7": "7", "8": "8", "9": "9", "default": "·"
+        },
+        "persistent-workspaces": { "*": 4 },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 48,
+        "separate-outputs": true
+    },
+    "clock": {
+        "locale": "es_ES.utf8",
+        "format": "{:L%Y-%m-%d <span color='#a6ffad'>%H:%M:%S</span>}",
+        "interval": 1,
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/calendar.sh",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "months": "<span color='#a6ffad'><b>{}</b></span>",
+                "weekdays": "<span color='#3f9147'>{}</span>",
+                "today": "<span color='#33ff4d'><b>{}</b></span>"
+            }
+        }
+    },
+    "tray": { "icon-size": 14, "spacing": 8 },
+    "pulseaudio": {
+        "format": "<span color='#3f9147'>VOL</span> {volume}",
+        "format-muted": "<span color='#3f9147'>VOL</span> <span color='#ff5a4a'>MUTE</span>",
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5,
+        "tooltip-format": "{desc}"
+    },
+    "backlight": {
+        "format": "<span color='#3f9147'>LUM</span> {percent}"
+    },
+    "network": {
+        "format-wifi": "<span color='#3f9147'>NET</span> {essid}",
+        "format-ethernet": "<span color='#3f9147'>NET</span> ETH",
+        "format-disconnected": "<span color='#3f9147'>NET</span> <span color='#ff5a4a'>OFF</span>",
+        "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
+        "on-click": "systemsettings kcm_networkmanagement"
+    },
+    "power-profiles-daemon": {
+        "format": "<span color='#3f9147'>PWR</span> {icon}",
+        "format-icons": {
+            "default": "BAL",
+            "performance": "MAX",
+            "balanced": "BAL",
+            "power-saver": "ECO"
+        }
+    },
+    "battery": {
+        "states": { "warning": 25, "critical": 10 },
+        "format": "<span color='#3f9147'>BAT</span> {capacity}",
+        "format-charging": "<span color='#3f9147'>BAT</span> {capacity}<span color='#33ff4d'>+</span>",
+        "format-plugged": "<span color='#3f9147'>BAT</span> {capacity}<span color='#33ff4d'>=</span>",
+        "tooltip-format": "{timeTo}  ·  {power:.1f} W"
+    },
+    "custom/wallpaper": {
+        "format": "󰸉",
+        "on-click": "~/.config/hypr/scripts/wallpaper.sh",
+        "tooltip-format": "Fondo de pantalla"
+    },
+    "custom/notifications": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span color='#33ff4d'>●</span>",
+            "none": "○",
+            "dnd-notification": "<span color='#33ff4d'>◐</span>",
+            "dnd-none": "◐"
+        },
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "~/.config/hypr/scripts/powermenu.sh",
+        "tooltip": false
+    }
+}

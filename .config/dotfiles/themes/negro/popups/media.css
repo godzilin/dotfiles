@@ -1,0 +1,24 @@
+/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS */
+window { background: #040704; }
+* { font-family: "3270 Nerd Font Mono", monospace; color: #63cc6c; letter-spacing: 1px; }
+.head { font-size: 9pt; color: #3f9147; }
+.head-dot { color: #33ff4d; }
+.stripe-1 { background: #a6ffad; } .stripe-2 { background: #33ff4d; }
+.stripe-3 { background: #1fb836; } .stripe-4 { background: #127a22; }
+.cover { border: 1px solid #1a3a1d; border-radius: 0; background: #091209; }
+.title { font-family: "3270 Nerd Font", sans-serif; font-size: 13pt; font-weight: 600; color: #a6ffad; letter-spacing: 0; }
+.artist { font-size: 10pt; color: #63cc6c; }
+.album { font-size: 9pt; color: #3f9147; }
+.time { font-size: 9pt; color: #3f9147; }
+scale trough { background: #0f1f10; min-height: 4px; border-radius: 0; border: none; }
+scale highlight { background: #33ff4d; border-radius: 0; }
+scale slider { background: #a6ffad; min-width: 10px; min-height: 10px; border-radius: 0; margin: -4px; border: none; box-shadow: none; }
+button { background: transparent; border: none; box-shadow: none; border-radius: 0; padding: 4px 10px; }
+button label { font-size: 16pt; color: #63cc6c; }
+button:hover { background: #0f1f10; }
+button:hover label { color: #a6ffad; }
+button.main { background: #33ff4d; }
+button.main label { color: #000000; }
+button.main:hover { background: #c8ff5a; }
+button.on label { color: #33ff4d; }
+.vol-label { font-size: 9pt; color: #3f9147; }

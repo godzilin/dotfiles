@@ -1,0 +1,245 @@
+/* Fósforo for Firefox: a green phosphor terminal (copied from Nostromo, recoloured and squared).
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --n-bg0: #000000; --n-bg: #040704; --n-bg1: #091209; --n-bg2: #0f1f10; --n-line: #1a3a1d;
+  --n-faint: #275529; --n-muted: #3f9147; --n-sub: #63cc6c; --n-text: #a6ffad;
+  --n-yellow: #c8ff5a; --n-amber: #33ff4d; --n-orange: #8ce65a; --n-red: #ff5a4a;
+  --n-mono: "3270 Nerd Font Mono", "3270 Nerd Font Mono", monospace;
+  --n-sans: "3270 Nerd Font", sans-serif;
+  --n-radius: 0;
+
+  /* Theme variables: repaint whatever theme is active */
+  --lwt-accent-color: var(--n-bg0) !important;
+  --lwt-text-color: var(--n-sub) !important;
+  --lwt-header-image: none !important;
+  --lwt-additional-images: none !important;
+  --toolbar-bgcolor: var(--n-bg0) !important;
+  --toolbar-color: var(--n-text) !important;
+  --toolbarbutton-icon-fill: var(--n-muted) !important;
+  --toolbarbutton-hover-background: var(--n-bg2) !important;
+  --toolbarbutton-active-background: var(--n-line) !important;
+  --toolbarbutton-border-radius: 0 !important;
+  --toolbar-field-background-color: var(--n-bg1) !important;
+  --toolbar-field-color: var(--n-text) !important;
+  --toolbar-field-border-color: var(--n-line) !important;
+  --toolbar-field-focus-background-color: var(--n-bg) !important;
+  --toolbar-field-focus-color: var(--n-text) !important;
+  --toolbar-field-focus-border-color: var(--n-amber) !important;
+  --tab-selected-bgcolor: var(--n-amber) !important;
+  --tab-selected-textcolor: var(--n-bg0) !important;
+  --tab-hover-background-color: var(--n-bg1) !important;
+  --tab-border-radius: 0 !important;
+  --focus-outline-color: var(--n-amber) !important;
+  --chrome-content-separator-color: transparent !important;
+  --arrowpanel-background: var(--n-bg) !important;
+  --arrowpanel-color: var(--n-text) !important;
+  --arrowpanel-border-color: var(--n-line) !important;
+  --arrowpanel-border-radius: var(--n-radius) !important;
+  --panel-separator-color: var(--n-line) !important;
+  --urlbarView-highlight-background: var(--n-bg2) !important;
+  --urlbarView-highlight-color: var(--n-text) !important;
+  --urlbarView-action-color: var(--n-amber) !important;
+  --urlbarView-separator-color: var(--n-line) !important;
+  --sidebar-background-color: var(--n-bg0) !important;
+  --sidebar-text-color: var(--n-sub) !important;
+  --sidebar-border-color: var(--n-line) !important;
+  --color-accent-primary: var(--n-amber) !important;
+  --color-accent-primary-hover: var(--n-yellow) !important;
+  --color-accent-primary-active: var(--n-orange) !important;
+  --button-primary-bgcolor: var(--n-amber) !important;
+  --button-primary-color: var(--n-bg0) !important;
+  --toolbarseparator-color: var(--n-line) !important;
+}
+
+/* ── Frame ─────────────────────────────────────────────── */
+
+/* Hyprland draws the window border; Firefox's own min/max/close buttons are noise */
+.titlebar-buttonbox-container, .titlebar-spacer { display: none !important; }
+
+#navigator-toolbox {
+  background: var(--n-bg0) !important;
+  border-bottom: none !important;
+  /* four phosphor intensities along the very top edge */
+  border-top: 4px solid transparent !important;
+  border-image: linear-gradient(90deg,
+      #a6ffad 0 25%, #33ff4d 25% 50%, #1fb836 50% 75%, #127a22 75% 100%) 1 !important;
+  border-image-width: 4px 0 0 0 !important;
+}
+#TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* The page: a screen inset in a bezel, rounded like the Hyprland windows */
+#tabbrowser-tabbox { background: var(--n-bg0) !important; }
+#tabbrowser-tabpanels {
+  background: var(--n-bg0) !important;
+  padding: 0 8px 8px 8px !important;
+}
+.browserStack > browser, #tabbrowser-tabpanels browser[type="content"] {
+  border-radius: var(--n-radius) !important;
+  outline: 1px solid var(--n-line) !important;
+  outline-offset: -1px;
+}
+/* Sidebar sits in the same bezel */
+#sidebar-box { background: var(--n-bg0) !important; padding-bottom: 8px !important; }
+#sidebar-splitter { border: none !important; background: var(--n-bg0) !important; width: 6px !important; }
+
+/* ── Tabs: numbered tape labels ────────────────────────── */
+
+#tabbrowser-arrowscrollbox { counter-reset: tape; }
+.tabbrowser-tab { counter-increment: tape; padding-inline: 2px !important; }
+/* only while [fadein]: closing a tab drops it, so Firefox can shrink the tab away and the rest slide left */
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: 220px !important; }
+
+.tab-background {
+  margin-block: 6px !important;
+  border: 1px solid var(--n-line) !important;
+  box-shadow: none !important;
+  background: var(--n-bg) !important;
+}
+.tabbrowser-tab:hover .tab-background:not([selected]) { background: var(--n-bg1) !important; border-color: var(--n-faint) !important; }
+.tab-background:is([selected], [multiselected]) {
+  background: var(--n-amber) !important;
+  border-color: var(--n-amber) !important;
+}
+
+.tab-label {
+  font-family: var(--n-mono) !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--n-sub) !important;
+}
+.tabbrowser-tab[selected] .tab-label { color: var(--n-bg0) !important; font-weight: 600 !important; }
+
+/* tape number in front of every tab: 01, 02, 03… */
+.tabbrowser-tab:not([pinned]) .tab-content::before {
+  content: counter(tape, decimal-leading-zero);
+  font: 600 10px var(--n-mono);
+  color: var(--n-faint);
+  margin-inline-end: 8px;
+  letter-spacing: 0.05em;
+}
+.tabbrowser-tab[selected] .tab-content::before { color: var(--n-bg2); }
+
+/* Favicons muted until selected; close button only on hover */
+.tab-icon-image { filter: grayscale(1) opacity(0.55); }
+.tabbrowser-tab:is([selected], :hover) .tab-icon-image { filter: none; }
+.tabbrowser-tab:not(:hover) .tab-close-button { visibility: collapse !important; }
+.tabbrowser-tab[selected] .tab-close-button { fill: var(--n-bg0) !important; }
+.tab-throbber[busy]::before { fill: var(--n-amber) !important; }
+.tabbrowser-tab[selected] .tab-throbber[busy]::before { fill: var(--n-bg0) !important; }
+.tab-secondary-label { font-family: var(--n-mono) !important; text-transform: uppercase; font-size: 9px !important; }
+
+/* Pinned tabs as small square buttons */
+.tabbrowser-tab[pinned] .tab-background { border-radius: 0 !important; }
+
+/* ── Toolbar ───────────────────────────────────────────── */
+
+#nav-bar { padding: 2px 6px 6px !important; box-shadow: none !important; border: none !important; }
+toolbarbutton .toolbarbutton-icon { transition: fill 120ms ease; }
+#nav-bar toolbarbutton:hover > .toolbarbutton-icon,
+#nav-bar toolbarbutton:hover > .toolbarbutton-badge-stack { fill: var(--n-text) !important; }
+
+/* Address bar: a terminal prompt */
+#urlbar .urlbar-background {
+  border-radius: 0 !important;
+  border: 1px solid var(--n-line) !important;
+  box-shadow: none !important;
+}
+#urlbar[focused] .urlbar-background { border-color: var(--n-amber) !important; }
+#urlbar-input {
+  font-family: var(--n-mono) !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.02em;
+}
+#urlbar-input::placeholder { color: var(--n-faint) !important; text-transform: uppercase; letter-spacing: 0.12em; }
+#urlbar .urlbar-input-container::before {
+  content: "›";
+  font: 700 16px var(--n-mono);
+  color: var(--n-amber);
+  align-self: center;
+  margin-inline: 6px 2px;
+}
+/* Dropdown results */
+.urlbarView { font-family: var(--n-mono) !important; }
+.urlbarView-row { border-radius: 0 !important; }
+.urlbarView-row[selected] { box-shadow: inset 3px 0 0 var(--n-amber) !important; }
+.urlbarView-url { color: var(--n-amber) !important; }
+.search-one-offs { border-top: 1px solid var(--n-line) !important; }
+
+#star-button[starred], #pageAction-urlbar-bookmark[starred] { fill: var(--n-amber) !important; }
+#identity-box, #tracking-protection-icon-container { opacity: 0.7; }
+
+/* Bookmarks: plain uppercase labels, no folder icons */
+#PersonalToolbar { padding: 0 8px 4px !important; }
+toolbarbutton.bookmark-item {
+  font-family: var(--n-mono) !important;
+  font-size: 10.5px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--n-muted) !important;
+  padding: 3px 8px !important;
+  border-radius: 0 !important;
+}
+toolbarbutton.bookmark-item:hover { color: var(--n-text) !important; background: var(--n-bg2) !important; }
+toolbarbutton.bookmark-item[container] > .toolbarbutton-icon { display: none !important; }
+
+/* ── Menus and panels ──────────────────────────────────── */
+
+/* Context menus and panels: Firefox paints them with the GTK system colours (Menu/MenuText) unless overridden here */
+menupopup, panel {
+  --panel-background-color: var(--n-bg) !important;
+  --panel-text-color: var(--n-text) !important;
+  --panel-border-color: var(--n-line) !important;
+  --panel-border-radius: var(--n-radius) !important;
+  --panel-separator-color: var(--n-line) !important;
+}
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) {
+  background-color: var(--n-bg2) !important;
+  color: var(--n-text) !important;
+  box-shadow: inset 3px 0 var(--n-amber);
+}
+menupopup > :is(menu, menuitem)[disabled] { color: var(--n-faint) !important; }
+menupopup > menuseparator::before { border-color: var(--n-line) !important; }
+menupopup .menu-accel, menupopup .menu-text[accesskey] + .menu-accel-container { color: var(--n-muted) !important; }
+menupopup, menupopup menu, menupopup menuitem { font-family: var(--n-sans) !important; }
+.panel-header > h1, .subviewbutton-iconic[label] .toolbarbutton-text,
+#appMenu-fxa-label2, .panel-subview-body .subview-subheader {
+  letter-spacing: 0.02em;
+}
+.panel-header > h1 {
+  font-family: var(--n-mono) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em !important;
+  font-size: 11px !important;
+  color: var(--n-amber) !important;
+}
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 0 !important; }
+
+/* Link preview in the bottom corner: a tape-deck readout */
+#statuspanel-label {
+  font-family: var(--n-mono) !important;
+  font-size: 11px !important;
+  background: var(--n-bg) !important;
+  color: var(--n-amber) !important;
+  border: 1px solid var(--n-line) !important;
+  border-radius: 0 !important;
+  margin: 0 0 12px 12px !important;
+  padding: 3px 8px !important;
+}
+
+/* Find bar */
+.findbar-container { font-family: var(--n-mono) !important; }
+findbar { background: var(--n-bg0) !important; border-top: 1px solid var(--n-line) !important; }
+
+/* Menu bar (Alt): the open menu was GTK blue */
+#main-menubar > menu[_moz-menuactive] {
+  background-color: var(--n-bg2) !important;
+  color: var(--n-text) !important;
+  border-color: var(--n-amber) !important;
+  box-shadow: inset 0 -2px var(--n-amber) !important;
+}
+#main-menubar > menu { border-radius: 0 5px 0 0; }

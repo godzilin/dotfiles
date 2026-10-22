@@ -1,0 +1,43 @@
+{
+  "name": "Fósforo",
+  "description": "Terminal de fósforo verde: negro puro, monocromo, todo en IBM 3270; la barra es una línea de estado",
+  "palette": {
+    "bg0": "#000000",
+    "bg": "#040704",
+    "bg1": "#091209",
+    "bg2": "#0f1f10",
+    "line": "#1a3a1d",
+    "faint": "#275529",
+    "muted": "#3f9147",
+    "sub": "#63cc6c",
+    "text": "#a6ffad",
+    "accent": "#33ff4d",
+    "yellow": "#c8ff5a",
+    "orange": "#8ce65a",
+    "red": "#ff5a4a",
+    "green": "#5aff8c",
+    "teal": "#4dd9a6",
+    "blue": "#59c8a0"
+  },
+  "stripes": [
+    "#a6ffad",
+    "#33ff4d",
+    "#1fb836",
+    "#127a22"
+  ],
+  "font_ui": "3270 Nerd Font",
+  "font_mono": "3270 Nerd Font Mono",
+  "font_size": 11,
+  "gtk_theme": "adw-gtk3-dark",
+  "color_scheme": "prefer-dark",
+  "icons": "Papirus-Verde",
+  "cursor": "capitaine-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Fosforo",
+  "buttons": ":close",
+  "daemons": [],
+  "wallpaper": {
+    "title": "FONDOS",
+    "random": "ALEATORIO"
+  }
+}

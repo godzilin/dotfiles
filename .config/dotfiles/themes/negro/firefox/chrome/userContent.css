@@ -1,0 +1,61 @@
+/* Fósforo for Firefox's own pages */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #000000 !important;
+    --newtab-background-color-secondary: #091209 !important;
+    --newtab-text-primary-color: #a6ffad !important;
+    --background-color-canvas: #040704 !important;
+    --background-color-box: #091209 !important;
+    --text-color: #a6ffad !important;
+    --text-color-deemphasized: #3f9147 !important;
+    --border-color: #1a3a1d !important;
+    --color-accent-primary: #33ff4d !important;
+    --color-accent-primary-hover: #c8ff5a !important;
+    --color-accent-primary-active: #8ce65a !important;
+    --link-color: #33ff4d !important;
+    --focus-outline-color: #33ff4d !important;
+    scrollbar-color: #1a3a1d transparent;
+  }
+  body { background-color: var(--background-color-canvas) !important; }
+}
+
+/* New tab / home: the wallpaper's dot grid and label instead of the Firefox logo */
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background-color: #000000 !important;
+    background-image: radial-gradient(circle, #0b170b 1.2px, transparent 1.4px) !important;
+    background-size: 48px 48px !important;
+    background-position: 24px 24px !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper::before {
+    content: "󰯈  THINKPAD P14S GEN 5";
+    display: block;
+    text-align: center;
+    margin-bottom: 28px;
+    font: 600 13px "3270 Nerd Font Mono", "3270 Nerd Font Mono", monospace;
+    letter-spacing: 0.2em;
+    color: #33ff4d;
+  }
+  .search-wrapper::after {  /* tape stripes under the search box */
+    content: "";
+    display: block;
+    width: 160px;
+    height: 4px;
+    margin: 26px auto 0;
+    background: linear-gradient(90deg, #a6ffad 0 25%, #33ff4d 25% 50%, #1fb836 50% 75%, #127a22 75%);
+  }
+  /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
+  .search-inner-wrapper moz-urlbar .urlbar-background {
+    background-color: #040704 !important;
+    border: 1px solid #1a3a1d !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #33ff4d !important; }
+  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "3270 Nerd Font Mono", monospace !important; }
+  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #040704 !important; border-radius: 0 !important; }
+  .top-site-outer .title { font-family: "3270 Nerd Font Mono", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #3f9147 !important; }
+}

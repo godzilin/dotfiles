@@ -1,0 +1,41 @@
+/* Default swaync theme + Fósforo palette on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(4, 7, 4, 0.94);
+  --noti-border-color: #1a3a1d;
+  --noti-bg: 4, 7, 4;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #000000;
+  --noti-bg-hover: #091209;
+  --noti-bg-focus: rgba(15, 31, 16, 0.8);
+  --noti-close-bg: #0f1f10;
+  --noti-close-bg-hover: #1a3a1d;
+  --text-color: #a6ffad;
+  --text-color-disabled: #3f9147;
+  --bg-selected: #33ff4d;
+  --border-radius: 0;
+  --notification-icon-size: 48px;
+  --notification-shadow: none;
+  --font-size-body: 15px;
+  --font-size-summary: 15px;
+}
+
+* {
+  font-family: "3270 Nerd Font", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-family: "3270 Nerd Font Mono", monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Phosphor strip on the left of every notification */
+.notification-row .notification-background .notification {
+  border-left: 3px solid #33ff4d;
+}
+.notification-row .notification-background .notification.critical {
+  border-left-color: #ff5a4a;
+}

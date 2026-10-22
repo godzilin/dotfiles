@@ -1,0 +1,73 @@
+/* Fósforo palette: one green phosphor, pure black */
+@define-color bg0   #000000;
+@define-color bg    #040704;
+@define-color bg2   #0f1f10;
+@define-color line  #1a3a1d;
+@define-color faint #275529;
+@define-color muted #3f9147;
+@define-color sub   #63cc6c;
+@define-color text  #a6ffad;
+@define-color phos  #33ff4d;
+@define-color red   #ff5a4a;
+
+* {
+    font-family: "3270 Nerd Font Mono", monospace;
+    font-size: 15px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    box-shadow: none;
+}
+
+window#waybar {
+    background: @bg0;
+    border-top: 1px solid @line;
+    color: @sub;
+}
+
+tooltip { background: @bg0; border: 1px solid @phos; }
+tooltip label { color: @text; }
+
+/* Every readout is a field of the status line, split by a thin rule */
+#custom-launcher, #window, #clock, #tray, #pulseaudio, #backlight, #network, #bluetooth,
+#power-profiles-daemon, #battery, #custom-wallpaper, #custom-notifications, #custom-power, #custom-weather {
+    padding: 0 10px;
+}
+#tray, #pulseaudio, #backlight, #network, #bluetooth, #power-profiles-daemon, #battery,
+#custom-wallpaper, #custom-notifications, #custom-power, #custom-weather, #image.cover {
+    border-left: 1px solid @line;
+}
+
+/* Inverse video block, like the cursor */
+#custom-launcher { background: @phos; color: @bg0; font-weight: bold; }
+#custom-launcher:hover { background: @text; }
+
+#workspaces { padding: 0 4px; }
+#workspaces button { color: @muted; padding: 0 6px; background: transparent; }
+#workspaces button.empty  { color: @faint; }
+#workspaces button.active { background: @text; color: @bg0; }
+#workspaces button.urgent { background: @red; color: @bg0; }
+#workspaces button:hover  { background: @bg2; color: @text; }
+
+#window { color: @muted; }
+window#waybar.empty #window { padding: 0; }
+
+#clock { color: @muted; }
+
+#pulseaudio, #backlight, #network, #power-profiles-daemon, #battery, #bluetooth, #custom-weather { color: @text; }
+#pulseaudio.muted, #bluetooth.off, #bluetooth.disabled, #custom-weather.offline { color: @muted; }
+#bluetooth.connected { color: @phos; }
+#battery.warning:not(.charging)  { color: @phos; }
+#battery.critical:not(.charging) { background: @red; color: @bg0; }
+
+#custom-notifications, #custom-wallpaper, #custom-power { color: @muted; }
+#custom-wallpaper:hover, #custom-notifications:hover { color: @text; }
+#custom-power:hover { background: @red; color: @bg0; }
+
+/* Now playing */
+#image.cover { padding: 0 2px 0 10px; }
+#custom-media-prev, #mpris, #custom-media-next { padding: 0 4px; color: @sub; }
+#custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @text; }
+#mpris.playing { color: @phos; }
+#custom-media { padding: 0 10px 0 6px; color: @text; }
+#custom-media.paused { color: @muted; }

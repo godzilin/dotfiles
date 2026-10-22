@@ -15,6 +15,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
 | `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
+| `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
@@ -104,6 +105,21 @@ treinta fotos de Wikimedia Commons (`wallpapers/fotos.py`: medio Canarias —Ana
 Taburiente, pinar canario, Teide, Dragos Gemelos— más laurisilva de Madeira, hayedos, secuoyas, Pirineos, Picos de
 Europa, fiordos...) con el lugar, autor y licencia en una esquina; créditos en
 `wallpapers/FOTOS.md`. Primera vez: `~/.config/dotfiles/themes/verde/install.sh`.
+
+## negro: Fósforo
+
+Una terminal de mainframe con fósforo verde P1: negro puro, un solo verde en varias intensidades (el rojo solo para
+errores) y todo en la fuente IBM 3270, también la interfaz. Ventanas cuadradas de borde fino, sin sombras, sin blur
+y sin animaciones: la pantalla se redibuja y ya. La barra va abajo como la línea de estado de tmux o de un 3270
+(`READY▮` abre el lanzador, escritorio activo en vídeo inverso, reloj con segundos); el lanzador es un prompt
+`READY.` con selección invertida, y el bloqueo es una pantalla de logon (`USERID ===>`, `PASSWORD ===>`).
+Firefox, Thunar, GTK y Qt van con la misma paleta, y las franjas del Nostromo pasan a ser cuatro intensidades de verde.
+
+![Escritorio](../.config/dotfiles/themes/negro/screenshots/desktop.png)
+
+Fuente `ttf-3270-nerd` (repos oficiales), carpetas verdes (Papirus-Verde, la del tema verde), cursor Capitaine.
+Fondos generados por código con brillo de fósforo y líneas de barrido (`wallpapers/fosforo.py`: READY, volcado
+hexadecimal del propio script, osciloscopio, radar y terreno vectorial). Primera vez: `~/.config/dotfiles/themes/negro/install.sh`.
 
 ## Cómo están organizados los temas
 
