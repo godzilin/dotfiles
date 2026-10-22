@@ -22,14 +22,18 @@ USER = (subprocess.run(["getent", "passwd", os.environ.get("USER", "")], capture
         .stdout.split(":")[4:5] or [""])[0].split(",")[0] or os.environ.get("USER", "")
 
 CSS = b"""
+window.start-overlay { background: transparent; }
 .start-panel { background: #c0c0c0; border-style: solid; border-width: 1px 2px 2px 1px;
                border-color: #dfdfdf #000000 #000000 #dfdfdf; padding: 1px; }
 .start-inner { border-style: solid; border-width: 1px; border-color: #ffffff #808080 #808080 #ffffff; }
 button.start-item { background: #c0c0c0; background-image: none; border: none; border-radius: 0; box-shadow: none;
                     padding: 3px 6px 3px 4px; min-height: 30px; outline: none; }
-button.start-item:hover, button.start-item.open { background: #000080; }
+button.start-item.small { padding: 2px 6px 2px 4px; min-height: 18px; }
+button.start-item:hover, button.start-item:focus, button.start-item.open { background: #000080; }
 button.start-item label { color: #000000; font-size: 16px; }
-button.start-item:hover label, button.start-item.open label { color: #ffffff; }
+button.start-item.small label { font-size: 13px; }
+button.start-item:hover label, button.start-item:focus label, button.start-item.open label { color: #ffffff; }
+button.start-item:disabled label { color: #808080; }
 .start-sep { min-height: 2px; margin: 2px 2px; border-top: 1px solid #808080; border-bottom: 1px solid #ffffff; }
 """
 
@@ -46,6 +50,7 @@ CATEGORIES = [  # (freedesktop main category, folder name, icon)
     ("Settings", "Configuración", "preferences-desktop"),
     ("System", "Herramientas del sistema", "applications-system"),
 ]
+HOVER_MS = 250  # how long the pointer rests on a folder before it opens, as in Windows
 
 
 def spawn(*argv):
@@ -58,78 +63,48 @@ def css():
     Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), p, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
 
-def menu_item(label, icon=None, action=None, submenu=None):
-    item = Gtk.MenuItem()
-    box = Gtk.Box(spacing=6)
-    if icon is not None:
-        img = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.MENU) if isinstance(icon, Gio.Icon) \
-            else Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.MENU)
-        img.set_pixel_size(16)
-        box.pack_start(img, False, False, 0)
-    box.pack_start(Gtk.Label(label=label, xalign=0), True, True, 0)
-    item.add(box)
-    if submenu is not None:
-        item.set_submenu(submenu)
-    if action is not None:
-        item.connect("activate", lambda *_: (action(), Gtk.main_quit()))
-    return item
-
+# A menu is a list of entries: None (separator) or (label, icon, target), where target is a callable (run it and
+# close), a list (a submenu) or None (a greyed-out line). icon is an icon name or a Gio.Icon.
 
 def programs_menu():
     groups = {}
     for app in Gio.AppInfo.get_all():
-        if not app.should_show() or not isinstance(app, Gio.DesktopAppInfo):
+        if not app.should_show() or not app.get_id():
             continue
         cats = (app.get_categories() or "").split(";")
         key = next((c for c, _, _ in CATEGORIES if c in cats or (c == "AudioVideo" and {"Audio", "Video"} & set(cats))),
                    "Other")
         groups.setdefault(key, []).append(app)
-    menu = Gtk.Menu()
     folders = [(name, icon, groups.pop(c)) for c, name, icon in CATEGORIES if c in groups]
     if "Other" in groups:
         folders.append(("Otros", "applications-other", groups.pop("Other")))
-    for name, icon, apps in folders:
-        sub = Gtk.Menu()
-        for app in sorted(apps, key=lambda a: a.get_display_name().lower()):
-            sub.append(menu_item(app.get_display_name(), app.get_icon() or "application-x-executable",
-                                 lambda a=app: spawn("gtk-launch", a.get_id())))
-        menu.append(menu_item(name, icon, submenu=sub))
-    return menu
+    return [(name, icon, [(a.get_display_name(), a.get_icon() or "application-x-executable",
+                           lambda a=a: spawn("gtk-launch", a.get_id()))
+                          for a in sorted(apps, key=lambda a: a.get_display_name().lower())])
+            for name, icon, apps in folders]
 
 
 def documents_menu():
-    menu = Gtk.Menu()
-    menu.append(menu_item("Mis documentos", "folder-documents", lambda: spawn("xdg-open", os.path.join(HOME, "Documents"))))
-    menu.append(Gtk.SeparatorMenuItem())
     items = [i for i in Gtk.RecentManager.get_default().get_items() if i.exists()]
     items.sort(key=lambda i: i.get_modified(), reverse=True)
-    for info in items[:12]:
-        menu.append(menu_item(info.get_display_name(), info.get_gicon(), lambda u=info.get_uri(): spawn("xdg-open", u)))
-    if not items:
-        empty = menu_item("(Vacío)")
-        empty.set_sensitive(False)
-        menu.append(empty)
-    return menu
+    recent = [(i.get_display_name(), i.get_gicon(), lambda u=i.get_uri(): spawn("xdg-open", u)) for i in items[:12]]
+    return [("Mis documentos", "folder-documents", lambda: spawn("xdg-open", os.path.join(HOME, "Documents"))),
+            None] + (recent or [("(Vacío)", None, None)])
 
 
 def settings_menu():
-    menu = Gtk.Menu()
-    for label, icon, argv in [
+    return [(label, icon, lambda a=argv: spawn(*a)) for label, icon, argv in [
         ("Panel de control", "preferences-system", ["systemsettings"]),
         ("Pantalla", "preferences-desktop-display", ["systemsettings", "kcm_kscreen"]),
         ("Red", "network-workgroup", ["systemsettings", "kcm_networkmanagement"]),
         ("Sonido", "audio-volume-high", ["pavucontrol"]),
         ("Bluetooth", "bluetooth-active", ["systemsettings", "kcm_bluetooth"]),
-    ]:
-        menu.append(menu_item(label, icon, lambda a=argv: spawn(*a)))
-    return menu
+    ]]
 
 
 def search_menu():
-    menu = Gtk.Menu()
-    menu.append(menu_item("Archivos o carpetas...", "system-search", lambda: spawn("thunar", HOME)))
-    menu.append(menu_item("Programas...", "applications-other", lambda: spawn("fuzzel")))
-    return menu
+    return [("Archivos o carpetas...", "system-search", lambda: spawn("thunar", HOME)),
+            ("Programas...", "applications-other", lambda: spawn("fuzzel"))]
 
 
 class Banner(Gtk.DrawingArea):
@@ -157,88 +132,171 @@ class Banner(Gtk.DrawingArea):
 
 
 class StartMenu(Gtk.Window):
+    """One full-screen transparent overlay surface holding the menu and every open submenu as plain widgets.
+    No xdg_popup grabs (with one open, Hyprland sends all pointer events to the popup, so GTK menus could neither
+    switch folders on hover nor tell a click on another folder from a click outside): here a click on the empty
+    area closes everything, and the exclusive keyboard makes Esc and the arrows work without clicking first."""
+
     def __init__(self):
         super().__init__()
+        self.get_style_context().add_class("start-overlay")
+        visual = self.get_screen().get_rgba_visual()
+        if visual is not None:
+            self.set_visual(visual)
+        self.set_app_paintable(True)
         GtkLayerShell.init_for_window(self)
         GtkLayerShell.set_namespace(self, "win95-start")
         GtkLayerShell.set_layer(self, GtkLayerShell.Layer.OVERLAY)
-        GtkLayerShell.set_anchor(self, GtkLayerShell.Edge.BOTTOM, True)
-        GtkLayerShell.set_anchor(self, GtkLayerShell.Edge.LEFT, True)
-        GtkLayerShell.set_margin(self, GtkLayerShell.Edge.BOTTOM, TASKBAR - 2)
-        GtkLayerShell.set_margin(self, GtkLayerShell.Edge.LEFT, 2)
-        GtkLayerShell.set_keyboard_mode(self, GtkLayerShell.KeyboardMode.ON_DEMAND)
-        self.open_menu = None
+        for edge in (GtkLayerShell.Edge.TOP, GtkLayerShell.Edge.BOTTOM, GtkLayerShell.Edge.LEFT, GtkLayerShell.Edge.RIGHT):
+            GtkLayerShell.set_anchor(self, edge, True)
+        GtkLayerShell.set_exclusive_zone(self, -1)  # cover the taskbar too: clicking it also closes the menu
+        GtkLayerShell.set_keyboard_mode(self, GtkLayerShell.KeyboardMode.EXCLUSIVE)
 
-        outer = Gtk.Box(); outer.get_style_context().add_class("start-panel")
-        inner = Gtk.Box(); inner.get_style_context().add_class("start-inner")
-        outer.add(inner)
-        inner.pack_start(Banner(), False, False, 0)
-        items = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
-        inner.pack_start(items, True, True, 0)
-        self.add(outer)
+        self.layers = Gtk.Overlay()
+        catcher = Gtk.EventBox(visible_window=False)  # the empty area: a click there closes the menu
+        catcher.connect("button-press-event", lambda *_: Gtk.main_quit())
+        self.layers.add(catcher)
+        self.add(self.layers)
+        self.levels = []  # open submenus: (panel, folder button that opened it)
+        self.pending = None  # hover timer
 
-        entries = [
-            ("_Programas", "applications-other", programs_menu),
-            ("_Documentos", "folder-documents", documents_menu),
-            ("_Configuración", "control-center2", settings_menu),
-            ("_Buscar", "system-search", search_menu),
+        main = self.panel([
+            ("_Programas", "applications-other", programs_menu()),
+            ("_Documentos", "folder-documents", documents_menu()),
+            ("_Configuración", "control-center2", settings_menu()),
+            ("_Buscar", "system-search", search_menu()),
             ("Ay_uda", "help", lambda: spawn("xdg-open", os.path.join(HOME, ".config/hypr/README.md"))),
             ("_Ejecutar...", "system-run", lambda: spawn(sys.executable, __file__, "run")),
             None,
             (f"Cerrar la _sesión de {USER}...", "system-log-out", lambda: spawn(sys.executable, __file__, "logout")),
             ("_Apagar el sistema...", "system-shutdown", lambda: spawn(sys.executable, __file__, "shutdown")),
-        ]
-        for entry in entries:
-            if entry is None:
-                sep = Gtk.Box(); sep.get_style_context().add_class("start-sep")
-                items.pack_start(sep, False, False, 0)
-                continue
-            label, icon, target = entry
-            items.pack_start(self.item(label, icon, target), False, False, 0)
+        ], level=0, banner=True)
+        main.set_halign(Gtk.Align.START)
+        main.set_valign(Gtk.Align.END)
+        main.set_margin_start(2)
+        main.set_margin_bottom(TASKBAR - 2)
+        self.layers.add_overlay(main)
 
-        self.connect("key-press-event", lambda _w, e: e.keyval == Gdk.KEY_Escape and Gtk.main_quit())
-        self.connect("focus-out-event", lambda *_: GLib.timeout_add(150, self.maybe_close))
+        self.connect("key-press-event", self.key)
         self.connect("destroy", Gtk.main_quit)
 
-    def item(self, label, icon, target):
+    def panel(self, entries, level, banner=False):
+        """A bevelled box of items; long lists wrap into columns like Windows does."""
+        outer = Gtk.Box(); outer.get_style_context().add_class("start-panel")
+        inner = Gtk.Box(); inner.get_style_context().add_class("start-inner")
+        outer.add(inner)
+        if banner:
+            inner.pack_start(Banner(), False, False, 0)
+        grid = Gtk.Grid(orientation=Gtk.Orientation.VERTICAL)
+        inner.pack_start(grid, True, True, 0)
+        screen_h = Gdk.Display.get_default().get_monitor(0).get_geometry().height
+        rows = max(1, (screen_h - TASKBAR - 20) // 24)
+        for n, entry in enumerate(entries):
+            if entry is None:
+                w = Gtk.Box(); w.get_style_context().add_class("start-sep")
+            else:
+                w = self.item(*entry, level=level, small=not banner)
+            grid.attach(w, n // rows, n % rows, 1, 1)
+        stop = Gtk.EventBox(visible_window=False)  # presses on borders, banner and separators must not reach the catcher
+        stop.connect("button-press-event", lambda *_: True)
+        stop.add(outer)
+        stop.show_all()
+        return stop
+
+    def item(self, label, icon, target, level, small):
         b = Gtk.Button(relief=Gtk.ReliefStyle.NONE)
         b.get_style_context().add_class("start-item")
-        box = Gtk.Box(spacing=10)
-        img = Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.DND)
-        img.set_pixel_size(32)
-        box.pack_start(img, False, False, 0)
-        lab = Gtk.Label(xalign=0, use_underline=True, label=label)
-        lab.set_size_request(150, -1)
+        if small:
+            b.get_style_context().add_class("small")
+        box = Gtk.Box(spacing=6 if small else 10)
+        size = 16 if small else 32
+        if icon is not None:
+            img = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.MENU) if isinstance(icon, Gio.Icon) \
+                else Gtk.Image.new_from_icon_name(icon, Gtk.IconSize.DND)
+            img.set_pixel_size(size)
+            box.pack_start(img, False, False, 0)
+        else:
+            box.pack_start(Gtk.Box(width_request=size), False, False, 0)
+        lab = Gtk.Label(xalign=0, use_underline=not small, label=label)
+        lab.set_size_request(150 if not small else 120, -1)
         box.pack_start(lab, True, True, 0)
-        builds_menu = target in (programs_menu, documents_menu, settings_menu, search_menu)
-        if builds_menu:
+        b.add(box)
+        b.folder = isinstance(target, list)
+        if b.folder:
             box.pack_end(Gtk.Label(label="▸"), False, False, 0)
-            b.connect("clicked", lambda w: self.popup(w, target()))
-            b.connect("enter-notify-event", lambda w, _e: GLib.timeout_add(250, self.hover_popup, w, target))
+            b.connect("clicked", lambda w: self.open(w, target, level + 1))
+        elif target is None:
+            b.set_sensitive(False)
         else:
             b.connect("clicked", lambda *_: (target(), Gtk.main_quit()))
-        b.add(box)
+        b.connect("enter-notify-event", lambda w, _e: self.hover(w, target, level))
+        b.connect("leave-notify-event", lambda *_: self.cancel_hover())
         return b
 
-    def hover_popup(self, w, target):
-        if w.get_state_flags() & Gtk.StateFlags.PRELIGHT and (self.open_menu is None or self.open_menu[0] is not w):
-            self.popup(w, target())
+    def hover(self, button, target, level):
+        self.cancel_hover()
+        self.pending = GLib.timeout_add(HOVER_MS, self.hovered, button, target, level)
+
+    def cancel_hover(self):
+        if self.pending:
+            GLib.source_remove(self.pending)
+            self.pending = None
+
+    def hovered(self, button, target, level):
+        self.pending = None
+        if button.folder:
+            self.open(button, target, level + 1)
+        else:
+            self.close_from(level)  # resting on a plain item closes the deeper submenus
         return False
 
-    def popup(self, widget, menu):
-        if self.open_menu:
-            self.open_menu[1].popdown()
-        menu.show_all()
-        widget.get_style_context().add_class("open")
-        menu.connect("deactivate", lambda *_: (widget.get_style_context().remove_class("open"),
-                                               setattr(self, "open_menu", None)))
-        self.open_menu = (widget, menu)
-        menu.popup_at_widget(widget, Gdk.Gravity.NORTH_EAST, Gdk.Gravity.NORTH_WEST, None)
+    def open(self, button, entries, level):
+        """Show entries as submenu number `level` next to button (no-op if it is already the one open there)."""
+        if len(self.levels) >= level and self.levels[level - 1][1] is button:
+            return
+        self.close_from(level - 1)
+        panel = self.panel(entries, level)
+        x, y = button.translate_coordinates(self.layers, 0, 0)
+        _, nat = panel.get_preferred_size()
+        width, height = self.layers.get_allocated_width(), self.layers.get_allocated_height()
+        x = min(x + button.get_allocated_width() - 2, width - nat.width)
+        y = max(0, min(y - 3, height - TASKBAR - nat.height))  # grow upwards when it does not fit
+        panel.set_halign(Gtk.Align.START)
+        panel.set_valign(Gtk.Align.START)
+        panel.set_margin_start(x)
+        panel.set_margin_top(y)
+        self.layers.add_overlay(panel)
+        button.get_style_context().add_class("open")
+        self.levels.append((panel, button))
 
-    def maybe_close(self):
-        if self.open_menu is None and not self.is_active():
-            Gtk.main_quit()
-        return False
+    def close_from(self, level):
+        """Close the submenus deeper than `level` (0 = all of them)."""
+        while len(self.levels) > level:
+            panel, button = self.levels.pop()
+            button.get_style_context().remove_class("open")
+            panel.destroy()
+
+    def key(self, _w, e):
+        focus = self.get_focus()
+        if e.keyval == Gdk.KEY_Escape:
+            if not self.levels:
+                Gtk.main_quit()
+            else:
+                _, button = self.levels[-1]
+                self.close_from(len(self.levels) - 1)
+                button.grab_focus()
+        elif e.keyval in (Gdk.KEY_Right, Gdk.KEY_KP_Right) and getattr(focus, "folder", False):
+            focus.clicked()
+            self.levels[-1][0].child_focus(Gtk.DirectionType.TAB_FORWARD)
+        elif e.keyval in (Gdk.KEY_Left, Gdk.KEY_KP_Left) and self.levels:
+            _, button = self.levels[-1]
+            self.close_from(len(self.levels) - 1)
+            button.grab_focus()
+        elif e.keyval in (Gdk.KEY_Up, Gdk.KEY_Down) and not isinstance(focus, Gtk.Button):
+            self.layers.child_focus(Gtk.DirectionType.TAB_FORWARD)
+        else:
+            return False
+        return True
 
 
 def dialog(title, icon, text):

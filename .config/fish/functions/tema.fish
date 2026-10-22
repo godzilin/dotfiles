@@ -46,7 +46,14 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
     set -l rgb (printf '%d,%d,%d' 0x(string sub -s 2 -l 2 $acc) 0x(string sub -s 4 -l 2 $acc) 0x(string sub -s 6 -l 2 $acc))
     kwriteconfig6 --file kdeglobals --group General --key AccentColor $rgb  # a custom accent would override the scheme
     kwriteconfig6 --file kdeglobals --group General --key LastUsedCustomAccentColor $rgb
+    # kded's gtkconfig reacts to a new scheme by replacing ~/.config/gtk-*/gtk.css (our symlinks) with its own
+    # file and editing settings.ini (the theme's tracked file): unload it first and put our links back after
+    qdbus6 org.kde.kded6 /kded org.kde.kded6.unloadModule gtkconfig >/dev/null 2>&1
     plasma-apply-colorscheme (jq -r .kde_colors $json) >/dev/null
+    for v in 3.0 4.0
+        rm -f ~/.config/gtk-$v/colors.css
+        ln -sfn ../dotfiles/themes/current/gtk-$v/gtk.css ~/.config/gtk-$v/gtk.css
+    end
     kwriteconfig6 --file kdeglobals --group Icons --key Theme (jq -r .icons $json)
     kwriteconfig6 --file kdeglobals --group General --key font "$ui[1],$ui[2],-1,5,400,0,0,0,0,0,0,0,0,0,0,1"
     set -l qs (jq -r '.qt_style // empty' $json)  # e.g. "Windows" for azul; empty = Plasma's default (Breeze)
@@ -55,6 +62,8 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
     else
         kwriteconfig6 --file kdeglobals --group KDE --key widgetStyle --delete
     end
+
+    ~/.config/dotfiles/firefox/theme.sh  # Firefox ignores activeThemeID from user.js once a theme is recorded
 
     # Fonts that ship inside the theme (fonts/), seen through ~/.config/fontconfig/conf.d/60-theme-fonts.conf
     fc-cache -f ~/.config/dotfiles/themes/current/fonts 2>/dev/null

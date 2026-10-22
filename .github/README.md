@@ -15,7 +15,8 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
 
-Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas.
+Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas
+(si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
 Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
 
 ## naranja: Nostromo
@@ -113,6 +114,7 @@ Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los color
 | `.config/waybar/scripts/` | Módulo de música de la barra |
 | `.config/fish/` | Shell; `functions/tema.fish` cambia de tema |
 | `.config/dotfiles/firefox/install.sh` | Enlaza el tema activo de Firefox en cada perfil (una vez, con Firefox cerrado) |
+| `.config/dotfiles/firefox/theme.sh` | Activa en cada perfil el tema integrado que pide su `user.js` (`tema` lo llama; Firefox ignora `activeThemeID` una vez guardado un tema) |
 
 ## Instalar
 
