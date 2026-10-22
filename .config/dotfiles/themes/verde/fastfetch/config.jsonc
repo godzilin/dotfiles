@@ -1,0 +1,27 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/tree.txt",
+    "color": { "1": "38;2;182;212;138", "2": "38;2;156;194;107", "3": "38;2;127;174;110", "4": "38;2;201;137;75", "5": "38;2;106;163;154" },
+    "padding": { "top": 1, "left": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "",
+    "key": { "width": 11 },
+    "color": { "keys": "white", "title": "green", "output": "default" }
+  },
+  "modules": [
+    "title",
+    { "type": "custom", "format": "\u001b[90m────────────────────────────\u001b[0m" },
+    { "type": "os",       "key": "sistema",     "format": "{pretty-name}" },
+    { "type": "kernel",   "key": "núcleo" },
+    { "type": "wm",       "key": "ventanas",     "format": "{pretty-name}" },
+    { "type": "shell",    "key": "shell",  "format": "{pretty-name}" },
+    { "type": "cpu",      "key": "cpu",    "format": "{name}" },
+    { "type": "memory",   "key": "memoria",    "format": "{used} / {total}" },
+    { "type": "disk",     "key": "disco",   "folders": "/", "format": "{size-used} / {size-total}" },
+    { "type": "battery",  "key": "batería",    "format": "{capacity}" },
+    { "type": "uptime",   "key": "despierto" }
+  ]
+}

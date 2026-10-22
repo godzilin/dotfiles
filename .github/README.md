@@ -14,6 +14,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `blanco` | **macOS**: claro y translúcido, barra de menús con menú Apple, Dock, Spotlight |
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
+| `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de laurisilva y montaña |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
@@ -84,6 +85,22 @@ marco de tinta; bloqueo compuesto como un cartel; Firefox con pestañas en paral
 Fuentes Oswald, Russo One, PT Sans y PT Mono (OFL, dentro del tema). Siete láminas generadas por código
 (`wallpapers/constructivismo.py`): dos planchas de tinta sobre papel con grano, la roja algo fuera de registro, como en
 una imprenta de 1925. Primera vez: `~/.config/dotfiles/themes/rojo/install.sh` (Papirus y el tema de iconos con carpetas rojas).
+
+## verde: Bosque
+
+Un bosque al atardecer: base verde casi negra, musgo, luz de sol, corteza y bayas. La barra no es una barra: son
+"cantos rodados" redondeados que flotan sobre el fondo, con iconos de hojas (cada escritorio es un brote; en el
+que estás ha crecido un árbol). Bordes de ventana con degradado musgo→sol, esquinas muy redondas y animaciones
+lentas con un pequeño rebote, como hojas que se posan; bloqueo con la hora en Fraunces y saludo según la hora;
+terminal con JetBrains Mono y un pino en fastfetch; carpetas verdes (Papirus-Verde).
+
+![Escritorio](../.config/dotfiles/themes/verde/screenshots/desktop.png)
+
+Fuentes Nunito, Fraunces y JetBrains Mono (OFL, dentro del tema). Fondos: siete paisajes generados por código
+(`wallpapers/bosque.py`: niebla entre abetos, luciérnagas, helechos, curvas de nivel, lago, hojas, amanecer) y
+dieciséis fotos de Wikimedia Commons (`wallpapers/fotos.py`: laurisilva de Garajonay y Madeira, Teide, hayedos,
+secuoyas, Pirineos, Picos de Europa, fiordos...) con el lugar, autor y licencia en una esquina; créditos en
+`wallpapers/FOTOS.md`. Primera vez: `~/.config/dotfiles/themes/verde/install.sh`.
 
 ## Cómo están organizados los temas
 

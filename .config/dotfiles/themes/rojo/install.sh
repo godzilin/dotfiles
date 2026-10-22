@@ -12,7 +12,7 @@ for dir in "$src"/*/places; do
     size=$(basename "$(dirname "$dir")")
     mkdir -p "$dst/$size/places"
     for f in "$dir"/*.svg; do
-        t=$(readlink "$f") || continue
+        t=$(basename "$(readlink -f "$f")")  # follow chains: folder-videos -> folder-video -> folder-blue-video
         case "$t" in folder-blue*|user-blue*) ln -sf "$dir/$(echo "$t" | sed 's/-blue/-red/')" "$dst/$size/places/$(basename "$f")" ;; esac
     done
 done

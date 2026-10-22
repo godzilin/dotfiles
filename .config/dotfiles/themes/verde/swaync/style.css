@@ -1,0 +1,41 @@
+/* Default swaync theme + Bosque palette on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(21, 28, 21, 0.94);
+  --noti-border-color: #34432f;
+  --noti-bg: 21, 28, 21;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #0f140f;
+  --noti-bg-hover: #1d261c;
+  --noti-bg-focus: rgba(38, 50, 36, 0.8);
+  --noti-close-bg: #263224;
+  --noti-close-bg-hover: #34432f;
+  --text-color: #e4e6d0;
+  --text-color-disabled: #7f8f72;
+  --bg-selected: #9cc26b;
+  --border-radius: 10px;
+  --notification-icon-size: 48px;
+  --notification-shadow: 0 4px 16px rgba(15, 20, 15, 0.6);
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+ 
+}
+
+/* Moss accent strip on the left of every notification */
+.notification-row .notification-background .notification {
+  border-left: 3px solid #9cc26b;
+}
+.notification-row .notification-background .notification.critical {
+  border-left-color: #c0624a;
+}
