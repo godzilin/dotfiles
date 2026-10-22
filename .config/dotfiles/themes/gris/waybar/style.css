@@ -1,0 +1,60 @@
+/* NeXTSTEP main menu. Only the rows are painted: the bar itself is transparent, so the column ends with its
+   last row. Each row is a light grey cell with a white top-left edge and a dark bottom-right edge, outlined in black. */
+* {
+    font-family: "Nimbus Sans", "Symbols Nerd Font", sans-serif;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window#waybar { background: transparent; color: #000000; }
+
+tooltip { background: #ffffff; border: 1px solid #000000; }
+tooltip label { color: #000000; }
+
+/* Every row */
+#custom-launcher, #workspaces button, #clock, #custom-weather, #custom-media, #pulseaudio, #backlight, #network,
+#bluetooth, #power-profiles-daemon, #battery, #custom-wallpaper, #custom-notifications, #tray, #custom-power {
+    background: #aaaaaa;
+    color: #000000;
+    padding: 3px 8px;
+    min-height: 20px;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555;
+}
+
+/* Title bar of the menu: black with white bold text */
+#custom-launcher {
+    background: #000000;
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #000000;
+    box-shadow: none;
+}
+
+#workspaces { margin: 0; padding: 0; }
+#workspaces button { margin: 0; }
+#workspaces button label { color: #000000; }
+#workspaces button.empty label { color: #555555; }
+/* The current desktop is the highlighted menu row: white, like a NeXT selection */
+#workspaces button.active { background: #ffffff; box-shadow: inset 1px 1px #aaaaaa, inset -1px -1px #555555; }
+#workspaces button.urgent label { color: #a02828; }
+
+#custom-launcher:hover { background: #555555; }
+#workspaces button:hover, #clock:hover, #custom-weather:hover, #custom-media:hover, #pulseaudio:hover, #network:hover,
+#bluetooth:hover, #custom-wallpaper:hover, #custom-notifications:hover, #custom-power:hover {
+    background: #ffffff;
+}
+
+#pulseaudio.muted, #bluetooth.off, #bluetooth.disabled, #custom-weather.offline, #custom-media.paused { color: #555555; }
+#battery.warning:not(.charging) { color: #8a5a2e; }
+#battery.critical:not(.charging) { color: #ffffff; background: #a02828; }
+#tray { padding: 5px 8px; }
+
+/* Last row closes the menu with the hard drop shadow NeXT panels had */
+#custom-power { margin-bottom: 3px; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555, 3px 3px #000000; }

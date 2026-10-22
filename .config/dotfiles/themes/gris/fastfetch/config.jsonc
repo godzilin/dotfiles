@@ -1,0 +1,28 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  // A grey cube in the NeXT greys: $1 top (light grey), $2 left (dark grey), $3 right (black): the Terminal page is white
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": { "1": "38;2;170;170;170", "2": "38;2;85;85;85", "3": "38;2;0;0;0" },
+    "padding": { "top": 1, "left": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "",
+    "key": { "width": 9 },
+    "color": { "keys": "black", "title": "black", "output": "default" }
+  },
+  "modules": [
+    "title",
+    { "type": "custom", "format": "\u001b[90m────────────────────────────\u001b[0m" },
+    { "type": "os",       "key": "OS",     "format": "{pretty-name}" },
+    { "type": "kernel",   "key": "KERNEL" },
+    { "type": "wm",       "key": "WM",     "format": "{pretty-name}" },
+    { "type": "shell",    "key": "SHELL",  "format": "{pretty-name}" },
+    { "type": "cpu",      "key": "CPU",    "format": "{name}" },
+    { "type": "memory",   "key": "MEM",    "format": "{used} / {total}" },
+    { "type": "disk",     "key": "DISK",   "folders": "/", "format": "{size-used} / {size-total}" },
+    { "type": "battery",  "key": "BAT",    "format": "{capacity}" },
+    { "type": "uptime",   "key": "UPTIME" }
+  ]
+}

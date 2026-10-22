@@ -16,6 +16,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
 | `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
 | `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
+| `gris` | **NeXTSTEP**: cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
@@ -120,6 +121,23 @@ Firefox, Thunar, GTK y Qt van con la misma paleta, y las franjas del Nostromo pa
 Fuente `ttf-3270-nerd` (repos oficiales), carpetas verdes (Papirus-Verde, la del tema verde), cursor Capitaine.
 Fondos generados por código con brillo de fósforo y líneas de barrido (`wallpapers/fosforo.py`: READY, volcado
 hexadecimal del propio script, osciloscopio, radar y terreno vectorial). Primera vez: `~/.config/dotfiles/themes/negro/install.sh`.
+
+## gris: NeXTSTEP
+
+Los cuatro grises de la pantalla de 2 bits de NeXT (negro, gris oscuro, gris claro, blanco) y el rojo solo para
+errores. La barra es el menú principal de NeXT: una columna estrecha arriba a la izquierda con el título negro
+`Workspace` (abre el lanzador), un escritorio por fila (el actual en blanco, como una selección) y filas con
+bisel para reloj, tiempo, música, sonido, red, batería, fondos, avisos y `Salir…`; las que abren un panel llevan `▸`.
+El Dock (`nwg-dock-hyprland`) baja por el borde derecho en casillas cuadradas con bisel, con un cubo gris para el
+lanzador y puntitos junto a los programas abiertos. Ventanas cuadradas con marco negro y sombra dura, barras de
+título GTK negras con el título en blanco, terminal negro sobre blanco y bloqueo como el panel de login de NeXT.
+
+![Escritorio](../.config/dotfiles/themes/gris/screenshots/desktop.png)
+
+Nimbus Sans y Nimbus Mono PS (`gsfonts`, los clones URW de Helvetica y Courier), carpetas grises (Papirus-Gris,
+la construye `install.sh`), cursor Capitaine. Fondos generados y tramados con Bayer a los cuatro grises
+(`wallpapers/next.py`: Workspace, cubo negro, esferas, Mandelbrot, degradado). Primera vez:
+`~/.config/dotfiles/themes/gris/install.sh`.
 
 ## Cómo están organizados los temas
 

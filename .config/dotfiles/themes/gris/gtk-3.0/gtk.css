@@ -1,0 +1,47 @@
+/* NeXTSTEP greys on top of adw-gtk3 (light). KDE may overwrite this file when you log into Plasma. */
+@import "thunar.css";
+@define-color accent_color #000000;
+@define-color accent_bg_color #000000;
+@define-color accent_fg_color #ffffff;
+@define-color destructive_color #a02828;
+@define-color destructive_bg_color #a02828;
+@define-color destructive_fg_color #ffffff;
+@define-color success_color #2e6b2e;
+@define-color success_bg_color #2e6b2e;
+@define-color success_fg_color #ffffff;
+@define-color warning_color #7a6a1e;
+@define-color warning_bg_color #7a6a1e;
+@define-color warning_fg_color #ffffff;
+@define-color error_color #a02828;
+@define-color error_bg_color #a02828;
+@define-color error_fg_color #ffffff;
+@define-color window_bg_color #aaaaaa;
+@define-color window_fg_color #000000;
+@define-color view_bg_color #ffffff;
+@define-color view_fg_color #000000;
+@define-color headerbar_bg_color #000000;
+@define-color headerbar_fg_color #ffffff;
+@define-color headerbar_border_color #000000;
+@define-color headerbar_backdrop_color #555555;
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.5);
+@define-color sidebar_bg_color #aaaaaa;
+@define-color sidebar_fg_color #000000;
+@define-color sidebar_backdrop_color #aaaaaa;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.3);
+@define-color card_bg_color #bcbcbc;
+@define-color card_fg_color #000000;
+@define-color card_shade_color rgba(0, 0, 0, 0.3);
+@define-color dialog_bg_color #aaaaaa;
+@define-color dialog_fg_color #000000;
+@define-color popover_bg_color #aaaaaa;
+@define-color popover_fg_color #000000;
+@define-color popover_shade_color rgba(0, 0, 0, 0.3);
+@define-color thumbnail_bg_color #bcbcbc;
+@define-color thumbnail_fg_color #000000;
+@define-color shade_color rgba(0, 0, 0, 0.3);
+@define-color scrollbar_outline_color rgba(255, 255, 255, 0.5);
+
+headerbar, .titlebar { border-radius: 0; box-shadow: none; }
+headerbar .title, .titlebar .title { font-weight: bold; }
+window, window.csd, decoration { border-radius: 0; }
+button { border-radius: 0; }

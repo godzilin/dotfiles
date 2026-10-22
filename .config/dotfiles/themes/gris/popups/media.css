@@ -1,0 +1,24 @@
+/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS */
+window { background: #aaaaaa; }
+* { font-family: "Nimbus Mono PS", monospace; color: #222222; letter-spacing: 1px; }
+.head { font-size: 9pt; color: #555555; }
+.head-dot { color: #000000; }
+.stripe-1 { background: #ffffff; } .stripe-2 { background: #aaaaaa; }
+.stripe-3 { background: #555555; } .stripe-4 { background: #000000; }
+.cover { border: 1px solid #555555; border-radius: 0; background: #bcbcbc; }
+.title { font-family: "Nimbus Sans", sans-serif; font-size: 13pt; font-weight: 600; color: #000000; letter-spacing: 0; }
+.artist { font-size: 10pt; color: #222222; }
+.album { font-size: 9pt; color: #555555; }
+.time { font-size: 9pt; color: #555555; }
+scale trough { background: #c8c8c8; min-height: 4px; border-radius: 0; border: none; }
+scale highlight { background: #000000; border-radius: 0; }
+scale slider { background: #000000; min-width: 10px; min-height: 10px; border-radius: 0; margin: -4px; border: none; box-shadow: none; }
+button { background: transparent; border: none; box-shadow: none; border-radius: 0; padding: 4px 10px; }
+button label { font-size: 16pt; color: #222222; }
+button:hover { background: #c8c8c8; }
+button:hover label { color: #000000; }
+button.main { background: #000000; }
+button.main label { color: #999999; }
+button.main:hover { background: #ffffff; }
+button.on label { color: #000000; }
+.vol-label { font-size: 9pt; color: #555555; }

@@ -1,0 +1,61 @@
+/* Gris for Firefox's own pages */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #999999 !important;
+    --newtab-background-color-secondary: #bcbcbc !important;
+    --newtab-text-primary-color: #000000 !important;
+    --background-color-canvas: #aaaaaa !important;
+    --background-color-box: #bcbcbc !important;
+    --text-color: #000000 !important;
+    --text-color-deemphasized: #555555 !important;
+    --border-color: #555555 !important;
+    --color-accent-primary: #000000 !important;
+    --color-accent-primary-hover: #ffffff !important;
+    --color-accent-primary-active: #555555 !important;
+    --link-color: #000000 !important;
+    --focus-outline-color: #000000 !important;
+    scrollbar-color: #555555 transparent;
+  }
+  body { background-color: var(--background-color-canvas) !important; }
+}
+
+/* New tab / home: the wallpaper's dot grid and label instead of the Firefox logo */
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background-color: #999999 !important;
+    background-image: radial-gradient(circle, #9a9a9a 1.2px, transparent 1.4px) !important;
+    background-size: 48px 48px !important;
+    background-position: 24px 24px !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper::before {
+    content: "󰯈  THINKPAD P14S GEN 5";
+    display: block;
+    text-align: center;
+    margin-bottom: 28px;
+    font: 600 13px "Nimbus Mono PS", "Nimbus Mono PS", monospace;
+    letter-spacing: 0.2em;
+    color: #000000;
+  }
+  .search-wrapper::after {  /* tape stripes under the search box */
+    content: "";
+    display: block;
+    width: 160px;
+    height: 4px;
+    margin: 26px auto 0;
+    background: linear-gradient(90deg, #ffffff 0 25%, #aaaaaa 25% 50%, #555555 50% 75%, #000000 75%);
+  }
+  /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
+  .search-inner-wrapper moz-urlbar .urlbar-background {
+    background-color: #aaaaaa !important;
+    border: 1px solid #555555 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #000000 !important; }
+  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "Nimbus Mono PS", monospace !important; }
+  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #aaaaaa !important; border-radius: 0 !important; }
+  .top-site-outer .title { font-family: "Nimbus Mono PS", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #555555 !important; }
+}

@@ -1,0 +1,108 @@
+[general]
+working_directory = "None"
+live_config_reload = true
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+dimensions = { columns = 100, lines = 30 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 1.0
+blur = false
+padding = { x = 6, y = 4 }
+title = "Alacritty@CachyOS"
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "Light"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "Nimbus Mono PS", style = "Regular" }
+bold = { family = "Nimbus Mono PS", style = "Bold" }
+italic = { family = "Nimbus Mono PS", style = "Italic" }
+bold_italic = { family = "Nimbus Mono PS", style = "Bold Italic" }
+size = 12.0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+# NeXTSTEP Terminal: black text on white, the selection in light grey. White ANSI colours are dark greys
+# so text that asks for "white" stays readable on the white page.
+[colors.primary]
+background = "#ffffff"
+foreground = "#000000"
+dim_foreground = "#555555"
+
+[colors.cursor]
+text = "#ffffff"
+cursor = "#000000"
+
+[colors.selection]
+text = "#000000"
+background = "#aaaaaa"
+
+[colors.search.matches]
+foreground = "#000000"
+background = "#c8c8c8"
+
+[colors.search.focused_match]
+foreground = "#ffffff"
+background = "#000000"
+
+[colors.normal]
+black = "#000000"
+red = "#a02828"
+green = "#2e6b2e"
+yellow = "#7a6a1e"
+blue = "#3a3a8a"
+magenta = "#6b2e5f"
+cyan = "#2e5f6b"
+white = "#555555"
+
+[colors.bright]
+black = "#777777"
+red = "#c83c3c"
+green = "#3c8a3c"
+yellow = "#8a7a2e"
+blue = "#4a4ab0"
+magenta = "#8a3c7a"
+cyan = "#3c7a8a"
+white = "#222222"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+unfocused_hollow = true
+thickness = 0.15
+
+[mouse]
+hide_when_typing = true
+bindings = [
+{ mouse = "Middle", mods = "None", action = "PasteSelection" },
+]
+
+[keyboard]
+bindings = [
+{ key = "Paste", mods = "None", action = "Paste" },
+{ key = "Copy", mods = "None", action = "Copy" },
+{ key = "L", mods = "Control", action = "ClearLogNotice" },
+{ key = "L", mods = "Control", mode = "~Vi", chars = "\f" },
+{ key = "PageUp", mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+{ key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+{ key = "Home", mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+{ key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+{ key = "V", mods = "Control|Shift", action = "Paste" },
+{ key = "C", mods = "Control|Shift", action = "Copy" },
+{ key = "F", mods = "Control|Shift", action = "SearchForward" },
+{ key = "B", mods = "Control|Shift", action = "SearchBackward" },
+{ key = "C", mods = "Control|Shift", mode = "Vi", action = "ClearSelection" },
+{ key = "Key0", mods = "Control", action = "ResetFontSize" },
+{ key = "Return", mods = "Shift", chars = "\u001B\r" },
+]

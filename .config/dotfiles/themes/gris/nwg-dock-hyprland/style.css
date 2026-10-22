@@ -1,0 +1,32 @@
+/* NeXTSTEP Dock: a column of 64 px square tiles down the right edge, each a light grey cell with a white
+   top-left bevel and a black/dark bottom-right edge. The first tile (the cube) opens the launcher. */
+window { background: transparent; }
+
+#box { padding: 0; }
+
+button, image {
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+button {
+    min-width: 56px;
+    min-height: 56px;
+    padding: 4px;
+    margin: 0;
+    border-radius: 0;
+    background: #aaaaaa;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555;
+    color: #000000;
+    font-family: "Nimbus Sans";
+    font-size: 11px;
+    transition: none;
+}
+
+button:hover { background: #bcbcbc; }
+button:active { box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff; }
+button:focus { box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+
+#active { border: none; background: #c8c8c8; }

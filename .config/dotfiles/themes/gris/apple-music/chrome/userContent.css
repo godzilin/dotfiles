@@ -1,0 +1,24 @@
+/* Paleta "NeXTSTEP" (themes/gris/theme.json) sobre music.apple.com */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #000000 !important; --keyColorBG: #000000 !important;
+    --keyColor-rgb: 0,0,0 !important; --keyColor-rollover: #ffffff !important;
+    --keyColor-pressed: #555555 !important; --keyColor-disabled: #00000059 !important;
+    --pageBG: #aaaaaa !important; --pageBG-dark: #aaaaaa !important; --pageBG-dark-rgb: 170,170,170 !important;
+    --navSidebarBG: #999999 !important; --playerBackground: #bcbcbc !important;
+    --playerBackgroundFallback: #bcbcbc !important; --miniPlayerBackground: #bcbcbc !important;
+    --glassMaterialBackground: #bcbcbcee !important; --systemGroupedBackgroundSecondary: #bcbcbc !important;
+    --systemPrimary: #000000 !important; --systemPrimary-onDark: #000000 !important;
+    --systemSecondary: #222222 !important; --systemSecondary-onDark: #222222 !important;
+    --systemTertiary: #555555 !important; --systemTertiary-onDark: #555555 !important;
+    --systemQuaternary-onDark: #555555 !important;
+    --labelDivider: #555555 !important;
+    /* used by the local-music userscript */
+    --lm-stripe-1: #ffffff; --lm-stripe-2: #aaaaaa; --lm-stripe-3: #555555; --lm-stripe-4: #000000; --lm-error: #a02828;
+    --lm-text: #000000; --lm-sub: #222222; --lm-muted: #555555; --lm-track: #555555; --lm-surface: #bcbcbc;
+    --lm-accent: #000000; --lm-on-accent: #ffffff;
+    font-family: "Nimbus Sans", sans-serif !important;
+  }
+  body { background: #aaaaaa !important; color: #000000 !important; }
+  ::selection { background: #000000; color: #999999; }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "NeXTSTEP",
+  "description": "NeXTSTEP: cuatro grises (negro, gris oscuro, gris claro, blanco), biseles finos, títulos negros, menú vertical arriba a la izquierda y Dock a la derecha",
+  "palette": {
+    "bg0": "#ffffff",
+    "bg": "#aaaaaa",
+    "bg1": "#bcbcbc",
+    "bg2": "#c8c8c8",
+    "line": "#555555",
+    "faint": "#777777",
+    "muted": "#555555",
+    "sub": "#222222",
+    "text": "#000000",
+    "accent": "#000000",
+    "yellow": "#8a7a2e",
+    "orange": "#8a5a2e",
+    "red": "#a02828",
+    "green": "#2e6b2e",
+    "teal": "#2e5f6b",
+    "blue": "#3a3a8a"
+  },
+  "stripes": [
+    "#ffffff",
+    "#aaaaaa",
+    "#555555",
+    "#000000"
+  ],
+  "font_ui": "Nimbus Sans",
+  "font_mono": "Nimbus Mono PS",
+  "font_size": 10,
+  "gtk_theme": "adw-gtk3",
+  "color_scheme": "prefer-light",
+  "icons": "Papirus-Gris",
+  "cursor": "capitaine-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Gris",
+  "buttons": "minimize:close",
+  "daemons": [
+    "nwg-dock-hyprland -p right -f -a start -x -i 48 -lp start -c 'fuzzel' -ico ~/.config/nwg-dock-hyprland/cube.svg -g 'nostromo-calendar nostromo-weather nostromo-media nostromo-wallpaper'"
+  ],
+  "wallpaper": {
+    "title": "Workspace · Fondos",
+    "random": "Al azar"
+  }
+}

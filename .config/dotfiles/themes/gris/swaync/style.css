@@ -1,0 +1,39 @@
+/* Default swaync theme + NeXTSTEP greys on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: #aaaaaa;
+  --noti-border-color: #000000;
+  --noti-bg: 170, 170, 170;
+  --noti-bg-alpha: 1;
+  --noti-bg-darker: #999999;
+  --noti-bg-hover: #bcbcbc;
+  --noti-bg-focus: rgba(200, 200, 200, 0.8);
+  --noti-close-bg: #c8c8c8;
+  --noti-close-bg-hover: #555555;
+  --text-color: #000000;
+  --text-color-disabled: #555555;
+  --bg-selected: #000000;
+  --border-radius: 0;
+  --notification-icon-size: 48px;
+  --notification-shadow: 3px 3px 0 #000000;
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+}
+
+* {
+  font-family: "Nimbus Sans", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-weight: bold;
+}
+
+/* Black strip on the left of every notification */
+.notification-row .notification-background .notification {
+  border-left: 3px solid #000000;
+}
+.notification-row .notification-background .notification.critical {
+  border-left-color: #a02828;
+}

@@ -1,0 +1,131 @@
+// NeXTSTEP main menu: a narrow vertical column at the top-left corner. Black title, light grey rows with a
+// one-pixel bevel, a "▸" on rows that open a panel (like NeXT submenus). The bar is as tall as its rows.
+{
+    "layer": "top",
+    "position": "left",
+    "width": 160,
+    "margin-top": 10,
+    "margin-left": 10,
+    "spacing": 0,
+
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "clock", "custom/weather", "custom/media",
+                     "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery",
+                     "custom/wallpaper", "custom/notifications", "tray", "custom/power"],
+
+    "custom/launcher": {
+        "format": "Workspace",
+        "on-click": "pkill fuzzel || fuzzel",
+        "tooltip-format": "Abrir programa",
+        "align": 0
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "Escritorio 1", "2": "Escritorio 2", "3": "Escritorio 3", "4": "Escritorio 4", "5": "Escritorio 5",
+            "6": "Escritorio 6", "7": "Escritorio 7", "8": "Escritorio 8", "9": "Escritorio 9", "default": "Escritorio"
+        },
+        "persistent-workspaces": { "*": 4 },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+    },
+    "clock": {
+        "locale": "es_ES.utf8",
+        "format": "{:L%a %d %b  %H:%M} ▸",
+        "tooltip": false,
+        "align": 0,
+        "on-click": "~/.config/hypr/scripts/calendar.sh"
+    },
+    // Weather (Open-Meteo): icon + °C; click for the full forecast
+    "custom/weather": {
+        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "return-type": "json",
+        "interval": 600,
+        "format": "Tiempo {} ▸",
+        "align": 0,
+        "on-click": "~/.config/hypr/scripts/weather.sh"
+    },
+    "custom/media": {
+        "exec": "~/.config/waybar/scripts/media.py",
+        "restart-interval": 2,  // libplayerctl aborts the script if a player dies abruptly; respawn it
+        "return-type": "json",
+        "escape": false,
+        "max-length": 18,
+        "align": 0,
+        "on-click": "~/.config/hypr/scripts/media.sh"
+    },
+    "pulseaudio": {
+        "format": "Sonido {volume}%",
+        "format-muted": "Sonido: silencio",
+        "align": 0,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "scroll-step": 5,
+        "tooltip-format": "{desc}"
+    },
+    "backlight": { "format": "Pantalla {percent}%", "align": 0 },
+    "network": {
+        "format-wifi": "Red {essid}",
+        "format-ethernet": "Red: cable",
+        "format-disconnected": "Red: sin conexión",
+        "max-length": 20,
+        "align": 0,
+        "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
+        "on-click": "systemsettings kcm_networkmanagement"
+    },
+    // Click toggles power, right click opens the KDE Bluetooth settings
+    "bluetooth": {
+        "format": "Bluetooth {status}",
+        "format-on": "Bluetooth sí",
+        "format-off": "Bluetooth no",
+        "format-disabled": "Bluetooth no",
+        "format-connected": "BT {device_alias}",
+        "format-connected-battery": "BT {device_alias} {device_battery_percentage}%",
+        "max-length": 20,
+        "align": 0,
+        "tooltip-format": "{controller_alias} · {status}",
+        "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} · {device_battery_percentage}%",
+        "on-click": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on",
+        "on-click-right": "systemsettings kcm_bluetooth"
+    },
+    "power-profiles-daemon": {
+        "format": "Energía {icon}",
+        "format-icons": { "default": "normal", "performance": "máxima", "balanced": "normal", "power-saver": "ahorro" },
+        "align": 0
+    },
+    "battery": {
+        "states": { "warning": 25, "critical": 10 },
+        "format": "Batería {capacity}%",
+        "format-charging": "Batería {capacity}% +",
+        "format-plugged": "Batería {capacity}% =",
+        "align": 0,
+        "tooltip-format": "{timeTo}  ·  {power:.1f} W"
+    },
+    "custom/wallpaper": {
+        "format": "Fondos ▸",
+        "align": 0,
+        "on-click": "~/.config/hypr/scripts/wallpaper.sh",
+        "tooltip": false
+    },
+    "custom/notifications": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "Avisos ●", "none": "Avisos",
+            "dnd-notification": "No molestar ●", "dnd-none": "No molestar"
+        },
+        "align": 0,
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "tray": { "icon-size": 16, "spacing": 6 },
+    "custom/power": {
+        "format": "Salir…",
+        "align": 0,
+        "on-click": "~/.config/hypr/scripts/powermenu.sh",
+        "tooltip": false
+    }
+}

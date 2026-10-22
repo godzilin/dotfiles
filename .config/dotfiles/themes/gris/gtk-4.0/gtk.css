@@ -1,0 +1,89 @@
+/* NeXTSTEP greys for libadwaita (named colors + CSS variables). */
+@define-color accent_color #000000;
+@define-color accent_bg_color #000000;
+@define-color accent_fg_color #ffffff;
+@define-color destructive_color #a02828;
+@define-color destructive_bg_color #a02828;
+@define-color destructive_fg_color #ffffff;
+@define-color success_color #2e6b2e;
+@define-color success_bg_color #2e6b2e;
+@define-color success_fg_color #ffffff;
+@define-color warning_color #7a6a1e;
+@define-color warning_bg_color #7a6a1e;
+@define-color warning_fg_color #ffffff;
+@define-color error_color #a02828;
+@define-color error_bg_color #a02828;
+@define-color error_fg_color #ffffff;
+@define-color window_bg_color #aaaaaa;
+@define-color window_fg_color #000000;
+@define-color view_bg_color #ffffff;
+@define-color view_fg_color #000000;
+@define-color headerbar_bg_color #000000;
+@define-color headerbar_fg_color #ffffff;
+@define-color headerbar_border_color #000000;
+@define-color headerbar_backdrop_color #555555;
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.5);
+@define-color sidebar_bg_color #aaaaaa;
+@define-color sidebar_fg_color #000000;
+@define-color sidebar_backdrop_color #aaaaaa;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.3);
+@define-color card_bg_color #bcbcbc;
+@define-color card_fg_color #000000;
+@define-color card_shade_color rgba(0, 0, 0, 0.3);
+@define-color dialog_bg_color #aaaaaa;
+@define-color dialog_fg_color #000000;
+@define-color popover_bg_color #aaaaaa;
+@define-color popover_fg_color #000000;
+@define-color popover_shade_color rgba(0, 0, 0, 0.3);
+@define-color thumbnail_bg_color #bcbcbc;
+@define-color thumbnail_fg_color #000000;
+@define-color shade_color rgba(0, 0, 0, 0.3);
+@define-color scrollbar_outline_color rgba(255, 255, 255, 0.5);
+
+:root {
+  --accent-color: #000000;
+  --accent-bg-color: #000000;
+  --accent-fg-color: #ffffff;
+  --destructive-color: #a02828;
+  --destructive-bg-color: #a02828;
+  --destructive-fg-color: #ffffff;
+  --success-color: #2e6b2e;
+  --success-bg-color: #2e6b2e;
+  --success-fg-color: #ffffff;
+  --warning-color: #7a6a1e;
+  --warning-bg-color: #7a6a1e;
+  --warning-fg-color: #ffffff;
+  --error-color: #a02828;
+  --error-bg-color: #a02828;
+  --error-fg-color: #ffffff;
+  --window-bg-color: #aaaaaa;
+  --window-fg-color: #000000;
+  --view-bg-color: #ffffff;
+  --view-fg-color: #000000;
+  --headerbar-bg-color: #000000;
+  --headerbar-fg-color: #ffffff;
+  --headerbar-border-color: #000000;
+  --headerbar-backdrop-color: #555555;
+  --headerbar-shade-color: rgba(0, 0, 0, 0.5);
+  --sidebar-bg-color: #aaaaaa;
+  --sidebar-fg-color: #000000;
+  --sidebar-backdrop-color: #aaaaaa;
+  --sidebar-shade-color: rgba(0, 0, 0, 0.3);
+  --card-bg-color: #bcbcbc;
+  --card-fg-color: #000000;
+  --card-shade-color: rgba(0, 0, 0, 0.3);
+  --dialog-bg-color: #aaaaaa;
+  --dialog-fg-color: #000000;
+  --popover-bg-color: #aaaaaa;
+  --popover-fg-color: #000000;
+  --popover-shade-color: rgba(0, 0, 0, 0.3);
+  --thumbnail-bg-color: #bcbcbc;
+  --thumbnail-fg-color: #000000;
+  --shade-color: rgba(0, 0, 0, 0.3);
+  --scrollbar-outline-color: rgba(255, 255, 255, 0.5);
+}
+
+headerbar, .titlebar { border-radius: 0; box-shadow: none; }
+headerbar .title, .titlebar .title { font-weight: bold; }
+window, window.csd, decoration { border-radius: 0; }
+button { border-radius: 0; }
