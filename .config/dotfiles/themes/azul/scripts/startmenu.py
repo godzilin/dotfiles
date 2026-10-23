@@ -108,7 +108,7 @@ def search_menu():
 
 
 class Banner(Gtk.DrawingArea):
-    """The vertical "Windows98" strip on the left of the menu."""
+    """The vertical "Linux98" strip on the left of the menu."""
 
     def __init__(self):
         super().__init__()
@@ -126,7 +126,7 @@ class Banner(Gtk.DrawingArea):
         cr.translate(4, h - 6)
         cr.rotate(-3.14159265 / 2)
         layout = PangoCairo.create_layout(cr)
-        layout.set_markup("<span font_family='Arial' weight='heavy' size='13pt' foreground='#ffffff'>Windows</span>"
+        layout.set_markup("<span font_family='Arial' weight='heavy' size='13pt' foreground='#ffffff'>Linux</span>"
                           "<span font_family='Arial' size='13pt' foreground='#c0c0c0'>98</span>", -1)
         PangoCairo.show_layout(cr, layout)
 
