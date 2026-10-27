@@ -71,7 +71,7 @@
 #TabsToolbar toolbarspring { display: none !important; }
 /* Tabs are taskbar buttons on the title bar: all the same, the open one pushed in on a checker */
 .tabbrowser-tab { padding-inline: 0 2px !important; min-height: 20px !important; }
-.tabbrowser-tab:not([pinned]) { max-width: 160px !important; }
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: 160px !important; }  /* [fadein]: closing tabs must still shrink to 0.1px, or they leave a gap */
 .tab-background { margin-block: 1px !important; border: none !important; outline: none !important; background: var(--w-face) !important; box-shadow: var(--w-raised) !important; }
 .tab-background:is([selected], [multiselected]) { background: var(--w-checker) !important; box-shadow: var(--w-pressed) !important; }
 .tab-content { padding-inline: 4px 2px !important; }
