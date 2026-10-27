@@ -1,0 +1,45 @@
+/* Nostromo: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #1a1814;
+  --color-base-05: #1d1b16;
+  --color-base-10: #24211b;
+  --color-base-20: #121110;
+  --color-base-25: #2a2620;
+  --color-base-30: #3d382d;
+  --color-base-35: #4a4438;
+  --color-base-40: #5a5345;
+  --color-base-50: #857c69;
+  --color-base-60: #9a9079;
+  --color-base-70: #b3a891;
+  --color-base-100: #e8dfc8;
+  --color-red: #c8553d;
+  --color-orange: #d9652b;
+  --color-yellow: #e0c36a;
+  --color-green: #8fae7e;
+  --color-cyan: #6f9e98;
+  --color-blue: #7b93a8;
+  --color-purple: #7b93a8;
+  --color-pink: #c8553d;
+  --accent-h: 36; --accent-s: 80%; --accent-l: 57%;
+  --text-on-accent: #121110;
+  --font-interface-theme: "IBM Plex Sans";
+  --font-text-theme: "IBM Plex Sans";
+  --font-monospace-theme: "BlexMono Nerd Font";
+  --radius-s: 2px;
+  --radius-m: 3px;
+  --radius-l: 4px;
+}
+
+/* Headings: amber, tracked caps for the small ones, like the labels on a deck */
+body { --h1-color: var(--color-accent); --h2-color: #e0c36a; --h3-color: var(--text-normal);
+  --h4-color: var(--text-muted); --h5-color: var(--text-muted); --h6-color: var(--text-faint);
+  --h1-weight: 600; --h2-weight: 600; --inline-title-color: var(--text-normal); --inline-title-weight: 500; }
+.markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6,
+.cm-header-4, .cm-header-5, .cm-header-6 { text-transform: uppercase; letter-spacing: .12em; }
+/* Cassette stripes under the note title */
+.inline-title { padding-bottom: .35em; border-bottom: 4px solid;
+  border-image: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%) 1; }
+.status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
+.status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }

@@ -1,0 +1,45 @@
+/* NeXTSTEP: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #ffffff;
+  --color-base-05: #ffffff;
+  --color-base-10: #f0f0f0;
+  --color-base-20: #aaaaaa;
+  --color-base-25: #bcbcbc;
+  --color-base-30: #555555;
+  --color-base-35: #555555;
+  --color-base-40: #777777;
+  --color-base-50: #555555;
+  --color-base-60: #333333;
+  --color-base-70: #222222;
+  --color-base-100: #000000;
+  --color-red: #a02828;
+  --color-orange: #8a5a2e;
+  --color-yellow: #8a7a2e;
+  --color-green: #2e6b2e;
+  --color-cyan: #2e5f6b;
+  --color-blue: #3a3a8a;
+  --color-purple: #3a3a8a;
+  --color-pink: #a02828;
+  --accent-h: 0; --accent-s: 0%; --accent-l: 0%;
+  --text-on-accent: #ffffff;
+  --font-interface-theme: "Nimbus Sans";
+  --font-text-theme: "Nimbus Sans";
+  --font-monospace-theme: "Nimbus Mono PS";
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+}
+
+/* NeXTSTEP: four greys, white/dark bevels, black title bars */
+body { --bevel-out: inset 1px 1px #ffffff, inset -1px -1px #555555;
+  --bevel-in: inset 1px 1px #555555, inset -1px -1px #ffffff;
+  --h1-weight: 700; --h2-weight: 700; --background-modifier-hover: #c8c8c8; --text-selection: #aaaaaa;
+  --background-modifier-form-field: #ffffff; --tab-container-background: #aaaaaa; --titlebar-background: #aaaaaa; --tag-background: #aaaaaa; --tag-color: #000000; }
+.workspace-ribbon, .workspace-split, .status-bar, .workspace-tab-header-container, .modal, .menu, .prompt { background-color: #aaaaaa; }
+button:not(.clickable-icon), .dropdown, .workspace-tab-header, .modal, .menu, .prompt { box-shadow: var(--bevel-out) !important; border: none !important; }
+input[type="text"], input[type="search"], textarea { box-shadow: var(--bevel-in) !important; border: none !important; }
+.workspace-tab-header.is-active, .modal-title { background: #000000 !important; color: #ffffff !important; }
+.workspace-tab-header.is-active .workspace-tab-header-inner-title, .workspace-tab-header.is-active .workspace-tab-header-inner-icon { color: #ffffff !important; }
+.nav-file-title.is-active, .tree-item-self.is-active, .suggestion-item.is-selected { background-color: #ffffff !important; color: #000000 !important; }

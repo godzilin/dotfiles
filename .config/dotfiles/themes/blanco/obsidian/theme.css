@@ -1,0 +1,38 @@
+/* Blanco: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #ffffff;
+  --color-base-05: #fcfcfc;
+  --color-base-10: #f6f6f6;
+  --color-base-20: #ececec;
+  --color-base-25: #e6e6e6;
+  --color-base-30: #d1d1d6;
+  --color-base-35: #c7c7cc;
+  --color-base-40: #aeaeb2;
+  --color-base-50: #8e8e93;
+  --color-base-60: #6e6e73;
+  --color-base-70: #3c3c43;
+  --color-base-100: #1d1d1f;
+  --color-red: #ff3b30;
+  --color-orange: #ff9500;
+  --color-yellow: #b58200;
+  --color-green: #34c759;
+  --color-cyan: #30b0c7;
+  --color-blue: #007aff;
+  --color-purple: #007aff;
+  --color-pink: #ff3b30;
+  --accent-h: 211; --accent-s: 100%; --accent-l: 50%;
+  --text-on-accent: #ffffff;
+  --font-interface-theme: "Inter";
+  --font-text-theme: "Inter";
+  --font-monospace-theme: "DejaVu Sans Mono";
+  --radius-s: 5px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+}
+
+/* macOS: translucent-looking sidebar, blue accent, semibold headings */
+body { --h1-weight: 700; --h2-weight: 600; --tag-background: rgba(0, 122, 255, .1); }
+.workspace-ribbon, .workspace-split.mod-left-split, .workspace-split.mod-right-split { background-color: #ececec; }
+.nav-file-title.is-active, .tree-item-self.is-active { background-color: var(--color-accent); color: #ffffff; }

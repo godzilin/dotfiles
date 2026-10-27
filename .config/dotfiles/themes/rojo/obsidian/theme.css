@@ -1,0 +1,46 @@
+/* Rojo: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #efe6d2;
+  --color-base-05: #f2ead8;
+  --color-base-10: #f6efe0;
+  --color-base-20: #e4d8bf;
+  --color-base-25: #ddd0b4;
+  --color-base-30: #8a8274;
+  --color-base-35: #6f685c;
+  --color-base-40: #8a8274;
+  --color-base-50: #8a8274;
+  --color-base-60: #5e574b;
+  --color-base-70: #2a2a2a;
+  --color-base-100: #141414;
+  --color-red: #d42a1e;
+  --color-orange: #d4561e;
+  --color-yellow: #b8860b;
+  --color-green: #3b5e3a;
+  --color-cyan: #2f5d62;
+  --color-blue: #1f3a5f;
+  --color-purple: #1f3a5f;
+  --color-pink: #d42a1e;
+  --accent-h: 4; --accent-s: 75%; --accent-l: 47%;
+  --text-on-accent: #efe6d2;
+  --font-interface-theme: "PT Sans";
+  --font-text-theme: "PT Sans";
+  --font-monospace-theme: "PT Mono";
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+}
+
+/* Constructivist poster: Oswald caps, red and ink, heavy rules */
+body { --h1-font: "Russo One", "Oswald", sans-serif; --h2-font: "Oswald", sans-serif; --h3-font: "Oswald", sans-serif;
+  --h4-font: "Oswald", sans-serif; --h1-color: var(--color-accent); --h2-color: #141414; --h3-color: #141414;
+  --h1-weight: 400; --h2-weight: 600; --h3-weight: 500; --inline-title-color: #141414;
+  --blockquote-border-thickness: 6px; --hr-thickness: 4px; --hr-color: #141414; --tag-background: #d42a1e; --tag-color: #efe6d2; }
+.markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3, .markdown-rendered h4,
+.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4, .inline-title { text-transform: uppercase; letter-spacing: .04em; }
+.inline-title { font-family: "Russo One", sans-serif; border-bottom: 6px solid #d42a1e; box-shadow: 0 4px 0 #141414; padding-bottom: .2em; }
+.workspace-tab-header.is-active { background: #d42a1e !important; color: #efe6d2 !important; }
+.workspace-tab-header.is-active .workspace-tab-header-inner-title, .workspace-tab-header.is-active .workspace-tab-header-inner-icon { color: #efe6d2 !important; }
+.nav-file-title.is-active, .tree-item-self.is-active, .suggestion-item.is-selected { background-color: #141414 !important; color: #efe6d2 !important; }
+.tag { border-radius: 0; text-transform: uppercase; font-family: "Oswald", sans-serif; }

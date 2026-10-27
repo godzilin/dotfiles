@@ -1,0 +1,42 @@
+/* Fósforo: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #040704;
+  --color-base-05: #050a05;
+  --color-base-10: #091209;
+  --color-base-20: #000000;
+  --color-base-25: #0c180d;
+  --color-base-30: #1a3a1d;
+  --color-base-35: #215026;
+  --color-base-40: #275529;
+  --color-base-50: #3f9147;
+  --color-base-60: #52b05a;
+  --color-base-70: #63cc6c;
+  --color-base-100: #a6ffad;
+  --color-red: #ff5a4a;
+  --color-orange: #8ce65a;
+  --color-yellow: #c8ff5a;
+  --color-green: #5aff8c;
+  --color-cyan: #4dd9a6;
+  --color-blue: #59c8a0;
+  --color-purple: #59c8a0;
+  --color-pink: #ff5a4a;
+  --accent-h: 128; --accent-s: 100%; --accent-l: 60%;
+  --text-on-accent: #000000;
+  --font-interface-theme: "3270 Nerd Font";
+  --font-text-theme: "3270 Nerd Font";
+  --font-monospace-theme: "3270 Nerd Font Mono";
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+}
+
+/* One phosphor, glowing; no motion, no curves */
+body { --h1-color: var(--color-accent); --h2-color: var(--color-accent); --h3-color: var(--text-normal);
+  --h1-weight: 400; --h2-weight: 400; --h3-weight: 400; --h4-weight: 400; --h5-weight: 400; --h6-weight: 400;
+  --bold-weight: 400; --inline-title-weight: 400; --text-selection: #33ff4d; --caret-color: #33ff4d; }
+.markdown-rendered, .cm-content, .nav-file-title, .workspace-tab-header-inner-title { text-shadow: 0 0 4px rgba(51, 255, 77, .35); }
+.markdown-rendered h1, .markdown-rendered h2, .cm-header-1, .cm-header-2, .inline-title { text-transform: uppercase; text-shadow: 0 0 6px rgba(51, 255, 77, .6); }
+::selection { color: #000000; }
+*, *::before, *::after { transition: none !important; animation: none !important; box-shadow: none !important; }

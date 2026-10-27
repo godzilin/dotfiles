@@ -1,0 +1,42 @@
+/* Bosque: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #151c15;
+  --color-base-05: #182018;
+  --color-base-10: #1d261c;
+  --color-base-20: #0f140f;
+  --color-base-25: #222c21;
+  --color-base-30: #34432f;
+  --color-base-35: #3c4c37;
+  --color-base-40: #435440;
+  --color-base-50: #7f8f72;
+  --color-base-60: #94a385;
+  --color-base-70: #aab89a;
+  --color-base-100: #e4e6d0;
+  --color-red: #c0624a;
+  --color-orange: #c9894b;
+  --color-yellow: #e3c56e;
+  --color-green: #7fae6e;
+  --color-cyan: #6aa39a;
+  --color-blue: #7f9fb5;
+  --color-purple: #7f9fb5;
+  --color-pink: #c0624a;
+  --accent-h: 86; --accent-s: 42%; --accent-l: 59%;
+  --text-on-accent: #0f140f;
+  --font-interface-theme: "Nunito";
+  --font-text-theme: "Nunito";
+  --font-monospace-theme: "JetBrains Mono";
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 16px;
+}
+
+/* Serif headings (Fraunces), moss and sunlight */
+body { --h1-font: "Fraunces", serif; --h2-font: "Fraunces", serif; --h3-font: "Fraunces", serif;
+  --h1-color: var(--color-accent); --h2-color: #e3c56e; --h3-color: var(--text-normal);
+  --h1-weight: 600; --h2-weight: 600; --h3-weight: 600; --inline-title-color: var(--text-normal);
+  --blockquote-border-thickness: 4px; }
+/* Pebbles: round, soft pills */
+.tag, .workspace-tab-header, button:not(.clickable-icon) { border-radius: 999px; }
+.markdown-rendered blockquote { border-radius: 0 var(--radius-m) var(--radius-m) 0; background: var(--background-primary-alt); }

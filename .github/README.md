@@ -18,7 +18,8 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
 | `gris` | **NeXTSTEP**: cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
 
-Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas
+Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
+pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
 Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
 
@@ -153,6 +154,7 @@ Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los color
 | `waybar/`, `swaync/`, `fuzzel/`, `alacritty/`, `starship.toml`, `fish.fish` | barra, notificaciones, lanzador, terminal, prompt y colores de la shell |
 | `gtk-3.0/`, `gtk-4.0/`, `kde/` | apps GTK y Qt |
 | `firefox/`, `apple-music/` | `userChrome.css`/`userContent.css` + `user.js` |
+| `obsidian/` | tema de Obsidian (`theme.css` + `manifest.json`); `tema` lo enlaza en el vault como `.obsidian/themes/Tema` |
 | `popups/`, `fastfetch/`, `wallpapers/`, `screenshots/` | popup de música, logo, fondos generados por código |
 | `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú Apple, Dock, menú Inicio) y su instalación |
 | `scripts/launcher.sh` | si existe, es lo que abre la tecla Super (azul: menú Inicio); si no, fuzzel |

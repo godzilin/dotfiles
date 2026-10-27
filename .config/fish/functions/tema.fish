@@ -65,6 +65,14 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
 
     ~/.config/dotfiles/firefox/theme.sh  # Firefox ignores activeThemeID from user.js once a theme is recorded
 
+    # Obsidian: the vault's theme "Tema" is this link (ignored by the vault's git/Syncthing); touching it reloads it live
+    set -l vault ~/Obsidian/Vault/.obsidian
+    if test -d $vault
+        mkdir -p $vault/themes
+        ln -sfn ~/.config/dotfiles/themes/current/obsidian $vault/themes/Tema
+        touch $dir/$t/obsidian/theme.css
+    end
+
     # Fonts that ship inside the theme (fonts/), seen through ~/.config/fontconfig/conf.d/60-theme-fonts.conf
     fc-cache -f ~/.config/dotfiles/themes/current/fonts 2>/dev/null
 
@@ -77,5 +85,5 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
         ~/.config/hypr/scripts/wallpaper.sh apply  # hyprpaper on this theme's pinned or rotating wallpaper
         ~/.config/hypr/scripts/theme-daemons.sh start
     end
-    echo "tema: $t ("(jq -r .name $json)"). Firefox, Apple Music y las terminales abiertas lo cogen al reiniciarlas."
+    echo "tema: $t ("(jq -r .name $json)"). Firefox, Apple Music, las terminales abiertas y las fuentes de Obsidian lo cogen al reiniciarlos."
 end
