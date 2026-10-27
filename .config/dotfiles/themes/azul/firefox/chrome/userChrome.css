@@ -1,7 +1,7 @@
 /* Azul for Firefox: Internet Explorer 5 on Windows 98.
-   Rows, top to bottom: title bar (the open tab's title on the navy gradient, other tabs as small buttons, [_][□][x]),
-   menu bar with the throbber box, big grey buttons with captions (colour on hover), the address row with "Dirección" and
-   "Vínculos", and a status bar with the Internet zone. Icons: Chicago95 (GPL-3.0), embedded as data URIs.
+   Rows, top to bottom: title bar (navy gradient, tabs as taskbar buttons, [_][□][x]), menu bar with the throbber box,
+   big grey buttons with captions (colour on hover) and the "Dirección" field beside them, "Vínculos", and a status bar
+   with the Internet zone. Icons: Chicago95 (GPL-3.0), embedded as data URIs.
    Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
 
 :root {
@@ -32,8 +32,8 @@
   --toolbar-field-focus-border-color: transparent !important;
   --tab-border-radius: 0 !important;
   --tab-min-height: 18px !important;
-  --tab-selected-bgcolor: transparent !important;
-  --tab-selected-textcolor: #ffffff !important;
+  --tab-selected-bgcolor: var(--w-face) !important;
+  --tab-selected-textcolor: #000000 !important;
   --focus-outline-color: #000000 !important;
   --arrowpanel-background: var(--w-face) !important;
   --arrowpanel-color: #000000 !important;
@@ -63,20 +63,14 @@
 #TabsToolbar .toolbar-items { align-items: center; }
 #TabsToolbar :is(.titlebar-spacer, #firefox-view-button, #alltabs-button) { display: none !important; }
 
-/* the open tab is the window title: icon, page title, " - Microsoft Internet Explorer" */
-.tabbrowser-tab { padding-inline: 0 2px !important; min-height: 18px !important; }
-.tabbrowser-tab[selected] { max-width: 100000px !important; flex: 1000 1000 auto !important; }
-.tabbrowser-tab:not([selected]) { max-width: 150px !important; }
-.tab-background { margin-block: 0 !important; border: none !important; outline: none !important; box-shadow: none !important; background: transparent !important; }
-.tabbrowser-tab:not([selected]) .tab-background { background: var(--w-face) !important; box-shadow: var(--w-raised) !important; }
-.tabbrowser-tab:not([selected]):hover .tab-background { background: var(--w-light) !important; }
-.tab-content { padding-inline: 2px 4px !important; }
+/* Tabs are taskbar buttons on the title bar: all the same, the open one pushed in on a checker */
+.tabbrowser-tab { padding-inline: 0 2px !important; min-height: 20px !important; }
+.tabbrowser-tab:not([pinned]) { max-width: 160px !important; }
+.tab-background { margin-block: 1px !important; border: none !important; outline: none !important; background: var(--w-face) !important; box-shadow: var(--w-raised) !important; }
+.tab-background:is([selected], [multiselected]) { background: var(--w-checker) !important; box-shadow: var(--w-pressed) !important; }
+.tab-content { padding-inline: 4px 2px !important; }
 .tab-label { font-size: 16px !important; color: #000000 !important; }
-.tabbrowser-tab[selected] .tab-label { color: #ffffff !important; text-shadow: 1px 0 currentColor !important; }  /* pixel-font bold */
-.tabbrowser-tab[selected] .tab-label-container::after { content: " - Microsoft Internet Explorer"; color: #ffffff; text-shadow: 1px 0 currentColor; white-space: pre; margin-inline-end: auto; }
-.tabbrowser-tab[selected] .tab-label-container { display: flex !important; flex-direction: row !important; justify-content: flex-start !important; flex: 1 !important; }
-.tabbrowser-tab[selected] :is(.tab-content, .tab-label) { justify-content: flex-start !important; text-align: start !important; }
-.tabbrowser-tab[selected] .tab-close-button { display: none !important; }
+.tabbrowser-tab[selected] .tab-label { text-shadow: 1px 0 currentColor !important; }  /* pixel-font bold: synthetic bold smears W95FA */
 .tab-icon-image, .tab-throbber { width: 16px !important; height: 16px !important; }
 .tab-close-button { border-radius: 0 !important; width: 16px !important; height: 14px !important; padding: 2px !important; }
 .tab-close-button:hover { box-shadow: var(--w-raised-thin) !important; background: transparent !important; }
@@ -114,8 +108,7 @@
 #main-menubar > menu[open] { box-shadow: var(--w-sunken-thin) !important; }
 
 /* ── Button bar: grey icons with captions, colour and a raised edge on hover ── */
-#nav-bar { margin: 0 3px !important; padding: 2px 0 !important; box-shadow: var(--w-band) !important; border: none !important; flex-wrap: wrap !important; }
-#nav-bar-customization-target { flex-wrap: wrap !important; }
+#nav-bar { margin: 0 3px !important; padding: 2px 0 !important; box-shadow: var(--w-band) !important; border: none !important; }
 #nav-bar::before, #PersonalToolbar::before { content: ""; width: 3px; align-self: stretch; margin: 2px 4px 2px 2px; box-shadow: var(--w-raised-thin); }
 
 #back-button { list-style-image: url("data:image/png;base64,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6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/aAAwDAQACEQMRAD8A+f6KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigArqvDXgHVfFWmyX1jcWccUcxhIndg2QAeynj5hXK17h8G/8AkULv/r/f/wBFx10YWnGpU5ZHj57jauCwbrUd7o858S+AdV8K6bHfX1xZyRSTCECB2LZIJ7qOPlNcrXuHxk/5FC0/6/0/9FyV4fRiqcadTliGRY2rjcGq1be7Ciiiuc9gKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKK6rwD4asvFWuz2N9LPHFHbNMDAwDZDKO4PHzGvRv+FN+Hv+fzVP+/sf/wARXRTwtSpHmiePjc9weCq+xrN39D0OiiivePyU88+Mn/IoWn/X+n/ouSvD69w+Mn/IoWn/AF/p/wCi5K8Prxcd/GP07hX/AJFy9WFFFFcZ9IFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAV1XhrwDqvirTZL6xuLOOKOYwkTuwbIAPZTx8wrla9w+Df8AyKF3/wBf7/8AouOujC041KnLI8fPcbVwWDdajvdDPAPgHVfCuuz319cWckUls0IEDsWyWU91HHymvRqKK9qnTjTjyxPzDG42rjavtq24UUUVochyvj7w1e+KtCgsbGWCOWO5WYmdiFwFYdgefmFec/8ACm/EP/P5pf8A39k/+Ir3CiuephadSXNI9nBZ7jMFS9jRat6Hh/8AwpvxD/z+aX/39k/+Io/4U34h/wCfzS/+/sn/AMRXuFFZ/UaJ1/61Zj3X3Hh//Cm/EP8Az+aX/wB/ZP8A4ij/AIU34h/5/NL/AO/sn/xFe4UUfUaIf61Zj3X3Hh//AApvxD/z+aX/AN/ZP/iKP+FN+If+fzS/+/sn/wARXuFFH1GiH+tWY919x4f/AMKb8Q/8/ml/9/ZP/iKP+FN+If8An80v/v7J/wDEV7hRR9Roh/rVmPdfceH/APCm/EP/AD+aX/39k/8AiK5XxL4avfCupR2N9LBJLJCJgYGJXBJHcDn5TX01Xh/xk/5G+0/68E/9GSVz4rC06dPmiexkWe4zG4xUazVrPoeeUUUV5p9sFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfWdFeH/8Lk8Q/wDPnpf/AH6k/wDi69G8A+Jb3xVoU99fRQRyx3LQgQKQuAqnuTz8xr3qeKp1JcsT8mxuRYzBUvbVkrep1VFFFdB4wUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAV4f8ZP+RvtP+vBP/Rkle4V4f8ZP+RvtP+vBP/RklceO/gn0nCv/ACMV6M88ooorxT9OCiiigAooooAKKKKACiiigAooooAKKKKACvRvAPj7SvCuhT2N9b3kksly0wMCKVwVUd2HPymvOaK0p1JU5c0TkxuCpY2l7GtsfRPhrx9pXirUpLGxt7yOWOEzEzooXAIHZjz8wrqq8P8Ag3/yN93/ANeD/wDoyOvcK9rC1JVKfNI/Mc9wVLBYx0aO1kFFFFdB4xjeJfEtl4V02O+vop5IpJhCBAoLZIJ7kcfKa5X/AIXJ4e/589U/79R//F0fGT/kULT/AK/0/wDRcleH15uKxVSnU5Yn22RZFg8bg1WrJ3u+p7h/wuTw9/z56p/36j/+Lo/4XJ4e/wCfPVP+/Uf/AMXXh9Fc/wBerHsf6q5d2f3nuH/C5PD3/Pnqn/fqP/4uj/hcnh7/AJ89U/79R/8AxdeH0UfXqwf6q5d2f3nuH/C5PD3/AD56p/36j/8Ai6P+FyeHv+fPVP8Av1H/APF14fRR9erB/qrl3Z/ee4f8Lk8Pf8+eqf8AfqP/AOLo/wCFyeHv+fPVP+/Uf/xdeH0UfXqwf6q5d2f3nuH/AAuTw9/z56p/36j/APi6858feJbLxVrsF9YxTxxR2ywkTqA2QzHsTx8wrlaKzqYqpUjyyOzBZFg8FV9tRTv6hRRRXOewFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB9Z0V4f/wuTxD/AM+el/8AfqT/AOLr0bwD4lvfFWhT319FBHLHctCBApC4Cqe5PPzGvep4qnUlyxPybG5FjMFS9tWSt6mN8ZP+RQtP+v8AT/0XJXh9e4fGT/kULT/r/T/0XJXh9ebjv4x9rwr/AMi5erCiiiuM+kCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAr0bwD4+0rwroU9jfW95JLJctMDAilcFVHdhz8przmitKdSVOXNE5MbgqWNpexrbHo3j7x9pXirQoLGxt7yOWO5WYmdFC4CsOzHn5hXnNFFFSpKpLmkGCwVLBUvY0dgooorM6wooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/9kA3Mm2ogAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNy0xNlQxMjo0NDo1MiswMDowMDDzetYAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDctMTZUMTI6NDQ6NTIrMDA6MDBBrsJqAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTA3LTE2VDEzOjE4OjQ4KzAwOjAwyJwpLAAAABp0RVh0ZXhpZjpCaXRzUGVyU2FtcGxlADgsIDgsIDgS7T4nAAAAEXRFWHRleGlmOkNvbG9yU3BhY2UAMQ+bAkkAAAAhdEVYdGV4aWY6RGF0ZVRpbWUAMjAyMDoxMjowOCAwOTozODo0MABvZDkAAAATdEVYdGV4aWY6RXhpZk9mZnNldAAxNzjc1lZ+AAAAE3RFWHRleGlmOkltYWdlTGVuZ3RoADI0vZ1TQwAAABJ0RVh0ZXhpZjpJbWFnZVdpZHRoADI0F3klJAAAABp0RVh0ZXhpZjpTb2Z0d2FyZQBHSU1QIDIuMTAuMTgj5l0zAAAAJHRFWHRleGlmOnRodW1ibmFpbDpCaXRzUGVyU2FtcGxlADgsIDgsIDggG/RTAAAAHHRFWHRleGlmOnRodW1ibmFpbDpDb21wcmVzc2lvbgA2+WVwVwAAAB50RVh0ZXhpZjp0aHVtYm5haWw6SW1hZ2VMZW5ndGgAMjU2UHAwAwAAAB10RVh0ZXhpZjp0aHVtYm5haWw6SW1hZ2VXaWR0aAAyNTaIBvoUAAAAKHRFWHRleGlmOnRodW1ibmFpbDpKUEVHSW50ZXJjaGFuZ2VGb3JtYXQAMzA0rEfPaAAAAC90RVh0ZXhpZjp0aHVtYm5haWw6SlBFR0ludGVyY2hhbmdlRm9ybWF0TGVuZ3RoADMwMTmCqQT1AAAAKnRFWHRleGlmOnRodW1ibmFpbDpQaG90b21ldHJpY0ludGVycHJldGF0aW9uADYSFYoaAAAAIHRFWHRleGlmOnRodW1ibmFpbDpTYW1wbGVzUGVyUGl4ZWwAM+HXzVoAAAAbdEVYdGljYzpjb3B5cmlnaHQAUHVibGljIERvbWFpbraRMVsAAAAidEVYdGljYzpkZXNjcmlwdGlvbgBHSU1QIGJ1aWx0LWluIHNSR0JMZ0ETAAAAFXRFWHRpY2M6bWFudWZhY3R1cmVyAEdJTVBMnpDKAAAADnRFWHRpY2M6bW9kZWwAc1JHQltgSUMAAAAASUVORK5CYII=") !important; }
@@ -164,11 +157,10 @@
 #nav-bar #home-button { margin-inline-end: 8px !important; }
 #home-button + * { margin-inline-start: 0 !important; }
 #nav-bar .toolbarbutton-icon, #PersonalToolbar .toolbarbutton-icon { image-rendering: pixelated; }
-#nav-bar #PanelUI-button { margin-inline-start: auto !important; }
 
-/* ── Address row: its own band under the buttons ───────────────────────────── */
-#urlbar-container { order: 99 !important; flex: 1 1 100% !important; max-width: none !important; width: auto !important;
-  margin: 2px 0 0 !important; padding: 3px 4px 1px 0 !important; box-shadow: inset 0 1px var(--w-shadow), inset 0 2px var(--w-hi) !important; }
+/* ── Address: beside the buttons, behind a rebar groove ───────────────────── */
+#urlbar-container { flex: 1 1 auto !important; max-width: none !important; width: auto !important; align-self: center !important;
+  margin: 0 4px 0 6px !important; padding: 0 0 0 8px !important; box-shadow: inset 1px 0 var(--w-shadow), inset 2px 0 var(--w-hi) !important; }
 #urlbar-container::before { content: "Dirección"; align-self: center; margin-inline: 2px 6px; font: 16px var(--w-font); color: #000000; }
 #urlbar, #urlbar-container { --urlbar-height: 24px !important; --urlbar-min-height: 24px !important; }
 #urlbar .urlbar-background { border-radius: 0 !important; border: none !important; box-shadow: var(--w-sunken) !important; background: #ffffff !important; }
