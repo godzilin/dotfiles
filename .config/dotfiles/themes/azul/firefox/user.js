@@ -6,3 +6,4 @@ user_pref("browser.theme.content-theme", 1);
 user_pref("browser.tabs.inTitlebar", 1);
 user_pref("ui.key.menuAccessKeyFocuses", false);
 user_pref("widget.gtk.overlay-scrollbars.enabled", false);  // real Win95 scrollbars
+user_pref("widget.non-native-theme.scrollbar.style", 4);  // square thumb and arrow buttons (Windows 10 style, the closest to 95)

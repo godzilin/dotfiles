@@ -5,3 +5,6 @@ user_pref("browser.theme.toolbar-theme", 1);
 user_pref("browser.theme.content-theme", 1);
 user_pref("browser.tabs.inTitlebar", 1);  // tabs in the titlebar, with the traffic lights of the GTK theme
 user_pref("ui.key.menuAccessKeyFocuses", false);
+// Undo the scrollbars azul sets (user.js prefs stay in prefs.js after switching theme)
+user_pref("widget.gtk.overlay-scrollbars.enabled", true);
+user_pref("widget.non-native-theme.scrollbar.style", 0);
