@@ -32,14 +32,81 @@ body.theme-dark, body.theme-light {
   --radius-l: 0px;
 }
 
-/* NeXTSTEP: four greys, white/dark bevels, black title bars */
-body { --bevel-out: inset 1px 1px #ffffff, inset -1px -1px #555555;
+/* NeXTSTEP: four greys, white/black bevels, black title bars with centred titles, dark scroller troughs */
+body {
+  --bevel-out: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555;
   --bevel-in: inset 1px 1px #555555, inset -1px -1px #ffffff;
-  --h1-weight: 700; --h2-weight: 700; --background-modifier-hover: #c8c8c8; --text-selection: #aaaaaa;
-  --background-modifier-form-field: #ffffff; --tab-container-background: #aaaaaa; --titlebar-background: #aaaaaa; --tag-background: #aaaaaa; --tag-color: #000000; }
-.workspace-ribbon, .workspace-split, .status-bar, .workspace-tab-header-container, .modal, .menu, .prompt { background-color: #aaaaaa; }
-button:not(.clickable-icon), .dropdown, .workspace-tab-header, .modal, .menu, .prompt { box-shadow: var(--bevel-out) !important; border: none !important; }
-input[type="text"], input[type="search"], textarea { box-shadow: var(--bevel-in) !important; border: none !important; }
-.workspace-tab-header.is-active, .modal-title { background: #000000 !important; color: #ffffff !important; }
-.workspace-tab-header.is-active .workspace-tab-header-inner-title, .workspace-tab-header.is-active .workspace-tab-header-inner-icon { color: #ffffff !important; }
-.nav-file-title.is-active, .tree-item-self.is-active, .suggestion-item.is-selected { background-color: #ffffff !important; color: #000000 !important; }
+  --field-ring: -1px -1px 0 #555555, 1px 1px 0 #ffffff;
+
+  --h1-weight: 700; --h2-weight: 700; --h3-weight: 700; --inline-title-weight: 700;
+  --h1-size: 1.6em; --h2-size: 1.3em; --h3-size: 1.1em; --inline-title-size: 1.6em; --code-size: 0.95em;
+  --background-modifier-hover: transparent; --background-modifier-active-hover: transparent;
+  --background-modifier-form-field: #ffffff; --background-modifier-border: #555555;
+  --text-selection: #aaaaaa; --code-background: transparent; --tag-background: transparent; --tag-color: #000000;
+  --icon-color: #000000; --icon-color-hover: #000000; --icon-color-active: #000000; --icon-color-focused: #000000;
+  --nav-item-background-active: #aaaaaa; --nav-item-color-active: #000000; --nav-item-background-hover: transparent;
+  --tab-container-background: #aaaaaa; --titlebar-background: #aaaaaa; --titlebar-background-focused: #aaaaaa;
+  --tab-curve: 0px; --tab-radius: 0; --tab-radius-active: 0; --tab-outline-width: 0px; --tab-background-active: #aaaaaa;
+  --tab-text-color: #000000; --tab-text-color-active: #000000; --tab-text-color-focused: #000000;
+  --tab-text-color-focused-active: #000000; --tab-text-color-focused-active-current: #000000;
+  --table-header-background: #aaaaaa; --table-border-color: #555555;
+  --status-bar-background: #aaaaaa; --status-bar-text-color: #000000; --status-bar-radius: 0; --status-bar-border-width: 0;
+  --shadow-s: none; --shadow-l: none; --input-shadow: var(--bevel-in); --input-shadow-hover: var(--bevel-in);
+  --checkbox-radius: 0; --toggle-radius: 0; --toggle-thumb-radius: 0;
+}
+
+/* Panel grey behind everything, white sunken fields for every view */
+.workspace, .workspace-ribbon, .workspace-split, .workspace-leaf, .workspace-leaf-content, .workspace-tabs,
+.workspace-tab-header-container, .sidebar-toggle-button, .nav-header { background-color: #aaaaaa !important; border: none !important; }
+.workspace-leaf-content > .view-content { background-color: #ffffff !important; margin: 1px 3px 3px; box-shadow: var(--field-ring); }
+.workspace-leaf-content[data-type="file-explorer"] > .nav-files-container,
+.workspace-leaf-content[data-type="search"] .search-result-container { background-color: #ffffff; box-shadow: var(--field-ring); margin: 1px 3px 3px; }
+.workspace-split > .workspace-leaf-resize-handle { background: #aaaaaa; }
+
+/* Title bar: black for the key window, dark grey for the rest; title centred */
+.view-header { --icon-color: #ffffff; --icon-color-hover: #ffffff; --icon-color-active: #ffffff;
+  background: #555555 !important; margin: 3px 3px 0; border: none !important; height: 24px;
+  box-shadow: inset 1px 1px #aaaaaa, inset -1px -1px #000000; }
+.workspace-leaf.mod-active .view-header { background: #000000 !important; }
+.view-header-title-container { justify-content: center; }
+.view-header-title, .view-header-breadcrumb, .view-header-title-parent { color: #ffffff !important; font-weight: 700; }
+.view-header .clickable-icon { color: #ffffff; }
+
+/* Tabs as bevelled buttons; the open one pressed in */
+.workspace-tab-header::before, .workspace-tab-header::after { display: none !important; }
+.workspace-tab-header { background: #aaaaaa !important; margin: 3px 1px; box-shadow: var(--bevel-out) !important; }
+.workspace-tab-header.is-active { background: #c8c8c8 !important; box-shadow: var(--bevel-in) !important; }
+.workspace-tab-header-inner { background: transparent !important; }
+
+/* Buttons */
+.clickable-icon { border-radius: 0; }
+.clickable-icon:hover { background: transparent; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555; }
+.clickable-icon.is-active, .clickable-icon:active { background: #ffffff; box-shadow: var(--bevel-in); }
+button:not(.clickable-icon) { background: #aaaaaa !important; color: #000000 !important; border-radius: 0 !important; border: none !important; box-shadow: var(--bevel-out) !important; }
+button:not(.clickable-icon):active { background: #ffffff !important; box-shadow: var(--bevel-in) !important; }
+input[type="text"], input[type="search"], textarea, .dropdown { border-radius: 0 !important; border: none !important; box-shadow: var(--bevel-in) !important; background-color: #ffffff; }
+
+/* Menus: grey bevelled rows, the chosen one white; dialogs with a black title strip */
+.menu, .modal, .prompt, .suggestion-container, .popover { background: #aaaaaa !important; border-radius: 0 !important; border: 1px solid #000000 !important; box-shadow: none !important; }
+.menu-item { border-radius: 0; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555; }
+.menu-item.selected:not(.is-disabled), .suggestion-item.is-selected { background: #ffffff !important; color: #000000 !important; }
+.nav-file-title.is-active, .tree-item-self.is-active { background: #aaaaaa !important; color: #000000 !important; }
+.modal-title { background: #000000; color: #ffffff; text-align: center; padding: 2px 6px; margin: -16px -16px 12px; font-weight: 700; }
+.nav-file-title, .nav-folder-title, .tree-item-self { border-radius: 0; }
+
+/* Status bar */
+.status-bar { border-top: 1px solid #ffffff !important; box-shadow: none !important; padding: 2px; }
+.status-bar-item { box-shadow: var(--bevel-in); padding: 0 6px; margin-left: 2px; }
+
+/* Scrollers: dark trough, bevelled knob with a dimple (scrollbar-color would switch the ::-webkit ones off) */
+* { scrollbar-color: auto !important; scrollbar-width: auto !important; }
+body:not(.native-scrollbars) ::-webkit-scrollbar { width: 18px !important; height: 18px !important; background: #555555 !important; }
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb { border: none !important; border-radius: 0 !important; box-shadow: var(--bevel-out) !important; min-height: 24px;
+  background: radial-gradient(circle at 50% 50%, #ffffff 0 2px, #555555 2px 3px, transparent 3px), #aaaaaa !important; }
+body:not(.native-scrollbars) ::-webkit-scrollbar-corner { background: #aaaaaa; }
+
+/* Document */
+.markdown-rendered h2 { border-bottom: 1px solid #555555; box-shadow: 0 1px #ffffff; }
+.markdown-rendered th { font-weight: 700; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555; }
+.markdown-rendered pre { background: #ffffff; box-shadow: var(--bevel-in); border-radius: 0; }
+.tag { border: 1px solid #555555; border-radius: 0; }

@@ -32,17 +32,88 @@ body.theme-dark, body.theme-light {
   --radius-l: 0px;
 }
 
-/* Windows 95: grey 3D face, bevels everywhere, navy title bars */
-body { --bevel-out: inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
+/* Windows 95: grey 3D face, white sunken fields, navy title bars.
+   W95FA is a bitmap-style font drawn for 16px: every size stays at 16 or 32 so it keeps crisp. */
+body {
+  --bevel-out: inset -1px -1px #000000, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf;
   --bevel-in: inset -1px -1px #ffffff, inset 1px 1px #808080, inset -2px -2px #dfdfdf, inset 2px 2px #000000;
-  --h1-weight: 400; --h2-weight: 400; --h3-weight: 400; --bold-weight: 700;
-  --background-modifier-hover: #dfdfdf; --text-selection: #000080; --tag-background: #c0c0c0;
-  --background-modifier-form-field: #ffffff; --tab-container-background: #c0c0c0; --titlebar-background: #c0c0c0; }
+  --bevel-thin-out: inset -1px -1px #808080, inset 1px 1px #ffffff;
+  --bevel-thin-in: inset -1px -1px #ffffff, inset 1px 1px #808080;
+  /* outside the box, so the scrolling children cannot paint over it */
+  --field-ring: -1px -1px 0 #000000, 1px 1px 0 #dfdfdf, -2px -2px 0 #808080, 2px 2px 0 #ffffff;
+
+  --font-text-size: 16px; --font-ui-smaller: 16px; --font-ui-small: 16px; --font-ui-medium: 16px; --font-ui-large: 16px;
+  --tab-font-size: 16px; --status-bar-font-size: 16px; --code-size: 14px;
+  --h1-size: 32px; --h2-size: 16px; --h3-size: 16px; --h4-size: 16px; --h5-size: 16px; --h6-size: 16px;
+  --inline-title-size: 32px; --h1-weight: 400; --h2-weight: 700; --h3-weight: 700; --h4-weight: 700; --h5-weight: 700; --h6-weight: 700;
+  --inline-title-weight: 400; --bold-weight: 700; --line-height-normal: 1.25;
+
+  --background-modifier-hover: transparent; --background-modifier-active-hover: transparent;
+  --background-modifier-form-field: #ffffff; --background-modifier-border: #808080;
+  --text-selection: #000080; --code-background: transparent; --tag-background: transparent;
+  --icon-color: #000000; --icon-color-hover: #000000; --icon-color-active: #000000; --icon-color-focused: #000000;
+  --nav-item-background-active: #000080; --nav-item-color-active: #ffffff; --nav-item-background-hover: transparent;
+  --tab-container-background: #c0c0c0; --titlebar-background: #c0c0c0; --titlebar-background-focused: #c0c0c0;
+  --tab-curve: 0px; --tab-radius: 0; --tab-radius-active: 0; --tab-outline-width: 0px; --tab-background-active: #c0c0c0;
+  --tab-text-color: #000000; --tab-text-color-active: #000000; --tab-text-color-focused: #000000;
+  --tab-text-color-focused-active: #000000; --tab-text-color-focused-active-current: #000000;
+  --table-header-background: #c0c0c0; --table-border-color: #808080;
+  --status-bar-background: #c0c0c0; --status-bar-text-color: #000000; --status-bar-radius: 0; --status-bar-border-width: 0;
+  --shadow-s: none; --shadow-l: none; --input-shadow: var(--bevel-in); --input-shadow-hover: var(--bevel-in);
+  --checkbox-radius: 0; --toggle-radius: 0; --toggle-thumb-radius: 0;
+}
 ::selection { color: #ffffff; }
-.workspace-ribbon, .workspace-split, .status-bar, .workspace-tab-header-container, .modal, .menu, .prompt { background-color: #c0c0c0; }
-button:not(.clickable-icon), .dropdown, .workspace-tab-header, .modal, .menu, .prompt, .status-bar { box-shadow: var(--bevel-out) !important; border: none !important; }
-button:not(.clickable-icon):active, input[type="text"], input[type="search"], textarea, .workspace-leaf-content[data-type="markdown"] .view-content { box-shadow: var(--bevel-in) !important; border: none !important; }
-.workspace-tab-header.is-active, .modal-title, .prompt-instructions { background: linear-gradient(90deg, #000080, #1084d0) !important; color: #ffffff !important; }
-.workspace-tab-header.is-active .workspace-tab-header-inner-title, .workspace-tab-header.is-active .workspace-tab-header-inner-icon { color: #ffffff !important; }
-.nav-file-title.is-active, .tree-item-self.is-active, .suggestion-item.is-selected { background-color: #000080 !important; color: #ffffff !important; }
-.tag { border: 1px dotted #000000; }
+
+/* Grey face behind everything, white sunken fields for every view (editor, file tree, search...) */
+.workspace, .workspace-ribbon, .workspace-split, .workspace-leaf, .workspace-leaf-content, .workspace-tabs,
+.workspace-tab-header-container, .sidebar-toggle-button, .nav-header { background-color: #c0c0c0 !important; border: none !important; }
+.workspace-leaf-content > .view-content { background-color: #ffffff !important; margin: 2px 4px 4px; box-shadow: var(--field-ring); }
+.workspace-leaf-content[data-type="file-explorer"] > .nav-files-container,
+.workspace-leaf-content[data-type="search"] .search-result-container { background-color: #ffffff; box-shadow: var(--field-ring); margin: 2px 4px 4px; }
+.workspace-split.mod-horizontal > .workspace-leaf-resize-handle, .workspace-split > .workspace-leaf-resize-handle { background: #c0c0c0; }
+
+/* Title bar: each pane's header, navy when focused, grey when not (Windows 95 MDI) */
+.view-header { --icon-color: #ffffff; --icon-color-hover: #ffffff; --icon-color-active: #ffffff;
+  background: linear-gradient(90deg, #808080, #c0c0c0) !important; margin: 4px 4px 0; border: none !important; height: 26px; }
+.workspace-leaf.mod-active .view-header { background: linear-gradient(90deg, #000080, #1084d0) !important; }
+.view-header-title, .view-header-breadcrumb, .view-header-title-parent { color: #ffffff !important; font-weight: 700; }
+.view-header .clickable-icon { color: #ffffff; }
+
+/* Property-sheet tabs: raised, the active one taller and joined to its page */
+.workspace-tab-header::before, .workspace-tab-header::after { display: none !important; }
+.workspace-tab-header { background: #c0c0c0 !important; margin-top: 4px;
+  box-shadow: inset 1px 1px #ffffff, inset -1px 0 #000000, inset -2px 0 #808080 !important; }
+.workspace-tab-header.is-active { margin-top: 1px; }
+.workspace-tab-header-inner { background: transparent !important; }
+
+/* Toolbar buttons: flat, raised on hover, pressed when on */
+.clickable-icon { border-radius: 0; }
+.clickable-icon:hover { background: transparent; box-shadow: var(--bevel-thin-out); }
+.clickable-icon.is-active, .clickable-icon:active { background: repeating-conic-gradient(#c0c0c0 0 25%, #ffffff 0 50%) 0 0 / 2px 2px; box-shadow: var(--bevel-thin-in); }
+button:not(.clickable-icon) { background: #c0c0c0 !important; color: #000000 !important; border-radius: 0 !important; border: none !important; box-shadow: var(--bevel-out) !important; }
+button:not(.clickable-icon):active { box-shadow: var(--bevel-in) !important; }
+button.mod-cta { outline: 1px solid #000000; }
+input[type="text"], input[type="search"], textarea, .dropdown { border-radius: 0 !important; border: none !important; box-shadow: var(--bevel-in) !important; background-color: #ffffff; }
+
+/* Menus and dialogs */
+.menu, .modal, .prompt, .suggestion-container, .popover { background: #c0c0c0 !important; border-radius: 0 !important; border: none !important; box-shadow: var(--bevel-out) !important; }
+.menu-item.selected:not(.is-disabled), .suggestion-item.is-selected { background: #000080 !important; color: #ffffff !important; --icon-color: #ffffff; }
+.modal-title { background: linear-gradient(90deg, #000080, #1084d0); color: #ffffff; padding: 2px 6px; margin: -16px -16px 12px; font-weight: 700; }
+.nav-file-title, .nav-folder-title, .tree-item-self { border-radius: 0; }
+
+/* Status bar: sunken cells along the bottom */
+.status-bar { border-top: 1px solid #ffffff !important; box-shadow: none !important; padding: 2px; }
+.status-bar-item { box-shadow: var(--bevel-thin-in); padding: 0 6px; margin-left: 2px; }
+
+/* Scroll bars: checkered track, raised thumb (scrollbar-color would switch the ::-webkit ones off) */
+* { scrollbar-color: auto !important; scrollbar-width: auto !important; }
+body:not(.native-scrollbars) ::-webkit-scrollbar { width: 16px !important; height: 16px !important; background: repeating-conic-gradient(#c0c0c0 0 25%, #ffffff 0 50%) 0 0 / 2px 2px !important; }
+body:not(.native-scrollbars) ::-webkit-scrollbar-thumb { background: #c0c0c0 !important; border: none !important; border-radius: 0 !important; box-shadow: var(--bevel-out) !important; min-height: 16px; }
+body:not(.native-scrollbars) ::-webkit-scrollbar-corner { background: #c0c0c0; }
+
+/* Document */
+.markdown-rendered h2 { border-bottom: 1px solid #808080; box-shadow: 0 1px #ffffff; }
+.markdown-rendered th { font-weight: 700; box-shadow: var(--bevel-thin-out); }
+.markdown-rendered code { color: #000080; }
+.markdown-rendered pre { background: #ffffff; box-shadow: var(--bevel-thin-in); border-radius: 0; }
+.tag { border: 1px dotted #000000; border-radius: 0; color: #000080; }
