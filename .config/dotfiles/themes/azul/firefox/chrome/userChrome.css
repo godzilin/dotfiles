@@ -63,6 +63,12 @@
 #TabsToolbar .toolbar-items { align-items: center; }
 #TabsToolbar :is(.titlebar-spacer, #firefox-view-button, #alltabs-button) { display: none !important; }
 
+/* "+" right after the last tab: use the one inside the strip even when a separate "+" button follows it
+   (that one only shows once the tabs overflow, at the right end); other buttons go to the right end, not
+   halfway (a flexible space here would share the room with the strip) */
+#tabbrowser-tabs[hasadjacentnewtabbutton]:not([overflow]) #tabs-newtab-button { display: flex !important; }
+#tabbrowser-tabs[hasadjacentnewtabbutton]:not([overflow]) ~ #new-tab-button { display: none !important; }
+#TabsToolbar toolbarspring { display: none !important; }
 /* Tabs are taskbar buttons on the title bar: all the same, the open one pushed in on a checker */
 .tabbrowser-tab { padding-inline: 0 2px !important; min-height: 20px !important; }
 .tabbrowser-tab:not([pinned]) { max-width: 160px !important; }

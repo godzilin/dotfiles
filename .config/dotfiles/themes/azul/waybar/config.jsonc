@@ -14,6 +14,7 @@
     },
     "image#start": {
         "path": "/home/godzilin/.local/share/icons/Chicago95/places/16/start-here.png",
+        "interval": 86400,  // static: without it waybar reloads the image nonstop, and through glycin that starves the bar until it freezes
         "size": 16,
         "on-click": "~/.config/dotfiles/themes/current/scripts/launcher.sh",
         "tooltip": false
@@ -71,6 +72,7 @@
     },
     "image#wall": {
         "path": "/home/godzilin/.local/share/icons/Chicago95/apps/24/preferences-desktop-wallpaper.png",
+        "interval": 86400,  // static: without it waybar reloads the image nonstop, and through glycin that starves the bar until it freezes
         "size": 24,
         "on-click": "~/.config/hypr/scripts/wallpaper.sh",
         "tooltip": false
