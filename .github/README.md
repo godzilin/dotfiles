@@ -143,7 +143,8 @@ botones gris debajo y los scrollers a la izquierda, como en NeXT.
 
 Nimbus Sans y Nimbus Mono PS (`gsfonts`, los clones URW de Helvetica y Courier), carpetas grises (Papirus-Gris,
 la construye `install.sh`), cursor Capitaine. Fondos generados y tramados con Bayer a los cuatro grises
-(`wallpapers/next.py`: Workspace, cubo negro, esferas, Mandelbrot, degradado). Primera vez:
+(`wallpapers/next.py`: Workspace, cubo negro, esferas, Mandelbrot, degradado, superficie de Mathematica, roseta de
+Display PostScript, toro, Julia, ciudad de cubos, Lorenz, moiré, curvas de nivel, galaxia y Lissajous). Primera vez:
 `~/.config/dotfiles/themes/gris/install.sh`.
 
 ## Cómo están organizados los temas
