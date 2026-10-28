@@ -30,13 +30,13 @@
   "font_size": 10,
   "gtk_theme": "WhiteSur-Light",
   "color_scheme": "prefer-light",
-  "icons": "WhiteSur-light",
+  "icons": "WhiteSur-Linux",
   "cursor": "WhiteSur-cursors",
   "cursor_size": 24,
   "kde_colors": "Blanco",
   "buttons": "close,minimize,maximize:",
   "daemons": [
-    "nwg-dock-hyprland -d -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-mac'"
+    "nwg-dock-hyprland -d -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-pc'"
   ],
   "wallpaper": {
     "title": "Fondo de pantalla",

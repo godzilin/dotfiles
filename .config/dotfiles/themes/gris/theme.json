@@ -1,6 +1,6 @@
 {
-  "name": "NeXTSTEP",
-  "description": "NeXTSTEP: cuatro grises (negro, gris oscuro, gris claro, blanco), biseles finos, títulos negros, menú vertical arriba a la izquierda y Dock a la derecha",
+  "name": "LinuxSTEP",
+  "description": "LinuxSTEP (al estilo NeXTSTEP): cuatro grises (negro, gris oscuro, gris claro, blanco), biseles finos, títulos negros, menú vertical arriba a la izquierda y Dock a la derecha",
   "palette": {
     "bg0": "#ffffff",
     "bg": "#aaaaaa",

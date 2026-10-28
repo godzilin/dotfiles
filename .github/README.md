@@ -11,12 +11,12 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | Tema | Estilo |
 |---|---|
 | `naranja` | **Nostromo**: cassette futurism con la calma de macOS |
-| `blanco` | **macOS**: claro y translúcido, barra de menús con menú Apple, Dock, Spotlight |
+| `blanco` | **macOS**: claro y translúcido, barra de menús con menú de Arch, Dock, Spotlight |
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
 | `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
 | `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
-| `gris` | **NeXTSTEP**: cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
+| `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
@@ -50,23 +50,27 @@ Iconos: WhiteSur-orange-dark. Cursor: WhiteSur.
 
 ## blanco: macOS
 
-Imitación de macOS Sonoma en claro: barra de menús translúcida (menú Apple, app activa en negrita, extras y reloj),
+Imitación de macOS Sonoma en claro: barra de menús translúcida (menú de Arch, app activa en negrita, extras y reloj),
 Dock con `nwg-dock-hyprland`, Spotlight con fuzzel, notificaciones y bloqueo como en macOS, Terminal.app "Basic"
-con el prompt de zsh, Firefox tipo Safari con semáforos y fondos generados por código (`wallpapers/macos.py`).
+con el prompt de zsh, Firefox tipo Safari con semáforos y fondos generados por código (`wallpapers/macos.py`, con nombres de hitos de
+Linux: `1991-linux-0.01`, `2002-arch-0.1`, `2021-cachyos`...). Todo lo que era Apple es Linux: el logo de Arch en
+la esquina, "Acerca de CachyOS", el logo de Arch con las franjas del arcoíris de 1977 en fastfetch
+(`fastfetch/make_logo.py`) y el gestor de archivos con una cara de pingüino (`icons/file-manager.svg`).
 
 ![Escritorio](../.config/dotfiles/themes/blanco/screenshots/desktop.png)
 
-Tema GTK [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) (versión fijada), iconos WhiteSur-light,
+Tema GTK [WhiteSur](https://github.com/vinceliuice/WhiteSur-gtk-theme) (versión fijada), iconos WhiteSur-light con los logos cambiados (WhiteSur-Linux, lo crea `install.sh`),
 fuente Inter (lo más cercano a SF Pro que se puede distribuir) y DejaVu Sans Mono (la base de Menlo).
 Primera vez: `~/.config/dotfiles/themes/blanco/install.sh`.
 
 ## azul: Windows 95/98
 
 Barra de tareas con botón Inicio, botones de ventana y bandeja con los iconos auténticos; menú Inicio propio
-(GTK3 + gtk-layer-shell) con la franja "Windows98", Programas por categorías, Documentos recientes, Configuración,
+(GTK3 + gtk-layer-shell) con la franja "Linux98", Programas por categorías, Documentos recientes, Configuración,
 Buscar, Ejecutar y el diálogo "Apagar el sistema"; bordes con el degradado azul de la barra de título de Windows 98,
-sin animaciones ni sombras; terminal "MS-DOS Prompt" con `C:\USERS\GODZILIN>`; inicio de sesión "Bienvenido a
-Windows"; Firefox como Internet Explorer 4; notificaciones como ventanas de Windows; Qt con el estilo "Windows" de Qt.
+sin animaciones ni sombras; terminal tipo MS-DOS con `ARCH:\HOME\GODZILIN>`; inicio de sesión "Bienvenido a
+Linux"; botón Inicio y fastfetch con el logo de Arch en los cuatro colores de la bandera (`icons/make_start.py`,
+`fastfetch/make_logo.py`); Firefox como Internet Explorer 5; notificaciones como ventanas de Windows; Qt con el estilo "Windows" de Qt.
 
 ![Escritorio](../.config/dotfiles/themes/azul/screenshots/desktop.png)
 
@@ -123,7 +127,7 @@ Fuente `ttf-3270-nerd` (repos oficiales), carpetas verdes (Papirus-Verde, la del
 Fondos generados por código con brillo de fósforo y líneas de barrido (`wallpapers/fosforo.py`: READY, volcado
 hexadecimal del propio script, osciloscopio, radar y terreno vectorial). Primera vez: `~/.config/dotfiles/themes/negro/install.sh`.
 
-## gris: NeXTSTEP
+## gris: LinuxSTEP (NeXTSTEP)
 
 Los cuatro grises de la pantalla de 2 bits de NeXT (negro, gris oscuro, gris claro, blanco) y el rojo solo para
 errores. La barra es el menú principal de NeXT: una columna estrecha arriba a la izquierda con el título negro
@@ -163,7 +167,7 @@ Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los color
 | `firefox/`, `apple-music/` | `userChrome.css`/`userContent.css` + `user.js` |
 | `obsidian/` | tema de Obsidian (`theme.css` + `manifest.json`); `tema` lo enlaza en el vault como `.obsidian/themes/Tema` |
 | `popups/`, `fastfetch/`, `wallpapers/`, `screenshots/` | popup de música, logo, fondos generados por código |
-| `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú Apple, Dock, menú Inicio) y su instalación |
+| `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú de Arch, Dock, menú Inicio) y su instalación |
 | `scripts/launcher.sh` | si existe, es lo que abre la tecla Super (azul: menú Inicio); si no, fuzzel |
 | `fonts/` | fuentes que solo se ven con ese tema (`.config/fontconfig/conf.d/60-theme-fonts.conf`) |
 | `"qt_style"` en `theme.json` | estilo de widgets Qt (azul: `Windows`); sin él, Breeze |

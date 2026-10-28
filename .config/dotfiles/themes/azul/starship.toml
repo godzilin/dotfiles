@@ -1,11 +1,11 @@
-# MS-DOS Prompt: "C:\USERS\GODZILIN>" (the path in uppercase with backslashes)
+# DOS-style prompt on Linux: "ARCH:\HOME\GODZILIN>" (the real path in uppercase with backslashes, Arch as the drive)
 add_newline = false
 format = "${custom.dos}$character"
 
 [custom.dos]
-command = "pwd | sed 's|^/home/|/USERS/|; s|/|\\\\|g' | tr '[:lower:]' '[:upper:]'"
+command = "pwd | sed 's|/|\\\\|g' | tr '[:lower:]' '[:upper:]'"
 when = "true"
-format = "C:$output"
+format = "ARCH:$output"
 shell = ["sh"]
 
 [character]

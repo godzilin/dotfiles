@@ -1,16 +1,16 @@
-// macOS menu bar: Apple menu and the frontmost app on the left, menu extras and the clock on the right
+// macOS-style menu bar: the Arch menu and the frontmost app on the left, menu extras and the clock on the right
 {
     "layer": "top",
     "position": "top",
     "height": 28,
     "spacing": 0,
 
-    "modules-left": ["custom/apple", "hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["custom/arch", "hyprland/workspaces", "hyprland/window"],
     "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/wallpaper", "custom/spotlight", "custom/control", "custom/clock"],
 
-    "custom/apple": {
-        "format": "",
-        "on-click": "~/.config/dotfiles/themes/current/scripts/applemenu.sh",
+    "custom/arch": {
+        "format": "",
+        "on-click": "~/.config/dotfiles/themes/current/scripts/archmenu.sh",
         "tooltip": false
     },
     // Desktops (Spaces): number of each, the current one filled; scroll to move
@@ -29,20 +29,20 @@
             "": "Escritorio",
             "firefox": "Firefox",
             "Alacritty": "Terminal",
-            "thunar": "Finder",
-            "Thunar": "Finder",
-            "org.kde.dolphin": "Finder",
+            "thunar": "Archivos",
+            "Thunar": "Archivos",
+            "org.kde.dolphin": "Archivos",
             "apple-music": "Música",
             "discord": "Discord",
             "steam": "Steam",
             "code-oss": "Code",
             "systemsettings": "Ajustes del Sistema",
-            "org.kde.kate": "TextEdit",
+            "org.kde.kate": "Kate",
             "org.pulseaudio.pavucontrol": "Sonido",
             "nostromo-calendar": "Calendario",
             "nostromo-weather": "Tiempo",
             "nostromo-media": "Música",
-            "about-this-mac": "Acerca de este Mac"
+            "about-this-pc": "Acerca de CachyOS"
         }
     },
 

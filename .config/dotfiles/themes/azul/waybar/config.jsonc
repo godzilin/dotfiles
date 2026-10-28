@@ -13,7 +13,7 @@
         "modules": ["image#start", "custom/start"]
     },
     "image#start": {
-        "path": "/home/godzilin/.local/share/icons/Chicago95/places/16/start-here.png",
+        "path": "/home/godzilin/.config/dotfiles/themes/current/icons/start.png",  // Arch in the four flag colours (icons/make_start.py)
         "interval": 86400,  // static: without it waybar reloads the image nonstop, and through glycin that starves the bar until it freezes
         "size": 16,
         "on-click": "~/.config/dotfiles/themes/current/scripts/launcher.sh",

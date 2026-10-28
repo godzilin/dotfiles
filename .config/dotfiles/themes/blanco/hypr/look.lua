@@ -101,10 +101,10 @@ hl.window_rule({
     move  = "1200 34",
 })
 
--- "Acerca de este Mac" (Apple menu): small floating window in the middle
+-- "Acerca de CachyOS" (Arch menu): small floating window in the middle
 hl.window_rule({
-    name  = "about-this-mac",
-    match = { class = "^about-this-mac$" },
+    name  = "about-this-pc",
+    match = { class = "^about-this-pc$" },
     float = true,
     center = true,
     size  = "760 420",

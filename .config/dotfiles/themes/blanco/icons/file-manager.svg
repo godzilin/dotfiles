@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- File manager for "blanco": the old two-tone smiling face, turned into a penguin (round eyes, orange beak) -->
+  <defs>
+    <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2ea1ff"/><stop offset="1" stop-color="#0a5fd9"/>
+    </linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6faff"/><stop offset="1" stop-color="#cfe2fa"/>
+    </linearGradient>
+    <linearGradient id="beak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffc23d"/><stop offset="1" stop-color="#f08a12"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="112" height="112" rx="26"/></clipPath>
+  </defs>
+  <rect x="8" y="10" width="112" height="112" rx="26" fill="#000" opacity=".18"/>
+  <g clip-path="url(#tile)">
+    <rect x="8" y="8" width="112" height="112" fill="url(#light)"/>
+    <path d="M8 8 H70 C64 30 58 44 66 62 C58 80 62 100 70 120 H8 Z" fill="url(#dark)"/>
+  </g>
+  <ellipse cx="44" cy="52" rx="9" ry="11" fill="#fff"/>
+  <ellipse cx="46" cy="54" rx="4.5" ry="6" fill="#0b1b33"/>
+  <ellipse cx="88" cy="52" rx="9" ry="11" fill="#0b1b33"/>
+  <ellipse cx="86" cy="50" rx="3" ry="3.6" fill="#fff"/>
+  <path d="M48 74 Q66 66 84 74 Q76 90 66 92 Q56 90 48 74 Z" fill="url(#beak)" stroke="#c76d08" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M52 76 Q66 72 80 76" fill="none" stroke="#c76d08" stroke-width="2" stroke-linecap="round"/>
+</svg>
