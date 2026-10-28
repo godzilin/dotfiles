@@ -20,42 +20,42 @@
   body { background-color: var(--background-color-canvas) !important; }
 }
 
-/* New tab / home: the wallpaper's dot grid and label instead of the Firefox logo */
+/* New tab / home: dusk in the forest (a low warm light through the canopy), a leaf and "Bosque" in Fraunces over
+   a pebble of a search field, the shortcuts as round stones */
 @-moz-document url("about:newtab"), url("about:home") {
   body {
-    background-color: #0f140f !important;
-    background-image: radial-gradient(circle, #212a20 1.2px, transparent 1.4px) !important;
-    background-size: 48px 48px !important;
-    background-position: 24px 24px !important;
+    background: radial-gradient(ellipse at 50% -10%, rgba(227, 197, 110, 0.16) 0, transparent 55%),
+                radial-gradient(ellipse at 15% 110%, rgba(79, 122, 69, 0.28) 0, transparent 50%),
+                linear-gradient(#141b14, #0b0f0b) !important;
+    font-family: "Nunito", sans-serif !important;
   }
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; }
   .search-wrapper::before {
-    content: "󰯈  THINKPAD P14S GEN 5";
-    display: block;
+    content: "Bosque";
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin-bottom: 22px;
     text-align: center;
-    margin-bottom: 28px;
-    font: 600 13px "Nunito", "JetBrains Mono", monospace;
-   
-    color: #9cc26b;
+    font: italic 400 46px "Fraunces", serif;
+    color: #e4e6d0;
+    padding-top: 44px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.5 2C6.5 2 2.5 5.8 2.5 10.3c0 1.4.4 2.5 1 3.3C4.6 9.6 7.4 7 11 5.7 8 7.6 5.9 10.1 4.8 13.9c.9.5 1.9.7 3 .7 5.2 0 6.5-6.3 5.7-12.6z' fill='%239cc26b'/%3E%3C/svg%3E") top center / 34px no-repeat;
   }
-  .search-wrapper::after {  /* tape stripes under the search box */
-    content: "";
-    display: block;
-    width: 160px;
-    height: 4px;
-    margin: 26px auto 0;
-    background: linear-gradient(90deg, #e3c56e 0 25%, #9cc26b 25% 50%, #c9894b 50% 75%, #c0624a 75%);
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 999px !important;
+    --content-search-handoff-ui-background-color: #1d261c !important;
+    --content-search-handoff-ui-color: #e4e6d0 !important;
+    --content-search-handoff-ui-fill: #7f8f72 !important;
+    font-family: "Nunito", sans-serif !important;
+    border-radius: 999px !important;
+    box-shadow: 0 0 0 1px #34432f, 0 10px 30px rgba(0, 0, 0, 0.4) !important;
   }
-  /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
-  .search-inner-wrapper moz-urlbar .urlbar-background {
-    background-color: #151c15 !important;
-    border: 1px solid #34432f !important;
-    border-radius: 10px !important;
-    box-shadow: none !important;
-  }
-  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #9cc26b !important; }
-  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "Nunito", sans-serif !important; }
-  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #151c15 !important; border-radius: 10px !important; }
-  .top-site-outer .title { font-family: "JetBrains Mono", monospace !important; font-size: 10px !important; color: #7f8f72 !important; }
+  .top-site-outer .tile { background: #1d261c !important; border-radius: 999px !important; box-shadow: 0 0 0 1px #34432f !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 1px #9cc26b, 0 6px 18px rgba(0, 0, 0, 0.4) !important; }
+  .top-site-outer .top-site-icon { border-radius: 999px !important; background-color: transparent !important; }
+  .top-site-outer .title { font-family: "Nunito", sans-serif !important; font-weight: 600; color: #aab89a !important; }
 }

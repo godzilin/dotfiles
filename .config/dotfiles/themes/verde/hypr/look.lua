@@ -65,7 +65,7 @@ hl.window_rule({
     match = { class = "^nostromo-calendar$" },
     float = true,
     pin   = true,
-    size  = "400 410",
+    size  = "400 450",
     move  = "760 50",
 })
 
@@ -95,6 +95,6 @@ hl.window_rule({
     match = { class = "^nostromo-weather$" },
     float = true,
     pin   = true,
-    size  = "460 580",
+    size  = "460 660",
     move  = "12 50",
 })

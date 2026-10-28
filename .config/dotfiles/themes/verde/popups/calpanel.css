@@ -1,0 +1,24 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: a field notebook page in the forest. Fraunces month,
+   today a moss pebble, sunlight dots under busy days, moss and sun bars before events */
+window { background: #151c15; }
+* { font-family: "Nunito", sans-serif; color: #e4e6d0; }
+.month { font-family: "Fraunces", serif; font-size: 19pt; font-style: italic; font-weight: 400; color: #e4e6d0; }
+.year { font-family: "Fraunces", serif; font-size: 19pt; font-weight: 400; color: #7f8f72; }
+button.nav { background: #1d261c; border: 1px solid #34432f; border-radius: 999px; box-shadow: none; padding: 2px 11px; min-height: 0; }
+button.nav:hover { background: #263224; border-color: #9cc26b; }
+button.nav label { font-size: 10.5pt; font-weight: 700; color: #aab89a; }
+.weekday { font-size: 9pt; font-weight: 700; color: #7f8f72; }
+.weekday.weekend { color: #435440; }
+.day { font-size: 11pt; font-weight: 600; min-width: 28px; min-height: 28px; border-radius: 999px; }
+.day.weekend { color: #7f8f72; }
+.day.other { color: #34432f; }
+.day.today { background: #9cc26b; color: #0f140f; font-weight: 800; }
+.dot { font-size: 5pt; color: #e3c56e; margin-top: -2px; margin-bottom: 2px; }
+.dot.empty { color: transparent; }
+separator { background: #34432f; min-height: 1px; }
+.section { font-family: "Fraunces", serif; font-size: 11pt; font-style: italic; color: #aab89a; }
+.event-bar { background: #9cc26b; min-width: 4px; border-radius: 999px; }
+.event-bar.today { background: #e3c56e; }
+.event { font-size: 10.5pt; font-weight: 600; }
+.when { font-size: 9.5pt; color: #7f8f72; }
+.empty-list { font-size: 10pt; color: #7f8f72; }
