@@ -20,42 +20,45 @@
   body { background-color: var(--background-color-canvas) !important; }
 }
 
-/* New tab / home: the wallpaper's dot grid and label instead of the Firefox logo */
+/* New tab / home: a 3270 logon screen. "LINUX/390" in big phosphor letters, the system banner, the search field as
+   the panel's input field after "COMANDO ===>", shortcuts as green-on-black option boxes */
 @-moz-document url("about:newtab"), url("about:home") {
   body {
-    background-color: #000000 !important;
-    background-image: radial-gradient(circle, #0b170b 1.2px, transparent 1.4px) !important;
-    background-size: 48px 48px !important;
-    background-position: 24px 24px !important;
+    background: #000000 !important;
+    font-family: "3270 Nerd Font", monospace !important;
   }
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; margin-top: 140px !important; }
   .search-wrapper::before {
-    content: "󰯈  THINKPAD P14S GEN 5";
-    display: block;
-    text-align: center;
-    margin-bottom: 28px;
-    font: 600 13px "3270 Nerd Font Mono", "3270 Nerd Font Mono", monospace;
-    letter-spacing: 0.2em;
-    color: #33ff4d;
+    content: "LINUX/390";
+    position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 46px; text-align: center;
+    font: 72px "3270 Nerd Font", monospace; line-height: 1; color: #33ff4d;
+    text-shadow: 0 0 8px rgba(51, 255, 77, 0.6);
   }
-  .search-wrapper::after {  /* tape stripes under the search box */
-    content: "";
-    display: block;
-    width: 160px;
-    height: 4px;
-    margin: 26px auto 0;
-    background: linear-gradient(90deg, #a6ffad 0 25%, #33ff4d 25% 50%, #1fb836 50% 75%, #127a22 75%);
+  .search-inner-wrapper { position: relative; }
+  .search-inner-wrapper::before {
+    content: "ARCH LINUX · CACHYOS · TERMINAL 3270 · SESIÓN LISTA";
+    position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 14px; text-align: center;
+    font: 16px "3270 Nerd Font", monospace; color: #63cc6c;
   }
-  /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
-  .search-inner-wrapper moz-urlbar .urlbar-background {
-    background-color: #040704 !important;
-    border: 1px solid #1a3a1d !important;
+  .search-wrapper::after {
+    content: "READY.";
+    display: block; margin-top: 18px; text-align: left; padding-left: 4px;
+    font: 18px "3270 Nerd Font", monospace; color: #63cc6c; text-shadow: 0 0 4px rgba(51, 255, 77, 0.5);
+  }
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 0 !important;
+    --content-search-handoff-ui-background-color: #000000 !important;
+    --content-search-handoff-ui-color: #a6ffad !important;
+    --content-search-handoff-ui-fill: #3f9147 !important;
+    font-family: "3270 Nerd Font", monospace !important;
     border-radius: 0 !important;
-    box-shadow: none !important;
+    box-shadow: inset 0 -2px #33ff4d, 0 0 0 1px #1a3a1d !important;
   }
-  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #33ff4d !important; }
-  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "3270 Nerd Font Mono", monospace !important; }
-  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #040704 !important; border-radius: 0 !important; }
-  .top-site-outer .title { font-family: "3270 Nerd Font Mono", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #3f9147 !important; }
+  .top-site-outer .tile { background: #000000 !important; border-radius: 0 !important; box-shadow: 0 0 0 1px #275529 !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 1px #33ff4d, 0 0 10px rgba(51, 255, 77, 0.35) !important; }
+  .top-site-outer .top-site-icon { border-radius: 0 !important; background-color: transparent !important;
+    filter: grayscale(1) sepia(1) hue-rotate(70deg) saturate(4) brightness(0.9); }
+  .top-site-outer .title { font-family: "3270 Nerd Font", monospace !important; text-transform: uppercase; color: #3f9147 !important; }
 }

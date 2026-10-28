@@ -85,7 +85,7 @@ def render(year, month, today):
 
     title = rgb(AMBER, MONTHS[month - 1], True) + rgb(SUB, f" {year}")
     info = f"SEM {today.isocalendar().week:02d} · DÍA {today.timetuple().tm_yday:03d}"
-    out.append("  " + title + " " * (width - len(MONTHS[month - 1]) - 5 - len(info)) + rgb(MUTED, info))
+    out.append("  " + title + " " * max(2, width - len(MONTHS[month - 1]) - 5 - len(info)) + rgb(MUTED, info))
     out.append("  " + "".join(rgb(c, "━" * (width // 4 + (i < width % 4))) for i, c in enumerate(STRIPES)))
     out.append("  " + "".join(rgb(MUTED if i < 5 else FAINT, w.rjust(cell - 2) + "  ") for i, w in enumerate(WEEKDAYS)))
     for week in calendar.Calendar(0).monthdatescalendar(year, month):

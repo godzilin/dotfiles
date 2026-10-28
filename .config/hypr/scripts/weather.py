@@ -129,7 +129,7 @@ def render(data):
     out = []
     head = data["place"].upper()
     stamp = f"ACT {updated}"
-    out.append("  " + rgb(AMBER, head, True) + " " * (width - len(head) - len(stamp)) + rgb(FAINT, stamp))
+    out.append("  " + rgb(AMBER, head, True) + " " * max(2, width - len(head) - len(stamp)) + rgb(FAINT, stamp))
     out.append("  " + "".join(rgb(c, "━" * (width // 4 + (i < width % 4))) for i, c in enumerate(STRIPES)))
     t = round(cur["temperature_2m"])
     out.append("")

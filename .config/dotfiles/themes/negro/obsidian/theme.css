@@ -66,3 +66,16 @@ body {
 .markdown-rendered code { color: #33ff4d; }
 .tag { border: 1px solid #275529; border-radius: 0; }
 button:not(.clickable-icon), input, .dropdown { border-radius: 0 !important; }
+
+/* ISPF touches: the note header reads like an EDIT panel title, headings carry ISPF arrows, bullets are ">",
+   quotes a "|" column; faint scanlines over the whole tube (they let every click through) */
+.view-header-title-container::before { content: "EDITAR"; color: #000000; background: #33ff4d; padding: 0 6px; margin-right: 10px; }
+.markdown-rendered h1::before, .HyperMD-header-1 .cm-header-1:first-of-type::before { content: "====> "; color: #3f9147; }
+.markdown-rendered h2::before, .HyperMD-header-2 .cm-header-2:first-of-type::before { content: "--> "; color: #3f9147; }
+.markdown-rendered ul > li::marker { content: "> "; color: #33ff4d; }
+.markdown-rendered blockquote { border-left: none; padding-left: 0; }
+.markdown-rendered blockquote > p::before { content: "| "; color: #3f9147; }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, .18) 3px); }
+.status-bar { border-top: 1px solid #1a3a1d !important; }
+.status-bar::before { content: "CTRL+P=COMANDOS  CTRL+O=ABRIR  CTRL+E=VER"; color: #3f9147; margin-right: auto; padding-left: 8px; }
