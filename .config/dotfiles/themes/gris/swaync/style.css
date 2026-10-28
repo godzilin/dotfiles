@@ -1,4 +1,5 @@
-/* Default swaync theme + NeXTSTEP greys on top (survives swaync updates) */
+/* Default swaync theme + NeXTSTEP on top (survives swaync updates): the panel is a NeXT window (black title
+   strip, light grey face, black outline and hard shadow), each notice a bevelled grey cell, buttons bevelled too. */
 @import url("file:///etc/xdg/swaync/style.css");
 
 :root {
@@ -9,8 +10,8 @@
   --noti-bg-darker: #999999;
   --noti-bg-hover: #bcbcbc;
   --noti-bg-focus: rgba(200, 200, 200, 0.8);
-  --noti-close-bg: #c8c8c8;
-  --noti-close-bg-hover: #555555;
+  --noti-close-bg: #aaaaaa;
+  --noti-close-bg-hover: #ffffff;
   --text-color: #000000;
   --text-color-disabled: #555555;
   --bg-selected: #000000;
@@ -25,15 +26,68 @@
   font-family: "Nimbus Sans", sans-serif;
 }
 
-.notification .summary,
-.control-center .widget-title > label {
+.notification .summary {
   font-weight: bold;
 }
 
-/* Black strip on the left of every notification */
+.control-center {
+  border: 1px solid #000000;
+  border-radius: 0;
+  box-shadow: 3px 3px 0 #000000;
+  padding: 0;
+}
+
+/* Title: the black strip of a NeXT window, the button a grey square on it */
+.control-center .widget-title {
+  background: #000000;
+  margin: 0;
+  padding: 3px 4px 3px 10px;
+}
+.control-center .widget-title > label {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+}
+.control-center .widget-title > button,
+.control-center .notification-group-headers button,
+.notification .close-button {
+  background: #aaaaaa;
+  color: #000000;
+  border: none;
+  border-radius: 0;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555;
+  font-size: 12px;
+  padding: 1px 8px;
+}
+.control-center .widget-title > button:active,
+.notification .close-button:active {
+  background: #ffffff;
+  box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff;
+}
+
+.control-center .widget-dnd {
+  margin: 8px 10px;
+}
+.control-center .widget-dnd > label {
+  font-size: 13px;
+}
+
+/* Every notice: a grey cell with a white top-left bevel, outlined in black; critical ones with a red edge */
 .notification-row .notification-background .notification {
-  border-left: 3px solid #000000;
+  background: #aaaaaa;
+  border: 1px solid #000000;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555, 3px 3px 0 #000000;
 }
 .notification-row .notification-background .notification.critical {
-  border-left-color: #a02828;
+  border-left: 4px solid #a02828;
+}
+.notification-row:focus .notification-background,
+.notification-row:hover .notification-background {
+  background: transparent;
+}
+.notification-row:hover .notification-background .notification {
+  background: #bcbcbc;
+}
+.notification .time {
+  color: #555555;
 }

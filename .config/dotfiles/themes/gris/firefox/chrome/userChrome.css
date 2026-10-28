@@ -1,246 +1,226 @@
-/* NeXTSTEP for Firefox (copied from Nostromo and recoloured in the four NeXT greys).
-   The page sits in a bezel, the four greys run along the top.
+/* Gris for Firefox: a NeXTSTEP window, after OmniWeb.
+   Rows, top to bottom: the black title bar (tabs are its titles, centred; miniaturize on the left and close on the
+   right as grey bevelled squares), the light grey button row with bevelled tiles and the "URL:" field, the bookmarks,
+   the page in a sunken frame and the resize bar with its two notches at the bottom.
    Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
 
 :root {
-  --n-bg0: #999999; --n-bg: #aaaaaa; --n-bg1: #bcbcbc; --n-bg2: #c8c8c8; --n-line: #555555;
-  --n-faint: #777777; --n-muted: #555555; --n-sub: #222222; --n-text: #000000;
-  --n-yellow: #ffffff; --n-amber: #000000; --n-orange: #555555; --n-red: #a02828;
-  --n-mono: "Nimbus Mono PS", "Nimbus Mono PS", monospace;
-  --n-sans: "Nimbus Sans", sans-serif;
-  --n-radius: 0;
+  --n-black: #000000; --n-dark: #555555; --n-light: #aaaaaa; --n-white: #ffffff; --n-red: #a02828;
+  --n-sans: "Nimbus Sans", "Helvetica", sans-serif;
+  /* NeXT bevels: white top-left, black bottom-right with a dark grey line inside it */
+  --n-raised: inset 1px 1px var(--n-white), inset -1px -1px var(--n-black), inset -2px -2px var(--n-dark);
+  --n-pressed: inset 1px 1px var(--n-black), inset -1px -1px var(--n-white), inset 2px 2px var(--n-dark);
+  /* text fields: white, cut into the panel (dark grey and black above, white below) */
+  --n-field: inset 1px 1px var(--n-dark), inset 2px 2px var(--n-black), inset -1px -1px var(--n-white);
 
-  /* Theme variables: repaint whatever theme is active */
-  --lwt-accent-color: var(--n-bg0) !important;
-  --lwt-text-color: var(--n-sub) !important;
-  --lwt-header-image: none !important;
-  --lwt-additional-images: none !important;
-  --toolbar-bgcolor: var(--n-bg0) !important;
-  --toolbar-color: var(--n-text) !important;
-  --toolbarbutton-icon-fill: var(--n-muted) !important;
-  --toolbarbutton-hover-background: var(--n-bg2) !important;
-  --toolbarbutton-active-background: var(--n-line) !important;
+  --toolbar-bgcolor: var(--n-light) !important;
+  --toolbar-color: var(--n-black) !important;
+  --toolbarbutton-icon-fill: var(--n-black) !important;
   --toolbarbutton-border-radius: 0 !important;
-  --toolbar-field-background-color: var(--n-bg1) !important;
-  --toolbar-field-color: var(--n-text) !important;
-  --toolbar-field-border-color: var(--n-line) !important;
-  --toolbar-field-focus-background-color: var(--n-bg) !important;
-  --toolbar-field-focus-color: var(--n-text) !important;
-  --toolbar-field-focus-border-color: var(--n-amber) !important;
-  --tab-selected-bgcolor: var(--n-amber) !important;
-  --tab-selected-textcolor: #ffffff !important;
-  --tab-hover-background-color: var(--n-bg1) !important;
+  --toolbarbutton-hover-background: transparent !important;
+  --toolbarbutton-active-background: transparent !important;
+  --toolbar-field-background-color: var(--n-white) !important;
+  --toolbar-field-color: var(--n-black) !important;
+  --toolbar-field-focus-background-color: var(--n-white) !important;
+  --toolbar-field-focus-color: var(--n-black) !important;
+  --toolbar-field-border-color: transparent !important;
+  --toolbar-field-focus-border-color: transparent !important;
   --tab-border-radius: 0 !important;
-  --focus-outline-color: var(--n-amber) !important;
+  --tab-min-height: 22px !important;
+  --tab-selected-bgcolor: transparent !important;
+  --tab-selected-textcolor: var(--n-white) !important;
+  --focus-outline-color: var(--n-black) !important;
   --chrome-content-separator-color: transparent !important;
-  --arrowpanel-background: var(--n-bg) !important;
-  --arrowpanel-color: var(--n-text) !important;
-  --arrowpanel-border-color: var(--n-line) !important;
-  --arrowpanel-border-radius: var(--n-radius) !important;
-  --panel-separator-color: var(--n-line) !important;
-  --urlbarView-highlight-background: var(--n-bg2) !important;
-  --urlbarView-highlight-color: var(--n-text) !important;
-  --urlbarView-action-color: var(--n-amber) !important;
-  --urlbarView-separator-color: var(--n-line) !important;
-  --sidebar-background-color: var(--n-bg0) !important;
-  --sidebar-text-color: var(--n-sub) !important;
-  --sidebar-border-color: var(--n-line) !important;
-  --color-accent-primary: var(--n-amber) !important;
-  --color-accent-primary-hover: var(--n-yellow) !important;
-  --color-accent-primary-active: var(--n-orange) !important;
-  --button-primary-bgcolor: var(--n-amber) !important;
-  --button-primary-color: #ffffff !important;
-  --toolbarseparator-color: var(--n-line) !important;
+  --arrowpanel-background: var(--n-light) !important;
+  --arrowpanel-color: var(--n-black) !important;
+  --arrowpanel-border-color: var(--n-black) !important;
+  --arrowpanel-border-radius: 0 !important;
+  --panel-separator-color: var(--n-dark) !important;
+  --urlbarView-highlight-background: var(--n-light) !important;
+  --urlbarView-highlight-color: var(--n-black) !important;
+  --urlbarView-action-color: var(--n-dark) !important;
+  --urlbarView-separator-color: var(--n-light) !important;
+  --sidebar-background-color: var(--n-light) !important;
+  --sidebar-text-color: var(--n-black) !important;
+  --sidebar-border-color: var(--n-dark) !important;
+  --color-accent-primary: var(--n-black) !important;
+  --toolbarseparator-color: var(--n-dark) !important;
+  /* Firefox's own widgets (panels, dialogs, moz-button): square and grey */
+  --border-radius-small: 0 !important; --border-radius-medium: 0 !important; --border-radius-large: 0 !important;
+  --border-radius-circle: 0 !important; --button-border-radius: 0 !important;
+  --button-background-color: var(--n-light) !important; --button-background-color-hover: var(--n-light) !important;
+  --button-background-color-active: var(--n-white) !important; --button-text-color: var(--n-black) !important;
+  --button-background-color-primary: var(--n-light) !important; --button-background-color-primary-hover: var(--n-light) !important;
+  --button-text-color-primary: var(--n-black) !important; --button-border-color: transparent !important;
 }
 
-/* ── Frame ─────────────────────────────────────────────── */
+#navigator-toolbox, #navigator-toolbox * { font-family: var(--n-sans) !important; }
+#navigator-toolbox { background: var(--n-light) !important; border-bottom: none !important; font-size: 13px !important; }
+#navigator-toolbox :-moz-window-inactive { opacity: 1 !important; }
 
-/* Hyprland draws the window border; Firefox's own min/max/close buttons are noise */
-.titlebar-buttonbox-container, .titlebar-spacer { display: none !important; }
+/* ── Title bar ─────────────────────────────────────────────────────────────── */
 
-#navigator-toolbox {
-  background: var(--n-bg0) !important;
-  border-bottom: none !important;
-  /* the four NeXT greys along the very top edge */
-  border-top: 4px solid transparent !important;
-  border-image: linear-gradient(90deg,
-      #ffffff 0 25%, #aaaaaa 25% 50%, #555555 50% 75%, #000000 75% 100%) 1 !important;
-  border-image-width: 4px 0 0 0 !important;
-}
-#TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar {
-  background: transparent !important;
-  background-image: none !important;
-}
+#titlebar { background: transparent !important; display: flex !important; flex-direction: column !important; }
+#TabsToolbar { order: -1; background: var(--n-black) !important; padding: 0 2px !important; min-height: 23px !important;
+  box-shadow: inset 0 -1px var(--n-dark) !important; }
+/* the window that has the keyboard is black, the others dark grey */
+#TabsToolbar:-moz-window-inactive { background: var(--n-dark) !important; box-shadow: inset 0 -1px var(--n-black) !important; }
+#TabsToolbar .toolbar-items { align-items: center; }
+#TabsToolbar :is(.titlebar-spacer, #firefox-view-button, #alltabs-button, toolbarspring) { display: none !important; }
+#tabbrowser-tabs[hasadjacentnewtabbutton]:not([overflow]) #tabs-newtab-button { display: flex !important; }
+#tabbrowser-tabs[hasadjacentnewtabbutton]:not([overflow]) ~ #new-tab-button { display: none !important; }
+#tabbrowser-tabs { border-inline-start: none !important; padding-inline: 0 !important; }
 
-/* The page: a screen inset in a bezel, rounded like the Hyprland windows */
-#tabbrowser-tabbox { background: var(--n-bg0) !important; }
-#tabbrowser-tabpanels {
-  background: var(--n-bg0) !important;
-  padding: 0 8px 8px 8px !important;
-}
-.browserStack > browser, #tabbrowser-tabpanels browser[type="content"] {
-  border-radius: var(--n-radius) !important;
-  outline: 1px solid var(--n-line) !important;
-  outline-offset: -1px;
-}
-/* Sidebar sits in the same bezel */
-#sidebar-box { background: var(--n-bg0) !important; padding-bottom: 8px !important; }
-#sidebar-splitter { border: none !important; background: var(--n-bg0) !important; width: 6px !important; }
+/* Tabs are the window titles: they share the whole bar, the title centred, the open one white and bold */
+.tabbrowser-tab { padding-inline: 0 !important; min-height: 22px !important; }
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: none !important; }  /* [fadein]: closing tabs must still shrink to 0.1px, or they leave a gap */
+.tab-background { margin-block: 0 !important; border: none !important; outline: none !important; box-shadow: none !important;
+  background: transparent !important; }
+.tabbrowser-tab + .tabbrowser-tab .tab-background { box-shadow: inset 1px 0 var(--n-dark) !important; }
+.tab-content { padding-inline: 6px !important; }
+.tab-label-container { flex: 1 !important; align-items: center !important; }
+.tab-label { font-size: 13px !important; color: var(--n-light) !important; text-align: center !important; margin-inline: auto !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--n-white) !important; font-weight: bold !important; }
+.tabbrowser-tab:hover:not([selected]) .tab-label { color: var(--n-white) !important; }
+:root:-moz-window-inactive .tabbrowser-tab .tab-label { color: var(--n-light) !important; }
+/* no favicons in a NeXT title, except on pinned tabs (they have no label) and while loading */
+.tabbrowser-tab:not([pinned]) .tab-icon-stack:not(:has(.tab-throbber[busy])) { display: none !important; }
+.tab-throbber[busy]::before { fill: var(--n-white) !important; }
+.tabbrowser-tab[pinned] .tab-icon-image { filter: grayscale(1) brightness(1.6); }
+.tabbrowser-tab::after, .tabbrowser-tab::before { display: none !important; }  /* separators */
+.tab-secondary-label { color: var(--n-light) !important; }
 
-/* ── Tabs: numbered tape labels ────────────────────────── */
+/* Close tab and new tab: the small grey squares of NeXT title bars */
+.tab-close-button, #tabs-newtab-button > .toolbarbutton-icon, #new-tab-button > .toolbarbutton-icon,
+.titlebar-button > .toolbarbutton-icon {
+  width: 17px !important; height: 17px !important; padding: 2px !important; border-radius: 0 !important;
+  background: var(--n-light) !important; box-shadow: var(--n-raised) !important; fill: var(--n-black) !important;
+  -moz-context-properties: fill, stroke !important; stroke: var(--n-black) !important; opacity: 1 !important; }
+.tab-close-button:active, #tabs-newtab-button:active > .toolbarbutton-icon, .titlebar-button:active > .toolbarbutton-icon {
+  background: var(--n-white) !important; box-shadow: var(--n-pressed) !important; }
+.tabbrowser-tab:not(:hover) .tab-close-button { visibility: hidden !important; }
+.tab-close-button { margin-inline: 4px 0 !important; }
+#tabs-newtab-button, #new-tab-button { padding: 0 3px !important; }
 
-#tabbrowser-arrowscrollbox { counter-reset: tape; }
-.tabbrowser-tab { counter-increment: tape; padding-inline: 2px !important; }
-/* only while [fadein]: closing a tab drops it, so Firefox can shrink the tab away and the rest slide left */
-.tabbrowser-tab[fadein]:not([pinned]) { max-width: 220px !important; }
+/* Window buttons from the GTK layout (minimize:close) */
+.titlebar-buttonbox { margin-inline: 3px 0 !important; }
+.titlebar-button { padding: 0 2px !important; background: transparent !important; }
+.titlebar-max, .titlebar-restore { display: none !important; }  /* NeXT windows had no maximize */
+.titlebar-min > .toolbarbutton-icon { list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' shape-rendering='crispEdges'%3E%3Crect x='3.5' y='3.5' width='6' height='6' fill='none' stroke='%23000'/%3E%3C/svg%3E") !important; }
+.titlebar-close > .toolbarbutton-icon, .tab-close-button { list-style-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13'%3E%3Cpath d='M3 3l7 7M10 3l-7 7' stroke='%23000' stroke-width='1.6'/%3E%3C/svg%3E") !important; }
 
-.tab-background {
-  margin-block: 6px !important;
-  border: 1px solid var(--n-line) !important;
-  box-shadow: none !important;
-  background: var(--n-bg) !important;
-}
-.tabbrowser-tab:hover .tab-background:not([selected]) { background: var(--n-bg1) !important; border-color: var(--n-faint) !important; }
-.tab-background:is([selected], [multiselected]) {
-  background: var(--n-amber) !important;
-  border-color: var(--n-amber) !important;
-}
+/* ── Menu bar (Alt) ────────────────────────────────────────────────────────── */
 
-.tab-label {
-  font-family: var(--n-mono) !important;
-  font-size: 11px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--n-sub) !important;
-}
-.tabbrowser-tab[selected] .tab-label { color: #ffffff !important; font-weight: 600 !important; }
+#toolbar-menubar:not([inactive]) { background: var(--n-light) !important; box-shadow: inset 0 -1px var(--n-dark) !important; }
+#toolbar-menubar :is(.titlebar-buttonbox-container, .titlebar-spacer) { display: none !important; }
+#main-menubar > menu { padding: 2px 8px !important; border-radius: 0 !important; color: var(--n-black) !important; }
+#main-menubar > menu[_moz-menuactive], #main-menubar > menu[open] { background: var(--n-white) !important; color: var(--n-black) !important; }
 
-/* tape number in front of every tab: 01, 02, 03… */
-.tabbrowser-tab:not([pinned]) .tab-content::before {
-  content: counter(tape, decimal-leading-zero);
-  font: 600 10px var(--n-mono);
-  color: var(--n-faint);
-  margin-inline-end: 8px;
-  letter-spacing: 0.05em;
-}
-.tabbrowser-tab[selected] .tab-content::before { color: var(--n-bg2); }
+/* ── Button row: bevelled tiles, black icons ──────────────────────────────── */
 
-/* Favicons muted until selected; close button only on hover */
-.tab-icon-image { filter: grayscale(1) opacity(0.55); }
-.tabbrowser-tab:is([selected], :hover) .tab-icon-image { filter: none; }
-.tabbrowser-tab:not(:hover) .tab-close-button { visibility: collapse !important; }
-.tabbrowser-tab[selected] .tab-close-button { fill: var(--n-bg0) !important; }
-.tab-throbber[busy]::before { fill: var(--n-amber) !important; }
-.tabbrowser-tab[selected] .tab-throbber[busy]::before { fill: var(--n-bg0) !important; }
-.tab-secondary-label { font-family: var(--n-mono) !important; text-transform: uppercase; font-size: 9px !important; }
+#nav-bar, #PersonalToolbar { background: var(--n-light) !important; }
+#nav-bar toolbarspring { display: none !important; }
+#urlbar-container { flex: 1 1 auto !important; max-width: none !important; width: auto !important; }
+#nav-bar { padding: 4px 6px !important; border: none !important; box-shadow: inset 0 1px var(--n-white), inset 0 -1px var(--n-dark) !important; }
+#nav-bar toolbarbutton { padding: 0 1px !important; margin: 0 !important; }
+#nav-bar toolbarbutton > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+  width: 28px !important; height: 28px !important; padding: 6px !important; border-radius: 0 !important;
+  background: var(--n-light) !important; box-shadow: var(--n-raised) !important; fill: var(--n-black) !important; }
+#nav-bar toolbarbutton:not([disabled]):hover:active > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack),
+#nav-bar toolbarbutton[open] > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack),
+#nav-bar toolbarbutton[checked] > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+  background: var(--n-white) !important; box-shadow: var(--n-pressed) !important; }
+#nav-bar toolbarbutton[disabled] { opacity: 1 !important; }
+#nav-bar toolbarbutton[disabled] > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { fill: var(--n-dark) !important; opacity: 1 !important; }
+#nav-bar toolbarbutton .toolbarbutton-text { display: none !important; }  /* text buttons (VPN...) as plain tiles */
+#nav-bar toolbarbutton .toolbarbutton-badge-stack .toolbarbutton-icon { width: 16px !important; height: 16px !important; padding: 0 !important; box-shadow: none !important; background: none !important; }
+#nav-bar toolbaritem, #nav-bar .chromeclass-toolbar-additional { margin: 0 !important; }
+#nav-bar :is(toolbarbutton, toolbaritem) .toolbarbutton-badge { background: var(--n-black) !important; color: var(--n-white) !important;
+  border-radius: 0 !important; box-shadow: none !important; }
+/* a gap after Reload/Home, like OmniWeb's groups */
+#nav-bar :is(#reload-button, #stop-reload-button, #home-button) { margin-inline-end: 6px !important; }
 
-/* Pinned tabs as small square buttons */
-.tabbrowser-tab[pinned] .tab-background { border-radius: 0 !important; }
-
-/* ── Toolbar ───────────────────────────────────────────── */
-
-#nav-bar { padding: 2px 6px 6px !important; box-shadow: none !important; border: none !important; }
-toolbarbutton .toolbarbutton-icon { transition: fill 120ms ease; }
-#nav-bar toolbarbutton:hover > .toolbarbutton-icon,
-#nav-bar toolbarbutton:hover > .toolbarbutton-badge-stack { fill: var(--n-text) !important; }
-
-/* Address bar: a terminal prompt */
-#urlbar .urlbar-background {
-  border-radius: 0 !important;
-  border: 1px solid var(--n-line) !important;
-  box-shadow: none !important;
-}
-#urlbar[focused] .urlbar-background { border-color: var(--n-amber) !important; }
-#urlbar-input {
-  font-family: var(--n-mono) !important;
-  font-size: 12.5px !important;
-  letter-spacing: 0.02em;
-}
-#urlbar-input::placeholder { color: var(--n-faint) !important; text-transform: uppercase; letter-spacing: 0.12em; }
-#urlbar .urlbar-input-container::before {
-  content: "›";
-  font: 700 16px var(--n-mono);
-  color: var(--n-amber);
-  align-self: center;
-  margin-inline: 6px 2px;
-}
-/* Dropdown results */
-.urlbarView { font-family: var(--n-mono) !important; }
+/* Address: "URL:" and a white field cut into the panel */
+#urlbar-container { margin-inline: 4px !important; padding: 0 !important; align-self: center !important; }
+#urlbar-container::before { content: "URL:"; align-self: center; margin-inline: 2px 6px; font: 13px var(--n-sans); color: var(--n-black); }
+#urlbar, #urlbar-container { --urlbar-height: 26px !important; --urlbar-min-height: 26px !important; }
+#urlbar .urlbar-background { border-radius: 0 !important; border: none !important; outline: none !important;
+  background: var(--n-white) !important; box-shadow: var(--n-field) !important; }
+#urlbar[open] .urlbar-background { box-shadow: var(--n-field), 0 0 0 1px var(--n-black), 3px 3px 0 1px var(--n-black) !important; }
+#urlbar-input { font-size: 13px !important; color: var(--n-black) !important; }
+#urlbar-input::placeholder { color: var(--n-dark) !important; opacity: 1 !important; }
+#urlbar :is(.urlbar-icon, .urlbar-page-action, #identity-box > box, #identity-icon-box, #urlbar-searchmode-switcher, #tracking-protection-icon-container) {
+  border-radius: 0 !important; background: transparent !important; fill: var(--n-dark) !important; }
+#urlbar :is(.urlbar-page-action, #identity-icon-box, #urlbar-searchmode-switcher, #tracking-protection-icon-container):hover { fill: var(--n-black) !important; }
+#star-button[starred] { fill: var(--n-black) !important; }
+.urlbarView { font-family: var(--n-sans) !important; }
 .urlbarView-row { border-radius: 0 !important; }
-.urlbarView-row[selected] { box-shadow: inset 3px 0 0 var(--n-amber) !important; }
-.urlbarView-url { color: var(--n-amber) !important; }
-.search-one-offs { border-top: 1px solid var(--n-line) !important; }
+.urlbarView-row[selected] .urlbarView-row-inner { background: var(--n-light) !important; border-radius: 0 !important; color: var(--n-black) !important; }
+.urlbarView-url { color: var(--n-dark) !important; }
+.search-one-offs { border-top: 1px solid var(--n-light) !important; }
 
-#star-button[starred], #pageAction-urlbar-bookmark[starred] { fill: var(--n-amber) !important; }
-#identity-box, #tracking-protection-icon-container { opacity: 0.7; }
+/* ── Bookmarks: plain text, bevelled when hovered ─────────────────────────── */
 
-/* Bookmarks: plain uppercase labels, no folder icons */
-#PersonalToolbar { padding: 0 8px 4px !important; }
-toolbarbutton.bookmark-item {
-  font-family: var(--n-mono) !important;
-  font-size: 10.5px !important;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--n-muted) !important;
-  padding: 3px 8px !important;
-  border-radius: 0 !important;
-}
-toolbarbutton.bookmark-item:hover { color: var(--n-text) !important; background: var(--n-bg2) !important; }
-toolbarbutton.bookmark-item[container] > .toolbarbutton-icon { display: none !important; }
+#PersonalToolbar { padding: 2px 6px 3px !important; box-shadow: inset 0 1px var(--n-white), inset 0 -1px var(--n-dark) !important; }
+toolbarbutton.bookmark-item { border-radius: 0 !important; color: var(--n-black) !important; padding: 2px 6px !important; margin: 0 1px !important; }
+toolbarbutton.bookmark-item:hover { background: var(--n-light) !important; box-shadow: var(--n-raised) !important; }
+toolbarbutton.bookmark-item[open], toolbarbutton.bookmark-item:hover:active { background: var(--n-white) !important; box-shadow: var(--n-pressed) !important; }
+toolbarbutton.bookmark-item .toolbarbutton-icon { filter: grayscale(1); }
+toolbarbutton.bookmark-item:hover .toolbarbutton-icon { filter: none; }
+#personal-toolbar-empty-description { color: var(--n-dark) !important; }
 
-/* ── Menus and panels ──────────────────────────────────── */
+/* ── Page and resize bar ───────────────────────────────────────────────────── */
 
-/* Context menus and panels: Firefox paints them with the GTK system colours (Menu/MenuText) unless overridden here */
-menupopup, panel {
-  --panel-background-color: var(--n-bg) !important;
-  --panel-text-color: var(--n-text) !important;
-  --panel-border-color: var(--n-line) !important;
-  --panel-border-radius: var(--n-radius) !important;
-  --panel-separator-color: var(--n-line) !important;
-}
-menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) {
-  background-color: var(--n-bg2) !important;
-  color: var(--n-text) !important;
-  box-shadow: inset 3px 0 var(--n-amber);
-}
-menupopup > :is(menu, menuitem)[disabled] { color: var(--n-faint) !important; }
-menupopup > menuseparator::before { border-color: var(--n-line) !important; }
-menupopup .menu-accel, menupopup .menu-text[accesskey] + .menu-accel-container { color: var(--n-muted) !important; }
-menupopup, menupopup menu, menupopup menuitem { font-family: var(--n-sans) !important; }
-.panel-header > h1, .subviewbutton-iconic[label] .toolbarbutton-text,
-#appMenu-fxa-label2, .panel-subview-body .subview-subheader {
-  letter-spacing: 0.02em;
-}
-.panel-header > h1 {
-  font-family: var(--n-mono) !important;
-  text-transform: uppercase;
-  letter-spacing: 0.12em !important;
-  font-size: 11px !important;
-  color: var(--n-amber) !important;
-}
-.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 0 !important; }
+/* the page sits in the panel like a NeXT scroll view: a dark grey and black edge above, white below */
+#browser { background: var(--n-light) !important; padding: 3px 3px 2px !important; }
+#tabbrowser-tabbox { box-shadow: -1px -1px 0 var(--n-dark), 1px 1px 0 var(--n-white) !important; margin: 1px !important;
+  outline: 1px solid var(--n-black); outline-offset: 0; }
+#sidebar-box { background: var(--n-light) !important; }
+#sidebar-splitter { border: none !important; background: var(--n-light) !important; width: 4px !important; }
 
-/* Link preview in the bottom corner: a tape-deck readout */
-#statuspanel-label {
-  font-family: var(--n-mono) !important;
-  font-size: 11px !important;
-  background: var(--n-bg) !important;
-  color: var(--n-amber) !important;
-  border: 1px solid var(--n-line) !important;
-  border-radius: 0 !important;
-  margin: 0 0 12px 12px !important;
-  padding: 3px 8px !important;
-}
+/* resize bar: a bevelled grey strip with notches 26 px from each end (Hyprland resizes from any edge anyway) */
+body::after { content: ""; display: block; height: 9px; margin-top: 2px;
+  background:
+    linear-gradient(var(--n-black), var(--n-black)) 26px 0 / 1px 100% no-repeat,
+    linear-gradient(var(--n-white), var(--n-white)) 27px 0 / 1px 100% no-repeat,
+    linear-gradient(var(--n-black), var(--n-black)) right 27px top 0 / 1px 100% no-repeat,
+    linear-gradient(var(--n-white), var(--n-white)) right 26px top 0 / 1px 100% no-repeat,
+    var(--n-light);
+  box-shadow: inset 0 1px var(--n-black), inset 0 2px var(--n-white), inset 0 -1px var(--n-dark); }
+:root[inFullscreen] body::after, :root[sizemode="fullscreen"] body::after { display: none; }
+
+/* link under the mouse: a small white field at the bottom left of the page */
+#statuspanel-label { font: 12px var(--n-sans) !important; background: var(--n-white) !important; color: var(--n-black) !important;
+  border: 1px solid var(--n-black) !important; border-radius: 0 !important; padding: 1px 6px !important; }
 
 /* Find bar */
-.findbar-container { font-family: var(--n-mono) !important; }
-findbar { background: var(--n-bg0) !important; border-top: 1px solid var(--n-line) !important; }
+findbar { background: var(--n-light) !important; border-top: 1px solid var(--n-white) !important; font-family: var(--n-sans) !important; }
+findbar .findbar-textbox { border-radius: 0 !important; border: none !important; background: var(--n-white) !important; box-shadow: var(--n-field) !important; }
 
-/* Menu bar (Alt): the open menu was GTK blue */
-#main-menubar > menu[_moz-menuactive] {
-  background-color: var(--n-bg2) !important;
-  color: var(--n-text) !important;
-  border-color: var(--n-amber) !important;
-  box-shadow: inset 0 -2px var(--n-amber) !important;
+/* ── Menus, panels, tooltips ───────────────────────────────────────────────── */
+
+/* NeXT menus: grey rows with a white bevel, black outline, the chosen row white */
+menupopup, panel {
+  --panel-background-color: var(--n-light) !important;
+  --panel-text-color: var(--n-black) !important;
+  --panel-border-color: var(--n-black) !important;
+  --panel-border-radius: 0 !important;
+  --panel-separator-color: var(--n-dark) !important;
+  --panel-shadow-margin: 0px !important;
 }
-#main-menubar > menu { border-radius: 0 5px 0 0; }
+menupopup, menupopup menu, menupopup menuitem, panel { font-family: var(--n-sans) !important; font-size: 13px !important; }
+menupopup > :is(menu, menuitem) { box-shadow: inset 0 1px var(--n-white), inset 0 -1px var(--n-dark) !important; min-height: 22px !important; }
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: var(--n-white) !important; color: var(--n-black) !important; }
+menupopup > :is(menu, menuitem)[disabled] { color: var(--n-dark) !important; }
+menupopup > menuseparator { display: none !important; }  /* the row bevels already separate */
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 0 !important; }
+.subviewbutton:not([disabled]):hover { background: var(--n-white) !important; color: var(--n-black) !important; }
+.panel-header > h1 { font-weight: bold !important; }
+panel button, panel menulist, panel moz-button, .panel-footer button, dialog button {
+  border-radius: 0 !important; border: none !important; background: var(--n-light) !important; color: var(--n-black) !important;
+  box-shadow: var(--n-raised) !important; }
+panel button:active, panel menulist[open] { background: var(--n-white) !important; box-shadow: var(--n-pressed) !important; }
+panel input, panel menulist { font: 13px var(--n-sans) !important; }
+tooltip { appearance: none !important; background: var(--n-white) !important; color: var(--n-black) !important;
+  border: 1px solid var(--n-black) !important; border-radius: 0 !important; padding: 2px 5px !important;
+  font: 12px var(--n-sans) !important; box-shadow: none !important; }

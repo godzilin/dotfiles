@@ -1,61 +1,57 @@
-/* Gris for Firefox's own pages */
+/* Gris for Firefox's pages: NeXT scrollers everywhere (light grey knob in a dark grey trough; pages that set
+   their own colours keep them) and NeXTSTEP greys on Firefox's own pages. */
+
+:root { scrollbar-color: #aaaaaa #555555; }
 
 @-moz-document url-prefix("about:") {
   :root {
-    --newtab-background-color: #999999 !important;
-    --newtab-background-color-secondary: #bcbcbc !important;
+    --newtab-background-color: #555555 !important;
+    --newtab-background-color-secondary: #aaaaaa !important;
     --newtab-text-primary-color: #000000 !important;
     --background-color-canvas: #aaaaaa !important;
-    --background-color-box: #bcbcbc !important;
+    --background-color-box: #ffffff !important;
     --text-color: #000000 !important;
     --text-color-deemphasized: #555555 !important;
     --border-color: #555555 !important;
     --color-accent-primary: #000000 !important;
-    --color-accent-primary-hover: #ffffff !important;
-    --color-accent-primary-active: #555555 !important;
+    --color-accent-primary-hover: #555555 !important;
+    --color-accent-primary-active: #000000 !important;
     --link-color: #000000 !important;
     --focus-outline-color: #000000 !important;
-    scrollbar-color: #555555 transparent;
+    --border-radius-small: 0 !important; --border-radius-medium: 0 !important; --border-radius-large: 0 !important;
+    --button-border-radius: 0 !important;
+    font-family: "Nimbus Sans", sans-serif !important;
   }
   body { background-color: var(--background-color-canvas) !important; }
 }
 
-/* New tab / home: the wallpaper's dot grid and label instead of the Firefox logo */
+/* New tab / home: the dark grey Workspace with the NeXT cube over the search field */
 @-moz-document url("about:newtab"), url("about:home") {
-  body {
-    background-color: #999999 !important;
-    background-image: radial-gradient(circle, #9a9a9a 1.2px, transparent 1.4px) !important;
-    background-size: 48px 48px !important;
-    background-position: 24px 24px !important;
-  }
+  body { background: #555555 !important; }
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; }
   .search-wrapper::before {
-    content: "󰯈  THINKPAD P14S GEN 5";
-    display: block;
-    text-align: center;
-    margin-bottom: 28px;
-    font: 600 13px "Nimbus Mono PS", "Nimbus Mono PS", monospace;
-    letter-spacing: 0.2em;
-    color: #000000;
-  }
-  .search-wrapper::after {  /* tape stripes under the search box */
     content: "";
-    display: block;
-    width: 160px;
-    height: 4px;
-    margin: 26px auto 0;
-    background: linear-gradient(90deg, #ffffff 0 25%, #aaaaaa 25% 50%, #555555 50% 75%, #000000 75%);
+    position: absolute;
+    bottom: 100%;
+    left: calc(50% - 48px);
+    width: 96px;
+    height: 96px;
+    margin-bottom: 24px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg stroke='%23000' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpath d='M24 6 L41 14 L24 22 L7 14 Z' fill='%23fff'/%3E%3Cpath d='M7 14 L24 22 L24 42 L7 34 Z' fill='%23aaa'/%3E%3Cpath d='M41 14 L24 22 L24 42 L41 34 Z' fill='%23000'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
   }
-  /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
-  .search-inner-wrapper moz-urlbar .urlbar-background {
-    background-color: #aaaaaa !important;
-    border: 1px solid #555555 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+  /* the search box: a white field cut into the grey, with the NeXT hard shadow */
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 0 !important;
+    --content-search-handoff-ui-background-color: #ffffff !important;
+    --content-search-handoff-ui-color: #000000 !important;
+    --content-search-handoff-ui-fill: #555555 !important;
+    font-family: "Nimbus Sans", sans-serif !important;
+    box-shadow: inset 1px 1px #000000, 0 0 0 2px #aaaaaa, 3px 3px 0 2px #000000 !important;
   }
-  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #000000 !important; }
-  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "Nimbus Mono PS", monospace !important; }
-  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #aaaaaa !important; border-radius: 0 !important; }
-  .top-site-outer .title { font-family: "Nimbus Mono PS", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #555555 !important; }
+  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #aaaaaa !important; border-radius: 0 !important;
+    box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555 !important; }
+  .top-site-outer:hover .tile { background-color: #ffffff !important; }
+  .top-site-outer .title { font-family: "Nimbus Sans", sans-serif !important; font-size: 12px !important; color: #ffffff !important; }
 }

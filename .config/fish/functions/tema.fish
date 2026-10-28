@@ -70,6 +70,13 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
     if test -d $vault
         mkdir -p $vault/themes
         ln -sfn ~/.config/dotfiles/themes/current/obsidian $vault/themes/Tema
+        # appearance.json syncs between machines and has come back as {} (no theme chosen): select "Tema" again
+        set -l app $vault/appearance.json
+        test -s $app; or echo '{}' >$app
+        if test (jq -r '.cssTheme // ""' $app) != Tema
+            jq '.cssTheme = "Tema"' $app >$app.tmp; and cat $app.tmp >$app  # cat keeps the inode Obsidian watches
+            rm -f $app.tmp
+        end
         touch $dir/$t/obsidian/theme.css
     end
 

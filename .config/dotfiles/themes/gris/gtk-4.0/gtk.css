@@ -84,6 +84,60 @@
 }
 
 headerbar, .titlebar { border-radius: 0; box-shadow: none; }
-headerbar .title, .titlebar .title { font-weight: bold; }
 window, window.csd, decoration { border-radius: 0; }
-button { border-radius: 0; }
+
+/* NeXTSTEP widgets on top of adw-gtk3 (the same block is in gtk-3.0/gtk.css and gtk-4.0/gtk.css):
+   bevelled grey buttons (white top-left, black bottom-right), white fields cut into the panel, the chosen row
+   white in menus and light grey in white lists, dark grey scroller troughs with a light grey knob. */
+window, .background { font-family: "Nimbus Sans", sans-serif; }
+headerbar .title, .titlebar .title { font-weight: bold; color: #ffffff; }
+headerbar button, headerbar menubutton > button, headerbar .linked > button {
+  background: #aaaaaa; color: #000000; border: none; border-radius: 0; min-height: 20px; min-width: 20px; padding: 2px 4px;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+button:not(.flat):not(.titlebutton), menubutton:not(.flat) > button, spinbutton > button, combobox button, dropdown > button {
+  background: #aaaaaa; color: #000000; border: none; border-radius: 0;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+button.flat:hover { background: #aaaaaa; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555; }
+button:not(.titlebutton):hover { background-image: none; }
+button:active, button:checked, headerbar button:active, headerbar button:checked {
+  background: #ffffff; color: #000000; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff, inset 2px 2px #555555; }
+button:disabled { color: #555555; }
+button.suggested-action, button.destructive-action { font-weight: bold; }
+button.suggested-action { background: #aaaaaa; color: #000000; }
+entry, spinbutton, searchbar entry, .linked > entry {
+  background: #ffffff; color: #000000; border: none; border-radius: 0; outline: none;
+  box-shadow: inset 1px 1px #555555, inset 2px 2px #000000, inset -1px -1px #aaaaaa; }
+entry:focus-within, entry:focus { box-shadow: inset 1px 1px #555555, inset 2px 2px #000000, inset -1px -1px #aaaaaa, 0 0 0 1px #000000; }
+check, radio { background: #aaaaaa; color: #000000; border: none; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+check { border-radius: 0; }
+check:checked, radio:checked { background: #ffffff; }
+switch { border-radius: 0; background: #555555; border: none; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff; }
+switch:checked { background: #000000; }
+switch slider, switch > slider { border-radius: 0; background: #aaaaaa; border: none; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000; }
+.linked > button, .linked > button:first-child, .linked > button:last-child { border-radius: 0; }
+scale trough { min-height: 6px; min-width: 6px; border-radius: 0; background: #555555; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff; }
+scale highlight { border-radius: 0; background: #000000; }
+scale slider { border-radius: 0; background: #aaaaaa; border: none; min-width: 14px; min-height: 14px;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+progressbar trough { border-radius: 0; background: #555555; }
+progressbar progress { border-radius: 0; background: #000000; }
+scrollbar { background: #555555; border: none; }
+scrollbar slider { background: #aaaaaa; border: none; border-radius: 0; min-width: 12px; min-height: 12px; margin: 1px;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000; }
+scrollbar slider:hover, scrollbar slider:active { background: #ffffff; }
+popover > contents, popover.background > contents, menu, .menu, .context-menu {
+  background: #aaaaaa; color: #000000; border: 1px solid #000000; border-radius: 0; box-shadow: none; padding: 0; }
+popover > arrow { background: #aaaaaa; border-color: #000000; }
+menu menuitem, .menu menuitem, popover modelbutton {
+  border-radius: 0; min-height: 22px; box-shadow: inset 0 1px #ffffff, inset 0 -1px #555555; }
+menu menuitem:hover, .menu menuitem:hover, popover modelbutton:hover, popover modelbutton:selected { background: #ffffff; color: #000000; }
+menubar { background: #aaaaaa; box-shadow: inset 0 -1px #555555; }
+menubar > menuitem:hover { background: #ffffff; color: #000000; }
+list row:selected, treeview.view:selected, iconview.view:selected, gridview > child:selected, columnview row:selected, .view:selected {
+  background: #aaaaaa; color: #000000; }
+notebook > header tab { border-radius: 0; background: #aaaaaa; color: #000000;
+  box-shadow: inset 1px 1px #ffffff, inset -1px 0 #000000, inset -2px 0 #555555; }
+notebook > header tab:checked { background: #c8c8c8; font-weight: bold; }
+notebook > header { background: #aaaaaa; border: none; }
+tooltip, tooltip.background { background: #ffffff; color: #000000; border: 1px solid #000000; border-radius: 0; box-shadow: none; }
+tooltip * { color: #000000; }

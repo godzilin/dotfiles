@@ -1,161 +1,43 @@
-/* Gris for Thunar: same language as Firefox and waybar.
-   Mono labels, black selection, a framed file view, four grey bands on top. Only applies to Thunar windows. */
+/* Gris for Thunar: the NeXTSTEP File Viewer. Light grey panel, bevelled toolbar buttons, the path in a white field
+   cut into the panel, the files in a sunken white view with the chosen ones light grey. Only applies to Thunar
+   windows; buttons, scrollers and menus come from the NeXT block in gtk.css. */
 
-@define-color n_bg0 #999999;
-@define-color n_bg #aaaaaa;
-@define-color n_bg1 #bcbcbc;
-@define-color n_bg2 #c8c8c8;
-@define-color n_line #555555;
-@define-color n_faint #777777;
-@define-color n_muted #555555;
-@define-color n_sub #222222;
-@define-color n_text #000000;
-@define-color n_amber #000000;
+window.thunar, window.thunar .sidebar, window.thunar .shortcuts-pane, window.thunar notebook, window.thunar notebook > stack {
+  background-color: #aaaaaa; }
 
-window.thunar { background-color: @n_bg0; }
+window.thunar menubar { padding: 0 4px; }
+window.thunar menubar > menuitem { padding: 3px 10px; }
 
-/* Menu bar: small mono uppercase, like waybar */
-window.thunar menubar {
-  background: @n_bg0;
-  padding: 2px 6px;
-  box-shadow: none;
-  border: none;
-}
-window.thunar menubar > menuitem {
-  font-family: "Nimbus Mono PS", monospace;
-  font-size: 9pt;
-  letter-spacing: 1px;
-  color: @n_muted;
-  padding: 4px 10px;
-  border-radius: 0;
-}
-window.thunar menubar > menuitem:hover { color: @n_text; background: @n_bg2; }
+window.thunar toolbar { background: #aaaaaa; padding: 4px 6px; box-shadow: inset 0 1px #ffffff, inset 0 -1px #555555; }
+window.thunar toolbar button { min-width: 24px; min-height: 24px; padding: 2px; margin: 0 1px; border-radius: 0; color: #000000;
+  background: #aaaaaa; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+window.thunar toolbar button:active { background: #ffffff; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff; }
+window.thunar toolbar button:disabled { color: #555555; }
+window.thunar toolbar entry { min-height: 26px; }
+window.thunar .path-bar-button { border-radius: 0; }
+window.thunar .path-bar-button:checked { background: #ffffff; font-weight: bold; }
 
-/* Toolbar with the four NeXT greys along its top edge */
-window.thunar toolbar {
-  background: @n_bg0;
-  padding: 4px 8px 8px;
-  border-top: 4px solid transparent;
-  border-image: linear-gradient(to right, #ffffff 25%, #aaaaaa 25%, #aaaaaa 50%, #555555 50%, #555555 75%, #000000 75%) 4 0 0 0;
-}
-window.thunar toolbar button {
-  border-radius: 0;
-  color: @n_muted;
-  background: transparent;
-  box-shadow: none;
-  border: none;
-}
-window.thunar toolbar button:hover { color: @n_text; background: @n_bg2; }
-
-/* Location bar: a terminal prompt */
-window.thunar toolbar entry {
-  font-family: "Nimbus Mono PS", monospace;
-  font-size: 10pt;
-  background: @n_bg1;
-  color: @n_text;
-  border: 1px solid @n_line;
-  border-radius: 0;
-  box-shadow: none;
-  min-height: 30px;
-  caret-color: @n_amber;
-}
-window.thunar toolbar entry:focus { border-color: @n_amber; }
-window.thunar toolbar entry image { color: @n_amber; }
-/* Breadcrumb buttons, if the button-style location bar is chosen */
-window.thunar .path-bar-button {
-  font-family: "Nimbus Mono PS", monospace;
-  border-radius: 0;
-  color: @n_muted;
-}
-window.thunar .path-bar-button:checked { background: @n_amber; color: #ffffff; }
-
-/* Sidebar */
-window.thunar .sidebar,
-window.thunar .sidebar treeview.view,
-window.thunar .shortcuts-pane {
-  background-color: @n_bg0;
-  color: @n_sub;
-  font-size: 10pt;
-}
-window.thunar .sidebar treeview.view { padding: 2px 0; }
+/* Places: a grey list, the open place white like a NeXT menu row */
+window.thunar .sidebar treeview.view { background-color: #aaaaaa; color: #000000; padding: 2px 0; }
+window.thunar .sidebar treeview.view:hover { background-color: #bcbcbc; }
+window.thunar .sidebar treeview.view:selected { background-color: #ffffff; color: #000000; }
 window.thunar .sidebar, window.thunar .shortcuts-pane, window.thunar .sidebar scrolledwindow { border: none; box-shadow: none; }
 window.thunar scrolledwindow undershoot, window.thunar scrolledwindow overshoot { background: none; }
-window.thunar .sidebar treeview.view:hover { background-color: @n_bg1; }
-window.thunar .sidebar treeview.view:selected {
-  background-color: @n_bg2;
-  color: @n_text;
-  box-shadow: inset 3px 0 @n_amber;
-}
-window.thunar paned > separator {
-  background: @n_bg0;
-  min-width: 8px;
-  min-height: 8px;
-  border: none;
-  background-image: none;
-}
+window.thunar paned > separator { background: #aaaaaa; min-width: 6px; min-height: 6px; border: none; background-image: none; }
 
-/* Files: a rounded screen in a bezel */
-window.thunar notebook,
-window.thunar notebook > stack { background: @n_bg0; border: none; }
-window.thunar scrolledwindow {
-  margin: 0 8px 0 0;
-  border-radius: 0;
-  border: 1px solid @n_line;
-  background: @n_bg;
-}
-window.thunar .sidebar scrolledwindow { border: none; margin: 0; background: @n_bg0; }
-window.thunar iconview.view,
-window.thunar treeview.view { background-color: transparent; color: @n_sub; }
-window.thunar iconview.view:selected,
-window.thunar treeview.view:selected {
-  background-color: @n_amber;
-  color: #ffffff;
-  border-radius: 0;
-}
-window.thunar treeview.view header button {
-  font-family: "Nimbus Mono PS", monospace;
-  font-size: 8pt;
-  letter-spacing: 1px;
-  color: @n_muted;
-  background: @n_bg;
-  border: none;
-  border-bottom: 1px solid @n_line;
-  box-shadow: none;
-}
-window.thunar rubberband { background: alpha(@n_amber, 0.15); border: 1px solid @n_amber; }
-
-/* Inactive pane in split view (F3) dims */
-window.thunar .split-view-inactive-pane { opacity: 0.6; }
+/* Files: white, sunk into the panel (dark grey and black edge above, white below) */
+window.thunar notebook > stack scrolledwindow { margin: 0 4px 0 0; border: none; background: #ffffff;
+  box-shadow: inset 1px 1px #555555, inset 2px 2px #000000, inset -1px -1px #ffffff; }
+window.thunar iconview.view, window.thunar treeview.view { background-color: #ffffff; color: #000000; }
+window.thunar iconview.view:selected, window.thunar treeview.view:selected { background-color: #aaaaaa; color: #000000; border-radius: 0; }
+window.thunar treeview.view header button { color: #000000; background: #aaaaaa; border: none; font-weight: bold;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+window.thunar rubberband { background: alpha(#aaaaaa, 0.4); border: 1px solid #000000; }
+window.thunar .split-view-inactive-pane { opacity: 0.7; }
 
 /* Tabs */
-window.thunar notebook > header { background: @n_bg0; border: none; box-shadow: none; padding: 0 8px 6px; }
-window.thunar notebook > header tab {
-  font-family: "Nimbus Mono PS", monospace;
-  font-size: 9pt;
-  color: @n_sub;
-  border: 1px solid @n_line;
-  border-radius: 0;
-  margin: 0 3px;
-  padding: 2px 10px;
-  background: @n_bg;
-  box-shadow: none;
-}
-window.thunar notebook > header tab:checked { background: @n_amber; border-color: @n_amber; color: #ffffff; }
-window.thunar notebook > header tab:checked label { color: #ffffff; font-weight: 600; }
+window.thunar notebook > header { box-shadow: none; padding: 0 4px 4px; }
+window.thunar notebook > header tab { padding: 2px 10px; margin: 0 1px; }
 
-/* Status bar: a tape-deck readout */
-window.thunar statusbar {
-  background: @n_bg0;
-  font-family: "Nimbus Mono PS", monospace;
-  font-size: 8.5pt;
-  letter-spacing: 1px;
-  color: @n_muted;
-  padding: 2px 8px 4px;
-  border: none;
-}
-
-/* Scrollbars thin and amber when grabbed */
-window.thunar scrollbar slider { background: @n_line; min-width: 6px; min-height: 6px; border-radius: 0; }
-window.thunar scrollbar slider:hover { background: @n_muted; }
-window.thunar scrollbar slider:active { background: @n_amber; }
-window.thunar scrollbar { background: transparent; border: none; }
+/* Status bar: plain text on the panel */
+window.thunar statusbar { background: #aaaaaa; color: #000000; padding: 2px 8px 3px; border: none; }

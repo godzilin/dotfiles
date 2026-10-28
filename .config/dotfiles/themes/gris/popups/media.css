@@ -1,24 +1,25 @@
-/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS */
+/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS: a NeXT panel. The header is a black title strip,
+   the line under it a groove, buttons bevelled grey squares, the cover sunk into the panel. */
 window { background: #aaaaaa; }
-* { font-family: "Nimbus Mono PS", monospace; color: #222222; letter-spacing: 1px; }
-.head { font-size: 9pt; color: #555555; }
-.head-dot { color: #000000; }
-.stripe-1 { background: #ffffff; } .stripe-2 { background: #aaaaaa; }
-.stripe-3 { background: #555555; } .stripe-4 { background: #000000; }
-.cover { border: 1px solid #555555; border-radius: 0; background: #bcbcbc; }
-.title { font-family: "Nimbus Sans", sans-serif; font-size: 13pt; font-weight: 600; color: #000000; letter-spacing: 0; }
-.artist { font-size: 10pt; color: #222222; }
+* { font-family: "Nimbus Sans", sans-serif; color: #000000; }
+.head { font-size: 10pt; font-weight: bold; color: #ffffff; background: #000000; padding: 3px 8px; }
+.head-dot { color: transparent; font-size: 1px; }  /* the theme marker dot: the black strip is enough */
+.stripe-1, .stripe-2, .stripe-3, .stripe-4 { background: #555555; box-shadow: inset 0 -1px #ffffff; }
+.cover { border: none; border-radius: 0; background: #ffffff; box-shadow: inset 1px 1px #555555, inset 2px 2px #000000, inset -1px -1px #ffffff; padding: 2px; }
+.title { font-size: 13pt; font-weight: bold; }
+.artist { font-size: 10pt; }
 .album { font-size: 9pt; color: #555555; }
-.time { font-size: 9pt; color: #555555; }
-scale trough { background: #c8c8c8; min-height: 4px; border-radius: 0; border: none; }
+.time { font-size: 9pt; color: #555555; font-family: "Nimbus Mono PS", monospace; }
+scale trough { background: #555555; min-height: 6px; border-radius: 0; border: none; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff; }
 scale highlight { background: #000000; border-radius: 0; }
-scale slider { background: #000000; min-width: 10px; min-height: 10px; border-radius: 0; margin: -4px; border: none; box-shadow: none; }
-button { background: transparent; border: none; box-shadow: none; border-radius: 0; padding: 4px 10px; }
-button label { font-size: 16pt; color: #222222; }
-button:hover { background: #c8c8c8; }
-button:hover label { color: #000000; }
-button.main { background: #000000; }
-button.main label { color: #999999; }
-button.main:hover { background: #ffffff; }
-button.on label { color: #000000; }
-.vol-label { font-size: 9pt; color: #555555; }
+scale slider { background: #aaaaaa; min-width: 14px; min-height: 14px; border-radius: 0; margin: -5px; border: none;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+button { background: #aaaaaa; border: none; border-radius: 0; padding: 4px 10px;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+button label { font-size: 15pt; color: #000000; }
+button:hover { background: #bcbcbc; }
+button:active, button.main:active { background: #ffffff; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff, inset 2px 2px #555555; }
+button.main { background: #aaaaaa; }
+button.main label { color: #000000; }
+button.on { background: #ffffff; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff, inset 2px 2px #555555; }
+.vol-label { font-size: 9pt; color: #000000; }

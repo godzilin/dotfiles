@@ -132,6 +132,12 @@ bisel para reloj, tiempo, música, sonido, red, batería, fondos, avisos y `Sali
 El Dock (`nwg-dock-hyprland`) baja por el borde derecho en casillas cuadradas con bisel, con un cubo gris para el
 lanzador y puntitos junto a los programas abiertos. Ventanas cuadradas con marco negro y sombra dura, barras de
 título GTK negras con el título en blanco, terminal negro sobre blanco y bloqueo como el panel de login de NeXT.
+Botones con bisel, campos de texto hundidos y scrollers de canal gris oscuro también en GTK, Thunar (el File
+Viewer), los paneles de fondos y música y el centro de avisos (con título negro). Firefox es una ventana de OmniWeb:
+las pestañas son los títulos de la barra negra (centrados, la abierta en negrita, miniaturizar y cerrar como
+cuadros grises), fila de botones con bisel y campo `URL:`, la página hundida y la barra de redimensionar con sus dos
+muescas abajo. En Obsidian cada panel tiene su barra de título negra (gris oscuro si no es el activo), una fila de
+botones gris debajo y los scrollers a la izquierda, como en NeXT.
 
 ![Escritorio](../.config/dotfiles/themes/gris/screenshots/desktop.png)
 
