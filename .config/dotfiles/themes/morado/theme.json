@@ -1,0 +1,43 @@
+{
+  "name": "Neón",
+  "description": "Synthwave sobrio: noche violeta, acento lavanda y algo de cian, letras de Orbitron",
+  "palette": {
+    "bg0": "#0b0217",
+    "bg": "#120427",
+    "bg1": "#1b0838",
+    "bg2": "#26104b",
+    "line": "#3a1b6b",
+    "faint": "#553089",
+    "muted": "#8a6bbd",
+    "sub": "#c3aee6",
+    "text": "#f6ecff",
+    "accent": "#9d7bff",
+    "yellow": "#ffd319",
+    "orange": "#ff8a3d",
+    "red": "#ff3864",
+    "green": "#4dffb4",
+    "teal": "#2de2e6",
+    "blue": "#6a7bff"
+  },
+  "stripes": [
+    "#c3aee6",
+    "#9d7bff",
+    "#6a4a9e",
+    "#3a1b6b"
+  ],
+  "font_ui": "Rajdhani",
+  "font_mono": "Share Tech Mono",
+  "font_size": 10,
+  "gtk_theme": "adw-gtk3-dark",
+  "color_scheme": "prefer-dark",
+  "icons": "Papirus-Morado",
+  "cursor": "WhiteSur-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Neon",
+  "buttons": ":close",
+  "daemons": [],
+  "wallpaper": {
+    "title": "FONDOS",
+    "random": "ALEATORIO"
+  }
+}

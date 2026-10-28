@@ -1,0 +1,71 @@
+/* Neón: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #120427;
+  --color-base-05: #160630;
+  --color-base-10: #1b0838;
+  --color-base-20: #0b0217;
+  --color-base-25: #220c44;
+  --color-base-30: #3a1b6b;
+  --color-base-35: #553089;
+  --color-base-40: #6a4a9e;
+  --color-base-50: #8a6bbd;
+  --color-base-60: #a78bd6;
+  --color-base-70: #c3aee6;
+  --color-base-100: #f6ecff;
+  --color-red: #ff3864;
+  --color-orange: #ff8a3d;
+  --color-yellow: #ffd319;
+  --color-green: #4dffb4;
+  --color-cyan: #2de2e6;
+  --color-blue: #6a7bff;
+  --color-purple: #6a7bff;
+  --color-pink: #ff3864;
+  --accent-h: 36; --accent-s: 80%; --accent-l: 57%;
+  --text-on-accent: #0b0217;
+  --font-interface-theme: "Rajdhani";
+  --font-text-theme: "Rajdhani";
+  --font-monospace-theme: "Share Tech Mono", "Symbols Nerd Font";
+  --radius-s: 2px;
+  --radius-m: 3px;
+  --radius-l: 4px;
+}
+
+/* Headings: amber, tracked caps for the small ones, like the labels on a deck */
+body { --h1-color: var(--color-accent); --h2-color: #c3aee6; --h3-color: var(--text-normal);
+  --h4-color: var(--text-muted); --h5-color: var(--text-muted); --h6-color: var(--text-faint);
+  --h1-weight: 600; --h2-weight: 600; --inline-title-color: var(--text-normal); --inline-title-weight: 500; }
+.markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6,
+.cm-header-4, .cm-header-5, .cm-header-6 { text-transform: uppercase; letter-spacing: .12em; }
+/* Cassette stripes under the note title */
+.inline-title { padding-bottom: .35em; border-bottom: 4px solid;
+  border-image: linear-gradient(90deg, #c3aee6 0 25%, #9d7bff 25% 50%, #6a4a9e 50% 75%, #3a1b6b 75%) 1; }
+.status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
+.status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+
+/* Deck layout, like the Firefox shell: tabs are numbered tape labels (the open one amber), folders are small tracked
+   caps, the open note has an amber edge, the header carries the four tape colours along its bottom, the editor sits
+   in a bezel like a monitor, and the cursor is a block */
+.mod-root .workspace-tab-header-container-inner { counter-reset: tape; }
+.mod-root .workspace-tab-header { counter-increment: tape; }
+.workspace-tab-header::before, .workspace-tab-header::after, .workspace-tab-header-inner::after { display: none !important; }
+.mod-root .workspace-tab-header-inner-title { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
+.mod-root .workspace-tab-header-inner-title::before { content: counter(tape, decimal-leading-zero) "  "; color: #8a6bbd; }
+.mod-root .workspace-tab-header.is-active { background: #9d7bff !important; border-radius: 3px; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before { color: #120427 !important; font-weight: 600; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: #120427; }
+.nav-folder-title-content { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #9d7bff; border-radius: 0 3px 3px 0; }
+.view-header { border-bottom: 3px solid !important;
+  border-image: linear-gradient(90deg, #c3aee6 0 25%, #9d7bff 25% 50%, #6a4a9e 50% 75%, #3a1b6b 75%) 1 !important; }
+.view-header-title, .view-header-breadcrumb { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
+.mod-root .workspace-leaf-content { border: 1px solid #36196a; border-radius: 6px; margin: 0 6px 6px 0; }
+.cm-cursor, .cm-dropCursor { border-left: .55em solid rgba(157, 123, 255, .75) !important; }
+.menu-item.selected:not(.is-disabled):not(.is-label) { box-shadow: inset 3px 0 #9d7bff; }
+
+/* Neón: Orbitron headings in lavender and cyan, cyan links; no glow */
+body { --h1-font: "Orbitron", sans-serif; --h2-font: "Orbitron", sans-serif; --inline-title-font: "Orbitron", sans-serif;
+  --h1-color: #9d7bff; --h2-color: #2de2e6; --h3-color: #c3aee6; --link-color: #2de2e6; --link-external-color: #c3aee6; }
+.inline-title, .markdown-rendered h1, .cm-header-1 { letter-spacing: .04em; }

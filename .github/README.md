@@ -17,6 +17,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
 | `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
 | `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
+| `morado` | **Neón**: synthwave sobrio; noche violeta, acento lavanda y algo de cian, titulares en Orbitron |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
@@ -169,6 +170,20 @@ la construye `install.sh`), cursor Capitaine. Fondos generados y tramados con Ba
 (`wallpapers/next.py`: Workspace, cubo negro, esferas, Mandelbrot, degradado, superficie de Mathematica, roseta de
 Display PostScript, toro, Julia, ciudad de cubos, Lorenz, moiré, curvas de nivel, galaxia y Lissajous). Primera vez:
 `~/.config/dotfiles/themes/gris/install.sh`.
+
+## morado: Neón
+
+Synthwave de 1986 pero sin estridencias: noche violeta, acento lavanda y un poco de cian, Orbitron para los titulares
+(la hora del bloqueo, "LINUX" en la nueva pestaña de Firefox, los títulos de Obsidian), Rajdhani para la interfaz y
+Share Tech Mono en la terminal. Parte del Nostromo (barra, cinta numerada en las pestañas, franja de violetas) con
+carpetas violetas (Papirus-Morado), el logo de Arch en franjas de lavanda a cian en fastfetch y calendario y tiempo en
+paneles propios.
+
+![Escritorio](../.config/dotfiles/themes/morado/screenshots/desktop.png)
+
+Fuentes Orbitron, Rajdhani y Share Tech Mono (OFL, dentro del tema). Ocho fondos generados por código
+(`wallpapers/synthwave.py`: atardecer de franjas sobre la rejilla, rejilla sola, palmeras, ciudad, LINUX cromado, VHS,
+túnel y el logo de Arch en neón). Primera vez: `~/.config/dotfiles/themes/morado/install.sh`.
 
 ## Cómo están organizados los temas
 

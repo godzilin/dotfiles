@@ -1,0 +1,24 @@
+/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS */
+window { background: #120427; }
+* { font-family: "Share Tech Mono", "Symbols Nerd Font", monospace; color: #c3aee6; letter-spacing: 1px; }
+.head { font-size: 9pt; color: #8a6bbd; }
+.head-dot { color: #9d7bff; }
+.stripe-1 { background: #ffd319; } .stripe-2 { background: #9d7bff; }
+.stripe-3 { background: #ff8a3d; } .stripe-4 { background: #ff3864; }
+.cover { border: 1px solid #3a1b6b; border-radius: 8px; background: #1b0838; }
+.title { font-family: "Rajdhani", sans-serif; font-size: 13pt; font-weight: 600; color: #f6ecff; letter-spacing: 0; }
+.artist { font-size: 10pt; color: #c3aee6; }
+.album { font-size: 9pt; color: #8a6bbd; }
+.time { font-size: 9pt; color: #8a6bbd; }
+scale trough { background: #26104b; min-height: 4px; border-radius: 2px; border: none; }
+scale highlight { background: #9d7bff; border-radius: 2px; }
+scale slider { background: #f6ecff; min-width: 10px; min-height: 10px; border-radius: 5px; margin: -4px; border: none; box-shadow: none; }
+button { background: transparent; border: none; box-shadow: none; border-radius: 8px; padding: 4px 10px; }
+button label { font-size: 16pt; color: #c3aee6; }
+button:hover { background: #26104b; }
+button:hover label { color: #f6ecff; }
+button.main { background: #9d7bff; }
+button.main label { color: #0b0217; }
+button.main:hover { background: #ffd319; }
+button.on label { color: #9d7bff; }
+.vol-label { font-size: 9pt; color: #8a6bbd; }

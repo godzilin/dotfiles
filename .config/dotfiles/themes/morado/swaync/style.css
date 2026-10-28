@@ -1,0 +1,41 @@
+/* Default swaync theme + Neón palette on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(18, 4, 39, 0.94);
+  --noti-border-color: #3a1b6b;
+  --noti-bg: 18, 4, 39;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #0b0217;
+  --noti-bg-hover: #1b0838;
+  --noti-bg-focus: rgba(38, 16, 75, 0.8);
+  --noti-close-bg: #26104b;
+  --noti-close-bg-hover: #3a1b6b;
+  --text-color: #f6ecff;
+  --text-color-disabled: #8a6bbd;
+  --bg-selected: #9d7bff;
+  --border-radius: 10px;
+  --notification-icon-size: 48px;
+  --notification-shadow: 0 4px 16px rgba(11, 2, 23, 0.6);
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+}
+
+* {
+  font-family: "Rajdhani", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Amber accent strip on the left of every notification */
+.notification-row .notification-background .notification {
+  border-left: 3px solid #9d7bff;
+}
+.notification-row .notification-background .notification.critical {
+  border-left-color: #ff3864;
+}

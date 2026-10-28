@@ -1,0 +1,24 @@
+/* Weather panel (hypr/scripts/weatherpanel.py), GTK 3 CSS: the synthwave sky. A magenta dusk by day, violet haze
+   when cloudy, cyan rain, the deep night; Orbitron temperature with a neon glow, cards with neon edges */
+window.day { background-image: linear-gradient(to bottom, #4a3a8e, #26104b 50%, #120427); }
+window.cloud { background-image: linear-gradient(to bottom, #6a4a9e, #2a1158 50%, #0b0217); }
+window.rain { background-image: linear-gradient(to bottom, #1d6f8a, #1b0838 55%, #0b0217); }
+window.night { background-image: linear-gradient(to bottom, #26104b, #0b0217); }
+* { font-family: "Rajdhani", "Symbols Nerd Font", sans-serif; color: #f6ecff; }
+.place { font-family: "Orbitron", sans-serif; font-size: 13pt; font-weight: 700; }
+.temp { font-family: "Orbitron", sans-serif; font-size: 42pt; font-weight: 900; }
+.desc { font-size: 12pt; font-weight: 700; }
+.hilo { font-size: 11pt; font-weight: 600; color: rgba(246, 236, 255, 0.8); }
+.card { background: rgba(11, 2, 23, 0.55); border: 1px solid rgba(45, 226, 230, 0.35); border-radius: 0; padding: 8px 12px; }
+.card-title { font-family: "Orbitron", sans-serif; font-size: 7.5pt; color: #2de2e6; }
+.hour { font-size: 11pt; font-weight: 700; }
+.hour-icon { font-size: 14pt; color: #ffd319; }
+.rain { font-size: 9pt; color: #2de2e6; font-weight: 700; }
+.day { font-size: 11.5pt; font-weight: 700; }
+.lo { font-size: 11pt; color: #8a6bbd; }
+.hi { font-size: 11pt; font-weight: 700; }
+.track { background: rgba(255, 255, 255, 0.08); border-radius: 0; min-height: 5px; }
+.range { border-radius: 0; min-height: 5px; background-image: linear-gradient(to right, #2de2e6, #9d7bff, #c3aee6); }
+.detail-key { font-family: "Orbitron", sans-serif; font-size: 7.5pt; color: #2de2e6; }
+.detail { font-size: 12pt; font-weight: 700; }
+.offline { font-size: 12pt; }

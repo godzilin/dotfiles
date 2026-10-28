@@ -1,0 +1,51 @@
+/* Neón for Firefox's own pages */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #0b0217 !important;
+    --newtab-background-color-secondary: #1b0838 !important;
+    --newtab-text-primary-color: #f6ecff !important;
+    --background-color-canvas: #120427 !important;
+    --background-color-box: #1b0838 !important;
+    --text-color: #f6ecff !important;
+    --text-color-deemphasized: #8a6bbd !important;
+    --border-color: #3a1b6b !important;
+    --color-accent-primary: #9d7bff !important;
+    --color-accent-primary-hover: #c3aee6 !important;
+    --color-accent-primary-active: #6a4a9e !important;
+    --link-color: #9d7bff !important;
+    --focus-outline-color: #9d7bff !important;
+    scrollbar-color: #3a1b6b transparent;
+  }
+  body { background-color: var(--background-color-canvas) !important; }
+}
+
+/* New tab / home: the violet night with a faint grid on the floor, LINUX in Orbitron */
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background:
+      repeating-linear-gradient(90deg, transparent 0 79px, rgba(157, 123, 255, 0.12) 79px 80px) bottom / 100% 38% no-repeat,
+      linear-gradient(#120427, #0b0217) !important;
+    font-family: "Rajdhani", sans-serif !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; }
+  .search-wrapper::before {
+    content: "LINUX"; position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 20px; text-align: center;
+    font: 900 72px "Orbitron", sans-serif; letter-spacing: 0.1em; color: #c3aee6;
+  }
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 0 !important;
+    --content-search-handoff-ui-background-color: #1b0838 !important;
+    --content-search-handoff-ui-color: #f6ecff !important;
+    --content-search-handoff-ui-fill: #8a6bbd !important;
+    font-family: "Rajdhani", sans-serif !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 0 1px #3a1b6b !important;
+  }
+  .top-site-outer .tile { background: #1b0838 !important; border-radius: 0 !important; box-shadow: 0 0 0 1px #3a1b6b !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 1px #9d7bff !important; }
+  .top-site-outer .top-site-icon { border-radius: 0 !important; background-color: transparent !important; }
+  .top-site-outer .title { font-family: "Rajdhani", sans-serif !important; font-weight: 600; text-transform: uppercase; color: #8a6bbd !important; }
+}

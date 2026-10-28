@@ -1,0 +1,69 @@
+# Neón prompt: one line, quiet, amber cursor mark
+"$schema" = "https://starship.rs/config-schema.json"
+
+add_newline = true
+palette = "nostromo"
+format = "$directory$git_branch$git_state$git_status$python$cmd_duration$status$character"
+
+[palettes.nostromo]
+text = "#f6ecff"
+sub = "#c3aee6"
+muted = "#8a6bbd"
+line = "#553089"
+amber = "#9d7bff"
+orange = "#ff8a3d"
+red = "#ff3864"
+green = "#4dffb4"
+
+[directory]
+style = "text"
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " RO"
+read_only_style = "red"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_branch]
+symbol = ""
+style = "muted"
+format = "[/ $branch]($style)"
+
+[git_status]
+style = "amber"
+format = "[ $all_status$ahead_behind]($style) "
+modified = "*"
+staged = "+"
+untracked = "?"
+deleted = "x"
+renamed = "r"
+stashed = "s"
+ahead = "↑"
+behind = "↓"
+diverged = "↕"
+conflicted = "!"
+
+[git_state]
+style = "orange"
+format = "[$state( $progress_current/$progress_total)]($style) "
+
+[python]
+symbol = "py "
+style = "muted"
+format = "[$symbol$virtualenv]($style) "
+detect_extensions = []
+detect_files = []
+
+[cmd_duration]
+min_time = 3000
+style = "muted"
+format = "[$duration]($style) "
+
+[status]
+disabled = false
+style = "red"
+format = "[$status]($style) "
+
+[character]
+success_symbol = "[›](bold amber)"
+error_symbol = "[›](bold red)"
+vimcmd_symbol = "[‹](bold green)"
