@@ -26,6 +26,8 @@ Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `theme
 ## naranja: Nostromo
 
 Base oscura cálida, ámbar de fósforo, franjas de cinta de casete y tipografía IBM Plex.
+Obsidian va como la cubierta: pestañas como etiquetas de cinta numeradas (la abierta en ámbar), carpetas y cabecera
+en mono, la franja de cinta bajo la cabecera y cursor de bloque ámbar.
 
 ![Escritorio](../.config/dotfiles/themes/naranja/screenshots/desktop.png)
 ![Bloqueo](../.config/dotfiles/themes/naranja/screenshots/lock.png)
@@ -76,6 +78,7 @@ Buscar, Ejecutar y el diálogo "Apagar el sistema"; bordes con el degradado azul
 sin animaciones ni sombras; terminal tipo MS-DOS con `ARCH:\HOME\GODZILIN>`; inicio de sesión "Bienvenido a
 Linux"; botón Inicio y fastfetch con el logo de Arch en los cuatro colores de la bandera (`icons/make_start.py`,
 `fastfetch/make_logo.py`); Firefox como Internet Explorer 5; notificaciones como ventanas de Windows; Qt con el estilo "Windows" de Qt.
+Calendario y tiempo son paneles de Windows 98 ("Propiedades de Fecha y hora").
 
 ![Escritorio](../.config/dotfiles/themes/azul/screenshots/desktop.png)
 
@@ -93,6 +96,10 @@ franja negra con bloques rojos cortados en diagonal ("ЦЕХ", escritorios en nu
 papel, lecturas "СЕТЬ / ЗВУК / СВЕТ / ЭНЕРГИЯ"); todo el texto del tema en ruso (`scripts/ru.sh` pone fechas y nombre en cirílico sin locale ruso); ventanas con marco rojo grueso y sombra de tinta dura desplazada;
 animaciones mecánicas con rebote; terminal de papel e tinta con PT Mono; notificaciones y lanzador como tarjetas con
 marco de tinta; bloqueo compuesto como un cartel; Firefox con pestañas en paralelogramo; carpetas rojas (Papirus).
+Firefox lleva una cuña roja delante de la dirección (papel con marco de tinta) y la nueva pestaña es un cartel con
+ЛИНУКС en Russo One; Obsidian tiene la banda negra con la pestaña abierta como paralelogramo rojo. Calendario y
+tiempo son paneles de cartel (`popups/calpanel.css`, `weatherpanel.css`; `panel_caps` en `theme.json` pone las
+mayúsculas que GTK 3 no sabe hacer).
 
 ![Escritorio](../.config/dotfiles/themes/rojo/screenshots/desktop.png)
 
@@ -107,6 +114,9 @@ Un bosque al atardecer: base verde casi negra, musgo, luz de sol, corteza y baya
 que estás ha crecido un árbol). Bordes de ventana con degradado musgo→sol, esquinas muy redondas y animaciones
 lentas con un pequeño rebote, como hojas que se posan; bloqueo con la hora en Fraunces y saludo según la hora;
 terminal con JetBrains Mono y una viñeta del Teide entre abetos en fastfetch (`fastfetch/make_logo.py`); carpetas verdes (Papirus-Verde).
+Firefox y Obsidian son de cantos rodados: pestañas en píldora con brillo de musgo, una hoja ante la dirección y los
+H1, la página en un hueco redondeado y la nueva pestaña con "Bosque" en Fraunces. Calendario y tiempo son paneles
+propios: el cielo visto bajo las copas.
 
 ![Escritorio](../.config/dotfiles/themes/verde/screenshots/desktop.png)
 
@@ -125,6 +135,9 @@ y sin animaciones: la pantalla se redibuja y ya. La barra va abajo como la líne
 (`READY▮` abre el lanzador, escritorio activo en vídeo inverso, reloj con segundos); el lanzador es un prompt
 `READY.` con selección invertida, y el bloqueo es una pantalla de logon (`USERID ===>`, `PASSWORD ===>`).
 Firefox, Thunar, GTK y Qt van con la misma paleta, y las franjas del Nostromo pasan a ser cuatro intensidades de verde.
+Firefox es un panel 3270/ISPF: pestañas numeradas en vídeo inverso, `COMANDO ===>` como dirección, una línea de
+teclas reales abajo y la nueva pestaña como pantalla de logon LINUX/390. Obsidian añade cabecera EDITAR, flechas
+ISPF y líneas de barrido.
 
 ![Escritorio](../.config/dotfiles/themes/negro/screenshots/desktop.png)
 
@@ -147,6 +160,7 @@ las pestañas son los títulos de la barra negra (centrados, la abierta en negri
 cuadros grises), fila de botones con bisel y campo `URL:`, la página hundida y la barra de redimensionar con sus dos
 muescas abajo. En Obsidian cada panel tiene su barra de título negra (gris oscuro si no es el activo), una fila de
 botones gris debajo y los scrollers a la izquierda, como en NeXT.
+Calendario y tiempo son paneles NeXT (el mes en un campo blanco hundido).
 
 ![Escritorio](../.config/dotfiles/themes/gris/screenshots/desktop.png)
 
