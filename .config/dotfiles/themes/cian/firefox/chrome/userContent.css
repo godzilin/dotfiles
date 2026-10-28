@@ -1,0 +1,66 @@
+/* Plano for Firefox's own pages */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #0b2a52 !important;
+    --newtab-background-color-secondary: #153f78 !important;
+    --newtab-text-primary-color: #f3f8fe !important;
+    --background-color-canvas: #103566 !important;
+    --background-color-box: #153f78 !important;
+    --text-color: #f3f8fe !important;
+    --text-color-deemphasized: #8eaed6 !important;
+    --border-color: #3a6aa8 !important;
+    --color-accent-primary: #e9f3ff !important;
+    --color-accent-primary-hover: #c3d6ee !important;
+    --color-accent-primary-active: #5884bd !important;
+    --link-color: #e9f3ff !important;
+    --focus-outline-color: #e9f3ff !important;
+    scrollbar-color: #3a6aa8 transparent;
+  }
+  body { background-color: var(--background-color-canvas) !important; }
+}
+
+/* New tab / home: a fresh sheet. Grid paper, "LINUX" lettered with a dimension line under it, the search field as a
+   ruled lettering box and the shortcuts as boxed parts with their reference underneath */
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background:
+      repeating-linear-gradient(0deg, transparent 0 19px, rgba(243, 248, 254, 0.07) 19px 20px),
+      repeating-linear-gradient(90deg, transparent 0 19px, rgba(243, 248, 254, 0.07) 19px 20px),
+      repeating-linear-gradient(0deg, transparent 0 99px, rgba(243, 248, 254, 0.12) 99px 100px),
+      repeating-linear-gradient(90deg, transparent 0 99px, rgba(243, 248, 254, 0.12) 99px 100px),
+      #103566 !important;
+    font-family: "B612", sans-serif !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; }
+  .search-wrapper::before {
+    content: "LINUX"; position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 44px; text-align: center;
+    font: bold 64px "B612", sans-serif; letter-spacing: 0.3em; color: #f3f8fe;
+  }
+  /* dimension line under the title: arrowheads at both ends and the measure in the middle */
+  .search-inner-wrapper { position: relative; }
+  .search-inner-wrapper::before {
+    content: "360"; position: absolute; bottom: 100%; left: 25%; right: 25%; margin-bottom: 18px; height: 14px;
+    text-align: center; font: 11px "B612 Mono", monospace; color: #ffd56b; line-height: 14px;
+    background:
+      linear-gradient(#ffd56b, #ffd56b) center / 100% 1px no-repeat,
+      linear-gradient(#ffd56b, #ffd56b) left center / 1px 14px no-repeat,
+      linear-gradient(#ffd56b, #ffd56b) right center / 1px 14px no-repeat;
+    -moz-box-decoration-break: clone;
+  }
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 0 !important;
+    --content-search-handoff-ui-background-color: #0b2a52 !important;
+    --content-search-handoff-ui-color: #f3f8fe !important;
+    --content-search-handoff-ui-fill: #8eaed6 !important;
+    font-family: "B612", sans-serif !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 0 1px #f3f8fe, 0 0 0 4px #103566, 0 0 0 5px #5884bd !important;
+  }
+  .top-site-outer .tile { background: transparent !important; border-radius: 0 !important; box-shadow: 0 0 0 1px #8eaed6 !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 1px #f3f8fe, 0 0 0 4px #103566, 0 0 0 5px #f3f8fe !important; }
+  .top-site-outer .top-site-icon { border-radius: 0 !important; background-color: transparent !important; }
+  .top-site-outer .title { font-family: "B612", sans-serif !important; text-transform: uppercase; letter-spacing: 0.06em; color: #c3d6ee !important; }
+}

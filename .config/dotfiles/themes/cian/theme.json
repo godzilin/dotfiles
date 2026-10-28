@@ -1,0 +1,52 @@
+{
+  "name": "Plano",
+  "description": "Plano técnico: cianotipia azul de Prusia, líneas blancas finas, rejilla, cotas y cajetín; letra B612",
+  "palette": {
+    "bg0": "#0b2a52",
+    "bg": "#103566",
+    "bg1": "#153f78",
+    "bg2": "#1c4b8c",
+    "line": "#3a6aa8",
+    "faint": "#5884bd",
+    "muted": "#8eaed6",
+    "sub": "#c3d6ee",
+    "text": "#f3f8fe",
+    "accent": "#e9f3ff",
+    "yellow": "#ffd56b",
+    "orange": "#ffab5e",
+    "red": "#ff7a66",
+    "green": "#93e2b0",
+    "teal": "#86e0e8",
+    "blue": "#a9c9ff"
+  },
+  "stripes": [
+    "#f3f8fe",
+    "#c3d6ee",
+    "#8eaed6",
+    "#5884bd"
+  ],
+  "font_ui": "B612",
+  "font_mono": "B612 Mono",
+  "font_size": 10,
+  "gtk_theme": "adw-gtk3-dark",
+  "color_scheme": "prefer-dark",
+  "icons": "Papirus-Cian",
+  "cursor": "WhiteSur-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Plano",
+  "buttons": ":close",
+  "daemons": [],
+  "wallpaper": {
+    "title": "FONDOS",
+    "random": "ALEATORIO"
+  },
+  "panel_caps": [
+    "month",
+    "nav",
+    "weekday",
+    "section",
+    "card-title",
+    "detail-key",
+    "place"
+  ]
+}

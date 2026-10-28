@@ -1,0 +1,41 @@
+/* Default swaync theme + Plano palette on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(16, 53, 102, 0.94);
+  --noti-border-color: #3a6aa8;
+  --noti-bg: 16, 53, 102;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #0b2a52;
+  --noti-bg-hover: #153f78;
+  --noti-bg-focus: rgba(28, 75, 140, 0.8);
+  --noti-close-bg: #1c4b8c;
+  --noti-close-bg-hover: #3a6aa8;
+  --text-color: #f3f8fe;
+  --text-color-disabled: #8eaed6;
+  --bg-selected: #e9f3ff;
+  --border-radius: 10px;
+  --notification-icon-size: 48px;
+  --notification-shadow: 0 4px 16px rgba(11, 42, 82, 0.6);
+  --font-size-body: 13px;
+  --font-size-summary: 13px;
+}
+
+* {
+  font-family: "B612", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-family: "B612 Mono", "Symbols Nerd Font", monospace;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Amber accent strip on the left of every notification */
+.notification-row .notification-background .notification {
+  border-left: 3px solid #e9f3ff;
+}
+.notification-row .notification-background .notification.critical {
+  border-left-color: #ff7a66;
+}

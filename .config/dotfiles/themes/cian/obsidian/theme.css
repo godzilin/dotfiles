@@ -1,0 +1,98 @@
+/* Plano: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #103566;
+  --color-base-05: #123a6e;
+  --color-base-10: #153f78;
+  --color-base-20: #0b2a52;
+  --color-base-25: #18447f;
+  --color-base-30: #3a6aa8;
+  --color-base-35: #5884bd;
+  --color-base-40: #5884bd;
+  --color-base-50: #8eaed6;
+  --color-base-60: #9db9dc;
+  --color-base-70: #c3d6ee;
+  --color-base-100: #f3f8fe;
+  --color-red: #ff7a66;
+  --color-orange: #ffab5e;
+  --color-yellow: #ffd56b;
+  --color-green: #93e2b0;
+  --color-cyan: #86e0e8;
+  --color-blue: #a9c9ff;
+  --color-purple: #a9c9ff;
+  --color-pink: #ff7a66;
+  --accent-h: 36; --accent-s: 80%; --accent-l: 57%;
+  --text-on-accent: #0b2a52;
+  --font-interface-theme: "B612";
+  --font-text-theme: "B612";
+  --font-monospace-theme: "B612 Mono", "Symbols Nerd Font";
+  --radius-s: 2px;
+  --radius-m: 3px;
+  --radius-l: 4px;
+}
+
+/* Plano: a blueprint sheet. Grid paper behind the note, thin white rules and B612 capitals; tabs are labelled boxes
+   (the open one in negative), the sidebar is the parts list, headings carry their section number like a drawing
+   (1, 1.1...), quotes are notes in a ruled box, and the status bar is the title block */
+body {
+  --h1-font: "B612", sans-serif; --h2-font: "B612", sans-serif; --h3-font: "B612", sans-serif; --inline-title-font: "B612", sans-serif;
+  --h1-color: #f3f8fe; --h2-color: #f3f8fe; --h3-color: #c3d6ee; --h4-color: #c3d6ee;
+  --h1-weight: 700; --h2-weight: 700; --h3-weight: 700; --inline-title-weight: 700; --inline-title-color: #f3f8fe;
+  --link-color: #ffd56b; --link-external-color: #ffd56b; --link-unresolved-color: #ffab5e;
+  --text-selection: rgba(243, 248, 254, .22); --caret-color: #ffd56b;
+  --code-background: #0b2a52; --code-normal: #f3f8fe; --code-radius: 0;
+  --checkbox-radius: 0; --checkbox-color: #f3f8fe; --checkbox-marker-color: #103566; --checkbox-border-color: #8eaed6;
+  --tag-background: transparent; --tag-color: #ffd56b; --tag-radius: 0; --tag-border-width: 1px; --tag-border-color: #ffd56b;
+  --nav-item-radius: 0; --nav-item-background-active: #f3f8fe; --nav-item-color-active: #103566; --nav-item-background-hover: #153f78;
+  --tab-radius: 0; --tab-radius-active: 0; --tab-curve: 0px; --tab-outline-width: 0px;
+  --tab-background-active: #f3f8fe; --tab-text-color-active: #103566; --tab-text-color-focused-active: #103566;
+  --tab-text-color-focused-active-current: #103566;
+  --menu-radius: 0; --modal-radius: 0; --input-radius: 0; --button-radius: 0; --radius-s: 0; --radius-m: 0; --radius-l: 0;
+  --blockquote-border-thickness: 0px; --hr-color: #8eaed6;
+  --shadow-s: none; --shadow-l: none;
+}
+
+/* The paper: squared grid behind the note, a white border round it */
+.mod-root .workspace-leaf-content { background:
+    repeating-linear-gradient(0deg, transparent 0 19px, rgba(243, 248, 254, .05) 19px 20px),
+    repeating-linear-gradient(90deg, transparent 0 19px, rgba(243, 248, 254, .05) 19px 20px), #103566 !important;
+  outline: 1px solid #f3f8fe; outline-offset: -6px; }
+.view-content { background: transparent !important; }
+.view-header { background: transparent !important; border-bottom: 1px solid #3a6aa8 !important; }
+.view-header-title, .view-header-breadcrumb, .view-header-title-parent { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+
+/* Tabs and sidebar labels: lettered capitals in boxes */
+.workspace-tab-header::before, .workspace-tab-header::after, .workspace-tab-header-inner::after { display: none !important; }
+.mod-root .workspace-tab-header { border: 1px solid #5884bd; margin: 4px 2px !important; }
+.mod-root .workspace-tab-header.is-active { border-color: #f3f8fe; }
+.workspace-tab-header-inner-title { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.nav-folder-title-content { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; font-weight: 700; }
+.nav-file-title, .nav-folder-title { border-radius: 0; }
+
+/* Headings numbered like the sections of a drawing */
+.markdown-rendered { counter-reset: h1; }
+.markdown-rendered h1 { counter-increment: h1; counter-reset: h2; }
+.markdown-rendered h2 { counter-increment: h2; }
+.markdown-rendered h1::before { content: counter(h1) "  "; color: #ffd56b; }
+.markdown-rendered h2::before { content: counter(h1) "." counter(h2) "  "; color: #ffd56b; }
+.markdown-rendered h1, .markdown-rendered h2, .inline-title { text-transform: uppercase; letter-spacing: .06em; }
+.inline-title { border-bottom: 1px solid #f3f8fe; padding-bottom: .25em; }
+
+/* Notes in a ruled box with a "NOTA" label, code as a framed table */
+.markdown-rendered blockquote { border: 1px solid #8eaed6; padding: 6px 12px; background: transparent; }
+.markdown-rendered blockquote::before { content: "NOTA"; display: block; font-size: .7em; font-weight: 700; letter-spacing: .12em; color: #ffd56b; }
+.markdown-rendered pre, .HyperMD-codeblock { border: 1px solid #5884bd; }
+.markdown-rendered th { border-bottom: 1px solid #f3f8fe; text-transform: uppercase; letter-spacing: .06em; }
+.markdown-rendered td, .markdown-rendered th { border-color: #3a6aa8; }
+
+/* Menus and dialogs: blue sheets with a white rule, the chosen row in negative */
+.menu, .modal, .prompt, .popover, .suggestion-container { border: 1px solid #c3d6ee !important; border-radius: 0 !important; }
+.menu-item { border-radius: 0; }
+.menu-item.selected:not(.is-disabled):not(.is-label), .suggestion-item.is-selected { background: #f3f8fe !important; color: #103566 !important; --icon-color: #103566; }
+button:not(.clickable-icon) { border-radius: 0 !important; }
+
+/* Status bar: the title block */
+.status-bar { background: #103566 !important; border: 1px solid #f3f8fe !important; border-radius: 0 !important;
+  text-transform: uppercase; letter-spacing: .08em; font-size: 10px; margin: 0 8px 8px 0; }
+.status-bar::before { content: "PLANO · ESCALA 1:1"; color: #8eaed6; margin-right: 10px; padding-left: 6px; }

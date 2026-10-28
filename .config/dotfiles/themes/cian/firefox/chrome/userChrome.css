@@ -1,0 +1,146 @@
+/* Plano for Firefox: a blueprint sheet. Prussian blue paper with a faint grid, everything drawn in thin white lines
+   and lettered in B612 capitals. Tabs are labelled boxes (the open one printed in negative, white with blue letters),
+   the address is a lettering field after "REF.", the page sits inside the sheet's border with ruler ticks along its
+   top and left edges, and the title block runs along the bottom.
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --b-paper: #103566; --b-deep: #0b2a52; --b-paper2: #153f78; --b-line: #3a6aa8; --b-faint: #5884bd; --b-muted: #8eaed6;
+  --b-sub: #c3d6ee; --b-ink: #f3f8fe; --b-pencil: #ffd56b; --b-red: #ff7a66;
+  --b-font: "B612", sans-serif; --b-mono: "B612 Mono", monospace;
+  /* the faint squared grid of the paper */
+  --b-grid: repeating-linear-gradient(0deg, transparent 0 19px, rgba(243, 248, 254, 0.06) 19px 20px),
+            repeating-linear-gradient(90deg, transparent 0 19px, rgba(243, 248, 254, 0.06) 19px 20px);
+
+  --lwt-accent-color: var(--b-paper) !important;
+  --lwt-text-color: var(--b-ink) !important;
+  --lwt-header-image: none !important;
+  --lwt-additional-images: none !important;
+  --toolbar-bgcolor: var(--b-paper) !important;
+  --toolbar-color: var(--b-ink) !important;
+  --toolbarbutton-icon-fill: var(--b-ink) !important;
+  --toolbarbutton-hover-background: transparent !important;
+  --toolbarbutton-active-background: rgba(243, 248, 254, 0.15) !important;
+  --toolbarbutton-border-radius: 0 !important;
+  --toolbar-field-background-color: transparent !important;
+  --toolbar-field-color: var(--b-ink) !important;
+  --toolbar-field-border-color: var(--b-sub) !important;
+  --toolbar-field-focus-background-color: var(--b-deep) !important;
+  --toolbar-field-focus-color: var(--b-ink) !important;
+  --toolbar-field-focus-border-color: var(--b-ink) !important;
+  --tab-selected-bgcolor: var(--b-ink) !important;
+  --tab-selected-textcolor: var(--b-paper) !important;
+  --tab-border-radius: 0 !important;
+  --focus-outline-color: var(--b-ink) !important;
+  --chrome-content-separator-color: transparent !important;
+  --arrowpanel-background: var(--b-paper) !important;
+  --arrowpanel-color: var(--b-ink) !important;
+  --arrowpanel-border-color: var(--b-sub) !important;
+  --arrowpanel-border-radius: 0 !important;
+  --panel-separator-color: var(--b-line) !important;
+  --urlbarView-highlight-background: var(--b-ink) !important;
+  --urlbarView-highlight-color: var(--b-paper) !important;
+  --urlbarView-action-color: var(--b-pencil) !important;
+  --urlbarView-separator-color: var(--b-line) !important;
+  --sidebar-background-color: var(--b-paper) !important;
+  --sidebar-text-color: var(--b-ink) !important;
+  --sidebar-border-color: var(--b-line) !important;
+  --color-accent-primary: var(--b-ink) !important;
+  --button-primary-bgcolor: var(--b-ink) !important;
+  --button-primary-color: var(--b-paper) !important;
+  --toolbarseparator-color: var(--b-line) !important;
+  --border-radius-small: 0 !important; --border-radius-medium: 0 !important; --border-radius-large: 0 !important;
+  --border-radius-circle: 0 !important; --button-border-radius: 0 !important;
+}
+
+#navigator-toolbox, #navigator-toolbox *, menupopup, panel, tooltip { font-family: var(--b-font) !important; }
+#navigator-toolbox { background: var(--b-grid), var(--b-paper) !important; border-bottom: none !important; }
+#TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar { background: transparent !important; background-image: none !important; }
+.titlebar-buttonbox-container, .titlebar-spacer { display: none !important; }
+
+/* ── Tabs: labelled boxes; the open one in negative ─────────────────────────── */
+
+#TabsToolbar { padding: 6px 8px 0 !important; }
+#TabsToolbar :is(#firefox-view-button, toolbarspring) { display: none !important; }
+.tabbrowser-tab { padding-inline: 0 4px !important; }
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: 230px !important; }  /* [fadein]: closing tabs still shrink to 0.1px */
+.tab-background { margin-block: 3px !important; border: 1px solid var(--b-faint) !important; box-shadow: none !important;
+  background: transparent !important; }
+.tabbrowser-tab:hover .tab-background:not([selected]) { border-color: var(--b-ink) !important; }
+.tab-background:is([selected], [multiselected]) { background: var(--b-ink) !important; border-color: var(--b-ink) !important; }
+.tab-label { font-size: 11px !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--b-sub) !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--b-paper) !important; font-weight: bold !important; }
+.tab-icon-image { filter: grayscale(1) brightness(1.8); }
+.tabbrowser-tab[selected] .tab-icon-image { filter: none; }
+.tab-close-button { border-radius: 0 !important; fill: var(--b-ink) !important; }
+.tabbrowser-tab[selected] .tab-close-button { fill: var(--b-paper) !important; }
+.tabbrowser-tab:not(:hover):not([selected]) .tab-close-button { visibility: collapse !important; }
+.tab-throbber[busy]::before { fill: var(--b-pencil) !important; }
+.tabbrowser-tab::after, .tabbrowser-tab::before { display: none !important; }
+#tabs-newtab-button, #new-tab-button, #alltabs-button { fill: var(--b-ink) !important; }
+
+/* ── Toolbar: buttons outlined on hover, the address as a lettering field ───── */
+
+#nav-bar { padding: 6px 8px !important; border: none !important; box-shadow: none !important; }
+#nav-bar toolbarbutton:not([disabled]):hover > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { box-shadow: inset 0 0 0 1px var(--b-ink) !important; }
+#nav-bar toolbarbutton[disabled] > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { fill: var(--b-faint) !important; opacity: 1 !important; }
+#urlbar-container::before { content: "REF."; align-self: center; margin-inline: 4px 8px; font: bold 11px var(--b-font);
+  letter-spacing: 0.1em; color: var(--b-muted); }
+#urlbar, #urlbar-container { --urlbar-height: 28px !important; --urlbar-min-height: 28px !important; }
+#urlbar .urlbar-background { border: 1px solid var(--b-sub) !important; border-radius: 0 !important; box-shadow: none !important; }
+#urlbar[focused] .urlbar-background { border-color: var(--b-ink) !important; outline: 1px solid var(--b-ink); outline-offset: 2px; }
+#urlbar-input { font: 13px var(--b-mono) !important; color: var(--b-ink) !important; }
+#urlbar-input::placeholder { color: var(--b-faint) !important; text-transform: uppercase; letter-spacing: 0.08em; }
+#urlbar :is(#identity-box, #tracking-protection-icon-container, .urlbar-page-action, #urlbar-searchmode-switcher) { fill: var(--b-sub) !important; border-radius: 0 !important; }
+.urlbarView { font-family: var(--b-font) !important; }
+.urlbarView-row { border-radius: 0 !important; }
+.urlbarView-url { color: var(--b-pencil) !important; }
+#star-button[starred] { fill: var(--b-pencil) !important; }
+
+toolbarbutton.bookmark-item { color: var(--b-sub) !important; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px !important;
+  border-radius: 0 !important; }
+toolbarbutton.bookmark-item:hover { box-shadow: inset 0 0 0 1px var(--b-ink) !important; background: transparent !important; color: var(--b-ink) !important; }
+
+/* ── The sheet: the page inside a white border, ruler ticks along the top and the left ──────────── */
+
+#tabbrowser-tabbox, #tabbrowser-tabpanels { background: var(--b-paper) !important; }
+#tabbrowser-tabpanels { padding: 12px 10px 0 18px !important;
+  background:
+    repeating-linear-gradient(90deg, var(--b-sub) 0 1px, transparent 1px 10px) 18px 0 / 100% 5px no-repeat,
+    repeating-linear-gradient(90deg, var(--b-ink) 0 1px, transparent 1px 50px) 18px 0 / 100% 9px no-repeat,
+    repeating-linear-gradient(0deg, var(--b-sub) 0 1px, transparent 1px 10px) 0 12px / 5px 100% no-repeat,
+    repeating-linear-gradient(0deg, var(--b-ink) 0 1px, transparent 1px 50px) 0 12px / 9px 100% no-repeat,
+    var(--b-paper) !important; }
+.browserStack > browser, #tabbrowser-tabpanels browser[type="content"] { outline: 1px solid var(--b-ink) !important; outline-offset: 0; }
+#sidebar-box, #sidebar-splitter { background: var(--b-paper) !important; border: none !important; }
+
+/* Title block along the bottom: four ruled cells, like the corner of every drawing */
+body::after {
+  content: "LINUX  ·  CONJUNTO GENERAL          ESCALA 1:1          HOJA 1 DE 1          NO MEDIR SOBRE EL PLANO";
+  white-space: pre; display: block; margin: 6px 10px 6px 18px; padding: 4px 10px;
+  border: 1px solid var(--b-ink); box-shadow: inset 0 0 0 3px var(--b-paper), inset 0 0 0 4px var(--b-faint);
+  background: var(--b-paper); color: var(--b-sub); font: bold 10px var(--b-font); letter-spacing: 0.12em; text-align: right;
+  overflow: hidden;
+}
+:root[inFullscreen] body::after, :root[sizemode="fullscreen"] body::after { display: none; }
+
+#statuspanel-label { font: 11px var(--b-mono) !important; background: var(--b-paper) !important; color: var(--b-ink) !important;
+  border: 1px solid var(--b-ink) !important; border-radius: 0 !important; }
+findbar { background: var(--b-paper) !important; border-top: 1px solid var(--b-line) !important; }
+
+/* ── Menus: blue sheets with a white rule; the chosen row in negative ─────── */
+
+menupopup, panel {
+  --panel-background-color: var(--b-paper) !important;
+  --panel-text-color: var(--b-ink) !important;
+  --panel-border-color: var(--b-sub) !important;
+  --panel-border-radius: 0 !important;
+  --panel-separator-color: var(--b-line) !important;
+}
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: var(--b-ink) !important; color: var(--b-paper) !important; }
+menupopup > :is(menu, menuitem)[disabled] { color: var(--b-faint) !important; }
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 0 !important; }
+.subviewbutton:not([disabled]):hover { background: var(--b-ink) !important; color: var(--b-paper) !important; }
+#main-menubar > menu[_moz-menuactive] { background: var(--b-ink) !important; color: var(--b-paper) !important; }
+tooltip { appearance: none !important; background: var(--b-paper) !important; color: var(--b-ink) !important;
+  border: 1px solid var(--b-sub) !important; border-radius: 0 !important; padding: 3px 7px !important; font-size: 11px !important; }

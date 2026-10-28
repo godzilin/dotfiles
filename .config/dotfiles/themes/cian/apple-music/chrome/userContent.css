@@ -1,0 +1,24 @@
+/* Paleta "Plano" (themes/morado/theme.json) sobre music.apple.com */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #e9f3ff !important; --keyColorBG: #e9f3ff !important;
+    --keyColor-rgb: 233, 243, 255 !important; --keyColor-rollover: #ffd56b !important;
+    --keyColor-pressed: #ffab5e !important; --keyColor-disabled: #e9f3ff59 !important;
+    --pageBG: #103566 !important; --pageBG-dark: #103566 !important; --pageBG-dark-rgb: 16, 53, 102 !important;
+    --navSidebarBG: #0b2a52 !important; --playerBackground: #153f78 !important;
+    --playerBackgroundFallback: #153f78 !important; --miniPlayerBackground: #153f78 !important;
+    --glassMaterialBackground: #153f78ee !important; --systemGroupedBackgroundSecondary: #153f78 !important;
+    --systemPrimary: #f3f8fe !important; --systemPrimary-onDark: #f3f8fe !important;
+    --systemSecondary: #c3d6ee !important; --systemSecondary-onDark: #c3d6ee !important;
+    --systemTertiary: #8eaed6 !important; --systemTertiary-onDark: #8eaed6 !important;
+    --systemQuaternary-onDark: #3a6aa8 !important;
+    --labelDivider: #3a6aa8 !important;
+    /* used by the local-music userscript */
+    --lm-stripe-1: #ffd56b; --lm-stripe-2: #e9f3ff; --lm-stripe-3: #ffab5e; --lm-stripe-4: #ff7a66; --lm-error: #ff7a66;
+    --lm-text: #f3f8fe; --lm-sub: #c3d6ee; --lm-muted: #8eaed6; --lm-track: #3a6aa8; --lm-surface: #153f78;
+    --lm-accent: #e9f3ff; --lm-on-accent: #0b2a52;
+    font-family: "B612", sans-serif !important;
+  }
+  body { background: #103566 !important; color: #f3f8fe !important; }
+  ::selection { background: #e9f3ff; color: #0b2a52; }
+}

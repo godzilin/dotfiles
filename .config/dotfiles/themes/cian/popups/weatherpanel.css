@@ -1,0 +1,24 @@
+/* Weather panel (hypr/scripts/weatherpanel.py), GTK 3 CSS: a data sheet on blueprint paper. The paper is a little
+   lighter by day and darker at night; every section is a ruled white box with its label, figures in B612 Mono */
+window.day { background: #18447f; }
+window.cloud { background: #12396d; }
+window.rain { background: #0f3462; }
+window.night { background: #0b2a52; }
+* { font-family: "B612", "Symbols Nerd Font", sans-serif; color: #f3f8fe; }
+.place { font-size: 13pt; font-weight: bold; }
+.temp { font-family: "B612 Mono", monospace; font-size: 40pt; font-weight: bold; }
+.desc { font-size: 11pt; font-weight: bold; }
+.hilo { font-family: "B612 Mono", monospace; font-size: 10pt; color: #c3d6ee; }
+.card { background: transparent; border: 1px solid #f3f8fe; border-radius: 0; padding: 8px 12px; }
+.card-title { font-size: 8pt; font-weight: bold; color: #8eaed6; }
+.hour { font-family: "B612 Mono", monospace; font-size: 10pt; }
+.hour-icon { font-size: 14pt; }
+.rain { font-family: "B612 Mono", monospace; font-size: 8.5pt; color: #ffd56b; }
+.day { font-size: 10.5pt; font-weight: bold; }
+.lo { font-family: "B612 Mono", monospace; font-size: 10.5pt; color: #8eaed6; }
+.hi { font-family: "B612 Mono", monospace; font-size: 10.5pt; font-weight: bold; }
+.track { background: transparent; border-bottom: 1px solid #5884bd; border-radius: 0; min-height: 4px; }
+.range { border-radius: 0; min-height: 4px; background: #f3f8fe; }
+.detail-key { font-size: 8pt; color: #8eaed6; font-weight: bold; }
+.detail { font-family: "B612 Mono", monospace; font-size: 11.5pt; }
+.offline { font-size: 11pt; }

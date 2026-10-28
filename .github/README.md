@@ -18,6 +18,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
 | `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
 | `morado` | **Neón**: synthwave sobrio; noche violeta, acento lavanda y algo de cian, titulares en Orbitron |
+| `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
@@ -184,6 +185,22 @@ paneles propios.
 Fuentes Orbitron, Rajdhani y Share Tech Mono (OFL, dentro del tema). Ocho fondos generados por código
 (`wallpapers/synthwave.py`: atardecer de franjas sobre la rejilla, rejilla sola, palmeras, ciudad, LINUX cromado, VHS,
 túnel y el logo de Arch en neón). Primera vez: `~/.config/dotfiles/themes/morado/install.sh`.
+
+## cian: Plano
+
+Un plano técnico en cianotipia: papel azul de Prusia con rejilla, todo dibujado con líneas blancas finas y rotulado en
+mayúsculas B612 (la letra de las cabinas de Airbus), un amarillo de lápiz para marcar. Firefox es una hoja: pestañas
+como recuadros rotulados (la abierta en negativo), la dirección tras "REF.", reglas en los bordes de la página y un
+cajetín abajo ("NO MEDIR SOBRE EL PLANO"); la nueva pestaña pone LINUX con su cota. Obsidian numera los títulos como
+las secciones de un plano (1, 1.1...), las citas son notas en recuadro y la barra de estado es el cajetín. Calendario y
+tiempo son tablas de plano; fastfetch dibuja el logo de Arch de blanco al azul del papel; carpetas cian (Papirus-Cian).
+
+![Escritorio](../.config/dotfiles/themes/cian/screenshots/desktop.png)
+
+Fuentes B612 y B612 Mono (OFL, dentro del tema). Siete hojas generadas por código (`wallpapers/plano.py`), cada una
+con su cajetín: hoja en blanco, rueda dentada, brazo UR3e en alzado (medidas reales de Universal Robots), ThinkPad
+en planta, el logo de Arch con su trazado, un tornillo M24 y la planta de un taller. Primera vez:
+`~/.config/dotfiles/themes/cian/install.sh`.
 
 ## Cómo están organizados los temas
 

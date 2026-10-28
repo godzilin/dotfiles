@@ -1,0 +1,27 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: the month as a drawing table on blueprint paper. B612
+   capitals, the grid ruled in thin white lines, today in negative (white with blue figures), pencil-yellow dots
+   under busy days, events after a white rule */
+window { background: #103566; }
+* { font-family: "B612", sans-serif; color: #f3f8fe; }
+.month { font-size: 15pt; font-weight: bold; }
+.year { font-size: 15pt; color: #8eaed6; }
+button.nav { background: transparent; border: 1px solid #c3d6ee; border-radius: 0; box-shadow: none; padding: 1px 10px; min-height: 0; }
+button.nav:hover { background: #f3f8fe; }
+button.nav:hover label { color: #103566; }
+button.nav label { font-size: 9.5pt; font-weight: bold; }
+.month-grid { border: 1px solid #f3f8fe; padding: 2px; }
+.weekday { font-size: 8.5pt; font-weight: bold; color: #8eaed6; border-bottom: 1px solid #5884bd; padding: 2px 0; margin-bottom: 2px; }
+.cell { border-right: 1px solid rgba(243, 248, 254, 0.08); border-bottom: 1px solid rgba(243, 248, 254, 0.08); }
+.day { font-family: "B612 Mono", monospace; font-size: 11pt; min-width: 28px; min-height: 24px; border-radius: 0; }
+.day.weekend { color: #8eaed6; }
+.day.other { color: #3a6aa8; }
+.day.today { background: #f3f8fe; color: #103566; font-weight: bold; }
+.dot { font-size: 5pt; color: #ffd56b; padding-bottom: 2px; }
+.dot.empty { color: transparent; }
+separator { background: #f3f8fe; min-height: 1px; }
+.section { font-size: 9pt; font-weight: bold; color: #8eaed6; }
+.event-bar { background: #f3f8fe; min-width: 2px; }
+.event-bar.today { background: #ffd56b; }
+.event { font-size: 10.5pt; }
+.when { font-family: "B612 Mono", monospace; font-size: 9pt; color: #8eaed6; }
+.empty-list { font-size: 10pt; color: #8eaed6; }
