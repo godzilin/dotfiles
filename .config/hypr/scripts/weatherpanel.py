@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Weather popup of the "blanco" theme (opened by hypr/scripts/weather.sh): the Weather app's look, white text on a
-sky that follows the hour and the conditions, big temperature, the next hours in a row and seven days with range bars.
+"""Weather panel (opened by weather.sh when the active theme has popups/weatherpanel.css): place, big temperature,
+the next hours in a row, seven days with range bars and a grid of details. The window gets the class day, cloud,
+rain or night; every look comes from the theme's weatherpanel.css.
 Data and icons come from the shared hypr/scripts/weather.py (Open-Meteo cache). Keys: r refresh, Esc close."""
 import datetime as dt
 import os
@@ -17,31 +18,8 @@ import weather  # noqa: E402  (load, wmo)
 
 DAYS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 COMPASS = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"]
-# sky gradients (top, bottom) for the background
-SKY = {"day": ("#4f9ae8", "#2a6cc4"), "cloud": ("#7d8fa3", "#4f6075"), "rain": ("#5d6d80", "#36434f"),
-       "night": ("#1f2f52", "#0c1528")}
 
-CSS = """
-window {{ background-image: linear-gradient(to bottom, {top}, {bottom}); }}
-* {{ font-family: "Inter", "Symbols Nerd Font", sans-serif; color: #ffffff; }}
-.place {{ font-size: 15pt; font-weight: 600; }}
-.temp {{ font-size: 44pt; font-weight: 300; }}
-.desc {{ font-size: 11pt; font-weight: 500; }}
-.hilo {{ font-size: 10.5pt; font-weight: 500; }}
-.card {{ background: rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 10px 12px; }}
-.card-title {{ font-size: 8.5pt; font-weight: 600; color: rgba(255, 255, 255, 0.65); }}
-.hour {{ font-size: 9.5pt; font-weight: 500; }}
-.hour-icon {{ font-size: 14pt; }}
-.rain {{ font-size: 8pt; color: #9fd3ff; font-weight: 600; }}
-.day {{ font-size: 10.5pt; font-weight: 500; }}
-.lo {{ font-size: 10.5pt; color: rgba(255, 255, 255, 0.6); }}
-.hi {{ font-size: 10.5pt; font-weight: 600; }}
-.track {{ background: rgba(0, 0, 0, 0.18); border-radius: 3px; min-height: 5px; }}
-.range {{ border-radius: 3px; min-height: 5px; background-image: linear-gradient(to right, #8fd3ff, #ffd36b, #ff9f4a); }}
-.detail-key {{ font-size: 8.5pt; color: rgba(255, 255, 255, 0.65); font-weight: 600; }}
-.detail {{ font-size: 11pt; font-weight: 500; }}
-.offline {{ font-size: 11pt; }}
-"""
+THEME_CSS = os.path.expanduser("~/.config/dotfiles/themes/current/popups/weatherpanel.css")
 
 
 def label(text, cls, xalign=0.5):
@@ -61,6 +39,7 @@ class Weather(Gtk.Window):
     def __init__(self):
         super().__init__(title="Tiempo")
         self.css = Gtk.CssProvider()
+        self.css.load_from_path(THEME_CSS)
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), self.css, Gtk.STYLE_PROVIDER_PRIORITY_USER)
         self.root = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10, margin=16)
         self.add(self.root)
@@ -75,18 +54,25 @@ class Weather(Gtk.Window):
         elif name == "r":
             self.draw(weather.load(refresh=True))
 
+    def sky(self, name):
+        """The window's class says the sky (day, cloud, rain, night); the theme's CSS paints it."""
+        ctx = self.get_style_context()
+        for c in ("day", "cloud", "rain", "night"):
+            ctx.remove_class(c)
+        ctx.add_class(name)
+
     def draw(self, data):
         for child in self.root.get_children():
             self.root.remove(child)
         if not data:
-            self.css.load_from_data(CSS.format(top=SKY["cloud"][0], bottom=SKY["cloud"][1]).encode())
+            self.sky("cloud")
             self.root.pack_start(label("Sin datos del tiempo. ¿Hay conexión?", "offline"), True, True, 0)
             self.root.show_all()
             return
         cur, daily, hourly = data["current"], data["daily"], data["hourly"]
         code = cur["weather_code"]
         sky = "night" if not cur["is_day"] else "rain" if code >= 51 else "cloud" if code >= 3 else "day"
-        self.css.load_from_data(CSS.format(top=SKY[sky][0], bottom=SKY[sky][1]).encode())
+        self.sky(sky)
 
         icon, desc = weather.wmo(code, cur["is_day"])
         head = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)

@@ -59,7 +59,7 @@ la esquina, "Acerca de CachyOS", el logo de Arch con las franjas del arcoíris d
 Firefox es Safari: una sola barra arriba con los semáforos, los botones y la dirección centrada, las pestañas debajo
 a partes iguales (la abierta en blanco) y la página de inicio con "Favoritos". En Obsidian, semáforos arriba a la
 izquierda, barra lateral gris de Finder, pestañas de Safari, menús con la fila azul y casillas redondas. El
-calendario y el tiempo son paneles GTK propios del tema (`scripts/calpanel.py`, `scripts/weatherpanel.py`): el mes de
+calendario y el tiempo son paneles GTK con el estilo del tema (`popups/calpanel.css`, `popups/weatherpanel.css`): el mes de
 Calendario con hoy en rojo y los próximos eventos de khal, y el Tiempo con cielo según la hora, horas y 7 días.
 
 ![Escritorio](../.config/dotfiles/themes/blanco/screenshots/desktop.png)
@@ -174,10 +174,14 @@ Lo común (atajos, reglas, scripts, música) existe una sola vez y lee los color
 | `popups/`, `fastfetch/`, `wallpapers/`, `screenshots/` | popup de música, logo, fondos generados por código |
 | `scripts/`, `nwg-dock-hyprland/`, `install.sh` | extras propios del tema (menú de Arch, Dock, menú Inicio) y su instalación |
 | `scripts/launcher.sh` | si existe, es lo que abre la tecla Super (azul: menú Inicio); si no, fuzzel |
-| `scripts/calpanel.py`, `scripts/weatherpanel.py` | si existen, son el calendario y el tiempo de la barra (blanco); si no, los de terminal |
+| `popups/calpanel.css`, `popups/weatherpanel.css` | si existen, el calendario y el tiempo de la barra son paneles GTK (`hypr/scripts/calpanel.py`, `weatherpanel.py`) con ese estilo; si no, los de terminal |
 | `fonts/` | fuentes que solo se ven con ese tema (`.config/fontconfig/conf.d/60-theme-fonts.conf`) |
 | `"qt_style"` en `theme.json` | estilo de widgets Qt (azul: `Windows`); sin él, Breeze |
 | `"daemons"` en `theme.json` | programas que solo corren con ese tema (el Dock); `tema` los para y arranca |
+
+Inicio de sesión: si `/etc/plasmalogin.conf` tiene `[Autologin]` con `User=` y `Session=hyprland`, Plasma Login entra
+solo en Hyprland y `autostart.lua` bloquea al momento con el `hyprlock` del tema activo (solo en esas sesiones; si
+entras escribiendo la contraseña en KDE no se bloquea otra vez).
 
 ## Qué hay
 

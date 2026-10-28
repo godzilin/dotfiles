@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Calendar popup of the "blanco" theme (opened from the clock by hypr/scripts/calendar.sh; not called calendar.py,
-which would shadow the stdlib module calpopup imports): the month view of the Calendar app in a light panel,
-today in a red circle, a dot under days with events and the next two weeks below.
+"""Calendar panel (opened from the clock by calendar.sh when the active theme has popups/calpanel.css; not called
+calendar.py, which would shadow the stdlib module calpopup imports): month grid with today marked, a dot under days
+with events and the next two weeks below. Every look comes from the theme's calpanel.css (classes below).
 Events come from the shared popup's khal cache (hypr/scripts/calpopup.py), refreshed in the background.
 Keys: left/right change month, t today, Esc close."""
 import datetime as dt
@@ -23,30 +23,7 @@ MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agost
 WEEKDAYS = ["L", "M", "X", "J", "V", "S", "D"]
 DAY_NAMES = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 
-CSS = b"""
-window { background: #ffffff; }
-* { font-family: "Inter", sans-serif; color: #1d1d1f; }
-.month { font-size: 17pt; font-weight: 700; }
-.year { font-size: 17pt; font-weight: 400; color: #8e8e93; }
-button.nav { background: #f2f2f7; border: none; border-radius: 7px; box-shadow: none; padding: 2px 10px; min-height: 0; }
-button.nav:hover { background: #e5e5ea; }
-button.nav label { font-size: 10.5pt; font-weight: 600; }
-.weekday { font-size: 9pt; font-weight: 600; color: #8e8e93; }
-.weekday.weekend { color: #aeaeb2; }
-.day { font-size: 11pt; min-width: 28px; min-height: 28px; border-radius: 999px; }
-.day.weekend { color: #8e8e93; }
-.day.other { color: #c7c7cc; }
-.day.today { background: #ff3b30; color: #ffffff; font-weight: 700; }
-.dot { font-size: 5pt; color: #8e8e93; margin-top: -2px; margin-bottom: 2px; }
-.dot.empty { color: transparent; }
-separator { background: #e5e5ea; min-height: 1px; }
-.section { font-size: 9pt; font-weight: 600; color: #8e8e93; }
-.event-bar { background: #007aff; min-width: 3px; border-radius: 2px; }
-.event-bar.today { background: #ff3b30; }
-.event { font-size: 10.5pt; font-weight: 500; }
-.when { font-size: 9.5pt; color: #8e8e93; }
-.empty-list { font-size: 10pt; color: #8e8e93; }
-"""
+THEME_CSS = os.path.expanduser("~/.config/dotfiles/themes/current/popups/calpanel.css")
 
 
 def label(text, *classes, xalign=0.5):
@@ -62,7 +39,7 @@ class Calendar(Gtk.Window):
         self.today = dt.date.today()
         self.year, self.month = self.today.year, self.today.month
         css = Gtk.CssProvider()
-        css.load_from_data(CSS)
+        css.load_from_path(THEME_CSS)
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), css, Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
         self.root = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8, margin=16)
