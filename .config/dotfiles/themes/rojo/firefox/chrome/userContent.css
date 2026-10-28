@@ -1,14 +1,39 @@
-/* Rojo: new tab page on newsprint with a red sun; other pages keep their own look */
+/* Rojo for Firefox's pages. New tab: a poster on newsprint (a red sun, a black diagonal, "ЛИНУКС" in Russo One, the
+   search field as a paper slip in an ink frame with a red hard shadow, shortcuts as square stamps). */
+@-moz-document url-prefix("about:") {
+  :root {
+    --color-accent-primary: #d42a1e !important;
+    --color-accent-primary-hover: #a31d14 !important;
+    --link-color: #d42a1e !important;
+    --border-radius-small: 0 !important; --border-radius-medium: 0 !important; --border-radius-large: 0 !important;
+  }
+}
 @-moz-document url("about:newtab"), url("about:home") {
   body {
     background-color: #efe6d2 !important;
-    background-image: radial-gradient(circle at 18% 28%, #d42a1e 0 160px, transparent 161px),
-                      linear-gradient(166deg, transparent 0 62%, #141414 62% 70%, transparent 70%) !important;
+    background-image: radial-gradient(circle at 82% 20%, #d42a1e 0 150px, transparent 151px),
+                      linear-gradient(162deg, transparent 0 66%, #141414 66% 73%, transparent 73%),
+                      linear-gradient(162deg, transparent 0 76%, #d42a1e 76% 78%, transparent 78%) !important;
+    font-family: "PT Sans", sans-serif !important;
   }
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; }
   .search-wrapper::before {
-    content: "ЦЕХ"; display: block; text-align: center; margin-bottom: 26px;
-    font: 700 46px "Russo One", sans-serif; letter-spacing: 0.12em; color: #141414;
+    content: "ЛИНУКС"; position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 18px;
+    text-align: center; font: 400 64px "Russo One", sans-serif; letter-spacing: 0.08em; color: #141414;
+    transform: rotate(-4deg);
   }
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 0 !important;
+    --content-search-handoff-ui-background-color: #f6efe0 !important;
+    --content-search-handoff-ui-color: #141414 !important;
+    --content-search-handoff-ui-fill: #141414 !important;
+    border-radius: 0 !important;
+    box-shadow: 0 0 0 3px #141414, 7px 7px 0 3px #d42a1e !important;
+  }
+  .top-site-outer .tile { background: #f6efe0 !important; border-radius: 0 !important; box-shadow: 0 0 0 2px #141414, 4px 4px 0 2px #141414 !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 2px #141414, 4px 4px 0 2px #d42a1e !important; }
+  .top-site-outer .top-site-icon { border-radius: 0 !important; background-color: transparent !important; }
+  .top-site-outer .title { font-family: "Oswald", sans-serif !important; text-transform: uppercase; letter-spacing: 0.06em; color: #141414 !important; }
 }

@@ -4,6 +4,7 @@ the next hours in a row, seven days with range bars and a grid of details. The w
 rain or night; every look comes from the theme's weatherpanel.css.
 Data and icons come from the shared hypr/scripts/weather.py (Open-Meteo cache). Keys: r refresh, Esc close."""
 import datetime as dt
+import json
 import os
 import sys
 
@@ -19,11 +20,13 @@ import weather  # noqa: E402  (load, wmo)
 DAYS = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 COMPASS = ["N", "NE", "E", "SE", "S", "SO", "O", "NO"]
 
+# classes whose text the theme wants in capitals (GTK 3 CSS has no text-transform): theme.json "panel_caps"
+CAPS = set(json.load(open(os.path.expanduser("~/.config/dotfiles/themes/current/theme.json"))).get("panel_caps", []))
 THEME_CSS = os.path.expanduser("~/.config/dotfiles/themes/current/popups/weatherpanel.css")
 
 
 def label(text, cls, xalign=0.5):
-    w = Gtk.Label(label=text, xalign=xalign)
+    w = Gtk.Label(label=text.upper() if cls in CAPS else text, xalign=xalign)
     w.get_style_context().add_class(cls)
     return w
 

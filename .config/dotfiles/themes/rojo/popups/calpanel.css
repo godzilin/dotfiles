@@ -1,0 +1,25 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: a constructivist wall calendar. Russo One month on paper,
+   a black band of weekdays, today a red block, red squares under busy days, events as red wedges */
+window { background: #efe6d2; }
+* { font-family: "PT Sans", sans-serif; color: #141414; }
+.month { font-family: "Russo One", sans-serif; font-size: 20pt; color: #d42a1e; }
+.year { font-family: "Oswald", sans-serif; font-size: 20pt; font-weight: 600; color: #141414; }
+button.nav { background: #efe6d2; border: 2px solid #141414; border-radius: 0; box-shadow: 3px 3px 0 #141414; padding: 1px 10px; min-height: 0; }
+button.nav:hover { background: #141414; }
+button.nav:hover label { color: #efe6d2; }
+button.nav label { font-family: "Oswald", sans-serif; font-size: 10.5pt; font-weight: 600; }
+.weekday { font-family: "Oswald", sans-serif; font-size: 9.5pt; font-weight: 600; color: #efe6d2; background: #141414; padding: 2px 0; }
+.weekday.weekend { color: #d42a1e; }
+.day { font-family: "Oswald", sans-serif; font-size: 12pt; font-weight: 500; min-width: 28px; min-height: 28px; border-radius: 0; }
+.day.weekend { color: #d42a1e; }
+.day.other { color: #c9bda3; }
+.day.today { background: #d42a1e; color: #efe6d2; font-weight: 700; }
+.dot { font-size: 5pt; color: #141414; margin-top: -2px; margin-bottom: 2px; }
+.dot.empty { color: transparent; }
+separator { background: #141414; min-height: 3px; }
+.section { font-family: "Russo One", sans-serif; font-size: 10pt; color: #141414; }
+.event-bar { background: #d42a1e; min-width: 6px; }
+.event-bar.today { background: #141414; }
+.event { font-size: 10.5pt; font-weight: 700; }
+.when { font-family: "Oswald", sans-serif; font-size: 9.5pt; color: #5e574b; }
+.empty-list { font-size: 10pt; color: #5e574b; }

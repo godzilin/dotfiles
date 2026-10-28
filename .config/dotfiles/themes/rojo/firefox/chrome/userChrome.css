@@ -37,7 +37,7 @@
   --button-primary-color: var(--r-paper) !important;
 }
 
-#navigator-toolbox { background: var(--r-paper) !important; border-bottom: 4px solid var(--r-ink) !important; font-family: var(--r-text) !important; }
+#navigator-toolbox { background: var(--r-paper) !important; border-bottom: none !important; font-family: var(--r-text) !important; }
 #TabsToolbar { background: var(--r-ink) !important; box-shadow: inset 0 -4px var(--r-red) !important; }
 #titlebar { background: transparent !important; }
 
@@ -59,17 +59,28 @@
 .titlebar-button { fill: var(--r-paper) !important; }
 .titlebar-close:hover { background: var(--r-red) !important; }
 
-/* Toolbar and address field */
-#nav-bar { padding: 6px 8px !important; border: none !important; box-shadow: none !important; }
-#urlbar .urlbar-background { border-radius: 0 !important; border: 3px solid var(--r-ink) !important; box-shadow: none !important; }
-#urlbar[focused] .urlbar-background { border-color: var(--r-red) !important; box-shadow: 5px 5px 0 var(--r-ink) !important; }
-#urlbar-input { font-family: var(--r-text) !important; font-size: 14px !important; }
-#urlbar .urlbar-input-container::before {
-  content: "▶"; align-self: center; margin-inline: 8px 4px; color: var(--r-red); font: 700 14px var(--r-text);
-}
+/* Toolbar: a red wedge drives into the address field, a paper slip in a thick ink frame */
+#nav-bar { padding: 7px 10px !important; border: none !important; box-shadow: none !important; }
+#nav-bar toolbarbutton:not([disabled]):hover > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { background: var(--r-ink) !important; fill: var(--r-paper) !important; }
+#urlbar-container { position: relative; padding-inline-start: 34px !important; }
+#urlbar-container::before { content: ""; position: absolute; left: 4px; top: 50%; width: 30px; height: 26px; margin-top: -13px;
+  background: var(--r-red); clip-path: polygon(0 0, 100% 50%, 0 100%); }
+#urlbar, #urlbar-container { --urlbar-height: 32px !important; --urlbar-min-height: 32px !important; }
+#urlbar .urlbar-background { border-radius: 0 !important; border: 3px solid var(--r-ink) !important; box-shadow: none !important;
+  background: var(--r-light) !important; }
+#urlbar[focused] .urlbar-background { border-color: var(--r-ink) !important; box-shadow: 5px 5px 0 var(--r-red) !important; }
+#urlbar-input { font-family: var(--r-text) !important; font-size: 14px !important; color: var(--r-ink) !important; }
+#urlbar-input::placeholder { font-family: var(--r-head) !important; text-transform: uppercase; letter-spacing: 0.08em; color: var(--r-grey) !important; }
+#urlbar :is(#identity-box, #tracking-protection-icon-container, .urlbar-page-action, #urlbar-searchmode-switcher) { fill: var(--r-ink) !important; border-radius: 0 !important; }
 .urlbarView { font-family: var(--r-text) !important; }
 .urlbarView-row { border-radius: 0 !important; }
 .urlbarView-url { color: var(--r-red) !important; }
+#urlbar[open] .urlbar-background { box-shadow: 6px 6px 0 var(--r-ink) !important; }
+
+/* The page: a print in a heavy ink frame on the paper */
+#tabbrowser-tabbox, #tabbrowser-tabpanels { background: var(--r-paper) !important; }
+#tabbrowser-tabpanels { padding: 0 8px 8px !important; }
+.browserStack > browser, #tabbrowser-tabpanels browser[type="content"] { outline: 3px solid var(--r-ink) !important; outline-offset: -3px; }
 
 toolbarbutton.bookmark-item { font-family: var(--r-head) !important; text-transform: uppercase; letter-spacing: 0.06em; border-radius: 0 !important; }
 toolbarbutton.bookmark-item:hover { background: var(--r-ink) !important; color: var(--r-paper) !important; }

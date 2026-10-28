@@ -5,6 +5,7 @@ with events and the next two weeks below. Every look comes from the theme's calp
 Events come from the shared popup's khal cache (hypr/scripts/calpopup.py), refreshed in the background.
 Keys: left/right change month, t today, Esc close."""
 import datetime as dt
+import json
 import os
 import sys
 import threading
@@ -23,11 +24,13 @@ MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agost
 WEEKDAYS = ["L", "M", "X", "J", "V", "S", "D"]
 DAY_NAMES = ["lun", "mar", "mié", "jue", "vie", "sáb", "dom"]
 
+# classes whose text the theme wants in capitals (GTK 3 CSS has no text-transform): theme.json "panel_caps"
+CAPS = set(json.load(open(os.path.expanduser("~/.config/dotfiles/themes/current/theme.json"))).get("panel_caps", []))
 THEME_CSS = os.path.expanduser("~/.config/dotfiles/themes/current/popups/calpanel.css")
 
 
 def label(text, *classes, xalign=0.5):
-    w = Gtk.Label(label=text, xalign=xalign)
+    w = Gtk.Label(label=text.upper() if CAPS & set(classes) else text, xalign=xalign)
     for c in classes:
         w.get_style_context().add_class(c)
     return w
@@ -79,7 +82,7 @@ class Calendar(Gtk.Window):
         head.pack_start(label(MONTHS[self.month - 1].capitalize(), "month", xalign=0), False, False, 0)
         head.pack_start(label(str(self.year), "year", xalign=0), False, False, 0)
         for text, step in (("›", 1), ("Hoy", 0), ("‹", -1)):
-            b = Gtk.Button(label=text)
+            b = Gtk.Button(label=text.upper() if "nav" in CAPS else text)
             b.get_style_context().add_class("nav")
             b.connect("clicked", lambda _b, s=step: self.move(s) if s else self.go_today())
             head.pack_end(b, False, False, 0)

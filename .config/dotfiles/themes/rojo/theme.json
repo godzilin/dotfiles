@@ -19,7 +19,12 @@
     "teal": "#2f5d62",
     "blue": "#1f3a5f"
   },
-  "stripes": ["#d42a1e", "#141414", "#d42a1e", "#141414"],
+  "stripes": [
+    "#d42a1e",
+    "#141414",
+    "#d42a1e",
+    "#141414"
+  ],
   "font_ui": "PT Sans",
   "font_mono": "PT Mono",
   "font_size": 11,
@@ -34,5 +39,17 @@
   "wallpaper": {
     "title": "ОБОИ",
     "random": "СЛУЧАЙНО"
-  }
+  },
+  "panel_caps": [
+    "month",
+    "nav",
+    "weekday",
+    "section",
+    "when",
+    "day",
+    "card-title",
+    "desc",
+    "place",
+    "detail-key"
+  ]
 }
