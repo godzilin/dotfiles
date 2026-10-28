@@ -43,3 +43,24 @@ body { --h1-color: var(--color-accent); --h2-color: #e0c36a; --h3-color: var(--t
   border-image: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%) 1; }
 .status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
 .status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+
+/* Deck layout, like the Firefox shell: tabs are numbered tape labels (the open one amber), folders are small tracked
+   caps, the open note has an amber edge, the header carries the four tape colours along its bottom, the editor sits
+   in a bezel like a monitor, and the cursor is a block */
+.mod-root .workspace-tab-header-container-inner { counter-reset: tape; }
+.mod-root .workspace-tab-header { counter-increment: tape; }
+.workspace-tab-header::before, .workspace-tab-header::after, .workspace-tab-header-inner::after { display: none !important; }
+.mod-root .workspace-tab-header-inner-title { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
+.mod-root .workspace-tab-header-inner-title::before { content: counter(tape, decimal-leading-zero) "  "; color: #857c69; }
+.mod-root .workspace-tab-header.is-active { background: #e9a23b !important; border-radius: 3px; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before { color: #1a1814 !important; font-weight: 600; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: #1a1814; }
+.nav-folder-title-content { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #e9a23b; border-radius: 0 3px 3px 0; }
+.view-header { border-bottom: 3px solid !important;
+  border-image: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%) 1 !important; }
+.view-header-title, .view-header-breadcrumb { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
+.mod-root .workspace-leaf-content { border: 1px solid #3a352d; border-radius: 6px; margin: 0 6px 6px 0; }
+.cm-cursor, .cm-dropCursor { border-left: .55em solid rgba(233, 162, 59, .75) !important; }
+.menu-item.selected:not(.is-disabled):not(.is-label) { box-shadow: inset 3px 0 #e9a23b; }
