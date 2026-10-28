@@ -32,7 +32,88 @@ body.theme-dark, body.theme-light {
   --radius-l: 12px;
 }
 
-/* macOS: translucent-looking sidebar, blue accent, semibold headings */
-body { --h1-weight: 700; --h2-weight: 600; --tag-background: rgba(0, 122, 255, .1); }
-.workspace-ribbon, .workspace-split.mod-left-split, .workspace-split.mod-right-split { background-color: #ececec; }
-.nav-file-title.is-active, .tree-item-self.is-active { background-color: var(--color-accent); color: #ffffff; }
+/* macOS app: grey sidebar like Finder's with a soft blue pill for the open note, Safari-style tabs (equal widths,
+   the open one white and raised), the traffic lights at the top-left, rounded menus with a blue highlight,
+   round checkboxes like Reminders, thin overlay scrollbars and a floating status bar */
+body {
+  --h1-weight: 700; --h2-weight: 650; --h3-weight: 600; --inline-title-weight: 700; --inline-title-size: 1.9em;
+  --tag-background: rgba(0, 122, 255, .1); --tag-color: #007aff; --tag-radius: 6px;
+  --text-selection: rgba(0, 122, 255, .22);
+  --blockquote-border-color: #007aff; --blockquote-border-thickness: 3px;
+  --code-background: #f2f2f7; --code-radius: 6px; --code-normal: #1d1d1f;
+  --checkbox-radius: 50%; --checkbox-color: #007aff; --checkbox-color-hover: #0066d6; --checkbox-border-color: #c7c7cc;
+  --interactive-accent: #007aff; --interactive-accent-hover: #0066d6;
+  --nav-item-radius: 6px; --nav-item-background-active: rgba(0, 0, 0, .08); --nav-item-color-active: #1d1d1f;
+  --nav-item-background-hover: rgba(0, 0, 0, .04);
+  --tab-radius: 6px; --tab-radius-active: 6px; --tab-curve: 0px; --tab-outline-width: 0px;
+  --tab-container-background: #e8e8ed; --titlebar-background: #e8e8ed; --titlebar-background-focused: #e8e8ed;
+  --tab-background-active: #ffffff; --tab-text-color: #6e6e73; --tab-text-color-active: #1d1d1f;
+  --tab-text-color-focused: #6e6e73; --tab-text-color-focused-active: #1d1d1f; --tab-text-color-focused-active-current: #1d1d1f;
+  --ribbon-background: #ececec; --ribbon-background-collapsed: #ececec;
+  --status-bar-background: rgba(246, 246, 246, .92); --status-bar-border-color: rgba(0, 0, 0, .08); --status-bar-radius: 8px 0 0 0;
+  --shadow-s: 0 0 0 .5px rgba(0, 0, 0, .12), 0 4px 12px rgba(0, 0, 0, .1);
+  --shadow-l: 0 0 0 .5px rgba(0, 0, 0, .12), 0 16px 40px rgba(0, 0, 0, .18);
+  --modal-radius: 12px; --menu-radius: 8px; --input-radius: 6px; --button-radius: 6px;
+  --scrollbar-thumb-bg: rgba(0, 0, 0, .25); --scrollbar-active-thumb-bg: rgba(0, 0, 0, .4); --scrollbar-bg: transparent;
+}
+
+/* Sidebar: Finder grey, the open note a blue pill (grey while the window is in the background) */
+.workspace-ribbon, .workspace-split.mod-left-split, .workspace-split.mod-right-split,
+.workspace-split.mod-left-split .workspace-tab-header-container, .workspace-split.mod-right-split .workspace-tab-header-container,
+.workspace-split.mod-left-split .workspace-leaf-content, .workspace-split.mod-right-split .workspace-leaf-content { background-color: #ececec !important; }
+.nav-file-title.is-active, .tree-item-self.is-active { background-color: #007aff !important; color: #ffffff !important; }
+body:not(.is-focused) .nav-file-title.is-active, body:not(.is-focused) .tree-item-self.is-active { background-color: #d1d1d6 !important; color: #1d1d1f !important; }
+.nav-folder-title, .nav-file-title { border-radius: 6px; }
+.nav-folder-title-content { font-weight: 500; }
+
+/* Tabs: Safari's strip, every tab the same width, title centred, the open one white and raised */
+.mod-root .workspace-tab-header-container { border-bottom: 1px solid #d1d1d6; padding-inline: 6px; }
+.mod-root .workspace-tab-header { --tab-max-width: none; flex: 1 1 0 !important; max-width: none !important; margin: 5px 1px !important; }
+.workspace-tab-header::before, .workspace-tab-header::after { display: none !important; }
+.mod-root .workspace-tab-header.is-active { box-shadow: 0 0 0 .5px rgba(0, 0, 0, .14), 0 1px 2px rgba(0, 0, 0, .1); }
+.mod-root .workspace-tab-header-inner { justify-content: center; }
+.mod-root .workspace-tab-header-inner-title { flex: 1 1 auto; text-align: center; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title { font-weight: 500; }
+.workspace-tab-header-inner::after { display: none; }
+.workspace-tab-header:not(:hover) .workspace-tab-header-inner-close-button { visibility: hidden; }
+
+/* Window buttons: the traffic lights, at the top-left like every Mac window (no glyphs until hovered) */
+.titlebar-button-container.mod-right { right: auto !important; left: 0; gap: 8px; padding: 0 14px;
+  height: var(--header-height); align-items: center; background: transparent !important; }
+.titlebar-button { width: 12px !important; height: 12px !important; padding: 0 !important; border-radius: 50% !important;
+  box-shadow: inset 0 0 0 .5px rgba(0, 0, 0, .15); }
+.titlebar-button svg { width: 8px; height: 8px; color: rgba(0, 0, 0, .55); opacity: 0; }
+.titlebar-button-container:hover .titlebar-button svg { opacity: 1; }
+.titlebar-button.mod-close { background: #ff5f57 !important; order: 0; }
+.titlebar-button.mod-minimize { background: #febc2e !important; order: 1; }
+.titlebar-button.mod-maximize { background: #28c840 !important; order: 2; }
+body:not(.is-focused) .titlebar-button { background: #d9d9de !important; }
+.titlebar-button:focus, .titlebar-button:focus-visible { outline: none !important; }
+/* room for them: the left sidebar's tab row (or the ribbon when the sidebar is closed) starts after the lights */
+.workspace-split.mod-left-split .workspace-tab-header-container { padding-left: 84px !important; }
+body.is-left-sidedock-collapsed .mod-root .workspace-tab-header-container { padding-left: 84px !important; }
+
+/* Note header: light, breadcrumbs centred */
+.view-header { background: #ffffff; border-bottom: none; }
+.view-header-title-container { justify-content: center; }
+.view-header-title-parent, .view-header-breadcrumb { color: #8e8e93; }
+
+/* Menus and dialogs: rounded, soft shadow, blue highlight with white text */
+.menu { border-radius: 8px; padding: 5px; background: rgba(246, 246, 246, .98); }
+.menu-item { border-radius: 5px; }
+.menu-item.selected:not(.is-disabled):not(.is-label) { background-color: #007aff; color: #ffffff; --icon-color: #ffffff; }
+.menu-item.selected:not(.is-disabled) .menu-item-icon { color: #ffffff; }
+.suggestion-item.is-selected { background-color: #007aff; color: #ffffff; border-radius: 6px; }
+.suggestion-item.is-selected .suggestion-note, .suggestion-item.is-selected .suggestion-flair { color: rgba(255, 255, 255, .8); }
+.modal, .prompt { border: none; }
+button.mod-cta { background-color: #007aff; border-radius: 6px; }
+
+/* Text: macOS reading width and spacing, blue links */
+.markdown-rendered, .markdown-source-view.mod-cm6 .cm-scroller { line-height: 1.55; }
+.markdown-rendered a, .cm-s-obsidian span.cm-link, .cm-hmd-internal-link { color: #007aff; }
+.markdown-rendered blockquote { background: #f5f8ff; border-radius: 0 8px 8px 0; padding: 6px 14px; }
+.callout { border-radius: 10px; }
+.markdown-rendered pre, .HyperMD-codeblock { border-radius: 8px; }
+
+/* Status bar floats over the bottom-right corner */
+.status-bar { border-top-left-radius: 8px; }

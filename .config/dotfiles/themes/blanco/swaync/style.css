@@ -2,10 +2,10 @@
 @import url("file:///etc/xdg/swaync/style.css");
 
 :root {
-  --cc-bg: rgba(246, 246, 246, 0.72);
+  --cc-bg: rgba(246, 246, 246, 0.94);  /* the blur behind is soft: more alpha keeps windows behind unreadable */
   --noti-border-color: rgba(0, 0, 0, 0.08);
   --noti-bg: 246, 246, 246;
-  --noti-bg-alpha: 0.82;
+  --noti-bg-alpha: 0.95;
   --noti-bg-darker: rgba(255, 255, 255, 0.6);
   --noti-bg-hover: rgba(236, 236, 236, 0.9);
   --noti-bg-focus: rgba(0, 0, 0, 0.04);
@@ -63,4 +63,12 @@
 
 .widget-dnd > switch:checked {
   background: #007aff;
+}
+
+/* no grey band behind the banners in the panel */
+.control-center .notification-row,
+.control-center .notification-row:focus,
+.control-center .notification-row:hover,
+.control-center .notification-group {
+  background: transparent;
 }

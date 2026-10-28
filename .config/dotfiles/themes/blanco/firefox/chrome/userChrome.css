@@ -37,29 +37,58 @@
   --button-primary-color: #ffffff !important;
 }
 
-#navigator-toolbox { background: var(--m-bar) !important; border-bottom: 1px solid var(--m-line) !important; font-family: var(--m-sans) !important; }
+#navigator-toolbox { background: var(--m-bar) !important; border-bottom: 1px solid var(--m-line) !important;
+  font-family: var(--m-sans) !important; display: flex !important; flex-direction: column !important; position: relative !important; }
 #TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar { background: transparent !important; }
 
-/* Tabs: flat segments, the selected one a white raised pill (Safari) */
-.tabbrowser-tab { padding-inline: 2px !important; }
-.tab-background { margin-block: 5px !important; border: none !important; box-shadow: none !important; }
+/* Safari layout: the toolbar on top (traffic lights, buttons, the centred address field), tabs underneath */
+#nav-bar { order: 0; }
+#PersonalToolbar { order: 1; }
+#titlebar { order: 2; display: flex !important; flex-direction: column !important; }
+#TabsToolbar { order: 10 !important; }  /* in case #nav-bar shares #titlebar with the tabs */
+#nav-bar { -moz-window-dragging: drag; padding: 6px 8px 6px 84px !important; box-shadow: none !important; border: none !important; }
+/* the traffic lights live in the tab strip (GTK layout); lift them into the toolbar's free corner */
+#TabsToolbar .titlebar-buttonbox-container { position: absolute !important; top: 0; left: 0; height: 44px; align-items: center; }
+:root[inFullscreen] #nav-bar { padding-left: 8px !important; }
+
+/* Tabs: equal widths across the window, title centred; the open one white and raised, like Safari */
+#TabsToolbar { border-top: 1px solid var(--m-line) !important; background: #e3e3e8 !important; min-height: 30px !important; }
+#TabsToolbar .toolbar-items { align-items: center; padding-inline: 4px; }
+#TabsToolbar :is(.titlebar-spacer, #firefox-view-button, toolbarspring) { display: none !important; }
+.tabbrowser-tab { padding-inline: 1px !important; min-height: 28px !important; }
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: none !important; }  /* [fadein]: closing tabs still shrink to 0.1px */
+.tab-background { margin-block: 3px !important; border: none !important; box-shadow: none !important; border-radius: 6px !important; }
+.tabbrowser-tab:hover .tab-background:not([selected]) { background: rgba(0, 0, 0, 0.05) !important; }
 .tab-background:is([selected], [multiselected]) {
   background: #ffffff !important;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.14), 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
-.tab-label { font-size: 12px !important; color: var(--m-sub) !important; }
+.tabbrowser-tab + .tabbrowser-tab:not([selected]):not(:hover)::before {  /* hairline between plain tabs */
+  content: ""; position: absolute; left: 0; top: 9px; bottom: 9px; width: 1px; background: var(--m-line); display: block !important; }
+.tabbrowser-tab::after { display: none !important; }
+/* title centred in the tab (the favicon stays at the left edge) */
+.tab-label-container { flex: 1 !important; }
+.tab-label { font-size: 12px !important; color: var(--m-sub) !important; text-align: center !important; margin-inline: auto !important; }
 .tabbrowser-tab[selected] .tab-label { color: var(--m-text) !important; font-weight: 500 !important; }
-.tabbrowser-tab:not([pinned]) .tab-content { justify-content: center; }
-.tabbrowser-tab:not(:hover) .tab-close-button { visibility: collapse !important; }
+/* close at the left on hover, as in Safari */
+.tab-close-button { order: -1; margin-inline: 0 4px !important; border-radius: 4px !important; }
+.tabbrowser-tab:not(:hover) .tab-close-button { visibility: hidden !important; }
+#tabs-newtab-button > .toolbarbutton-icon, #new-tab-button > .toolbarbutton-icon { border-radius: 6px !important; }
 
-/* Toolbar and the centered, rounded address field */
-#nav-bar { padding: 3px 8px 5px !important; box-shadow: none !important; border: none !important; }
-#urlbar .urlbar-background { border-radius: 8px !important; border: none !important; box-shadow: none !important; }
-#urlbar[focused] .urlbar-background { box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.35) !important; }
+/* Toolbar buttons: plain glyphs, a soft grey square on hover */
+#nav-bar toolbarbutton > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { border-radius: 6px !important; }
+
+/* The address field: rounded, centred text until you click it, a blue ring while editing */
+#urlbar-container { max-width: 640px !important; margin-inline: auto !important; }
+#urlbar, #urlbar-container { --urlbar-height: 30px !important; --urlbar-min-height: 30px !important; }
+#urlbar .urlbar-background { border-radius: 8px !important; border: none !important; box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.08) !important; }
+#urlbar[focused] .urlbar-background { box-shadow: 0 0 0 3.5px rgba(0, 122, 255, 0.4) !important; }
 #urlbar:not([focused]) #urlbar-input { text-align: center !important; }
 #urlbar-input { font-family: var(--m-sans) !important; font-size: 13px !important; }
+#urlbar[open] .urlbar-background { box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.14), 0 12px 32px rgba(0, 0, 0, 0.18) !important; border-radius: 10px !important; }
 .urlbarView { font-family: var(--m-sans) !important; }
 .urlbarView-row { border-radius: 6px !important; }
+#nav-bar toolbarspring { min-width: 8px !important; }
 
 /* Bookmarks bar like Safari favourites: text only */
 toolbarbutton.bookmark-item { font-size: 12px !important; color: var(--m-text) !important; border-radius: 5px !important; }
@@ -84,7 +113,7 @@ menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-co
 }
 
 /* Traffic lights: Firefox draws its own titlebar buttons, so paint them as the macOS red/yellow/green circles */
-.titlebar-buttonbox { margin-inline: 10px 6px !important; }
+.titlebar-buttonbox { margin-inline: 14px 6px !important; }
 .titlebar-button { padding: 0 4px !important; background: transparent !important; }
 .titlebar-button > .toolbarbutton-icon {
   list-style-image: none !important;

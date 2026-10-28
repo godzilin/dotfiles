@@ -28,6 +28,8 @@
         "rewrite": {
             "": "Escritorio",
             "firefox": "Firefox",
+            "md.obsidian.Obsidian": "Obsidian",
+            "obsidian": "Obsidian",
             "Alacritty": "Terminal",
             "thunar": "Archivos",
             "Thunar": "Archivos",

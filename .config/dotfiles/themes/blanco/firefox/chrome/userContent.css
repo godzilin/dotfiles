@@ -1,1 +1,45 @@
-/* Blanco: Firefox's own pages keep their default light look */
+/* Blanco for Firefox's own pages: Safari's start page on the new tab (soft light background, "Favoritos" in rounded
+   white tiles, a rounded search field with a soft shadow) and the macOS blue on Firefox's settings pages. */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --color-accent-primary: #007aff !important;
+    --color-accent-primary-hover: #0066d6 !important;
+    --color-accent-primary-active: #0058b8 !important;
+    --link-color: #007aff !important;
+    font-family: "Inter", sans-serif !important;
+  }
+}
+
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background: radial-gradient(ellipse at 20% 0%, #eef3fb 0, transparent 60%),
+                radial-gradient(ellipse at 90% 100%, #f6eef6 0, transparent 55%), #f5f5f7 !important;
+    font-family: "Inter", sans-serif !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 10px !important;
+    --content-search-handoff-ui-background-color: #ffffff !important;
+    --content-search-handoff-ui-color: #1d1d1f !important;
+    font-family: "Inter", sans-serif !important;
+    border-radius: 10px !important;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+  }
+  .top-sites-list::before {
+    content: "Favoritos";
+    position: absolute;
+    top: -34px;
+    left: 10px;
+    font: 700 20px "Inter", sans-serif;
+    color: #1d1d1f;
+    text-align: start;
+  }
+  .top-sites-list { position: relative; margin-top: 34px !important; }
+  .top-site-outer .tile { background: #ffffff !important; border-radius: 14px !important;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.08) !important; }
+  .top-site-outer .top-site-icon { border-radius: 10px !important; background-color: transparent !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 6px 18px rgba(0, 0, 0, 0.14) !important; }
+  .top-site-outer .title { font-family: "Inter", sans-serif !important; font-size: 11px !important; color: #3c3c43 !important; }
+}
