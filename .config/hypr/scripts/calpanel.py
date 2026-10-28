@@ -89,6 +89,7 @@ class Calendar(Gtk.Window):
         self.root.pack_start(head, False, False, 0)
 
         grid = Gtk.Grid(column_homogeneous=True, row_spacing=0, column_spacing=0)
+        grid.get_style_context().add_class("month-grid")
         for i, w in enumerate(WEEKDAYS):
             grid.attach(label(w, "weekday", *(["weekend"] if i >= 5 else [])), i, 0, 1, 1)
         first = dt.date(self.year, self.month, 1)
@@ -104,6 +105,7 @@ class Calendar(Gtk.Window):
             elif d.weekday() >= 5:
                 cls.append("weekend")
             cell = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
+            cell.get_style_context().add_class("cell")
             num = label(str(d.day), *cls)
             num.set_halign(Gtk.Align.CENTER)
             cell.pack_start(num, False, False, 0)

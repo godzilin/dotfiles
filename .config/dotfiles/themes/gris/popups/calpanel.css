@@ -1,0 +1,27 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: a NeXTSTEP panel. Light grey face, bevelled buttons, the
+   month grid in a white field cut into the panel, today the white selection with a black frame, black bars before events */
+window { background: #aaaaaa; }
+* { font-family: "Nimbus Sans", sans-serif; color: #000000; }
+.month { font-size: 15pt; font-weight: bold; }
+.year { font-size: 15pt; color: #555555; }
+button.nav { background: #aaaaaa; border: none; border-radius: 0; padding: 1px 9px; min-height: 0;
+  box-shadow: inset 1px 1px #ffffff, inset -1px -1px #000000, inset -2px -2px #555555; }
+button.nav:active { background: #ffffff; box-shadow: inset 1px 1px #000000, inset -1px -1px #ffffff; }
+button.nav label { font-size: 10pt; font-weight: bold; }
+.weekday { font-size: 9pt; font-weight: bold; color: #ffffff; background: #555555; padding: 2px 0; }
+.weekday.weekend { color: #aaaaaa; }
+.month-grid { background: #ffffff; box-shadow: inset 1px 1px #555555, inset 2px 2px #000000, inset -1px -1px #ffffff; padding: 2px; }
+.weekday { margin-bottom: 2px; }
+.day { font-size: 11pt; min-width: 28px; min-height: 26px; border-radius: 0; }
+.day.weekend { color: #555555; }
+.day.other { color: #aaaaaa; }
+.day.today { background: #000000; color: #ffffff; font-weight: bold; }
+.dot { font-size: 5pt; color: #555555; padding-bottom: 2px; }
+.dot.empty { color: transparent; }
+separator { background: #555555; min-height: 1px; box-shadow: 0 1px #ffffff; }
+.section { font-size: 10pt; font-weight: bold; }
+.event-bar { background: #000000; min-width: 3px; }
+.event-bar.today { background: #555555; }
+.event { font-size: 10.5pt; }
+.when { font-size: 9.5pt; color: #555555; }
+.empty-list { font-size: 10pt; color: #555555; }

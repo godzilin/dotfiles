@@ -1,0 +1,26 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: "Propiedades de Fecha y hora" of Windows 98. Grey dialog
+   face in W95FA, raised buttons, the month in a white sunken box with grey day headers, today navy with white text */
+window { background: #c0c0c0; }
+* { font-family: "W95FA", sans-serif; color: #000000; }
+.month { font-size: 16pt; }
+.year { font-size: 16pt; color: #000080; }
+button.nav { background: #c0c0c0; border: none; border-radius: 0; padding: 1px 10px; min-height: 0;
+  box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #ffffff, inset -2px -2px #808080, inset 2px 2px #dfdfdf; }
+button.nav:active { box-shadow: inset 1px 1px #0a0a0a, inset -1px -1px #ffffff, inset 2px 2px #808080, inset -2px -2px #dfdfdf; }
+button.nav label { font-size: 12pt; }
+.month-grid { background: #ffffff; padding: 2px;
+  box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff, inset 2px 2px #0a0a0a, inset -2px -2px #dfdfdf; }
+.weekday { font-size: 12pt; color: #ffffff; background: #808080; padding: 1px 0; margin-bottom: 2px; }
+.day { font-size: 12pt; min-width: 28px; min-height: 22px; border-radius: 0; }
+.day.weekend { color: #800000; }
+.day.other { color: #c0c0c0; }
+.day.today { background: #000080; color: #ffffff; }
+.dot { font-size: 5pt; color: #000080; padding-bottom: 1px; }
+.dot.empty { color: transparent; }
+separator { background: #808080; min-height: 1px; box-shadow: 0 1px #ffffff; }
+.section { font-size: 12pt; }
+.event-bar { background: #000080; min-width: 4px; }
+.event-bar.today { background: #800000; }
+.event { font-size: 12pt; }
+.when { font-size: 12pt; color: #404040; }
+.empty-list { font-size: 12pt; color: #404040; }

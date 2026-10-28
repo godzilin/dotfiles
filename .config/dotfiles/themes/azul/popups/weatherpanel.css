@@ -1,0 +1,27 @@
+/* Weather panel (hypr/scripts/weatherpanel.py), GTK 3 CSS: a Windows 98 dialog. A navy-to-blue title strip for the
+   place and temperature (grey when it is cloudy or raining, black at night), grey face, the sections as white
+   sunken boxes, W95FA everywhere */
+window { background: #c0c0c0; }
+window.day { background-image: linear-gradient(to bottom, #000080 0, #1084d0 150px, #c0c0c0 150px); }
+window.cloud, window.rain { background-image: linear-gradient(to bottom, #808080 0, #b5b5b5 150px, #c0c0c0 150px); }
+window.night { background-image: linear-gradient(to bottom, #000000 0, #000080 150px, #c0c0c0 150px); }
+* { font-family: "W95FA", "Symbols Nerd Font", sans-serif; color: #000000; }
+.place, .temp, .desc, .hilo { color: #ffffff; }
+.place { font-size: 15pt; }
+.temp { font-size: 40pt; }
+.desc { font-size: 12pt; }
+.hilo { font-size: 12pt; }
+.card { background: #ffffff; border-radius: 0; padding: 6px 10px;
+  box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff, inset 2px 2px #0a0a0a, inset -2px -2px #dfdfdf; }
+.card-title { font-size: 11pt; color: #000080; }
+.hour { font-size: 12pt; }
+.hour-icon { font-size: 14pt; }
+.rain { font-size: 11pt; color: #000080; }
+.day { font-size: 12pt; }
+.lo { font-size: 12pt; color: #808080; }
+.hi { font-size: 12pt; }
+.track { background: #c0c0c0; border-radius: 0; min-height: 8px; box-shadow: inset 1px 1px #808080, inset -1px -1px #ffffff; }
+.range { border-radius: 0; min-height: 8px; background: #000080; }
+.detail-key { font-size: 11pt; color: #000080; }
+.detail { font-size: 12pt; }
+.offline { font-size: 12pt; }

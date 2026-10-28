@@ -57,8 +57,8 @@ hl.window_rule({
     match = { class = "^nostromo-weather$" },
     float = true,
     pin   = true,
-    size  = "460 580",
-    move  = "1240 582",
+    size  = "460 660",
+    move  = "1240 502",
 })
 
 -- Start menu dialogs (Ejecutar, Apagar el sistema): small, floating, Run sits bottom-left like in Windows

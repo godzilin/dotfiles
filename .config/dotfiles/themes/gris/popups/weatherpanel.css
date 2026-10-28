@@ -1,0 +1,26 @@
+/* Weather panel (hypr/scripts/weatherpanel.py), GTK 3 CSS: a NeXTSTEP inspector in the four greys. The face gets
+   lighter with fair weather and goes dark grey at night; the cards are white fields cut into the panel */
+window.day { background: #aaaaaa; }
+window.cloud { background: #aaaaaa; }
+window.rain { background: #999999; }
+window.night { background: #555555; }
+* { font-family: "Nimbus Sans", "Symbols Nerd Font", sans-serif; color: #000000; }
+window.night .place, window.night .temp, window.night .desc, window.night .hilo { color: #ffffff; }
+.place { font-size: 14pt; font-weight: bold; }
+.temp { font-size: 42pt; }
+.desc { font-size: 11pt; font-weight: bold; }
+.hilo { font-size: 10pt; }
+.card { background: #ffffff; border-radius: 0; padding: 8px 12px;
+  box-shadow: inset 1px 1px #555555, inset 2px 2px #000000, inset -1px -1px #aaaaaa; }
+.card-title { font-size: 8.5pt; font-weight: bold; color: #555555; }
+.hour { font-size: 10pt; }
+.hour-icon { font-size: 14pt; }
+.rain { font-size: 8pt; color: #555555; font-weight: bold; }
+.day { font-size: 10.5pt; font-weight: bold; }
+.lo { font-size: 10.5pt; color: #555555; }
+.hi { font-size: 10.5pt; font-weight: bold; }
+.track { background: #aaaaaa; border-radius: 0; min-height: 6px; box-shadow: inset 1px 1px #555555; }
+.range { border-radius: 0; min-height: 6px; background: #000000; }
+.detail-key { font-size: 8.5pt; color: #555555; font-weight: bold; }
+.detail { font-size: 11pt; font-weight: bold; }
+.offline { font-size: 11pt; }
