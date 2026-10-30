@@ -113,6 +113,11 @@ hl.bind("XF86AudioPause", exec("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioNext",  exec("playerctl next"),       { locked = true })
 hl.bind("XF86AudioPrev",  exec("playerctl previous"),   { locked = true })
 
+-- Lid: only the built-in screen goes off; no lock, no sleep (scripts/idle.sh)
+local idle = os.getenv("HOME") .. "/.config/hypr/scripts/idle.sh"
+hl.bind("switch:on:Lid Switch",  exec(idle .. " lid-close"), { locked = true })
+hl.bind("switch:off:Lid Switch", exec(idle .. " lid-open"),  { locked = true })
+
 -- Bar popups (calendar, now playing) close on any click outside them. non_consuming: the click still reaches the app.
 -- Clicks on the bar are left alone, so its buttons can toggle the popups themselves.
 local popups = {

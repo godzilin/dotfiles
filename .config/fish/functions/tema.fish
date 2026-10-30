@@ -88,7 +88,7 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
         hyprctl reload >/dev/null
         hyprctl setcursor (jq -r .cursor $json) (jq -r .cursor_size $json) >/dev/null
         pkill -x waybar; setsid -f waybar >/dev/null 2>&1
-        pkill -x swaync; setsid -f swaync >/dev/null 2>&1  # restart, not reload: it must see the theme's fonts
+        pkill -x swaync; systemctl --user restart swaync  # restart, not reload: it must see the theme's fonts
         ~/.config/hypr/scripts/wallpaper.sh apply  # hyprpaper on this theme's pinned or rotating wallpaper
         ~/.config/hypr/scripts/theme-daemons.sh start
     end
