@@ -6,6 +6,7 @@
 |---|---|
 | Super (soltar) / Super+Espacio / Alt+F1 | Lanzador (fuzzel) |
 | Super+º / Super+Enter | Terminal (Alacritty) |
+| Super+Tab | Nuevo chat de Claude Code (en `~`) |
 | Super+W / D / S / X / C / E | Firefox / Discord / Steam / Lutris / Ajustes KDE / Thunar |
 | Super+Q / Alt+F4 | Cerrar ventana |
 | Super+Ctrl+Esc | Matar ventana |

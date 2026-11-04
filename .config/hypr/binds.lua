@@ -8,6 +8,7 @@ local launcher = scripts .. "launcher.sh"  -- fuzzel, or the theme's own (azul: 
 -- Apps (same keys as KDE)
 hl.bind(mod .. " + masculine", exec(terminal))  -- Super+º
 hl.bind(mod .. " + Return",    exec(terminal))
+hl.bind(mod .. " + Tab",       exec(terminal .. " --working-directory ~ -e fish -lc claude"))  -- new Claude Code chat
 hl.bind(mod .. " + W",         exec("firefox"))
 hl.bind(mod .. " + D",         exec("discord"))
 hl.bind(mod .. " + S",         exec("steam"))
