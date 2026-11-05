@@ -1,0 +1,98 @@
+/* Astrolabio palette */
+@define-color bg0    #0d111a;
+@define-color bg     #131824;
+@define-color bg1    #1a2030;
+@define-color bg2    #232a3b;
+@define-color line   #333c50;
+@define-color muted  #858b9a;
+@define-color sub    #b9b3a4;
+@define-color text   #e4dcc8;
+@define-color amber  #d6b16a;
+@define-color orange #d99c62;
+@define-color red    #dc7f70;
+@define-color green  #9dbb8f;
+
+* {
+    font-family: "Alegreya Sans", "Symbols Nerd Font", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    min-height: 0;
+}
+
+/* The whole bar is the limb of an astrolabe: flush with the top edge, a graduated brass scale along its lower side */
+window#waybar {
+    background-color: alpha(@bg0, 0.93);
+    background-image:
+        repeating-linear-gradient(to right, alpha(@amber, 0.60) 0px, alpha(@amber, 0.60) 1px, transparent 1px, transparent 60px),
+        repeating-linear-gradient(to right, alpha(@amber, 0.30) 0px, alpha(@amber, 0.30) 1px, transparent 1px, transparent 12px);
+    background-size: 100% 6px, 100% 3px;
+    background-position: left bottom, left bottom;
+    background-repeat: no-repeat, no-repeat;
+    color: @sub;
+}
+
+tooltip {
+    background: @bg;
+    border: 1px solid @line;
+    border-radius: 8px;
+}
+tooltip label { color: @text; }
+
+#custom-launcher, #window, #clock, #tray, #pulseaudio, #backlight, #network, #bluetooth, #power-profiles-daemon,
+#battery, #custom-wallpaper, #custom-notifications, #custom-power, #custom-weather {
+    padding: 0 9px 5px;
+    color: @text;
+}
+
+#custom-launcher { padding-left: 16px; padding-right: 12px; font-size: 16px; }
+#custom-launcher:hover { color: @text; }
+
+/* Workspaces: Roman plate numbers; the current one carries the brass index, like an alidade on the scale */
+#workspaces { padding: 0 4px; }
+#workspaces button {
+    color: @muted;
+    padding: 0 9px 5px;
+    margin: 0 1px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    font-family: "Alegreya", serif;
+    font-size: 15px;
+}
+#workspaces button.empty  { color: @line; }
+#workspaces button.active { color: @amber; box-shadow: inset 0 -3px @amber; font-weight: 700; }
+#workspaces button.urgent { color: @red; box-shadow: inset 0 -3px @red; }
+#workspaces button:hover  { background: transparent; color: @text; box-shadow: inset 0 -3px @muted; }
+
+#window { color: @muted; font-style: italic; }
+window#waybar.empty #window { padding: 0; }
+
+#custom-luna { color: @amber; padding: 0 8px 5px 12px; font-size: 18px; }
+#custom-luna.llena { color: #e6cb82; }
+#custom-luna.nueva { color: @muted; }
+#clock { color: @muted; padding-right: 12px; }
+#clock:hover { color: @sub; }
+
+#pulseaudio.muted { color: @muted; }
+#battery.warning:not(.charging)  { color: @orange; }
+#battery.critical:not(.charging) { color: @red; }
+#power-profiles-daemon { color: @amber; font-size: 16px; }
+#power-profiles-daemon.performance { color: @orange; }
+#power-profiles-daemon.power-saver { color: @green; }
+#bluetooth.off, #bluetooth.disabled { color: @muted; }
+
+#custom-wallpaper, #custom-notifications, #custom-power { color: @muted; font-size: 16px; }
+#custom-wallpaper:hover, #custom-notifications:hover { color: @amber; }
+#custom-power { padding-right: 16px; }
+#custom-power:hover { color: @red; }
+
+/* Now playing */
+#image.cover { padding: 0 2px 5px 10px; }
+#custom-media-prev, #mpris, #custom-media-next { padding: 0 5px 5px; color: @sub; font-size: 15px; }
+#custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @amber; }
+#mpris.playing { color: @amber; }
+#custom-media { padding: 0 12px 5px 6px; color: @text; font-style: italic; }
+#custom-media.paused { color: @muted; }
+
+#custom-weather.offline { color: @muted; }

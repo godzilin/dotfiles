@@ -1,0 +1,24 @@
+/* Weather panel (hypr/scripts/weatherpanel.py), GTK 3 CSS: the observatory's sky log. The ink is a little lighter by day
+   and darkest at night; quiet cards, figures in Alegreya, brass for what matters */
+window.day { background: #1e2534; }
+window.cloud { background: #1a2030; }
+window.rain { background: #161c29; }
+window.night { background: #0f141e; }
+* { font-family: "Alegreya Sans", "Symbols Nerd Font", sans-serif; color: #e4dcc8; }
+.place { font-family: "Alegreya", serif; font-size: 16pt; }
+.temp { font-family: "Alegreya", serif; font-size: 46pt; }
+.desc { font-size: 13pt; font-style: italic; color: #d6b16a; }
+.hilo { font-size: 12pt; color: #b9b3a4; }
+.card { background: rgba(13, 17, 26, 0.45); border: 1px solid #333c50; border-radius: 12px; padding: 8px 12px; }
+.card-title { font-size: 9.5pt; font-weight: bold; color: #858b9a; }
+.hour { font-size: 12pt; }
+.hour-icon { font-size: 15pt; color: #d6b16a; }
+.rain { font-size: 10.5pt; color: #8fabd0; }
+.day { font-size: 12.5pt; }
+.lo { font-size: 12.5pt; color: #858b9a; }
+.hi { font-size: 12.5pt; font-weight: bold; }
+.track { background: #232a3b; border-radius: 3px; min-height: 5px; }
+.range { border-radius: 3px; min-height: 5px; background: #d6b16a; }
+.detail-key { font-size: 9.5pt; color: #858b9a; font-weight: bold; }
+.detail { font-size: 13pt; }
+.offline { font-size: 12pt; }

@@ -1,0 +1,119 @@
+/* Astrolabio for Firefox: a quiet observatory instrument. Night ink, parchment text and one brass accent; the open tab
+   is lit from above by a brass index, the address sits in a soft field, and the graduated scale of the bar runs between
+   the toolbar and the page. Nothing here costs reading comfort: no capitals, no frames around the page.
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --a-ink: #131824; --a-deep: #0d111a; --a-ink1: #1a2030; --a-ink2: #232a3b; --a-line: #333c50; --a-faint: #555e72;
+  --a-muted: #858b9a; --a-sub: #b9b3a4; --a-text: #e4dcc8; --a-brass: #d6b16a; --a-gold: #e6cb82; --a-red: #dc7f70;
+  --a-font: "Alegreya Sans", sans-serif;
+  --a-scale: repeating-linear-gradient(90deg, rgba(214, 177, 106, 0.6) 0 1px, transparent 1px 60px) left bottom / 100% 6px no-repeat,
+             repeating-linear-gradient(90deg, rgba(214, 177, 106, 0.3) 0 1px, transparent 1px 12px) left bottom / 100% 3px no-repeat;
+
+  --lwt-accent-color: var(--a-deep) !important;
+  --lwt-text-color: var(--a-text) !important;
+  --lwt-header-image: none !important;
+  --lwt-additional-images: none !important;
+  --toolbar-bgcolor: var(--a-ink) !important;
+  --toolbar-color: var(--a-text) !important;
+  --toolbarbutton-icon-fill: var(--a-sub) !important;
+  --toolbarbutton-hover-background: var(--a-ink2) !important;
+  --toolbarbutton-active-background: var(--a-line) !important;
+  --toolbarbutton-border-radius: 8px !important;
+  --toolbar-field-background-color: var(--a-deep) !important;
+  --toolbar-field-color: var(--a-text) !important;
+  --toolbar-field-border-color: transparent !important;
+  --toolbar-field-focus-background-color: var(--a-deep) !important;
+  --toolbar-field-focus-color: var(--a-text) !important;
+  --toolbar-field-focus-border-color: var(--a-brass) !important;
+  --tab-selected-bgcolor: var(--a-ink) !important;
+  --tab-selected-textcolor: var(--a-text) !important;
+  --tab-border-radius: 8px !important;
+  --focus-outline-color: var(--a-brass) !important;
+  --chrome-content-separator-color: transparent !important;
+  --arrowpanel-background: var(--a-ink1) !important;
+  --arrowpanel-color: var(--a-text) !important;
+  --arrowpanel-border-color: var(--a-line) !important;
+  --arrowpanel-border-radius: 10px !important;
+  --panel-separator-color: var(--a-line) !important;
+  --urlbarView-highlight-background: var(--a-ink2) !important;
+  --urlbarView-highlight-color: var(--a-text) !important;
+  --urlbarView-action-color: var(--a-brass) !important;
+  --urlbarView-separator-color: var(--a-line) !important;
+  --sidebar-background-color: var(--a-ink) !important;
+  --sidebar-text-color: var(--a-text) !important;
+  --sidebar-border-color: var(--a-line) !important;
+  --color-accent-primary: var(--a-brass) !important;
+  --button-primary-bgcolor: var(--a-brass) !important;
+  --button-primary-color: var(--a-deep) !important;
+  --toolbarseparator-color: var(--a-line) !important;
+}
+
+#navigator-toolbox, #navigator-toolbox *, menupopup, panel, tooltip { font-family: var(--a-font) !important; }
+#navigator-toolbox { background: var(--a-deep) !important; border-bottom: none !important; }
+#TabsToolbar, #titlebar { background: var(--a-deep) !important; background-image: none !important; }
+#nav-bar, #PersonalToolbar { background: var(--a-ink) !important; background-image: none !important; }
+.titlebar-buttonbox-container, .titlebar-spacer { display: none !important; }
+
+/* ── Tabs: the open one lit, with a brass index along its top ───────────────── */
+
+#TabsToolbar { padding: 5px 8px 0 !important; }
+#TabsToolbar :is(#firefox-view-button, toolbarspring) { display: none !important; }
+.tabbrowser-tab { padding-inline: 1px !important; }
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: 240px !important; }  /* [fadein]: closing tabs still shrink to 0.1px */
+.tab-background { margin-block: 0 !important; border-radius: 8px 8px 0 0 !important; box-shadow: none !important; background: transparent !important; outline: none !important; }
+.tabbrowser-tab:hover .tab-background:not([selected]) { background: var(--a-ink1) !important; }
+.tab-background:is([selected], [multiselected]) { background: var(--a-ink) !important; box-shadow: inset 0 2px var(--a-brass) !important; }
+.tab-label { font-size: 14px !important; color: var(--a-muted) !important; }
+.tabbrowser-tab:hover .tab-label { color: var(--a-sub) !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--a-text) !important; }
+.tab-close-button { border-radius: 6px !important; fill: var(--a-sub) !important; }
+.tabbrowser-tab:not(:hover):not([selected]) .tab-close-button { visibility: collapse !important; }
+.tab-throbber[busy]::before { fill: var(--a-brass) !important; }
+.tabbrowser-tab::after, .tabbrowser-tab::before { display: none !important; }
+#tabs-newtab-button, #new-tab-button, #alltabs-button { fill: var(--a-sub) !important; }
+
+/* ── Toolbar and address ───────────────────────────────────────────────────── */
+
+#nav-bar { padding: 5px 8px !important; border: none !important; box-shadow: none !important; }
+#nav-bar toolbarbutton[disabled] > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { fill: var(--a-faint) !important; opacity: 1 !important; }
+#urlbar, #urlbar-container { --urlbar-height: 32px !important; --urlbar-min-height: 32px !important; }
+#urlbar .urlbar-background { border: 1px solid transparent !important; border-radius: 9px !important; box-shadow: none !important; }
+#urlbar[focused] .urlbar-background { border-color: var(--a-brass) !important; }
+#urlbar-input { font: 15px var(--a-font) !important; color: var(--a-text) !important; }
+#urlbar-input::placeholder { color: var(--a-muted) !important; font-style: italic; }
+#urlbar :is(#identity-box, #tracking-protection-icon-container, .urlbar-page-action, #urlbar-searchmode-switcher) { fill: var(--a-muted) !important; }
+.urlbarView { font-family: var(--a-font) !important; font-size: 14px !important; }
+.urlbarView-url { color: var(--a-brass) !important; }
+#star-button[starred] { fill: var(--a-brass) !important; }
+
+toolbarbutton.bookmark-item { color: var(--a-sub) !important; font-size: 13.5px !important; border-radius: 6px !important; }
+toolbarbutton.bookmark-item:hover { background: var(--a-ink2) !important; color: var(--a-text) !important; }
+
+/* The graduated scale between the toolbars and the page */
+#navigator-toolbox::after { content: ""; display: block; height: 6px; background: var(--a-scale), var(--a-ink); }
+:root[inFullscreen] #navigator-toolbox::after, :root[sizemode="fullscreen"] #navigator-toolbox::after { display: none; }
+
+#tabbrowser-tabbox, #tabbrowser-tabpanels { background: var(--a-ink) !important; }
+#sidebar-box, #sidebar-splitter { background: var(--a-ink) !important; border: none !important; }
+#statuspanel-label { font: 13px var(--a-font) !important; background: var(--a-ink1) !important; color: var(--a-sub) !important;
+  border: 1px solid var(--a-line) !important; border-radius: 6px !important; }
+findbar { background: var(--a-ink) !important; border-top: 1px solid var(--a-line) !important; }
+
+/* ── Menus ─────────────────────────────────────────────────────────────────── */
+
+menupopup, panel {
+  --panel-background-color: var(--a-ink1) !important;
+  --panel-text-color: var(--a-text) !important;
+  --panel-border-color: var(--a-line) !important;
+  --panel-border-radius: 10px !important;
+  --panel-separator-color: var(--a-line) !important;
+  font-size: 14px !important;
+}
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: var(--a-ink2) !important; color: var(--a-gold) !important; }
+menupopup > :is(menu, menuitem)[disabled] { color: var(--a-faint) !important; }
+.subviewbutton, menupopup menuitem, menupopup menu { border-radius: 6px !important; }
+.subviewbutton:not([disabled]):hover { background: var(--a-ink2) !important; color: var(--a-gold) !important; }
+#main-menubar > menu[_moz-menuactive] { background: var(--a-ink2) !important; color: var(--a-gold) !important; }
+tooltip { appearance: none !important; background: var(--a-ink1) !important; color: var(--a-text) !important;
+  border: 1px solid var(--a-line) !important; border-radius: 8px !important; padding: 3px 8px !important; font-size: 13px !important; }

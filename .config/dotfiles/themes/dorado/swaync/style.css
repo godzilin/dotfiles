@@ -1,0 +1,42 @@
+/* Default swaync theme + Astrolabio palette on top (survives swaync updates) */
+@import url("file:///etc/xdg/swaync/style.css");
+
+:root {
+  --cc-bg: rgba(19, 24, 36, 0.94);
+  --noti-border-color: #333c50;
+  --noti-bg: 19, 24, 36;
+  --noti-bg-alpha: 0.96;
+  --noti-bg-darker: #0d111a;
+  --noti-bg-hover: #1a2030;
+  --noti-bg-focus: rgba(35, 42, 59, 0.8);
+  --noti-close-bg: #232a3b;
+  --noti-close-bg-hover: #333c50;
+  --text-color: #e4dcc8;
+  --text-color-disabled: #858b9a;
+  --bg-selected: #333c50;
+  --border-radius: 12px;
+  --notification-icon-size: 48px;
+  --notification-shadow: 0 4px 16px rgba(7, 9, 14, 0.6);
+  --font-size-body: 14px;
+  --font-size-summary: 15px;
+}
+
+* {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+.notification .summary,
+.control-center .widget-title > label {
+  font-family: "Alegreya Sans", "Symbols Nerd Font", sans-serif;
+  font-weight: 700;
+}
+
+/* Brass index on the left of every notification. Solid ground: what is behind must not show through the words */
+.notification-row .notification-background .notification {
+  background: #131824;
+  border-left: 3px solid #d6b16a;
+}
+.control-center { background: rgba(19, 24, 36, 0.97); }
+.notification-row .notification-background .notification.critical {
+  border-left-color: #dc7f70;
+}

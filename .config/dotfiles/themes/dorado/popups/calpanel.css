@@ -1,0 +1,25 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: a page of an almanac. Night ink, the month in Alegreya, today
+   ringed in brass, small gold dots under busy days, events after a thin brass index */
+window { background: #131824; }
+* { font-family: "Alegreya Sans", sans-serif; color: #e4dcc8; }
+.month { font-family: "Alegreya", serif; font-size: 19pt; }
+.year { font-family: "Alegreya", serif; font-size: 19pt; font-style: italic; color: #858b9a; }
+button.nav { background: transparent; border: none; border-radius: 8px; box-shadow: none; padding: 1px 10px; min-height: 0; }
+button.nav:hover { background: #232a3b; }
+button.nav:hover label { color: #d6b16a; }
+button.nav label { font-size: 12pt; color: #b9b3a4; }
+.month-grid { padding: 2px; }
+.weekday { font-size: 11pt; font-style: italic; color: #858b9a; border-bottom: 1px solid #333c50; padding: 2px 0 4px; margin-bottom: 3px; }
+.day { font-size: 13pt; min-width: 28px; min-height: 26px; border-radius: 14px; }
+.day.weekend { color: #b9b3a4; }
+.day.other { color: #555e72; }
+.day.today { box-shadow: inset 0 0 0 1px #d6b16a; color: #d6b16a; font-weight: bold; }
+.dot { font-size: 5pt; color: #d6b16a; padding-bottom: 2px; }
+.dot.empty { color: transparent; }
+separator { background: #333c50; min-height: 1px; }
+.section { font-size: 10pt; font-weight: bold; color: #858b9a; }
+.event-bar { background: #555e72; min-width: 2px; border-radius: 1px; }
+.event-bar.today { background: #d6b16a; }
+.event { font-size: 12.5pt; }
+.when { font-size: 11pt; font-style: italic; color: #858b9a; }
+.empty-list { font-size: 12pt; font-style: italic; color: #858b9a; }

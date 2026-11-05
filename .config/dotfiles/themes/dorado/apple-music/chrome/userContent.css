@@ -1,0 +1,28 @@
+/* Paleta "Astrolabio" (themes/dorado/theme.json) sobre music.apple.com */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #d6b16a !important; --keyColorBG: #d6b16a !important;
+    --keyColor-rgb: 214, 177, 106 !important; --keyColor-rollover: #e6cb82 !important;
+    --keyColor-pressed: #b98a4e !important; --keyColor-disabled: #d6b16a59 !important;
+    --pageBG: #131824 !important; --pageBG-dark: #131824 !important; --pageBG-dark-rgb: 19, 24, 36 !important;
+    --navSidebarBG: #0d111a !important; --playerBackground: #1a2030 !important;
+    --playerBackgroundFallback: #1a2030 !important; --miniPlayerBackground: #1a2030 !important;
+    --glassMaterialBackground: #1a2030ee !important; --systemGroupedBackgroundSecondary: #1a2030 !important;
+    --systemPrimary: #e4dcc8 !important; --systemPrimary-onDark: #e4dcc8 !important;
+    --systemSecondary: #b9b3a4 !important; --systemSecondary-onDark: #b9b3a4 !important;
+    --systemTertiary: #858b9a !important; --systemTertiary-onDark: #858b9a !important;
+    --systemQuaternary-onDark: #333c50 !important;
+    --labelDivider: #333c50 !important;
+    /* used by the local-music userscript */
+    --lm-stripe-1: #e6cb82; --lm-stripe-2: #d6b16a; --lm-stripe-3: #b98a4e; --lm-stripe-4: #7d6240; --lm-error: #dc7f70;
+    --lm-text: #e4dcc8; --lm-sub: #b9b3a4; --lm-muted: #858b9a; --lm-track: #333c50; --lm-surface: #1a2030;
+    --lm-accent: #d6b16a; --lm-on-accent: #0d111a;
+    font-family: "Alegreya Sans", sans-serif !important;
+  }
+  body { background: #131824 !important; color: #e4dcc8 !important; }
+  ::selection { background: #d6b16a; color: #0d111a; }
+  /* The site sets fonts per component with the `font:` shorthand; Alegreya runs small, so adjust it to the x-height the
+     layout expects */
+  body, body * { font-family: "Alegreya Sans", sans-serif !important; font-size-adjust: 0.52 !important; }
+  .navigation-item__icon svg { fill: #d6b16a !important; }
+}

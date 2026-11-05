@@ -1,0 +1,107 @@
+[general]
+working_directory = "None"
+live_config_reload = true
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+dimensions = { columns = 100, lines = 30 }
+dynamic_padding = true
+decorations = "Full"
+opacity = 0.94
+blur = true
+padding = { x = 14, y = 10 }
+title = "Alacritty@CachyOS"
+class = { instance = "Alacritty", general = "Alacritty" }
+decorations_theme_variant = "Dark"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+normal = { family = "BlexMono Nerd Font", style = "Regular" }
+bold = { family = "BlexMono Nerd Font", style = "SemiBold" }
+italic = { family = "BlexMono Nerd Font", style = "Italic" }
+bold_italic = { family = "BlexMono Nerd Font", style = "SemiBold Italic" }
+size = 11.0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+# Astrolabio palette
+[colors.primary]
+background = "#131824"
+foreground = "#e4dcc8"
+dim_foreground = "#b9b3a4"
+
+[colors.cursor]
+text = "#131824"
+cursor = "#d6b16a"
+
+[colors.selection]
+text = "#e4dcc8"
+background = "#39435a"
+
+[colors.search.matches]
+foreground = "#131824"
+background = "#e6cb82"
+
+[colors.search.focused_match]
+foreground = "#131824"
+background = "#d6b16a"
+
+[colors.normal]
+black = "#1a2030"
+red = "#dc7f70"
+green = "#9dbb8f"
+yellow = "#e6cb82"
+blue = "#8fabd0"
+magenta = "#b79fc4"
+cyan = "#83b6ae"
+white = "#b9b3a4"
+
+[colors.bright]
+black = "#737b8e"
+red = "#e89a8d"
+green = "#b5cfa8"
+yellow = "#f0dca0"
+blue = "#abc2e0"
+magenta = "#cdb9d6"
+cyan = "#a3cdc6"
+white = "#e4dcc8"
+
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+save_to_clipboard = true
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+unfocused_hollow = true
+thickness = 0.15
+
+[mouse]
+hide_when_typing = true
+bindings = [
+{ mouse = "Middle", mods = "None", action = "PasteSelection" },
+]
+
+[keyboard]
+bindings = [
+{ key = "Paste", mods = "None", action = "Paste" },
+{ key = "Copy", mods = "None", action = "Copy" },
+{ key = "L", mods = "Control", action = "ClearLogNotice" },
+{ key = "L", mods = "Control", mode = "~Vi", chars = "\f" },
+{ key = "PageUp", mods = "Shift", mode = "~Alt", action = "ScrollPageUp" },
+{ key = "PageDown", mods = "Shift", mode = "~Alt", action = "ScrollPageDown" },
+{ key = "Home", mods = "Shift", mode = "~Alt", action = "ScrollToTop" },
+{ key = "End", mods = "Shift", mode = "~Alt", action = "ScrollToBottom" },
+{ key = "V", mods = "Control|Shift", action = "Paste" },
+{ key = "C", mods = "Control|Shift", action = "Copy" },
+{ key = "F", mods = "Control|Shift", action = "SearchForward" },
+{ key = "B", mods = "Control|Shift", action = "SearchBackward" },
+{ key = "C", mods = "Control|Shift", mode = "Vi", action = "ClearSelection" },
+{ key = "Key0", mods = "Control", action = "ResetFontSize" },
+{ key = "Return", mods = "Shift", chars = "\u001B\r" },
+]

@@ -1,0 +1,58 @@
+/* Astrolabio for Firefox's own pages */
+
+@-moz-document url-prefix("about:") {
+  :root {
+    --newtab-background-color: #0d111a !important;
+    --newtab-background-color-secondary: #1a2030 !important;
+    --newtab-text-primary-color: #e4dcc8 !important;
+    --background-color-canvas: #131824 !important;
+    --background-color-box: #1a2030 !important;
+    --text-color: #e4dcc8 !important;
+    --text-color-deemphasized: #858b9a !important;
+    --border-color: #333c50 !important;
+    --color-accent-primary: #d6b16a !important;
+    --color-accent-primary-hover: #e6cb82 !important;
+    --color-accent-primary-active: #b98a4e !important;
+    --link-color: #d6b16a !important;
+    --focus-outline-color: #d6b16a !important;
+    scrollbar-color: #333c50 transparent;
+  }
+  body { background-color: var(--background-color-canvas) !important; }
+}
+
+/* New tab / home: the dome is open. The planisphere of the first plate, very dim, "Linux" in Alegreya with the scale
+   under it, the search field in a soft well and the shortcuts as round stops */
+@-moz-document url("about:newtab"), url("about:home") {
+  body {
+    background: linear-gradient(rgba(13, 17, 26, 0.62), rgba(13, 17, 26, 0.62)), url("cielo.jpg") center 40% / cover no-repeat, #0d111a !important;
+    background-attachment: fixed !important;
+    font-family: "Alegreya Sans", sans-serif !important;
+  }
+  .outer-wrapper, main { background: transparent !important; }
+  .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
+  .search-wrapper { position: relative; }
+  .search-wrapper::before {
+    content: "Linux"; position: absolute; bottom: 100%; left: 0; right: 0; margin-bottom: 40px; text-align: center;
+    font: italic 76px "Alegreya", serif; color: #e4dcc8;
+  }
+  .search-inner-wrapper { position: relative; }
+  .search-inner-wrapper::before {
+    content: ""; position: absolute; bottom: 100%; left: 22%; right: 22%; margin-bottom: 22px; height: 6px;
+    background:
+      repeating-linear-gradient(90deg, rgba(214, 177, 106, 0.7) 0 1px, transparent 1px 60px) left bottom / 100% 6px no-repeat,
+      repeating-linear-gradient(90deg, rgba(214, 177, 106, 0.35) 0 1px, transparent 1px 12px) left bottom / 100% 3px no-repeat;
+  }
+  content-search-handoff-ui {
+    --content-search-handoff-ui-border-radius: 12px !important;
+    --content-search-handoff-ui-background-color: #131824 !important;
+    --content-search-handoff-ui-color: #e4dcc8 !important;
+    --content-search-handoff-ui-fill: #858b9a !important;
+    font-family: "Alegreya Sans", sans-serif !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 0 1px #333c50 !important;
+  }
+  .top-site-outer .tile { background: rgba(26, 32, 48, 0.8) !important; border-radius: 12px !important; box-shadow: 0 0 0 1px #333c50 !important; }
+  .top-site-outer:hover .tile { box-shadow: 0 0 0 1px #d6b16a !important; }
+  .top-site-outer .top-site-icon { background-color: transparent !important; }
+  .top-site-outer .title { font-family: "Alegreya Sans", sans-serif !important; color: #b9b3a4 !important; }
+}

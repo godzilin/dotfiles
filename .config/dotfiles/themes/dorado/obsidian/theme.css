@@ -1,0 +1,91 @@
+/* Astrolabio: Obsidian theme generated from this theme's palette (theme.json).
+   Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
+
+body.theme-dark, body.theme-light {
+  --color-base-00: #131824;
+  --color-base-05: #161c29;
+  --color-base-10: #1a2030;
+  --color-base-20: #0d111a;
+  --color-base-25: #1e2534;
+  --color-base-30: #333c50;
+  --color-base-35: #555e72;
+  --color-base-40: #555e72;
+  --color-base-50: #858b9a;
+  --color-base-60: #9a9c9f;
+  --color-base-70: #b9b3a4;
+  --color-base-100: #e4dcc8;
+  --color-red: #dc7f70;
+  --color-orange: #d99c62;
+  --color-yellow: #e6cb82;
+  --color-green: #9dbb8f;
+  --color-cyan: #83b6ae;
+  --color-blue: #8fabd0;
+  --color-purple: #b79fc4;
+  --color-pink: #cf9aa6;
+  --accent-h: 39; --accent-s: 57%; --accent-l: 63%;
+  --text-on-accent: #0d111a;
+  --font-interface-theme: "Alegreya Sans";
+  --font-text-theme: "Alegreya";
+  --font-monospace-theme: "BlexMono Nerd Font";
+  --radius-s: 5px;
+  --radius-m: 8px;
+  --radius-l: 12px;
+}
+
+/* Astrolabio: notes read like the pages of an old almanac in a dark room. Alegreya for the text, parchment on ink with
+   a comfortable line length; brass only marks things (links, the open tab, the current file). Under the title runs the
+   graduated scale of the instrument; quotes hang from a brass index, and the status bar is one line of quiet italics */
+body {
+  --line-height-normal: 1.6; --file-line-width: 720px;
+  --h1-font: "Alegreya", serif; --h2-font: "Alegreya", serif; --h3-font: "Alegreya", serif; --inline-title-font: "Alegreya", serif;
+  --h1-color: #e4dcc8; --h2-color: #e6cb82; --h3-color: #d6b16a; --h4-color: #b9b3a4; --h5-color: #b9b3a4; --h6-color: #858b9a;
+  --h1-weight: 500; --h2-weight: 500; --h3-weight: 500; --inline-title-weight: 500; --inline-title-color: #e4dcc8;
+  --bold-color: #e6cb82; --bold-weight: 600; --italic-color: #e4dcc8;
+  --link-color: #d6b16a; --link-color-hover: #e6cb82; --link-external-color: #d6b16a; --link-external-color-hover: #e6cb82; --link-unresolved-color: #d99c62;
+  --text-selection: rgba(214, 177, 106, .22); --caret-color: #d6b16a;
+  --code-background: #0f141e; --code-normal: #e4dcc8; --code-radius: 6px; --code-size: .8em;
+  --code-keyword: #d6b16a; --code-string: #9dbb8f; --code-comment: #858b9a; --code-function: #8fabd0; --code-value: #d99c62; --code-property: #83b6ae;
+  --checkbox-color: #d6b16a; --checkbox-color-hover: #e6cb82; --checkbox-marker-color: #131824; --checkbox-border-color: #858b9a;
+  --tag-background: #232a3b; --tag-background-hover: #333c50; --tag-color: #d6b16a; --tag-color-hover: #e6cb82; --tag-radius: 6px; --tag-border-width: 0;
+  --nav-item-background-active: #232a3b; --nav-item-color-active: #e6cb82; --nav-item-background-hover: #1a2030; --nav-item-size: 15px;
+  --tab-outline-width: 0px; --tab-background-active: #131824; --tab-text-color-active: #e4dcc8; --tab-text-color-focused-active: #e4dcc8;
+  --tab-text-color-focused-active-current: #e4dcc8;
+  --blockquote-border-thickness: 2px; --blockquote-border-color: #d6b16a; --blockquote-color: #b9b3a4;
+  --hr-color: #333c50; --table-border-color: #333c50; --table-header-background: #1a2030;
+  --shadow-s: 0 2px 8px rgba(7, 9, 14, .4); --shadow-l: 0 8px 28px rgba(7, 9, 14, .55);
+}
+
+/* Alegreya runs small: 12 % over the size chosen in Obsidian's settings */
+.markdown-preview-view, .markdown-source-view.mod-cm6 .cm-scroller { font-size: calc(var(--font-text-size) * 1.12); }
+
+/* The sidebars sink a little; the note stays the lightest thing on the desk */
+.workspace-ribbon, .workspace-split.mod-left-split .workspace-sidedock-vault-profile, .workspace-tab-header-container { background: #0d111a !important; }
+.mod-left-split .workspace-leaf-content, .mod-right-split .workspace-leaf-content { background: #0f141e !important; }
+.view-header { background: transparent !important; }
+
+/* Open tab: lit, with a brass index on top, as in Firefox */
+.workspace-tab-header::before, .workspace-tab-header::after, .workspace-tab-header-inner::after { display: none !important; }
+.mod-root .workspace-tab-header.is-active { box-shadow: inset 0 2px #d6b16a; }
+.workspace-tab-header-inner-title { font-size: 14px; }
+
+/* The title and the scale under it */
+.inline-title { font-style: italic; padding-bottom: .3em; background:
+    repeating-linear-gradient(90deg, rgba(214, 177, 106, .6) 0 1px, transparent 1px 60px) left bottom / 100% 6px no-repeat,
+    repeating-linear-gradient(90deg, rgba(214, 177, 106, .3) 0 1px, transparent 1px 12px) left bottom / 100% 3px no-repeat; }
+.markdown-rendered h1, .cm-header-1 { font-style: italic; }
+
+/* Quotes and tables */
+.markdown-rendered blockquote { font-style: italic; }
+.markdown-rendered th { font-family: "Alegreya Sans", sans-serif; font-weight: 700; font-size: .85em; color: #b9b3a4; }
+.markdown-rendered pre, .HyperMD-codeblock { border: none; font-size: .82em; }
+
+/* Lists: the current file gets the brass index of the tabs */
+.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 2px 0 #d6b16a; }
+
+/* Menus and dialogs */
+.menu, .modal, .prompt, .popover, .suggestion-container { border: 1px solid #333c50 !important; }
+.menu-item.selected:not(.is-disabled):not(.is-label), .suggestion-item.is-selected { background: #232a3b !important; color: #e6cb82 !important; --icon-color: #e6cb82; }
+
+/* Status bar: one quiet line */
+.status-bar { background: #0d111a !important; border: none !important; border-top: 1px solid #333c50 !important; border-radius: 0 !important;
+  font-size: 13px; font-style: italic; color: #858b9a; }

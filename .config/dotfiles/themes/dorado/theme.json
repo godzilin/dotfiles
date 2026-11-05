@@ -1,0 +1,48 @@
+{
+  "name": "Astrolabio",
+  "description": "Observatorio de noche: tinta azul apagada, latón y pergamino; fase lunar real en la barra y escala graduada de astrolabio; letra Alegreya",
+  "palette": {
+    "bg0": "#0d111a",
+    "bg": "#131824",
+    "bg1": "#1a2030",
+    "bg2": "#232a3b",
+    "line": "#333c50",
+    "faint": "#555e72",
+    "muted": "#858b9a",
+    "sub": "#b9b3a4",
+    "text": "#e4dcc8",
+    "accent": "#d6b16a",
+    "yellow": "#e6cb82",
+    "orange": "#d99c62",
+    "red": "#dc7f70",
+    "green": "#9dbb8f",
+    "teal": "#83b6ae",
+    "blue": "#8fabd0"
+  },
+  "stripes": [
+    "#e6cb82",
+    "#d6b16a",
+    "#b98a4e",
+    "#7d6240"
+  ],
+  "font_ui": "Alegreya Sans",
+  "font_mono": "BlexMono Nerd Font",
+  "font_size": 11,
+  "gtk_theme": "adw-gtk3-dark",
+  "color_scheme": "prefer-dark",
+  "icons": "Papirus-Dorado",
+  "cursor": "WhiteSur-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Astrolabio",
+  "buttons": ":close",
+  "daemons": [],
+  "wallpaper": {
+    "title": "LÁMINAS",
+    "random": "Aleatoria"
+  },
+  "panel_caps": [
+    "section",
+    "card-title",
+    "detail-key"
+  ]
+}

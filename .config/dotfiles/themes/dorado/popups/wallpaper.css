@@ -1,0 +1,9 @@
+/* Wallpaper selector (hypr/scripts/wallpopup.py), over media.css */
+button.thumb { padding: 3px; min-width: 0; min-height: 0; border-radius: 6px; border: 1px solid #333c50; }
+button.thumb:hover { background: #1a2030; border-color: #858b9a; }
+button.thumb.on { border-color: #d6b16a; box-shadow: inset 0 0 0 1px #d6b16a; }
+button.random { min-height: 0; padding: 2px 10px; border-radius: 4px; border: 1px solid #333c50; }
+button.random label { font-size: 10.5pt; color: #858b9a; }
+button.random.on { border-color: #d6b16a; }
+button.random.on label { color: #d6b16a; }
+scrollbar slider { background: #333c50; min-width: 4px; border-radius: 2px; }

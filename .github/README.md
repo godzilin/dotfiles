@@ -19,6 +19,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
 | `morado` | **Neón**: synthwave sobrio; noche violeta, acento lavanda y algo de cian, titulares en Orbitron |
 | `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
+| `dorado` | **Astrolabio**: observatorio de noche; tinta azul apagada, latón y pergamino, escala graduada y fase lunar real en la barra, letra Alegreya |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
@@ -201,6 +202,26 @@ Fuentes B612 y B612 Mono (OFL, dentro del tema). Siete hojas generadas por códi
 con su cajetín: hoja en blanco, rueda dentada, brazo UR3e en alzado (medidas reales de Universal Robots), ThinkPad
 en planta, el logo de Arch con su trazado, un tornillo M24 y la planta de un taller. Primera vez:
 `~/.config/dotfiles/themes/cian/install.sh`.
+
+## dorado: Astrolabio
+
+Un observatorio de noche pensado para muchas horas de pantalla: tinta azul apagada, texto pergamino (13:1, sin negro ni
+blanco puros) y un único acento de latón que solo marca lo importante. La barra va pegada arriba como el limbo de un
+astrolabio, con su escala graduada; el escritorio tiene números romanos y el activo lleva el índice de latón. Junto al
+reloj está la fase real de la Luna (`scripts/luna.py`; al pasar el ratón, iluminación y próximas llena y nueva), que
+también sale en la pantalla de bloqueo ("La cúpula está cerrada"). Firefox usa la misma escala entre las barras y la
+página, sin marcos ni mayúsculas, y la nueva pestaña pone el planisferio muy tenue detrás de "Linux". Obsidian lee como
+un almanaque: Alegreya, línea de ancho cómodo y citas colgadas de un índice de latón. Calendario y tiempo son páginas de
+almanaque, las notificaciones son opacas para que no se transparente nada bajo el texto, fastfetch dibuja el logo de
+Arch en latón y las carpetas son de latón pálido (Papirus-Dorado).
+
+![Escritorio](../.config/dotfiles/themes/dorado/screenshots/desktop.png)
+
+Fuentes Alegreya y Alegreya Sans (OFL, dentro del tema) y BlexMono Nerd Font en terminal. Nueve láminas de atlas
+generadas por código (`wallpapers/astrolabio.py`), oscuras a propósito para ir detrás de ventanas: planisferio boreal,
+astrolabio con el tímpano calculado para Bilbao, fases de la Luna, el sistema solar el día del eclipse, el eclipse del
+12 de agosto de 2026, estrellas circumpolares sobre una cúpula, Arcus Linuxianus (el contorno del logo de Arch como
+constelación), Orión y la Osa Mayor. Primera vez: `~/.config/dotfiles/themes/dorado/install.sh`.
 
 ## Cómo están organizados los temas
 
