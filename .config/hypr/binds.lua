@@ -1,4 +1,5 @@
 -- Shortcuts kept from KDE where possible. Cheat sheet: see the README in this folder.
+-- Super+F1 lists every bind that has a description (scripts/atajos.py): give new binds one.
 local mod      = "SUPER"
 local terminal = "alacritty"
 local scripts  = os.getenv("HOME") .. "/.config/hypr/scripts/"
@@ -6,48 +7,51 @@ local exec     = hl.dsp.exec_cmd
 local launcher = scripts .. "launcher.sh"  -- fuzzel, or the theme's own (azul: Start menu)
 
 -- Apps (same keys as KDE)
-hl.bind(mod .. " + masculine", exec(terminal))  -- Super+º
-hl.bind(mod .. " + Return",    exec(terminal))
-hl.bind(mod .. " + Tab",       exec(terminal .. " --working-directory ~ -e fish -lc claude"))  -- new Claude Code chat
-hl.bind(mod .. " + W",         exec("firefox"))
-hl.bind(mod .. " + D",         exec("discord"))
-hl.bind(mod .. " + S",         exec("steam"))
-hl.bind(mod .. " + X",         exec("lutris"))
-hl.bind(mod .. " + C",         exec("systemsettings"))
-hl.bind(mod .. " + E",         exec("thunar"))
+hl.bind(mod .. " + masculine", exec(terminal), { description = "Terminal" })  -- Super+º
+hl.bind(mod .. " + Return",    exec(terminal), { description = "Terminal" })
+hl.bind(mod .. " + Tab",       exec(terminal .. " --working-directory ~ -e fish -lc claude"), { description = "Nuevo chat de Claude Code" })  -- new Claude Code chat
+hl.bind(mod .. " + W",         exec("firefox"), { description = "Firefox" })
+hl.bind(mod .. " + D",         exec("discord"), { description = "Discord" })
+hl.bind(mod .. " + S",         exec("steam"), { description = "Steam" })
+hl.bind(mod .. " + X",         exec("lutris"), { description = "Lutris" })
+hl.bind(mod .. " + C",         exec("systemsettings"), { description = "Ajustes del sistema" })
+hl.bind(mod .. " + E",         exec("thunar"), { description = "Archivos" })
 
 -- Launcher: tap Super alone (like KDE), or Super+Space / Alt+F1
 hl.bind(mod .. " + Super_L", exec(launcher), { release = true })
-hl.bind(mod .. " + Space",   exec(launcher))
-hl.bind("ALT + F1",          exec(launcher))
+hl.bind(mod .. " + Space",   exec(launcher), { description = "Lanzador de programas" })
+hl.bind("ALT + F1",          exec(launcher), { description = "Lanzador de programas" })
+
+-- This list: every bind with a description, read live from Hyprland (scripts/atajos.py)
+hl.bind(mod .. " + F1", exec(scripts .. "atajos.py"), { description = "Ver estos atajos" })
 
 -- Clipboard history, notifications, power
-hl.bind(mod .. " + V", exec("cliphist list | fuzzel --dmenu --prompt '󰅌 ' | cliphist decode | wl-copy"))
-hl.bind(mod .. " + N", exec("swaync-client -t -sw"))
-hl.bind(mod .. " + B", exec(scripts .. "powerprofile.sh"))
-hl.bind(mod .. " + L", exec("loginctl lock-session"))
-hl.bind("CTRL + ALT + Delete", exec(scripts .. "powermenu.sh"))
-hl.bind(mod .. " + SHIFT + B", exec("pkill waybar; waybar"))  -- if the bar dies or glitches
-hl.bind(mod .. " + ALT + W", exec("pkill -x hyprpaper; hyprpaper"))  -- next wallpaper: restarting picks a new random one
+hl.bind(mod .. " + V", exec("cliphist list | fuzzel --dmenu --prompt '󰅌 ' | cliphist decode | wl-copy"), { description = "Historial del portapapeles" })
+hl.bind(mod .. " + N", exec("swaync-client -t -sw"), { description = "Centro de avisos" })
+hl.bind(mod .. " + B", exec(scripts .. "powerprofile.sh"), { description = "Cambiar perfil de energía" })
+hl.bind(mod .. " + L", exec("loginctl lock-session"), { description = "Bloquear la sesión" })
+hl.bind("CTRL + ALT + Delete", exec(scripts .. "powermenu.sh"), { description = "Menú de apagado" })
+hl.bind(mod .. " + SHIFT + B", exec("pkill waybar; waybar"), { description = "Reiniciar la barra" })  -- if the bar dies or glitches
+hl.bind(mod .. " + ALT + W", exec("pkill -x hyprpaper; hyprpaper"), { description = "Siguiente fondo" })  -- next wallpaper: restarting picks a new random one
 
 -- Screenshots (saved to ~/Pictures/Screenshots and copied)
 local shot = "~/Pictures/Screenshots/$(date +%F_%H-%M-%S).png"
-hl.bind("Print",         exec("grim -g \"$(slurp)\" - | tee " .. shot .. " | wl-copy"))
-hl.bind("SHIFT + Print", exec("grim - | tee " .. shot .. " | wl-copy"))
+hl.bind("Print",         exec("grim -g \"$(slurp)\" - | tee " .. shot .. " | wl-copy"), { description = "Captura de una zona" })
+hl.bind("SHIFT + Print", exec("grim - | tee " .. shot .. " | wl-copy"), { description = "Captura de toda la pantalla" })
 
 -- Windows
-hl.bind(mod .. " + Q",        hl.dsp.window.close())
-hl.bind("ALT + F4",           hl.dsp.window.close())
-hl.bind(mod .. " + CTRL + Escape", hl.dsp.window.kill())
-hl.bind(mod .. " + F",        hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mod .. " + Prior",    hl.dsp.window.fullscreen({ mode = "maximized" }))  -- Super+PgUp
-hl.bind(mod .. " + F11",      hl.dsp.window.fullscreen())
-hl.bind(mod .. " + T",        hl.dsp.layout("togglesplit"))
-hl.bind(mod .. " + P",        hl.dsp.window.pin())
+hl.bind(mod .. " + Q",        hl.dsp.window.close(), { description = "Cerrar ventana" })
+hl.bind("ALT + F4",           hl.dsp.window.close(), { description = "Cerrar ventana" })
+hl.bind(mod .. " + CTRL + Escape", hl.dsp.window.kill(), { description = "Forzar cierre (elegir ventana)" })
+hl.bind(mod .. " + F",        hl.dsp.window.float({ action = "toggle" }), { description = "Ventana flotante" })
+hl.bind(mod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }), { description = "Ventana flotante" })
+hl.bind(mod .. " + Prior",    hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Maximizar" })  -- Super+PgUp
+hl.bind(mod .. " + F11",      hl.dsp.window.fullscreen(), { description = "Pantalla completa" })
+hl.bind(mod .. " + T",        hl.dsp.layout("togglesplit"), { description = "Girar la división" })
+hl.bind(mod .. " + P",        hl.dsp.window.pin(), { description = "Fijar en todos los escritorios" })
 -- "Minimize": Super+PgDown hides into a drawer, Super+Backspace shows/hides the drawer
-hl.bind(mod .. " + Next",      hl.dsp.window.move({ workspace = "special:min", follow = false }))
-hl.bind(mod .. " + BackSpace", hl.dsp.workspace.toggle_special("min"))
+hl.bind(mod .. " + Next",      hl.dsp.window.move({ workspace = "special:min", follow = false }), { description = "Minimizar al cajón" })
+hl.bind(mod .. " + BackSpace", hl.dsp.workspace.toggle_special("min"), { description = "Mostrar u ocultar el cajón" })
 
 hl.bind("ALT + Tab", function()
     hl.dispatch(hl.dsp.window.cycle_next())
@@ -60,9 +64,9 @@ end)
 
 -- Focus / move with arrows (Super+Alt+arrows also focus, as in KDE)
 for _, dir in ipairs({ "left", "right", "up", "down" }) do
-    hl.bind(mod .. " + " .. dir,           hl.dsp.focus({ direction = dir }))
+    hl.bind(mod .. " + " .. dir,           hl.dsp.focus({ direction = dir }), { description = "Cambiar de ventana" })
     hl.bind(mod .. " + ALT + " .. dir,     hl.dsp.focus({ direction = dir }))
-    hl.bind(mod .. " + SHIFT + " .. dir,   hl.dsp.window.move({ direction = dir }))
+    hl.bind(mod .. " + SHIFT + " .. dir,   hl.dsp.window.move({ direction = dir }), { description = "Mover ventana" })
 end
 
 -- Resize with Super+R then arrows, Escape to leave
@@ -74,24 +78,24 @@ hl.define_submap("resize", function()
     hl.bind("Escape", hl.dsp.submap("reset"))
     hl.bind("Return", hl.dsp.submap("reset"))
 end)
-hl.bind(mod .. " + R", hl.dsp.submap("resize"))
+hl.bind(mod .. " + R", hl.dsp.submap("resize"), { description = "Redimensionar (flechas; Esc para salir)" })
 
 -- Mouse: Super+left drag moves, Super+right drag resizes
-hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true, description = "Mover ventana con el ratón" })
+hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, description = "Redimensionar con el ratón" })
 
 -- Workspaces: Super+1..9 (Shift moves the window), Ctrl+F1..F4 as in KDE
 for i = 1, 9 do
-    hl.bind(mod .. " + " .. i,          hl.dsp.focus({ workspace = i }))
-    hl.bind(mod .. " + SHIFT + " .. i,  hl.dsp.window.move({ workspace = i }))
+    hl.bind(mod .. " + " .. i,          hl.dsp.focus({ workspace = i }), { description = "Ir al escritorio" })
+    hl.bind(mod .. " + SHIFT + " .. i,  hl.dsp.window.move({ workspace = i }), { description = "Mandar ventana al escritorio" })
 end
 for i = 1, 4 do
     hl.bind("CTRL + F" .. i, hl.dsp.focus({ workspace = i }))
 end
-hl.bind(mod .. " + CTRL + right",         hl.dsp.focus({ workspace = "r+1" }))
-hl.bind(mod .. " + CTRL + left",          hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mod .. " + CTRL + SHIFT + right", hl.dsp.window.move({ workspace = "r+1" }))
-hl.bind(mod .. " + CTRL + SHIFT + left",  hl.dsp.window.move({ workspace = "r-1" }))
+hl.bind(mod .. " + CTRL + right",         hl.dsp.focus({ workspace = "r+1" }), { description = "Escritorio siguiente" })
+hl.bind(mod .. " + CTRL + left",          hl.dsp.focus({ workspace = "r-1" }), { description = "Escritorio anterior" })
+hl.bind(mod .. " + CTRL + SHIFT + right", hl.dsp.window.move({ workspace = "r+1" }), { description = "Mandar ventana al siguiente" })
+hl.bind(mod .. " + CTRL + SHIFT + left",  hl.dsp.window.move({ workspace = "r-1" }), { description = "Mandar ventana al anterior" })
 hl.bind(mod .. " + mouse_down",           hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mod .. " + mouse_up",             hl.dsp.focus({ workspace = "e-1" }))
 

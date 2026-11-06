@@ -8,6 +8,9 @@ tema            # lista los temas, * = activo
 tema naranja    # cambia de tema y recarga lo que está abierto
 ```
 
+`Super+F1` abre la lista de atajos con buscador, en todos los temas. Sale de los propios atajos (`scripts/atajos.py`):
+para que uno aparezca basta con ponerle `description` en `binds.lua`.
+
 | Tema | Estilo |
 |---|---|
 | `naranja` | **Hi-Fi**: receptor de los 70; nogal y aluminio, barra con presintonías y dial cuya aguja marca la hora, vúmetros reales |

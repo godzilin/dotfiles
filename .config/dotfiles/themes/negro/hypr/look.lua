@@ -33,7 +33,7 @@ hl.config({
 -- Bigger pixels, as on a tube: 1536x960 instead of 1920x1200. The popups below are placed for that size.
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1.25 })
 
-hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(home .. "/.config/dotfiles/themes/negro/scripts/crt.sh"))
+hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(home .. "/.config/dotfiles/themes/negro/scripts/crt.sh"), { description = "Encender o apagar el tubo CRT" })
 
 -- Calendar popup from the waybar clock: floats right above it (the bar is at the bottom)
 hl.window_rule({

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Atajos de teclado
+Comment=Lista de atajos del escritorio (Super+F1)
+Exec=/home/godzilin/.config/hypr/scripts/atajos.py
+Icon=preferences-desktop-keyboard
+Terminal=false
