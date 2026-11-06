@@ -27,40 +27,82 @@ body.theme-dark, body.theme-light {
   --font-interface-theme: "IBM Plex Sans";
   --font-text-theme: "IBM Plex Sans";
   --font-monospace-theme: "BlexMono Nerd Font";
-  --radius-s: 2px;
-  --radius-m: 3px;
-  --radius-l: 4px;
+  --radius-s: 0;
+  --radius-m: 0;
+  --radius-l: 0;
+  --radius-xl: 0;
 }
 
-/* Headings: amber, tracked caps for the small ones, like the labels on a deck */
-body { --h1-color: var(--color-accent); --h2-color: #e0c36a; --h3-color: var(--text-normal);
+/* The ship's log: titles and major headings stencilled on steel, the rest of the structure in tracked mono, the text itself
+   left in IBM Plex Sans for long reading. Square plates, hull stripes under the title and the header, hazard tape for
+   rules and warnings, code on the amber screen of the console, and the properties read as a cargo manifest. */
+body {
+  --n-stencil: "Saira Stencil One", var(--font-monospace-theme);
+  --n-hazard: repeating-linear-gradient(-45deg, #e0c36a 0 6px, #121110 6px 12px);
+  --n-stripes: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%);
+  --h1-color: #e9a23b; --h2-color: #e0c36a; --h3-color: var(--text-normal);
   --h4-color: var(--text-muted); --h5-color: var(--text-muted); --h6-color: var(--text-faint);
-  --h1-weight: 600; --h2-weight: 600; --inline-title-color: var(--text-normal); --inline-title-weight: 500; }
+  --h1-font: var(--n-stencil); --h2-font: var(--n-stencil); --inline-title-font: var(--n-stencil);
+  --h1-weight: 400; --h2-weight: 400; --inline-title-weight: 400; --inline-title-color: var(--text-normal);
+  --h3-font: var(--font-monospace-theme); --h4-font: var(--font-monospace-theme); --h5-font: var(--font-monospace-theme); --h6-font: var(--font-monospace-theme);
+  --code-background: #121110; --code-normal: #e9a23b; --code-comment: #857c69; --code-keyword: #e0c36a; --code-string: #d9652b;
+  --code-function: #e8dfc8; --code-value: #e0c36a; --code-property: #b3a891; --code-radius: 0;
+  --blockquote-border-color: #e9a23b; --blockquote-border-thickness: 3px;
+  --hr-color: transparent;
+  --tag-radius: 0; --tag-background: #24211b; --tag-border-width: 1px; --tag-border-color: #3d382d; --tag-color: #e9a23b;
+  --checkbox-radius: 0; --checkbox-color: #e9a23b; --checkbox-color-hover: #e0c36a; --checkbox-marker-color: #121110;
+  --callout-radius: 0;
+}
+.inline-title, .markdown-rendered h1, .markdown-rendered h2, .cm-header-1, .cm-header-2 { text-transform: uppercase; letter-spacing: .02em; }
+.markdown-rendered h3, .cm-header-3 { text-transform: uppercase; letter-spacing: .06em; }
 .markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6,
 .cm-header-4, .cm-header-5, .cm-header-6 { text-transform: uppercase; letter-spacing: .12em; }
-/* Cassette stripes under the note title */
-.inline-title { padding-bottom: .35em; border-bottom: 4px solid;
-  border-image: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%) 1; }
-.status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
-.status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+.markdown-rendered h3 { border-bottom: 1px solid #3d382d; padding-bottom: .2em; }
 
-/* Deck layout, like the Firefox shell: tabs are numbered tape labels (the open one amber), folders are small tracked
-   caps, the open note has an amber edge, the header carries the four tape colours along its bottom, the editor sits
-   in a bezel like a monitor, and the cursor is a block */
-.mod-root .workspace-tab-header-container-inner { counter-reset: tape; }
-.mod-root .workspace-tab-header { counter-increment: tape; }
+/* Hull stripes under the note title */
+.inline-title { padding-bottom: .3em; border-bottom: 4px solid; border-image: var(--n-stripes) 1; }
+
+/* Rules are hazard tape */
+.markdown-rendered hr, .markdown-source-view.mod-cm6 .cm-line hr { border: none; height: 6px; background: var(--n-hazard); opacity: .7; }
+
+/* Code on the console's amber screen: a hairline frame and faint scanlines */
+.markdown-rendered pre, .HyperMD-codeblock { background-color: #121110;
+  background-image: repeating-linear-gradient(transparent 0 2px, rgba(233, 162, 59, .035) 2px 3px); }
+.markdown-rendered pre { border: 1px solid #3d382d; border-left: 3px solid #e9a23b; }
+.markdown-rendered code { color: #e9a23b; }
+
+/* Callouts: a plate with a stencilled title; warnings and dangers carry hazard tape */
+.callout { border: 1px solid #3d382d; background: #24211b; }
+.callout-title-inner { font-family: var(--n-stencil); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; }
+.callout[data-callout="warning"], .callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="caution"], .callout[data-callout="bug"] {
+  border-top: 5px solid transparent; border-image: var(--n-hazard) 5; }
+.callout[data-callout="danger"], .callout[data-callout="error"] { --callout-color: 200, 85, 61; }
+
+/* Properties: the cargo manifest */
+.metadata-container { border: 1px solid #3d382d; border-left: 3px solid #e9a23b; background: #1d1b16; padding: .5em .8em; }
+.metadata-properties-heading, .metadata-properties-heading * { font-size: 0 !important; }
+.metadata-properties-heading::before { content: "MANIFEST"; font: 400 15px var(--n-stencil); color: #e9a23b; }
+.metadata-property-key-input { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .08em; font-size: .8em; color: #857c69; }
+
+.status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
+.status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; border-radius: 0; }
+.status-bar::before { content: "GZ-01"; font: 400 13px var(--n-stencil); color: #e9a23b; margin-right: 1em; align-self: center; }
+
+/* The deck: tabs are numbered cargo bays (the open one amber, its number stencilled), folders are small tracked caps,
+   the open note has an amber edge, the header carries the hull stripes and the editor sits inset like a screen */
+.mod-root .workspace-tab-header-container-inner { counter-reset: bay; }
+.mod-root .workspace-tab-header { counter-increment: bay; }
 .workspace-tab-header::before, .workspace-tab-header::after, .workspace-tab-header-inner::after { display: none !important; }
 .mod-root .workspace-tab-header-inner-title { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
-.mod-root .workspace-tab-header-inner-title::before { content: counter(tape, decimal-leading-zero) "  "; color: #857c69; }
-.mod-root .workspace-tab-header.is-active { background: #e9a23b !important; border-radius: 3px; }
+.mod-root .workspace-tab-header-inner-title::before { content: counter(bay, decimal-leading-zero) "  "; font-family: var(--n-stencil); font-size: 14px; color: #e9a23b; }
+.mod-root .workspace-tab-header.is-active { background: #e9a23b !important; border-radius: 0; }
 .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title,
 .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before { color: #1a1814 !important; font-weight: 600; }
 .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: #1a1814; }
 .nav-folder-title-content { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
-.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #e9a23b; border-radius: 0 3px 3px 0; }
-.view-header { border-bottom: 3px solid !important;
-  border-image: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%) 1 !important; }
+.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #e9a23b; border-radius: 0; }
+.view-header { border-bottom: 3px solid !important; border-image: var(--n-stripes) 1 !important; }
 .view-header-title, .view-header-breadcrumb { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
-.mod-root .workspace-leaf-content { border: 1px solid #3a352d; border-radius: 6px; margin: 0 6px 6px 0; }
+.mod-root .workspace-leaf-content { border: 1px solid #3d382d; border-radius: 0; margin: 0 6px 6px 0; }
 .cm-cursor, .cm-dropCursor { border-left: .55em solid rgba(233, 162, 59, .75) !important; }
 .menu-item.selected:not(.is-disabled):not(.is-label) { box-shadow: inset 3px 0 #e9a23b; }

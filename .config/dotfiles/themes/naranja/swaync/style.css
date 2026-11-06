@@ -13,8 +13,8 @@
   --noti-close-bg-hover: #3d382d;
   --text-color: #e8dfc8;
   --text-color-disabled: #857c69;
-  --bg-selected: #e9a23b;
-  --border-radius: 10px;
+  --bg-selected: #3d382d;
+  --border-radius: 0;
   --notification-icon-size: 48px;
   --notification-shadow: 0 4px 16px rgba(18, 17, 16, 0.6);
   --font-size-body: 13px;
@@ -22,20 +22,40 @@
 }
 
 * {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: "BlexMono Nerd Font", monospace;
 }
 
+/* Incoming signal: a steel plate with hazard tape along its left edge and the sender's line stencilled */
 .notification .summary,
 .control-center .widget-title > label {
-  font-family: "BlexMono Nerd Font", monospace;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-family: "Saira Stencil One", "BlexMono Nerd Font", sans-serif;
+  font-weight: 400;
 }
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary { color: #e9a23b; }
+.control-center .widget-title > label { color: #e8dfc8; font-size: 22px; }
 
-/* Amber accent strip on the left of every notification */
 .notification-row .notification-background .notification {
-  border-left: 3px solid #e9a23b;
+  background-color: #121110;
+  background-image: repeating-linear-gradient(-45deg, #e0c36a 0 5px, #121110 5px 10px);
+  background-size: 7px 100%;
+  background-repeat: no-repeat;
+  border: 1px solid #3d382d;
+  border-radius: 0;
+  padding-left: 7px;
 }
 .notification-row .notification-background .notification.critical {
-  border-left-color: #c8553d;
+  background-image: repeating-linear-gradient(-45deg, #c8553d 0 5px, #121110 5px 10px);
+  border-color: #c8553d;
 }
+.notification-row .notification-background .notification.critical .notification-default-action .notification-content .text-box .summary { color: #c8553d; }
+
+/* The notification centre hangs from the hull stripes */
+.control-center {
+  background-color: #1a1814;
+  background-image: linear-gradient(to bottom, #e0c36a 0 3px, #e9a23b 3px 6px, #d9652b 6px 9px, #c8553d 9px 12px);
+  background-size: 100% 12px;
+  background-repeat: no-repeat;
+  border-left: 1px solid #3d382d;
+  border-radius: 0;
+}
+.control-center button, .notification button, .close-button { border-radius: 0; }

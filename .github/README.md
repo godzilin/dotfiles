@@ -35,8 +35,10 @@ el tiempo encendido es el reloj de misión, la bitácora apunta solo lo que camb
 pasos. Se muestra con la lámina `0-consola.png` fijada; otra lámina o "Aleatorio" la ocultan. Barra de plancha pegada
 arriba con las franjas abajo, cubiertas A-D, `T+` de misión y esquinas rectas en las ventanas. Primera vez:
 `~/.config/dotfiles/themes/naranja/install.sh`.
-Obsidian va como la cubierta: pestañas como etiquetas de cinta numeradas (la abierta en ámbar), carpetas y cabecera
-en mono, la franja de cinta bajo la cabecera y cursor de bloque ámbar.
+Obsidian es la bitácora: títulos en plantilla, propiedades como `MANIFEST`, pestañas como bodegas numeradas, reglas de
+cinta de peligro y código en la pantalla ámbar; el texto sigue en IBM Plex Sans para leer. Firefox es un terminal del
+puente, con pestañas como bodegas, la línea `NAV` y la nueva pestaña con el casco detrás de `NOSTROMO`. Las notificaciones
+son señales entrantes con cinta de peligro, roja en las críticas.
 
 ![Escritorio](../.config/dotfiles/themes/naranja/screenshots/desktop.png)
 ![Bloqueo](../.config/dotfiles/themes/naranja/screenshots/lock.png)

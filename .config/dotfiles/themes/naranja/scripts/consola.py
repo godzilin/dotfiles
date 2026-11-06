@@ -4,6 +4,7 @@ wallpaper. The laptop is the ship: real CPU, temperature, memory, disk, battery 
 mission clock, a log of what actually changed, and a wireframe of the hull that turns a step at a time, as a plotter would.
   consola.py                   the daemon (theme.json "daemons")
   consola.py --png FILE        one frame to a file
+  consola.py --hull FILE       the hull alone, dim and transparent (Firefox's new tab: firefox/chrome/casco.png)
   consola.py --test            self-check"""
 import math
 import os
@@ -440,9 +441,23 @@ def png(path):
     s.write_to_png(path)
 
 
+def hull_png(path):
+    lines = cairo.ImageSurface(cairo.FORMAT_ARGB32, 960, 420)
+    c = cairo.Context(lines)
+    c.translate(-480, -320)
+    wireframe(c, 0.6)
+    s = cairo.ImageSurface(cairo.FORMAT_ARGB32, 960, 420)
+    c = cairo.Context(s)
+    c.set_source_surface(lines)
+    c.paint_with_alpha(0.32)
+    s.write_to_png(path)
+
+
 if __name__ == "__main__":
     if "--test" in sys.argv:
         test()
+    elif "--hull" in sys.argv:
+        hull_png(sys.argv[sys.argv.index("--hull") + 1])
     elif "--png" in sys.argv:
         png(sys.argv[sys.argv.index("--png") + 1])
     else:
