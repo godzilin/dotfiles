@@ -1,6 +1,6 @@
 {
   "name": "Nostromo",
-  "description": "Cassette futurism: base oscura cálida, ámbar de fósforo, franjas de cinta",
+  "description": "Nave de carga: el escritorio es la consola del puente con la telemetría real del portátil, casco en alámbrico, reloj de misión y rótulos de plantilla; acero, ámbar y cuatro franjas",
   "palette": {
     "bg0": "#121110",
     "bg": "#1a1814",
@@ -35,7 +35,7 @@
   "cursor_size": 24,
   "kde_colors": "Nostromo",
   "buttons": ":close",
-  "daemons": [],
+  "daemons": ["~/.config/dotfiles/themes/naranja/scripts/consola.py"],
   "wallpaper": {
     "title": "FONDOS",
     "random": "ALEATORIO"

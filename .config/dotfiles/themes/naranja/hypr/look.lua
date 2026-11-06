@@ -1,7 +1,7 @@
 hl.config({
     general = {
-        gaps_in     = 4,
-        gaps_out    = 8,
+        gaps_in     = 3,
+        gaps_out    = 6,
         border_size = 2,
         col = {
             active_border   = rgba(C.amber, "dd"),
@@ -11,8 +11,7 @@ hl.config({
         layout = "dwindle",
     },
     decoration = {
-        rounding       = 10,
-        rounding_power = 2.5, -- squircle-ish corners, macOS style
+        rounding       = 0, -- steel plates: nothing on this ship is rounded for comfort
         shadow = {
             enabled      = true,
             range        = 16,

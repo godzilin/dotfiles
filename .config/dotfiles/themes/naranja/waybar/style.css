@@ -22,11 +22,13 @@
 }
 
 window#waybar {
-    background: alpha(@bg, 0.92);
-    border: 1px solid @line;
-    border-radius: 10px;
+    background-color: alpha(@bg0, 0.96);
+    /* the four stripes along the lower edge of the plate */
+    background-image: linear-gradient(to bottom, transparent 32px, #e0c36a 32px, #e0c36a 33px, #e9a23b 33px, #e9a23b 34px,
+                                      #d9652b 34px, #d9652b 35px, #c8553d 35px, #c8553d 36px);
     color: @sub;
 }
+.modules-left, .modules-center, .modules-right { margin-bottom: 4px; }
 
 tooltip {
     background: @bg;
@@ -73,9 +75,9 @@ tooltip label { color: @text; }
 #workspaces { padding: 0 6px; }
 #workspaces button {
     color: @muted;
-    padding: 0 7px;
-    margin: 5px 1px;
-    border-radius: 5px;
+    padding: 0 8px;
+    margin: 4px 1px;
+    border-radius: 0;
     background: transparent;
     box-shadow: none;
 }
@@ -87,6 +89,7 @@ tooltip label { color: @text; }
 #window { color: @muted; }
 window#waybar.empty #window { padding: 0; }
 
+#custom-mision { color: @amber; font-weight: 700; letter-spacing: 2px; padding: 0 12px; border-right: 1px solid @line; }
 #clock { color: @muted; letter-spacing: 2px; }
 
 #pulseaudio, #backlight, #network, #power-profiles-daemon, #battery { color: @text; }
@@ -113,7 +116,7 @@ window#waybar.empty #window { padding: 0; }
 
 /* Weather, right of the clock */
 #custom-weather { padding: 0 12px; color: @text; border-left: 1px solid @line; }
-#bluetooth { color: @text; }
+#bluetooth { color: @text; letter-spacing: 0; }  /* with max-length, letter-spacing makes GTK ellipsize it */
 #bluetooth.off, #bluetooth.disabled { color: @muted; }
 #bluetooth.connected { color: @amber; }
 #custom-weather.offline { color: @muted; }

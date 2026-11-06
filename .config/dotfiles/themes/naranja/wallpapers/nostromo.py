@@ -49,23 +49,6 @@ def stripes():
     return art
 
 
-def reels():
-    """Two tape reels in outline joined by the tape, stripes along the bottom label."""
-    art, cy, r = [], 600, 190
-    for cx in (W / 2 - 330, W / 2 + 330):
-        art += [f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{LINE}" stroke-width="2"/>',
-                f'<circle cx="{cx}" cy="{cy}" r="{r - 70}" fill="none" stroke="{GRID}" stroke-width="40"/>',
-                f'<circle cx="{cx}" cy="{cy}" r="34" fill="none" stroke="{STRIPES[1]}" stroke-width="3"/>']
-        art += [f'<line x1="{cx + 34 * math.cos(a):.1f}" y1="{cy + 34 * math.sin(a):.1f}" '
-                f'x2="{cx + 52 * math.cos(a):.1f}" y2="{cy + 52 * math.sin(a):.1f}" stroke="{STRIPES[1]}" stroke-width="3"/>'
-                for a in (math.radians(d) for d in (90, 210, 330))]
-    art.append(f'<line x1="{W/2 - 330}" y1="{cy + r}" x2="{W/2 + 330}" y2="{cy + r}" stroke="{LINE}" stroke-width="2"/>')
-    for i, color in enumerate(STRIPES):
-        y = 900 + i * STEP
-        art.append(f'<line x1="-20" y1="{y}" x2="{W + 20}" y2="{y}" stroke="{color}" stroke-width="{STRIPE_W}"/>')
-    return art
-
-
 def scope():
     """Oscilloscope: graticule box with a decaying amber sine trace and stripes on the right."""
     x0, y0, w, h = 560, 330, 1000, 560
@@ -78,49 +61,6 @@ def scope():
     for i, color in enumerate(STRIPES):
         x = W - 280 + i * STEP
         art.append(f'<line x1="{x}" y1="-20" x2="{x}" y2="{H - 150}" stroke="{color}" stroke-width="{STRIPE_W}"/>')
-    return art
-
-
-def vu():
-    """VU meter: arc scale with ticks, red zone at the top end, needle resting near 0 dB."""
-    cx, cy, r = W / 2, 880, 520
-    def at(deg, rad):  # point on the dial; 0 deg points straight up
-        a = math.radians(deg - 90)
-        return cx + rad * math.cos(a), cy + rad * math.sin(a)
-    art = [f'<rect x="{cx - 640}" y="{cy - 640}" width="1280" height="760" rx="18" fill="none" stroke="{LINE}" stroke-width="2"/>']
-    for i in range(21):
-        deg = -50 + i * 5
-        color = STRIPES[3] if deg > 25 else MUTED
-        (x1, y1), (x2, y2) = at(deg, r), at(deg, r + (34 if i % 5 == 0 else 18))
-        art.append(f'<line x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="{color}" stroke-width="{3 if i % 5 == 0 else 2}"/>')
-    (ax, ay), (bx, by) = at(-50, r - 14), at(25, r - 14)
-    (rx, ry) = at(50, r - 14)
-    art += [f'<path d="M{ax:.1f},{ay:.1f} A{r - 14},{r - 14} 0 0 1 {bx:.1f},{by:.1f}" fill="none" stroke="{LINE}" stroke-width="2"/>',
-            f'<path d="M{bx:.1f},{by:.1f} A{r - 14},{r - 14} 0 0 1 {rx:.1f},{ry:.1f}" fill="none" stroke="{STRIPES[3]}" stroke-width="6"/>']
-    nx, ny = at(14, r + 20)
-    art += [f'<line x1="{cx}" y1="{cy}" x2="{nx:.1f}" y2="{ny:.1f}" stroke="{STRIPES[1]}" stroke-width="3"/>',
-            f'<circle cx="{cx}" cy="{cy}" r="16" fill="{STRIPES[1]}"/>',
-            f'<text x="{cx}" y="{cy - 200}" {FONT} font-size="44" fill="{MUTED}" text-anchor="middle">VU</text>']
-    for i, color in enumerate(STRIPES):
-        y = cy + 60 + i * STEP
-        art.append(f'<line x1="{cx - 640}" y1="{y}" x2="{cx + 640}" y2="{y}" stroke="{color}" stroke-width="{STRIPE_W}"/>')
-    return art
-
-
-def horizon():
-    """Striped sun setting behind a perspective grid floor."""
-    hy, cx, r = 760, W / 2, 300
-    art = ['<clipPath id="sky"><rect width="1920" height="760"/></clipPath>', '<g clip-path="url(#sky)">']
-    bands = [(STRIPES[0], 0), (STRIPES[1], 1), (STRIPES[2], 2), (STRIPES[3], 3)]
-    for color, i in bands:  # sun cut into four bands with growing gaps, like the stripes
-        top, bottom = hy - r + i * r / 4 + i * 6, hy - r + (i + 1) * r / 4
-        art.append(f'<clipPath id="b{i}"><rect x="0" y="{top:.1f}" width="{W}" height="{bottom - top:.1f}"/></clipPath>'
-                   f'<circle cx="{cx}" cy="{hy}" r="{r}" fill="{color}" clip-path="url(#b{i})"/>')
-    art.append('</g>')
-    art.append(f'<line x1="0" y1="{hy}" x2="{W}" y2="{hy}" stroke="{STRIPES[1]}" stroke-width="2"/>')
-    art += [f'<line x1="{cx}" y1="{hy}" x2="{cx + k * 260}" y2="{H}" stroke="{LINE}" stroke-width="1.5"/>' for k in range(-12, 13)]
-    art += [f'<line x1="0" y1="{hy + d:.1f}" x2="{W}" y2="{hy + d:.1f}" stroke="{LINE}" stroke-width="1.5"/>'
-            for d in (440 * (0.62 ** n) for n in range(9))]
     return art
 
 
@@ -147,25 +87,6 @@ def radar():
     return art
 
 
-def spectrum():
-    """Graphic equalizer: columns of segments, colored by height like the stripes."""
-    cols, seg_w, seg_h, gap = 32, 34, 14, 6
-    x0, base = (W - cols * (seg_w + gap)) / 2, 900
-    art = []
-    for c in range(cols):
-        t = c / (cols - 1)
-        level = int(4 + 18 * math.exp(-((t - 0.3) ** 2) / 0.05) + 7 * math.exp(-((t - 0.75) ** 2) / 0.01) + 3 * math.sin(c * 1.7) ** 2)
-        for s in range(26):
-            y = base - s * (seg_h + gap)
-            color = (STRIPES[0] if s < 10 else STRIPES[1] if s < 17 else STRIPES[2] if s < 22 else STRIPES[3]) if s < level else GRID
-            art.append(f'<rect x="{x0 + c * (seg_w + gap):.1f}" y="{y}" width="{seg_w}" height="{seg_h}" rx="2" fill="{color}"/>')
-    art.append(f'<line x1="{x0 - 20}" y1="{base + seg_h + 16}" x2="{W - x0 + 20}" y2="{base + seg_h + 16}" stroke="{LINE}" stroke-width="2"/>')
-    for i, hz in enumerate(["31", "63", "125", "250", "500", "1K", "2K", "4K", "8K", "16K"]):
-        x = x0 + (i + 0.5) * (cols * (seg_w + gap)) / 10
-        art.append(f'<text x="{x:.1f}" y="{base + 60}" {FONT} font-size="12" fill="{FAINT}" text-anchor="middle">{hz}</text>')
-    return art
-
-
 def orbit():
     """Navigation plot: a planet with tilted orbits and a ship marker on the outer one."""
     cx, cy = W / 2 + 120, H / 2 + 40
@@ -188,12 +109,8 @@ def orbit():
 out = Path(__file__).with_name("rotation")
 out.mkdir(exist_ok=True)
 for name, art, model, side in [("a-stripes", stripes(), "MOD. N-1200", "SIDE A"),
-                               ("b-reels", reels(), "MOD. R-0090", "SIDE B"),
                                ("c-scope", scope(), "MOD. O-0440", "SIDE A"),
-                               ("d-vu", vu(), "MOD. V-0020", "SIDE B"),
-                               ("e-horizon", horizon(), "MOD. H-1979", "SIDE A"),
                                ("f-radar", radar(), "MOD. M-0426", "SIDE B"),
-                               ("g-spectrum", spectrum(), "MOD. E-1016", "SIDE A"),
                                ("h-orbit", orbit(), "MOD. L-0426", "SIDE B"),
                                *((n, f(), m, sd) for n, f, m, sd in skulls.ALL + machines.ALL)]:
     png = out / f"{name}.png"

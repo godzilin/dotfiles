@@ -1,14 +1,11 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "margin-top": 6,
-    "margin-left": 8,
-    "margin-right": 8,
+    "height": 36,
     "spacing": 0,
 
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"],
-    "modules-center": ["clock"],
+    "modules-center": ["custom/mision", "clock"],
     "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"],
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
@@ -90,8 +87,8 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": "01", "2": "02", "3": "03", "4": "04", "5": "05",
-            "6": "06", "7": "07", "8": "08", "9": "09", "default": "··"
+            "1": "A", "2": "B", "3": "C", "4": "D", "5": "E",
+            "6": "F", "7": "G", "8": "H", "9": "I", "default": "··"
         },
         "persistent-workspaces": { "*": 4 },
         "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
@@ -101,6 +98,12 @@
         "format": "{}",
         "max-length": 48,
         "separate-outputs": true
+    },
+    // Mission clock: uptime, as on the bridge console
+    "custom/mision": {
+        "exec": "awk '{printf \"T+ %03d:%02d\", $1 / 3600, $1 % 3600 / 60}' /proc/uptime",
+        "interval": 30,
+        "tooltip": false
     },
     "clock": {
         "locale": "es_ES.utf8",
@@ -129,14 +132,14 @@
         "format": "<span color='#857c69'>LUM</span> {percent}"
     },
     "network": {
-        "format-wifi": "<span color='#857c69'>NET</span> {essid}",
-        "format-ethernet": "<span color='#857c69'>NET</span> ETH",
-        "format-disconnected": "<span color='#857c69'>NET</span> <span color='#c8553d'>OFF</span>",
+        "format-wifi": "<span color='#857c69'>LINK</span> {essid}",
+        "format-ethernet": "<span color='#857c69'>LINK</span> ETH",
+        "format-disconnected": "<span color='#857c69'>LINK</span> <span color='#c8553d'>LOST</span>",
         "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
-        "format": "<span color='#857c69'>PWR</span> {icon}",
+        "format": "<span color='#857c69'>RCT</span> {icon}",
         "format-icons": {
             "default": "BAL",
             "performance": "MAX",
@@ -146,9 +149,9 @@
     },
     "battery": {
         "states": { "warning": 25, "critical": 10 },
-        "format": "<span color='#857c69'>BAT</span> {capacity}",
-        "format-charging": "<span color='#857c69'>BAT</span> {capacity}<span color='#e9a23b'>+</span>",
-        "format-plugged": "<span color='#857c69'>BAT</span> {capacity}<span color='#e9a23b'>=</span>",
+        "format": "<span color='#857c69'>CELL</span> {capacity}",
+        "format-charging": "<span color='#857c69'>CELL</span> {capacity}<span color='#e9a23b'>+</span>",
+        "format-plugged": "<span color='#857c69'>CELL</span> {capacity}<span color='#e9a23b'>=</span>",
         "tooltip-format": "{timeTo}  ·  {power:.1f} W"
     },
     "custom/wallpaper": {
