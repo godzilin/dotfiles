@@ -85,23 +85,43 @@ hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true, descripti
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, description = "Redimensionar con el ratón" })
 
 -- Workspaces: Super+1..9 (Shift moves the window), Ctrl+F1..F4 as in KDE
+-- workspace_offsets (hosts/<hostname>.lua) gives a monitor its own 1..9; without it they are shared
+local function here(i)
+    local monitor = hl.get_active_monitor()
+    return i + (monitor and workspace_offsets and workspace_offsets[monitor.name] or 0)
+end
+local function go(action, i)
+    return function() hl.dispatch(action({ workspace = here(i) })) end
+end
+-- Next/previous, without leaving this monitor's 1..9
+local function step(action, delta)
+    return function()
+        if not workspace_offsets then
+            return hl.dispatch(action({ workspace = string.format("r%+d", delta) }))
+        end
+        local id = hl.get_active_workspace().id + delta
+        if id > here(0) and id < here(10) then
+            hl.dispatch(action({ workspace = id }))
+        end
+    end
+end
 for i = 1, 9 do
-    hl.bind(mod .. " + " .. i,          hl.dsp.focus({ workspace = i }), { description = "Ir al escritorio" })
-    hl.bind(mod .. " + SHIFT + " .. i,  hl.dsp.window.move({ workspace = i }), { description = "Mandar ventana al escritorio" })
+    hl.bind(mod .. " + " .. i,          go(hl.dsp.focus, i), { description = "Ir al escritorio" })
+    hl.bind(mod .. " + SHIFT + " .. i,  go(hl.dsp.window.move, i), { description = "Mandar ventana al escritorio" })
 end
 for i = 1, 4 do
-    hl.bind("CTRL + F" .. i, hl.dsp.focus({ workspace = i }))
+    hl.bind("CTRL + F" .. i, go(hl.dsp.focus, i))
 end
-hl.bind(mod .. " + CTRL + right",         hl.dsp.focus({ workspace = "r+1" }), { description = "Escritorio siguiente" })
-hl.bind(mod .. " + CTRL + left",          hl.dsp.focus({ workspace = "r-1" }), { description = "Escritorio anterior" })
-hl.bind(mod .. " + CTRL + SHIFT + right", hl.dsp.window.move({ workspace = "r+1" }), { description = "Mandar ventana al siguiente" })
-hl.bind(mod .. " + CTRL + SHIFT + left",  hl.dsp.window.move({ workspace = "r-1" }), { description = "Mandar ventana al anterior" })
-hl.bind(mod .. " + Next",          hl.dsp.focus({ workspace = "r+1" }), { description = "Escritorio siguiente" })
-hl.bind(mod .. " + Prior",         hl.dsp.focus({ workspace = "r-1" }), { description = "Escritorio anterior" })
-hl.bind(mod .. " + SHIFT + Next",  hl.dsp.window.move({ workspace = "r+1" }), { description = "Mandar ventana al siguiente" })
-hl.bind(mod .. " + SHIFT + Prior", hl.dsp.window.move({ workspace = "r-1" }), { description = "Mandar ventana al anterior" })
-hl.bind(mod .. " + mouse_down",           hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mod .. " + mouse_up",             hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mod .. " + CTRL + right",         step(hl.dsp.focus, 1), { description = "Escritorio siguiente" })
+hl.bind(mod .. " + CTRL + left",          step(hl.dsp.focus, -1), { description = "Escritorio anterior" })
+hl.bind(mod .. " + CTRL + SHIFT + right", step(hl.dsp.window.move, 1), { description = "Mandar ventana al siguiente" })
+hl.bind(mod .. " + CTRL + SHIFT + left",  step(hl.dsp.window.move, -1), { description = "Mandar ventana al anterior" })
+hl.bind(mod .. " + Next",          step(hl.dsp.focus, 1), { description = "Escritorio siguiente" })
+hl.bind(mod .. " + Prior",         step(hl.dsp.focus, -1), { description = "Escritorio anterior" })
+hl.bind(mod .. " + SHIFT + Next",  step(hl.dsp.window.move, 1), { description = "Mandar ventana al siguiente" })
+hl.bind(mod .. " + SHIFT + Prior", step(hl.dsp.window.move, -1), { description = "Mandar ventana al anterior" })
+hl.bind(mod .. " + mouse_down",           hl.dsp.focus({ workspace = "m+1" }))
+hl.bind(mod .. " + mouse_up",             hl.dsp.focus({ workspace = "m-1" }))
 
 -- Media keys (work on the lock screen too)
 local always = { locked = true, repeating = true }

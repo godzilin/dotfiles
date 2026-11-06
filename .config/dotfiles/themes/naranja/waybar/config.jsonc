@@ -88,11 +88,10 @@
         "format": "{icon}",
         "format-icons": {
             "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
-            "6": "6", "7": "7", "8": "8", "9": "9", "default": "··"
+            "6": "6", "7": "7", "8": "8", "9": "9", "11": "1", "12": "2", "13": "3", "14": "4", "15": "5", "16": "6", "17": "7", "18": "8", "19": "9", "default": "··"
         },
-        "persistent-workspaces": { "*": 4 },
-        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
-        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'"
     },
     // The tuning dial: the hours are the frequencies and the needle is the time of day
     "custom/dial": {

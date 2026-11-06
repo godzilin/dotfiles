@@ -15,3 +15,16 @@ hl.monitor({
 
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+
+-- Each monitor has its own 1..9 (binds.lua adds the offset): ids 1-9 on DP-1, 11-19 on HDMI-A-1.
+-- The bar shows 11-19 as 1-9 (format-icons in each theme); same-name workspaces confuse Waybar
+workspace_offsets = { ["HDMI-A-1"] = 10 }
+for i = 1, 9 do
+    hl.workspace_rule({ workspace = tostring(i), monitor = "DP-1", default = i == 1, persistent = i <= 4 })
+    hl.workspace_rule({
+        workspace  = tostring(10 + i),
+        monitor    = "HDMI-A-1",
+        default    = i == 1,
+        persistent = i <= 4,
+    })
+end

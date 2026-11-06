@@ -24,10 +24,9 @@
     },
     "hyprland/workspaces": {
         "format": "{icon}",
-        "format-icons": { "1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09", "default": "··" },
-        "persistent-workspaces": { "*": 4 },
-        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
-        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+        "format-icons": { "1": "01", "2": "02", "3": "03", "4": "04", "5": "05", "6": "06", "7": "07", "8": "08", "9": "09", "11": "01", "12": "02", "13": "03", "14": "04", "15": "05", "16": "06", "17": "07", "18": "08", "19": "09", "default": "··" },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'"
     },
     "custom/app": {
         "exec": "~/.config/dotfiles/themes/current/scripts/activewin.sh",

@@ -22,10 +22,10 @@
     },
     // Desktops (Spaces): number of each, the current one filled; scroll to move
     "hyprland/workspaces": {
-        "format": "{name}",
-        "persistent-workspaces": { "*": 4 },
-        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
-        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+        "format": "{icon}",
+        "format-icons": { "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "default": "·" },
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'"
     },
     // Bold name of the focused app, like the application menu
     "hyprland/window": {

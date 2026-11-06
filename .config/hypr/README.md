@@ -47,6 +47,11 @@ Los temas, atajos y demás se comparten por `main`. Lo propio de cada máquina (
 `hosts/<hostname>.lua`, que `env.lua` carga solo en ese equipo. `dots pull` y `dots push` sincronizan a mano.
 El tema activo (`themes/current`) no está en el repo: cada equipo tiene el suyo.
 
+Con `workspace_offsets` en el archivo del host, cada monitor tiene su propio 1..9: en el sobremesa, DP-1 usa los ids 1-9
+y HDMI-A-1 los 11-19, que las barras muestran como 1-9 (`format-icons` de cada tema). No renombres esos escritorios ni uses
+el mismo nombre en dos monitores: Waybar marca el activo por nombre. Tampoco hagas `persistent-workspaces` en Waybar: los
+persistentes van en las reglas de Hyprland.
+
 ## Si algo se rompe
 
 - **Barra roja arriba**: error de config. Dice el archivo y la línea.

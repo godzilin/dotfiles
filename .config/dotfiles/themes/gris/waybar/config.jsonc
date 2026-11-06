@@ -29,11 +29,10 @@
         "format": "{icon}",
         "format-icons": {
             "1": "Escritorio 1", "2": "Escritorio 2", "3": "Escritorio 3", "4": "Escritorio 4", "5": "Escritorio 5",
-            "6": "Escritorio 6", "7": "Escritorio 7", "8": "Escritorio 8", "9": "Escritorio 9", "default": "Escritorio"
+            "6": "Escritorio 6", "7": "Escritorio 7", "8": "Escritorio 8", "9": "Escritorio 9", "11": "Escritorio 1", "12": "Escritorio 2", "13": "Escritorio 3", "14": "Escritorio 4", "15": "Escritorio 5", "16": "Escritorio 6", "17": "Escritorio 7", "18": "Escritorio 8", "19": "Escritorio 9", "default": "Escritorio"
         },
-        "persistent-workspaces": { "*": 4 },
-        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
-        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
+        "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
+        "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'"
     },
     "clock": {
         "locale": "es_ES.utf8",

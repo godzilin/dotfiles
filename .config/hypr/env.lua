@@ -28,3 +28,10 @@ if f then
     f:close()
     dofile(hostfile)
 end
+
+-- Workspaces 1-4 always show in the bar (with workspace_offsets, the host sets this per monitor)
+if not workspace_offsets then
+    for i = 1, 4 do
+        hl.workspace_rule({ workspace = tostring(i), persistent = true })
+    end
+end
