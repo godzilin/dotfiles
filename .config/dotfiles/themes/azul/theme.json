@@ -37,6 +37,21 @@
   "qt_style": "Windows",
   "buttons": ":minimize,maximize,close",
   "daemons": [],
+  "vscode": {
+    "palette": {
+      "bg0": "#ffffff", "bg": "#c0c0c0", "bg1": "#c0c0c0", "bg2": "#000080",
+      "line": "#808080", "faint": "#808080", "muted": "#404040", "sub": "#000000", "text": "#000000",
+      "accent": "#000080", "yellow": "#808000", "orange": "#804000", "red": "#800000",
+      "green": "#008000", "teal": "#008080", "blue": "#0000ff"
+    },
+    "colors": {
+      "titleBar.activeBackground": "#000080", "titleBar.activeForeground": "#ffffff",
+      "titleBar.inactiveBackground": "#808080", "titleBar.inactiveForeground": "#c0c0c0",
+      "list.activeSelectionForeground": "#ffffff", "menu.selectionForeground": "#ffffff",
+      "input.background": "#ffffff", "dropdown.background": "#ffffff",
+      "tab.activeBackground": "#c0c0c0", "editorWidget.background": "#c0c0c0"
+    }
+  },
   "wallpaper": {
     "title": "Propiedades de Pantalla - Fondo",
     "random": "Al azar"

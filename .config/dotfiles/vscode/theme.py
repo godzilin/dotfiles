@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Paint VS Code (Code - OSS) with the active theme's palette; it reloads settings.json by itself.
 
-Everything comes from themes/current/theme.json, so a new theme needs nothing here.
+Everything comes from themes/current/theme.json, so a new theme needs nothing here. A theme whose palette
+is not its window colours (azul: MS-DOS terminal) adds "vscode": {"palette": {...}, "colors": {...}} to override them.
 `theme.py --test` checks every theme without touching the real settings.
 """
 import json
@@ -38,7 +39,8 @@ def legible(c, bg, text):
 
 
 def theme_settings(theme):
-    p = theme["palette"]
+    override = theme.get("vscode", {})
+    p = {**theme["palette"], **override.get("palette", {})}
     bg0, bg, bg1, bg2, line = p["bg0"], p["bg"], p["bg1"], p["bg2"], p["line"]
     faint, muted, sub, text, acc = p["faint"], p["muted"], p["sub"], p["text"], p["accent"]
     code = {k: legible(p[k], bg0, text) for k in ("accent", "muted", "yellow", "orange", "red", "green", "teal", "blue")}
@@ -85,9 +87,10 @@ def theme_settings(theme):
         "terminal.ansiYellow": code["yellow"], "terminal.ansiBlue": code["blue"],
         "terminal.ansiCyan": code["teal"], "terminal.ansiMagenta": code["accent"],
     }
+    colors.update(override.get("colors", {}))
     mono = f"'{theme['font_mono']}', monospace"
     return {
-        # the base only fills what `colors` leaves out; azul is light for GTK but its palette is the dark terminal one
+        # the base only fills what `colors` leaves out
         "workbench.colorTheme": "Light Modern" if lum(bg0) > 0.5 else "Dark Modern",
         "workbench.colorCustomizations": colors,
         "editor.tokenColorCustomizations": {
@@ -127,7 +130,7 @@ def test():
             assert apply(j, f), j
             out = json.loads(f.read_text())
             assert out["claudeCode.hideOnboarding"] is True, "foreign keys must survive"
-            bg0 = json.loads(j.read_text())["palette"]["bg0"]
+            bg0 = out["workbench.colorCustomizations"]["editor.background"]
             for k, c in out["editor.tokenColorCustomizations"].items():
                 assert contrast(c, bg0) >= 4.5, (j.parent.name, k, c)
         bad = '{\n  // comment\n  "a": 1,\n}'
