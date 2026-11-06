@@ -19,6 +19,7 @@ hl.config({
         screen_shader = home .. "/.config/dotfiles/themes/negro/hypr/crt.glsl",
     },
     animations = { enabled = false }, -- a terminal just redraws
+    debug = { damage_tracking = 0 }, -- the tube bends the picture: repainting only what changed leaves torn patches
     cursor = { no_hardware_cursors = true }, -- a hardware cursor would skip the tube and float out of place
     dwindle = { preserve_split = true },
     misc = {
