@@ -58,10 +58,9 @@ body { --h1-color: var(--color-accent); --h2-color: #c4bbdc; --h3-color: var(--t
 .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: #15102a; }
 .nav-folder-title-content { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
 .nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #b79bff; border-radius: 0 3px 3px 0; }
-.view-header { border-bottom: 3px solid !important;
-  border-image: linear-gradient(90deg, #c4bbdc 0 25%, #b79bff 25% 50%, #6a4a9e 50% 75%, #40316a 75%) 1 !important; }
+.view-header { border-bottom: 2px solid #b79bff !important; }
 .view-header-title, .view-header-breadcrumb { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
-.mod-root .workspace-leaf-content { border: 1px solid #36196a; border-radius: 6px; margin: 0 6px 6px 0; }
+.mod-root .workspace-leaf-content { border: 1px solid #40316a; border-radius: 2px; margin: 0 6px 6px 0; }
 .cm-cursor, .cm-dropCursor { border-left: .55em solid rgba(183, 155, 255, .75) !important; }
 .menu-item.selected:not(.is-disabled):not(.is-label) { box-shadow: inset 3px 0 #b79bff; }
 

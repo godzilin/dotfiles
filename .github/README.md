@@ -17,7 +17,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
 | `negro` | **Fósforo**: tubo CRT de fósforo verde sobre toda la pantalla; negro puro, todo en IBM 3270 |
 | `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
-| `morado` | **Yoru**: noche en Tokio; barra vertical de rótulos en japonés y calle mojada de lluvia violeta |
+| `morado` | **Yoru**: noche en Tokio; barra vertical de rótulos, escritorios que suben y bajan, fotos reales de la ciudad y lluvia viva |
 | `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
 | `dorado` | **Astrolabio**: observatorio de noche; el escritorio es un astrolabio que funciona con el cielo real, barra grabada con palabras en vez de iconos, almanaque de Luna y Sol, letra Alegreya |
 
@@ -154,11 +154,16 @@ Display PostScript, toro, Julia, ciudad de cubos, Lorenz, moiré, curvas de nive
 
 ![Escritorio](../.config/dotfiles/themes/morado/screenshots/desktop.png)
 
-Noche en Tokio. La barra es un poste de rótulos verticales a la derecha, que se lee de arriba abajo: escritorios
-en numerales kanji, hora y fecha en paneles encendidos y cada lectura con su carácter (音 sonido, 光 brillo, 網 red,
-電 batería, 終 apagar). Los textos de ayuda siguen en castellano. Fondos sin texto de calle mojada con lluvia
-(`wallpapers/tokio.py`). Letra Dela Gothic One, Zen Kaku Gothic New y M PLUS 1 Code en `fonts/`.
-Primera vez: `~/.config/dotfiles/themes/morado/install.sh`.
+Noche en Tokio. La barra es un poste de rótulos verticales a la derecha: escritorios en numerales kanji, hora y fecha
+en paneles encendidos, y cada lectura con su icono y su número. Los escritorios cambian en vertical, subiendo y bajando
+por el poste, y las ventanas sin foco se oscurecen. En el escritorio vacío cae lluvia de verdad sobre el fondo
+(`scripts/lluvia.py`, unos 2 % de CPU, y se para en cuanto hay una ventana).
+
+Dieciocho fotos reales de Tokio de noche, con las sombras teñidas de violeta (`wallpapers/fotos.py`, créditos en
+`wallpapers/FOTOS.md`) y tres calles dibujadas (`wallpapers/tokio.py`). Firefox lleva las pestañas en vertical a la
+derecha, junto a la barra (hay que reiniciarlo); el lanzador es un rótulo largo pegado al poste y los avisos cuelgan de él.
+Letra Dela Gothic One, Zen Kaku Gothic New y M PLUS 1 Code en `fonts/`. Primera vez:
+`~/.config/dotfiles/themes/morado/install.sh`.
 
 ## cian: Plano
 

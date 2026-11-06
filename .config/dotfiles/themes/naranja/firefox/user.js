@@ -7,3 +7,6 @@ user_pref("ui.key.menuAccessKeyFocuses", false);
 // Undo the scrollbars azul sets (user.js prefs stay in prefs.js after switching theme)
 user_pref("widget.gtk.overlay-scrollbars.enabled", true);
 user_pref("widget.non-native-theme.scrollbar.style", 0);
+// Undo the vertical tabs morado sets (user.js prefs stay in prefs.js after switching theme)
+user_pref("sidebar.verticalTabs", false);
+user_pref("sidebar.position_start", true);

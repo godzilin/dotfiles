@@ -22,7 +22,7 @@
     },
     "mpris": {
         "format": "{status_icon}",
-        "status-icons": { "playing": "停", "paused": "再" },
+        "status-icons": { "playing": "󰏤", "paused": "󰐊" },
         "tooltip-format": "{player}: {title}"
     },
     "custom/claude": {
@@ -40,12 +40,12 @@
     },
     "bluetooth": {
         "justify": "center",
-        "format": "藍\n{status}",
-        "format-on": "藍\n入",
-        "format-off": "藍\n切",
-        "format-disabled": "藍\n切",
-        "format-connected": "藍\n接",
-        "format-connected-battery": "藍\n{device_battery_percentage}",
+        "format": "󰂯",
+        "format-on": "󰂯",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱",
+        "format-connected-battery": "󰂱\n{device_battery_percentage}",
         "tooltip-format": "{controller_alias} · {status}",
         "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
@@ -74,10 +74,10 @@
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/calendar.sh"
     },
-    // Weekday in kanji over the day of the month
+    // Weekday over the day of the month
     "custom/hizuke": {
         "justify": "center",
-        "exec": "python3 -c \"import time; t = time.localtime(); print('月火水木金土日'[t.tm_wday] + chr(10) + str(t.tm_mday))\"",
+        "exec": "python3 -c \"import time; t = time.localtime(); print('LUN MAR MIÉ JUE VIE SÁB DOM'.split()[t.tm_wday] + chr(10) + str(t.tm_mday))\"",
         "interval": 600,
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/calendar.sh"
@@ -85,37 +85,37 @@
     "tray": { "icon-size": 16, "spacing": 8 },
     "pulseaudio": {
         "justify": "center",
-        "format": "音\n{volume}",
-        "format-muted": "音\n消",
+        "format": "󰕾\n{volume}",
+        "format-muted": "󰖁",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5,
         "tooltip-format": "Sonido: {desc}"
     },
-    "backlight": { "justify": "center", "format": "光\n{percent}", "tooltip-format": "Brillo" },
+    "backlight": { "justify": "center", "format": "󰃟\n{percent}", "tooltip-format": "Brillo" },
     "network": {
         "justify": "center",
-        "format-wifi": "網\n{signalStrength}",
-        "format-ethernet": "網\n線",
-        "format-disconnected": "網\n断",
+        "format-wifi": "󰖩\n{signalStrength}",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
         "tooltip-format": "{essid}  {ifname}  {ipaddr}",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
         "justify": "center",
-        "format": "力\n{icon}",
-        "format-icons": { "default": "中", "performance": "強", "balanced": "中", "power-saver": "弱" }
+        "format": "{icon}",
+        "format-icons": { "default": "󰗑", "performance": "󰓅", "balanced": "󰗑", "power-saver": "󰌪" }
     },
     "battery": {
         "justify": "center",
         "states": { "warning": 25, "critical": 10 },
-        "format": "電\n{capacity}",
-        "format-charging": "充\n{capacity}",
-        "format-plugged": "充\n{capacity}",
+        "format": "󰁹\n{capacity}",
+        "format-charging": "󰂄\n{capacity}",
+        "format-plugged": "󰂄\n{capacity}",
         "tooltip-format": "{timeTo}  ·  {power:.1f} W"
     },
     "custom/wallpaper": {
-        "format": "絵",
+        "format": "󰋩",
         "on-click": "~/.config/hypr/scripts/wallpaper.sh",
         "tooltip-format": "Fondo de pantalla"
     },
@@ -123,13 +123,13 @@
         "exec": "swaync-client -swb",
         "return-type": "json",
         "format": "{icon}",
-        "format-icons": { "notification": "報", "none": "〇", "dnd-notification": "黙", "dnd-none": "黙" },
+        "format-icons": { "notification": "●", "none": "○", "dnd-notification": "◐", "dnd-none": "◐" },
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
     "custom/power": {
-        "format": "終",
+        "format": "󰐥",
         "on-click": "~/.config/hypr/scripts/powermenu.sh",
         "tooltip-format": "Apagar"
     }

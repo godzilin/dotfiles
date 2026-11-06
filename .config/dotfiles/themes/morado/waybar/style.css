@@ -19,7 +19,7 @@
     min-width: 0;
 }
 
-window#waybar { background: alpha(@night, 0.92); border-left: 2px solid @violet; color: @sub; }
+window#waybar { background: alpha(@night, 0.72); border-left: 2px solid @violet; color: @sub; }
 tooltip { background: @night; border: 1px solid @line; border-radius: 2px; }
 tooltip label { color: @text; font-family: "Zen Kaku Gothic New"; font-size: 13px; }
 
@@ -28,11 +28,13 @@ tooltip label { color: @text; font-family: "Zen Kaku Gothic New"; font-size: 13p
     padding: 3px 0;
     margin: 0 5px;
     border-radius: 2px;
-    background: @panel;
+    background: alpha(@panel, 0.85);
     color: @sub;
 }
 
 /* The big lit signs */
+#pulseaudio, #backlight, #network, #bluetooth, #power-profiles-daemon, #battery, #custom-wallpaper, #mpris, #custom-power { font-size: 15px; }
+#custom-hizuke { font-size: 11px; }
 #custom-launcher { font-family: "Dela Gothic One"; font-weight: 400; background: @violet; color: @night; font-size: 21px; margin-top: 6px; padding: 5px 0; }
 #clock { font-family: "Dela Gothic One"; font-weight: 400; background: @paper; color: @night; font-size: 19px; padding: 6px 0; }
 #custom-hizuke { background: @lantern; color: @night; }

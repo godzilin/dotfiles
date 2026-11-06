@@ -1,6 +1,6 @@
 {
   "name": "Yoru",
-  "description": "Noche en Tokio: barra vertical de rótulos en japonés a la derecha, leída de arriba abajo; calle mojada de lluvia violeta, sin texto; letra Dela Gothic One y Zen Kaku Gothic",
+  "description": "Noche en Tokio: barra vertical de rótulos a la derecha, los escritorios suben y bajan por ella, fotos reales de la ciudad y lluvia que cae de verdad sobre el fondo; letra Dela Gothic One y Zen Kaku Gothic",
   "palette": {
     "bg0": "#0e0a1a",
     "bg": "#15102a",
@@ -35,9 +35,11 @@
   "cursor_size": 24,
   "kde_colors": "Neon",
   "buttons": ":close",
-  "daemons": [],
+  "daemons": ["~/.config/dotfiles/themes/morado/scripts/lluvia.py"],
   "vscode": {
     "settings": {
+      "workbench.sideBar.location": "right",
+      "workbench.activityBar.location": "top",
       "editor.minimap.side": "left",
       "editor.minimap.renderCharacters": false,
       "editor.minimap.showSlider": "always",

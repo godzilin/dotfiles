@@ -7,3 +7,6 @@ user_pref("browser.tabs.inTitlebar", 1);  // tabs are the black title bar, with 
 user_pref("ui.key.menuAccessKeyFocuses", false);
 user_pref("widget.gtk.overlay-scrollbars.enabled", false);  // NeXT scrollers: always there, dark trough (userContent.css)
 user_pref("widget.non-native-theme.scrollbar.style", 4);  // square knob with arrow buttons
+// Undo the vertical tabs morado sets (user.js prefs stay in prefs.js after switching theme)
+user_pref("sidebar.verticalTabs", false);
+user_pref("sidebar.position_start", true);

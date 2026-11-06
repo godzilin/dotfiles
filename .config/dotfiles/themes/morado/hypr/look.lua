@@ -20,6 +20,8 @@ hl.config({
             color        = rgba(C.bg0, "aa"),
             color_inactive = rgba(C.bg0, "55"),
         },
+        dim_inactive = true, -- the street behind the window you are looking at goes dark
+        dim_strength = 0.18,
         blur = {
             enabled  = true,
             size     = 5,
@@ -49,11 +51,11 @@ hl.animation({ leaf = "windowsOut",  enabled = true, speed = 3, bezier = "out", 
 hl.animation({ leaf = "border",      enabled = true, speed = 4, bezier = "out" })
 hl.animation({ leaf = "fade",        enabled = true, speed = 3, bezier = "out" })
 hl.animation({ leaf = "layers",      enabled = true, speed = 3, bezier = "out", style = "fade" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "inout", style = "slide" })
+hl.animation({ leaf = "workspaces",  enabled = true, speed = 4, bezier = "inout", style = "slidevert" }) -- up and down the pole
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 4, bezier = "out", style = "slidevert" })
 
 -- Blur behind the bar, launcher and notifications
-hl.layer_rule({ name = "blur-waybar", match = { namespace = "^waybar$" },     blur = true, ignore_alpha = 0.2 })
+hl.layer_rule({ name = "blur-waybar", match = { namespace = "^waybar$" },     blur = true, ignore_alpha = 0.05 })
 hl.layer_rule({ name = "blur-fuzzel", match = { namespace = "^launcher$" },   blur = true, ignore_alpha = 0.2 })
 hl.layer_rule({ name = "blur-swaync", match = { namespace = "^swaync-.*$" },  blur = true, ignore_alpha = 0.2 })
 

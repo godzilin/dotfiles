@@ -14,7 +14,7 @@
   --text-color: #f1edf8;
   --text-color-disabled: #8f80b8;
   --bg-selected: #b79bff;
-  --border-radius: 10px;
+  --border-radius: 2px;
   --notification-icon-size: 48px;
   --notification-shadow: 0 4px 16px rgba(14, 10, 26, 0.6);
   --font-size-body: 13px;
@@ -32,10 +32,10 @@
   letter-spacing: 1px;
 }
 
-/* Amber accent strip on the left of every notification */
+/* A lit edge on the side of the pole */
 .notification-row .notification-background .notification {
-  border-left: 3px solid #b79bff;
+  border-right: 3px solid #b79bff;
 }
 .notification-row .notification-background .notification.critical {
-  border-left-color: #ff6b6b;
+  border-right-color: #ff6b6b;
 }

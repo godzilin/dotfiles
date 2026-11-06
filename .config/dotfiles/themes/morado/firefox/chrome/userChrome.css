@@ -1,5 +1,4 @@
-/* Yoru for Firefox: synthwave shell (tabs as neon labels, the page in a glowing frame).
-   Tabs are numbered tape labels, the page sits in a bezel like a monitor, tape stripes run along the top.
+/* Yoru for Firefox: the tabs hang down the right edge like signs on the pole, each with its number, one lit.
    Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
 
 :root {
@@ -8,7 +7,7 @@
   --n-yellow: #c4bbdc; --n-amber: #b79bff; --n-orange: #6a4a9e; --n-red: #ff6b6b;
   --n-mono: "M PLUS 1 Code", "Symbols Nerd Font", "IBM Plex Mono", monospace;
   --n-sans: "Zen Kaku Gothic New", sans-serif;
-  --n-radius: 10px;
+  --n-radius: 2px;
 
   /* Theme variables: repaint whatever theme is active */
   --lwt-accent-color: var(--n-bg0) !important;
@@ -20,7 +19,7 @@
   --toolbarbutton-icon-fill: var(--n-muted) !important;
   --toolbarbutton-hover-background: var(--n-bg2) !important;
   --toolbarbutton-active-background: var(--n-line) !important;
-  --toolbarbutton-border-radius: 6px !important;
+  --toolbarbutton-border-radius: 2px !important;
   --toolbar-field-background-color: var(--n-bg1) !important;
   --toolbar-field-color: var(--n-text) !important;
   --toolbar-field-border-color: var(--n-line) !important;
@@ -30,7 +29,7 @@
   --tab-selected-bgcolor: var(--n-amber) !important;
   --tab-selected-textcolor: var(--n-bg0) !important;
   --tab-hover-background-color: var(--n-bg1) !important;
-  --tab-border-radius: 6px !important;
+  --tab-border-radius: 2px !important;
   --focus-outline-color: var(--n-amber) !important;
   --chrome-content-separator-color: transparent !important;
   --arrowpanel-background: var(--n-bg) !important;
@@ -60,12 +59,7 @@
 
 #navigator-toolbox {
   background: var(--n-bg0) !important;
-  border-bottom: none !important;
-  /* four tape stripes along the very top edge */
-  border-top: 4px solid transparent !important;
-  border-image: linear-gradient(90deg,
-      var(--n-yellow) 0 25%, var(--n-amber) 25% 50%, var(--n-orange) 50% 75%, var(--n-red) 75% 100%) 1 !important;
-  border-image-width: 4px 0 0 0 !important;
+  border-bottom: 2px solid var(--n-amber) !important;
 }
 #TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar {
   background: transparent !important;
@@ -249,4 +243,9 @@ findbar { background: var(--n-bg0) !important; border-top: 1px solid var(--n-lin
 .tabbrowser-tab:not([pinned]) .tab-content::before { font-family: "Dela Gothic One", sans-serif !important; }
 #urlbar[focused] .urlbar-background { box-shadow: 0 0 0 1px #b79bff !important; }
 #urlbar .urlbar-input-container::before { color: #6fd9e0 !important; }
-#navigator-toolbox { border-image: linear-gradient(90deg, #c4bbdc 0 25%, #b79bff 25% 50%, #6a4a9e 50% 75%, #40316a 75% 100%) 1 !important; }
+
+/* The tab column */
+#sidebar-main, #vertical-tabs { background: var(--n-bg0) !important; }
+#sidebar-main { border-inline-start: 2px solid var(--n-amber) !important; }
+#vertical-tabs .tabbrowser-tab[selected] .tab-background { background: var(--n-amber) !important; }
+sidebar-main, .tools-and-extensions, #sidebar-main > * { background: var(--n-bg0) !important; --sidebar-background-color: var(--n-bg0) !important; --background-color-canvas: var(--n-bg0) !important; }
