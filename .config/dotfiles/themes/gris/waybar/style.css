@@ -60,5 +60,5 @@ tooltip label { color: #000000; }
 #custom-power { margin-bottom: 3px; box-shadow: inset 1px 1px #ffffff, inset -1px -1px #555555, 3px 3px #000000; }
 
 /* Claude: gira mientras piensa */
-#custom-claude { color: #d97757; min-width: 18px; padding: 0 6px; font-size: 16px; }
+#custom-claude { color: #d97757; min-width: 18px; padding: 3px 8px; font-size: 16px; }
 #custom-claude.parado { opacity: 0.4; }

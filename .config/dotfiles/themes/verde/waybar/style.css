@@ -87,5 +87,5 @@ window#waybar.empty #window { background: transparent; border-color: transparent
 #custom-media.paused { color: @muted; }
 
 /* Claude: gira mientras piensa */
-#custom-claude { color: #d97757; min-width: 18px; padding: 0 6px; font-size: 16px; }
+#custom-claude { color: #d97757; min-width: 18px; padding: 0 8px; font-size: 16px; }
 #custom-claude.parado { opacity: 0.4; }
