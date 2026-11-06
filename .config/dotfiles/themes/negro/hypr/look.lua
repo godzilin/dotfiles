@@ -30,6 +30,9 @@ hl.config({
     },
 })
 
+-- Bigger pixels, as on a tube: 1536x960 instead of 1920x1200. The popups below are placed for that size.
+hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto", scale = 1.25 })
+
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(home .. "/.config/dotfiles/themes/negro/scripts/crt.sh"))
 
 -- Calendar popup from the waybar clock: floats right above it (the bar is at the bottom)
@@ -39,7 +42,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "400 410",
-    move  = "760 766",
+    move  = "568 520",
 })
 
 -- Now-playing popup from the waybar media module
@@ -49,7 +52,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "420 380",
-    move  = "250 796",
+    move  = "250 550",
 })
 
 -- Wallpaper selector from the waybar wallpaper button
@@ -59,7 +62,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "580 540",
-    move  = "1330 636",
+    move  = "950 390",
 })
 
 -- Weather popup from the waybar weather module
@@ -69,5 +72,5 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "460 580",
-    move  = "60 596",
+    move  = "60 350",
 })
