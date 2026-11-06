@@ -48,6 +48,8 @@ tooltip label { color: @text; }
 #custom-launcher { padding-left: 16px; padding-right: 12px; font-size: 16px; }
 #custom-launcher:hover { color: @text; }
 
+/* The readouts are engraved words, never pictograms: a small-caps label, then the old-style figure */
+
 /* Workspaces: Roman plate numbers; the current one carries the brass index, like an alidade on the scale */
 #workspaces { padding: 0 4px; }
 #workspaces button {
@@ -68,7 +70,7 @@ tooltip label { color: @text; }
 #window { color: @muted; font-style: italic; }
 window#waybar.empty #window { padding: 0; }
 
-#custom-luna { color: @amber; padding: 0 8px 5px 12px; font-size: 18px; }
+#custom-luna { color: @amber; padding: 0 12px 5px; font-style: italic; }
 #custom-luna.llena { color: #e6cb82; }
 #custom-luna.nueva { color: @muted; }
 #clock { color: @muted; padding-right: 12px; }
@@ -77,12 +79,12 @@ window#waybar.empty #window { padding: 0; }
 #pulseaudio.muted { color: @muted; }
 #battery.warning:not(.charging)  { color: @orange; }
 #battery.critical:not(.charging) { color: @red; }
-#power-profiles-daemon { color: @amber; font-size: 16px; }
+#power-profiles-daemon { color: @sub; font-family: "Alegreya Sans SC"; }
 #power-profiles-daemon.performance { color: @orange; }
 #power-profiles-daemon.power-saver { color: @green; }
 #bluetooth.off, #bluetooth.disabled { color: @muted; }
 
-#custom-wallpaper, #custom-notifications, #custom-power { color: @muted; font-size: 16px; }
+#custom-wallpaper, #custom-notifications, #custom-power { color: @muted; }
 #custom-wallpaper:hover, #custom-notifications:hover { color: @amber; }
 #custom-power { padding-right: 16px; }
 #custom-power:hover { color: @red; }

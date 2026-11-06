@@ -2,17 +2,19 @@ hl.config({
     general = {
         gaps_in     = 5,
         gaps_out    = 10,
-        border_size = 1,  -- a hairline: brass on the focused window, nothing that competes with its contents
+        border_size = 1,  -- a hairline of polished brass on the focused window, nothing that competes with its contents
         col = {
-            active_border   = rgba(C.amber, "cc"),
+            active_border   = { colors = { rgba(C.yellow, "ee"), rgba("7d6240", "dd") }, angle = 135 },
             inactive_border = rgba(C.line, "bb"),
         },
         resize_on_border = true,
         layout = "dwindle",
     },
     decoration = {
-        rounding       = 9,
-        rounding_power = 2.5,
+        rounding       = 3,  -- instrument plates, barely eased
+        rounding_power = 2,
+        dim_inactive   = true,  -- one lamp in the dome: the window you work in is lit, the rest sink into the night
+        dim_strength   = 0.25,
         shadow = {
             enabled      = true,
             range        = 22,
@@ -64,7 +66,7 @@ hl.window_rule({
     match = { class = "^nostromo-calendar$" },
     float = true,
     pin   = true,
-    size  = "400 450",
+    size  = "400 490",
     move  = "760 41",
 })
 

@@ -28,7 +28,7 @@
     },
 
     "custom/media-prev": {
-        "exec": "echo 󰒮",
+        "exec": "echo ‹",
         "exec-if": "playerctl status",
         "interval": 2,
         "on-click": "playerctl previous",
@@ -36,11 +36,11 @@
     },
     "mpris": {
         "format": "{status_icon}",
-        "status-icons": { "playing": "󰏤", "paused": "󰐊" },
+        "status-icons": { "playing": "‖", "paused": "▸" },
         "tooltip": false
     },
     "custom/media-next": {
-        "exec": "echo 󰒭",
+        "exec": "echo ›",
         "exec-if": "playerctl status",
         "interval": 2,
         "on-click": "playerctl next",
@@ -54,7 +54,7 @@
         "on-click": "~/.config/hypr/scripts/media.sh"
     },
 
-    // The real phase of the Moon, beside the clock
+    // The almanac line beside the clock: real phase of the Moon and the sign the Sun is in
     "custom/luna": {
         "exec": "~/.config/dotfiles/themes/current/scripts/luna.py",
         "return-type": "json",
@@ -71,12 +71,12 @@
 
     // Bluetooth readout: click toggles power, right click opens the KDE Bluetooth settings
     "bluetooth": {
-        "format": "<span color='#d6b16a'>󰂯</span> {status}",
-        "format-on": "<span color='#d6b16a'>󰂯</span> sí",
-        "format-off": "<span color='#858b9a'>󰂲</span> no",
-        "format-disabled": "<span color='#858b9a'>󰂲</span> no",
-        "format-connected": "<span color='#d6b16a'>󰂯</span> {device_alias}",
-        "format-connected-battery": "<span color='#d6b16a'>󰂯</span> {device_alias} {device_battery_percentage}%",
+        "format": "<span font_family='Alegreya Sans SC' color='#858b9a'>bt</span> {status}",
+        "format-on": "<span font_family='Alegreya Sans SC' color='#858b9a'>bt</span> sí",
+        "format-off": "<span font_family='Alegreya Sans SC' color='#858b9a'>bt</span> no",
+        "format-disabled": "<span font_family='Alegreya Sans SC' color='#858b9a'>bt</span> no",
+        "format-connected": "<span font_family='Alegreya Sans SC' color='#858b9a'>bt</span> {device_alias}",
+        "format-connected-battery": "<span font_family='Alegreya Sans SC' color='#858b9a'>bt</span> {device_alias} {device_battery_percentage}%",
         "max-length": 60,  // counts the colour markup too (~30 chars), so names up to ~30 fit
         "tooltip-format": "{controller_alias} · {status}",
         "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
@@ -103,7 +103,7 @@
     },
     "hyprland/window": {
         "format": "{}",
-        "max-length": 44,
+        "max-length": 32,
         "separate-outputs": true
     },
     "clock": {
@@ -122,37 +122,36 @@
     },
     "tray": { "icon-size": 14, "spacing": 8 },
     "pulseaudio": {
-        "format": "<span color='#d6b16a'>󰕾</span> {volume}",
-        "format-muted": "<span color='#858b9a'>󰖁</span> <span color='#dc7f70'>silencio</span>",
+        "format": "<span font_family='Alegreya Sans SC' color='#858b9a'>vol</span> {volume}",
+        "format-muted": "<span font_family='Alegreya Sans SC' color='#858b9a'>vol</span> <span color='#dc7f70'>silencio</span>",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5,
         "tooltip-format": "{desc}"
     },
     "backlight": {
-        "format": "<span color='#d6b16a'>󰃟</span> {percent}"
+        "format": "<span font_family='Alegreya Sans SC' color='#858b9a'>luz</span> {percent}"
     },
     "network": {
-        "format-wifi": "<span color='#d6b16a'>󰖩</span> {essid}",
-        "format-ethernet": "<span color='#d6b16a'>󰈀</span> cable",
-        "format-disconnected": "<span color='#dc7f70'>󰖪</span>",
+        "format-wifi": "<span font_family='Alegreya Sans SC' color='#858b9a'>red</span> {essid}",
+        "format-ethernet": "<span font_family='Alegreya Sans SC' color='#858b9a'>red</span> cable",
+        "format-disconnected": "<span font_family='Alegreya Sans SC' color='#858b9a'>red</span> <span color='#dc7f70'>sin</span>",
         "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
         "format": "{icon}",
-        "format-icons": { "default": "󰾅", "performance": "󰓅", "balanced": "󰾅", "power-saver": "󰌪" }
+        "format-icons": { "default": "media", "performance": "plena", "balanced": "media", "power-saver": "reposo" }
     },
     "battery": {
         "states": { "warning": 25, "critical": 10 },
-        "format": "<span color='#d6b16a'>{icon}</span> {capacity}",
-        "format-charging": "<span color='#d6b16a'>󰂄</span> {capacity}",
-        "format-plugged": "<span color='#d6b16a'>󰚥</span> {capacity}",
-        "format-icons": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+        "format": "<span font_family='Alegreya Sans SC' color='#858b9a'>bat</span> {capacity}",
+        "format-charging": "<span font_family='Alegreya Sans SC' color='#858b9a'>carga</span> {capacity}",
+        "format-plugged": "<span font_family='Alegreya Sans SC' color='#858b9a'>enchufe</span> {capacity}",
         "tooltip-format": "{timeTo}  ·  {power:.1f} W"
     },
     "custom/wallpaper": {
-        "format": "󰸉",
+        "format": "<span font_family='Alegreya Sans SC' color='#858b9a'>lámina</span>",
         "on-click": "~/.config/hypr/scripts/wallpaper.sh",
         "tooltip-format": "Fondo de pantalla"
     },
@@ -161,17 +160,17 @@
         "return-type": "json",
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span color='#d6b16a'>󰂚</span>",
-            "none": "󰂜",
-            "dnd-notification": "<span color='#d6b16a'>󰂛</span>",
-            "dnd-none": "󰂛"
+            "notification": "<span font_family='Alegreya Sans SC' color='#d6b16a'>avisos</span>",
+            "none": "<span font_family='Alegreya Sans SC' color='#858b9a'>avisos</span>",
+            "dnd-notification": "<span font_family='Alegreya Sans SC' color='#d6b16a'>mudo</span>",
+            "dnd-none": "<span font_family='Alegreya Sans SC' color='#858b9a'>mudo</span>"
         },
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
     "custom/power": {
-        "format": "󰐥",
+        "format": "<span font_family='Alegreya Sans SC' color='#858b9a'>fin</span>",
         "on-click": "~/.config/hypr/scripts/powermenu.sh",
         "tooltip": false
     }

@@ -5,6 +5,7 @@ json="$HOME/.config/dotfiles/themes/current/theme.json"
 jq -r '.daemons[]?' "$json" | while read -r cmd; do
     case "$1" in
         start) setsid -f sh -c "exec $cmd" >/dev/null 2>&1 ;;
-        stop)  pkill -f "^${cmd%% *}" ;;
+        stop)  case $cmd in "~/"*) cmd="$HOME/${cmd#\~/}" ;; esac  # a script with a shebang shows up as "python3 /full/path"
+               pkill -f "^(python3 )?${cmd%% *}" ;;
     esac
 done

@@ -1,6 +1,6 @@
 {
   "name": "Astrolabio",
-  "description": "Observatorio de noche: tinta azul apagada, latón y pergamino; fase lunar real en la barra y escala graduada de astrolabio; letra Alegreya",
+  "description": "Observatorio de noche: el escritorio es un astrolabio que funciona, con el cielo real sobre tu latitud; barra grabada con palabras y sin iconos, almanaque de Luna y Sol, ventanas a la luz de una lámpara; letra Alegreya",
   "palette": {
     "bg0": "#0d111a",
     "bg": "#131824",
@@ -35,7 +35,7 @@
   "cursor_size": 24,
   "kde_colors": "Astrolabio",
   "buttons": ":close",
-  "daemons": [],
+  "daemons": ["~/.config/dotfiles/themes/dorado/scripts/instrumento.py"],
   "wallpaper": {
     "title": "LÁMINAS",
     "random": "Aleatoria"

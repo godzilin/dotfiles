@@ -23,3 +23,6 @@ for dir in "$src"/*/apps; do
     mkdir -p "$dst/$size/apps" && ln -sf "$dir/apple-music.svg" "$dst/$size/apps/music-app.svg"
 done
 gtk-update-icon-cache -q "$dst" 2>/dev/null || true
+# The working astrolabe is the default wallpaper: instrumento.py shows itself while this plate is pinned
+pin="$HOME/.cache/nostromo/wallpaper-dorado"
+[ -f "$pin" ] || { mkdir -p "$(dirname "$pin")"; echo "$HOME/.config/dotfiles/themes/dorado/wallpapers/rotation/b-astrolabio.jpg" > "$pin"; }

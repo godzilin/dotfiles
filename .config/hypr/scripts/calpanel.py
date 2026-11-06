@@ -19,6 +19,12 @@ from gi.repository import Gdk, GLib, Gtk  # noqa: E402
 sys.path.insert(0, os.path.expanduser("~/.config/hypr/scripts"))
 import calpopup  # noqa: E402  (events: load_cache, refresh, EVENTS, KHAL_OK)
 
+sys.path.append(os.path.expanduser("~/.config/dotfiles/themes/current/scripts"))
+try:
+    import luna  # only a theme with an almanac ships it: Moon quarters on the grid, Sun and Moon line below it
+except ImportError:
+    luna = None
+
 MONTHS = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
           "noviembre", "diciembre"]
 WEEKDAYS = ["L", "M", "X", "J", "V", "S", "D"]
@@ -77,6 +83,7 @@ class Calendar(Gtk.Window):
         for child in self.root.get_children():
             self.root.remove(child)
         busy = {d for d, _, _ in calpopup.EVENTS}
+        moons = luna.phase_days(self.year, self.month) if luna else {}
 
         head = Gtk.Box(spacing=6)
         head.pack_start(label(MONTHS[self.month - 1].capitalize(), "month", xalign=0), False, False, 0)
@@ -109,9 +116,13 @@ class Calendar(Gtk.Window):
             num = label(str(d.day), *cls)
             num.set_halign(Gtk.Align.CENTER)
             cell.pack_start(num, False, False, 0)
-            cell.pack_start(label("●", "dot", *([] if d in busy and d.month == self.month else ["empty"])), False, False, 0)
+            moon = moons.get(d)
+            cell.pack_start(label(moon or "●", "moon" if moon else "dot",
+                                  *([] if d in busy and d.month == self.month else ["empty"])), False, False, 0)
             grid.attach(cell, k % 7, 1 + k // 7, 1, 1)
         self.root.pack_start(grid, False, False, 0)
+        if luna:
+            self.root.pack_start(label(luna.almanac(), "almanac", xalign=0), False, False, 0)
 
         self.root.pack_start(Gtk.Separator(), False, False, 2)
         self.root.pack_start(label("Próximos", "section", xalign=0), False, False, 0)

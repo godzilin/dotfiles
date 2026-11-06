@@ -19,7 +19,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
 | `morado` | **Neón**: synthwave sobrio; noche violeta, acento lavanda y algo de cian, titulares en Orbitron |
 | `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
-| `dorado` | **Astrolabio**: observatorio de noche; tinta azul apagada, latón y pergamino, escala graduada y fase lunar real en la barra, letra Alegreya |
+| `dorado` | **Astrolabio**: observatorio de noche; el escritorio es un astrolabio que funciona con el cielo real, barra grabada con palabras en vez de iconos, almanaque de Luna y Sol, letra Alegreya |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
@@ -206,13 +206,18 @@ en planta, el logo de Arch con su trazado, un tornillo M24 y la planta de un tal
 ## dorado: Astrolabio
 
 Un observatorio de noche pensado para muchas horas de pantalla: tinta azul apagada, texto pergamino (13:1, sin negro ni
-blanco puros) y un único acento de latón que solo marca lo importante. La barra va pegada arriba como el limbo de un
-astrolabio, con su escala graduada; el escritorio tiene números romanos y el activo lleva el índice de latón. Junto al
-reloj está la fase real de la Luna (`scripts/luna.py`; al pasar el ratón, iluminación y próximas llena y nueva), que
+blanco puros) y un único acento de latón que solo marca lo importante. El escritorio es un astrolabio que funciona
+(`scripts/instrumento.py`, una capa bajo las ventanas): cada minuto la red gira a la hora sidérea real de tu latitud, las
+estrellas sobre el horizonte se encienden, el Sol y la Luna están en su sitio y la regla lee la hora solar en el limbo.
+Se muestra mientras la lámina del astrolabio esté fijada; otra lámina o "Aleatoria" lo ocultan. La barra va pegada
+arriba como el limbo, con su escala graduada, y no lleva iconos: lecturas grabadas en versalitas (`VOL 40`, `LUZ 81`) con
+cifras elzevirianas. El escritorio activo lleva el índice de latón y solo se ilumina la ventana en la que trabajas, con
+las demás en penumbra. Junto al
+reloj están la fase real de la Luna y el signo del Sol (`scripts/luna.py`; al pasar el ratón, iluminación, próximas llena y nueva, y salida y puesta de Sol), que
 también sale en la pantalla de bloqueo ("La cúpula está cerrada"). Firefox usa la misma escala entre las barras y la
 página, sin marcos ni mayúsculas, y la nueva pestaña pone el planisferio muy tenue detrás de "Linux". Obsidian lee como
-un almanaque: Alegreya, línea de ancho cómodo y citas colgadas de un índice de latón. Calendario y tiempo son páginas de
-almanaque, las notificaciones son opacas para que no se transparente nada bajo el texto, fastfetch dibuja el logo de
+un almanaque: Alegreya, línea de ancho cómodo y citas colgadas de un índice de latón. El calendario marca las fases de la
+Luna en su día, con la salida y puesta de Sol, y el tiempo es otra página de almanaque; las notificaciones son opacas para que no se transparente nada bajo el texto, fastfetch dibuja el logo de
 Arch en latón y las carpetas son de latón pálido (Papirus-Dorado).
 
 ![Escritorio](../.config/dotfiles/themes/dorado/screenshots/desktop.png)

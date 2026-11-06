@@ -7,21 +7,13 @@ Needs pycairo, numpy and Pillow. Run: python3 astrolabio.py"""
 import math
 import os
 import random
-import tempfile
 from pathlib import Path
+
+import cairo
 
 HERE = Path(__file__).parent
 FONTS = HERE.parent / "fonts"
 OUT = HERE / "rotation"
-# cairo finds fonts through fontconfig: add fonts/ so this works whichever theme is active
-conf = tempfile.NamedTemporaryFile("w", suffix=".conf", delete=False)
-conf.write(f"<fontconfig><include>/etc/fonts/fonts.conf</include><dir>{FONTS}</dir></fontconfig>")
-conf.close()
-os.environ["FONTCONFIG_FILE"] = conf.name
-
-import cairo  # noqa: E402
-import numpy as np  # noqa: E402
-from PIL import Image  # noqa: E402
 
 W, H = 1920, 1200
 INK, INK2 = (0x0d, 0x11, 0x1a), (0x19, 0x20, 0x30)
@@ -224,11 +216,10 @@ def planisferio():
     finish(s, "a-planisferio.jpg")
 
 
-def astrolabio():
-    s, c = sheet()
-    dust(c, 500, 2)
-    cx, cy, R = W / 2, H / 2, 480
-    eps, phi = math.radians(23.44), math.radians(43.26)
+def tympan(c, cx, cy, R, phi):
+    """The fixed part of the instrument for latitude phi (radians): limb, hours and plate. Returns the radii of the
+    equator and of the Tropic of Cancer; instrumento.py draws the moving rete over this."""
+    eps = math.radians(23.44)
     re = R / math.tan((math.pi / 2 + eps) / 2)  # the Tropic of Capricorn is the plate's edge
     rcancer = re * math.tan((math.pi / 2 - eps) / 2)
     for r_, a, w in ((R + 92, 0.7, 2.2), (R + 88, 0.4, 1), (R + 50, 0.5, 1)):
@@ -262,6 +253,14 @@ def astrolabio():
         yc, r_ = alm(math.radians(d))
         ring(c, cx, cy - yc, r_, BRASS if d == 0 else (0x5a, 0x63, 0x78), 0.75 if d == 0 else 0.7, 1.3 if d == 0 else 0.9)
     c.restore()
+    return re, rcancer
+
+
+def astrolabio():
+    s, c = sheet()
+    dust(c, 500, 2)
+    cx, cy, R = W / 2, H / 2, 480
+    re, rcancer = tympan(c, cx, cy, R, math.radians(43.26))
     # the rete in brass, over the plate: ecliptic, its zodiac scale and the star pointers
     ec = (R - rcancer) / 2, (R + rcancer) / 2
     ecx, ecy = cx, cy - ec[0]
@@ -545,6 +544,15 @@ def arch():
 
 
 if __name__ == "__main__":
+    # cairo finds fonts through fontconfig: add fonts/ so this works whichever theme is active
+    import tempfile
+    conf = tempfile.NamedTemporaryFile("w", suffix=".conf", delete=False)
+    conf.write(f"<fontconfig><include>/etc/fonts/fonts.conf</include><dir>{FONTS}</dir></fontconfig>")
+    conf.close()
+    os.environ["FONTCONFIG_FILE"] = conf.name
+    import numpy as np  # not at the top: instrumento.py imports this module and only needs the drawing helpers
+    from PIL import Image
+
     planisferio()
     astrolabio()
     fases()

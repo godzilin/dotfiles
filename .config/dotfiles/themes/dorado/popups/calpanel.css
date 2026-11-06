@@ -1,5 +1,5 @@
 /* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: a page of an almanac. Night ink, the month in Alegreya, today
-   ringed in brass, small gold dots under busy days, events after a thin brass index */
+   ringed in brass, small gold dots under busy days, the Moon's quarters on their real days, sunrise and sunset, events after a thin brass index */
 window { background: #131824; }
 * { font-family: "Alegreya Sans", sans-serif; color: #e4dcc8; }
 .month { font-family: "Alegreya", serif; font-size: 19pt; }
@@ -16,6 +16,9 @@ button.nav label { font-size: 12pt; color: #b9b3a4; }
 .day.today { box-shadow: inset 0 0 0 1px #d6b16a; color: #d6b16a; font-weight: bold; }
 .dot { font-size: 5pt; color: #d6b16a; padding-bottom: 2px; }
 .dot.empty { color: transparent; }
+.moon { font-family: "Symbols Nerd Font"; font-size: 10pt; color: #d6b16a; }
+.moon.empty { color: #858b9a; }
+.almanac { font-size: 12pt; font-style: italic; color: #b9b3a4; }
 separator { background: #333c50; min-height: 1px; }
 .section { font-size: 10pt; font-weight: bold; color: #858b9a; }
 .event-bar { background: #555e72; min-width: 2px; border-radius: 1px; }
