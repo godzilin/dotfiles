@@ -2,7 +2,8 @@
 """Paint VS Code (Code - OSS) with the active theme's palette; it reloads settings.json by itself.
 
 Everything comes from themes/current/theme.json, so a new theme needs nothing here. A theme whose palette
-is not its window colours (azul: MS-DOS terminal) adds "vscode": {"palette", "colors", "tokens"} to override them.
+is not its window colours (azul: MS-DOS terminal) adds "vscode": {"palette", "colors", "tokens"} to override them;
+"settings" there sets any other VS Code key (layout...) only while that theme is active.
 `theme.py --test` checks every theme without touching the real settings.
 """
 import json
@@ -100,6 +101,7 @@ def theme_settings(theme):
         },
         "editor.fontFamily": mono,
         "terminal.integrated.fontFamily": mono,
+        **override.get("settings", {}),
     }
 
 
@@ -111,6 +113,9 @@ def apply(theme_json, settings):
         # comments or trailing commas are valid for VS Code but not here: never rewrite what can't be parsed
         print(f"vscode: {settings} no es JSON puro; no lo toco", file=sys.stderr)
         return False
+    for j in THEMES.glob("*/theme.json"):  # keys another theme's "settings" left behind
+        for key in json.loads(j.read_text()).get("vscode", {}).get("settings", {}):
+            data.pop(key, None)
     data.update(theme_settings(theme))
     settings.parent.mkdir(parents=True, exist_ok=True)
     tmp = settings.with_suffix(".tmp")
@@ -134,6 +139,11 @@ def test():
             bg0 = out["workbench.colorCustomizations"]["editor.background"]
             for k, c in out["editor.tokenColorCustomizations"].items():
                 assert contrast(c, bg0) >= 4.5, (j.parent.name, k, c)
+        by_name = {j.parent.name: j for j in jsons}
+        apply(by_name["blanco"], f)
+        assert "window.controlsStyle" in json.loads(f.read_text())
+        apply(by_name["azul"], f)
+        assert "window.controlsStyle" not in json.loads(f.read_text()), "theme layout must not leak to the next theme"
         bad = '{\n  // comment\n  "a": 1,\n}'
         f.write_text(bad)
         assert not apply(jsons[0], f) and f.read_text() == bad, "unparsable settings must stay intact"

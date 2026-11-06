@@ -39,6 +39,11 @@
     "nwg-dock-hyprland -d -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-pc'"
   ],
   "vscode": {
+    "settings": {
+      "window.menuBarVisibility": "toggle", "window.controlsStyle": "hidden",
+      "workbench.activityBar.location": "top", "workbench.layoutControl.enabled": false,
+      "workbench.editor.tabActionLocation": "left", "editor.minimap.enabled": false
+    },
     "colors": {
       "editor.selectionBackground": "#b3d7ff", "editor.lineHighlightBackground": "#f4f7fb",
       "editorLineNumber.foreground": "#aeaeb2", "editorLineNumber.activeForeground": "#1d1d1f",
