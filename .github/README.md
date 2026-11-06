@@ -28,6 +28,8 @@ Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `theme
 
 ## naranja: Hi-Fi
 
+![Escritorio](../.config/dotfiles/themes/naranja/screenshots/desktop.png)
+
 Un receptor de los años 70. La barra, abajo, es el frontal de aluminio: presintonías como teclas (la pulsada con su
 luz encendida), rótulos impresos sobre cada lectura y un dial iluminado donde las horas son las frecuencias y la aguja
 marca la hora (`scripts/dial.py`). En el escritorio, dos vúmetros de aguja se mueven con lo que suena de verdad
@@ -113,9 +115,11 @@ Europa, fiordos...) con el lugar, autor y licencia en una esquina; créditos en
 
 ## negro: Fósforo
 
+![Escritorio](../.config/dotfiles/themes/negro/screenshots/desktop.png)
+
 Un tubo de fósforo verde P1 sobre toda la pantalla: `hypr/crt.glsl` convierte cada color en brillo verde, curva
 ligeramente el cristal y añade líneas de barrido y halo, también en Firefox, fotos o VS Code. Super+Shift+C o la celda
-`CRT` de la barra lo apagan. Sin fondo, negro puro. Todo en IBM 3270, ventanas cuadradas, sin sombras, blur ni animaciones.
+`CRT` de la barra lo apagan. La captura no muestra el tubo: las capturas de pantalla no incluyen el shader. Sin fondo, negro puro. Todo en IBM 3270, ventanas cuadradas, sin sombras, blur ni animaciones.
 
 Fuente `ttf-3270-nerd` (repos oficiales), carpetas verdes (Papirus-Verde), cursor Capitaine. Primera vez:
 `~/.config/dotfiles/themes/negro/install.sh`.
@@ -147,6 +151,8 @@ Display PostScript, toro, Julia, ciudad de cubos, Lorenz, moiré, curvas de nive
 `~/.config/dotfiles/themes/gris/install.sh`.
 
 ## morado: Yoru
+
+![Escritorio](../.config/dotfiles/themes/morado/screenshots/desktop.png)
 
 Noche en Tokio. La barra es un poste de rótulos verticales a la derecha, que se lee de arriba abajo: escritorios
 en numerales kanji, hora y fecha en paneles encendidos y cada lectura con su carácter (音 sonido, 光 brillo, 網 red,

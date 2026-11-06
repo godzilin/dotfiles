@@ -64,13 +64,13 @@
 
     // Bluetooth readout: click toggles power, right click opens the KDE Bluetooth settings
     "bluetooth": {
+        "justify": "center",
         "format": "<span font='Michroma 6.5' color='#57432f'>BT</span>\n{status}",
         "format-on": "<span font='Michroma 6.5' color='#57432f'>BT</span>\nON",
         "format-off": "<span font='Michroma 6.5' color='#57432f'>BT</span>\nOFF",
         "format-disabled": "<span font='Michroma 6.5' color='#57432f'>BT</span>\nOFF",
         "format-connected": "<span font='Michroma 6.5' color='#57432f'>BT</span>\n{device_alias}",
         "format-connected-battery": "<span font='Michroma 6.5' color='#57432f'>BT</span>\n{device_alias} {device_battery_percentage}%",
-        "max-length": 60,  // counts the colour markup too (~30 chars), so names up to ~30 fit
         "tooltip-format": "{controller_alias} · {status}",
         "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
@@ -102,8 +102,9 @@
         "on-click": "~/.config/hypr/scripts/calendar.sh"
     },
     "clock": {
+        "justify": "center",
         "locale": "es_ES.utf8",
-        "format": "<span font='Michroma 6.5' color='#57432f'>{:L%a %d %b}</span>\n<span font='DM Mono Medium 14'>{:%H:%M}</span>",
+        "format": "<span font='Michroma 6.5' color='#57432f'>{:L%a %d %b</span>\n<span font='DM Mono Medium 14'>%H:%M}</span>",
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/calendar.sh",
         "calendar": {
@@ -117,6 +118,7 @@
     },
     "tray": { "icon-size": 14, "spacing": 8 },
     "pulseaudio": {
+        "justify": "center",
         "format": "<span font='Michroma 6.5' color='#57432f'>VOLUMEN</span>\n{volume}",
         "format-muted": "<span font='Michroma 6.5' color='#57432f'>VOLUMEN</span>\n<span color='#c02f1c'>MUTE</span>",
         "on-click": "pavucontrol",
@@ -125,9 +127,11 @@
         "tooltip-format": "{desc}"
     },
     "backlight": {
+        "justify": "center",
         "format": "<span font='Michroma 6.5' color='#57432f'>LUZ</span>\n{percent}"
     },
     "network": {
+        "justify": "center",
         "format-wifi": "<span font='Michroma 6.5' color='#57432f'>RED</span>\n{essid}",
         "format-ethernet": "<span font='Michroma 6.5' color='#57432f'>RED</span>\nETH",
         "format-disconnected": "<span font='Michroma 6.5' color='#57432f'>RED</span>\n<span color='#c02f1c'>OFF</span>",
@@ -135,6 +139,7 @@
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
+        "justify": "center",
         "format": "<span font='Michroma 6.5' color='#57432f'>MODO</span>\n{icon}",
         "format-icons": {
             "default": "BAL",
@@ -144,6 +149,7 @@
         }
     },
     "battery": {
+        "justify": "center",
         "states": { "warning": 25, "critical": 10 },
         "format": "<span font='Michroma 6.5' color='#57432f'>PILA</span>\n{capacity}",
         "format-charging": "<span font='Michroma 6.5' color='#57432f'>PILA</span>\n{capacity}<span color='#f28c28'>+</span>",

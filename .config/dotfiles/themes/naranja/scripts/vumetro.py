@@ -14,7 +14,7 @@ import cairo
 import numpy as np
 
 W, H, GAP = 250, 150, 14
-MARGIN_RIGHT, MARGIN_BOTTOM = 32, 28
+MARGIN_RIGHT, MARGIN_BOTTOM = 32, 92  # clear of the bar, which an exclusive zone of -1 ignores
 RATE, CHUNK = 8000, 2 * 2 * 400  # 50 ms of s16le stereo
 DB_MIN, DB_MAX = -20.0, 3.0
 SPAN = math.radians(74)  # sweep of the needle
@@ -126,6 +126,7 @@ def daemon():
     Shell.set_margin(win, Shell.Edge.BOTTOM, MARGIN_BOTTOM)
     Shell.set_exclusive_zone(win, -1)
     win.set_size_request(2 * W + GAP, H)
+    win.set_app_paintable(True)
 
     listener = Listener()
     listener.start()

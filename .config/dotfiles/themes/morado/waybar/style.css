@@ -11,9 +11,9 @@
 @define-color cyan   #6fd9e0;
 
 * {
-    font-family: "Dela Gothic One", "Zen Kaku Gothic New", "Symbols Nerd Font", sans-serif;
-    font-size: 15px;
-    font-weight: 400;
+    font-family: "Zen Kaku Gothic New", "Symbols Nerd Font", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
     border: none;
     min-height: 0;
     min-width: 0;
@@ -33,8 +33,8 @@ tooltip label { color: @text; font-family: "Zen Kaku Gothic New"; font-size: 13p
 }
 
 /* The big lit signs */
-#custom-launcher { background: @violet; color: @night; font-size: 20px; margin-top: 6px; padding: 5px 0; }
-#clock { background: @paper; color: @night; font-size: 19px; padding: 6px 0; }
+#custom-launcher { font-family: "Dela Gothic One"; font-weight: 400; background: @violet; color: @night; font-size: 21px; margin-top: 6px; padding: 5px 0; }
+#clock { font-family: "Dela Gothic One"; font-weight: 400; background: @paper; color: @night; font-size: 19px; padding: 6px 0; }
 #custom-hizuke { background: @lantern; color: @night; }
 
 #workspaces { margin: 0 5px; }
