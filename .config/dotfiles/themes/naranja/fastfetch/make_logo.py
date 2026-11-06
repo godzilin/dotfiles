@@ -1,36 +1,59 @@
 #!/usr/bin/env python3
-"""Draw the fastfetch logo into skull.txt from the same vector skull as the wallpapers.
-The SVG is rasterised small and packed into half-block characters, so curves stay round. Run: python3 make_logo.py"""
-import os
-import subprocess
+"""Write skull.txt: the ship's warning plate. A bone-amber skull whose nasal cavity is the Arch logo, one eye still lit,
+over the four diagonal stripes of the theme, with the scanlines of a CRT. intro.py scans it in. Run: python3 make_logo.py"""
 import sys
+from pathlib import Path
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "wallpapers"))
-from skulls import HEAD, NOSE  # noqa: E402
+import numpy as np
+from PIL import Image, ImageDraw, ImageFilter
 
-COLS, ROWS = 30, 26  # wide and short: same height as the info column
-X0, Y0, UW, UH = -50, -60, 100, 128  # skull units shown
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[2]))
+import logolib as L  # noqa: E402
 
-svg = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{COLS * 8}" height="{ROWS * 8}" viewBox="{X0} {Y0} {UW} {UH}" preserveAspectRatio="none">'
-       f'<rect x="{X0}" y="{Y0}" width="{UW}" height="{UH}" fill="black"/>'
-       f'<path d="{HEAD}" fill="white"/>'
-       '<ellipse cx="-19" cy="12" rx="13" ry="12" fill="black"/><ellipse cx="19" cy="12" rx="13" ry="12" fill="black"/>'
-       f'<path d="{NOSE}" fill="black" transform="scale(1.3) translate(0,-6)"/>'
-       + "".join(f'<path d="M{x},46 V64" stroke="black" stroke-width="3.2"/>' for x in (-15, -5, 5, 15))
-       + '</svg>')
-png = subprocess.run(["rsvg-convert"], input=svg.encode(), capture_output=True, check=True).stdout
-# area-average down to the pixel grid, one grey byte per pixel
-grey = subprocess.run(["magick", "png:-", "-colorspace", "gray", "-filter", "box", "-resize", f"{COLS}x{ROWS}!", "gray:-"],
-                      input=png, capture_output=True, check=True).stdout
-lit = [[grey[r * COLS + c] > 110 for c in range(COLS)] for r in range(ROWS)]
+COLS, ROWS2 = 50, 40
+W, H = L.size(COLS, ROWS2)
+BG = (0x1a, 0x18, 0x14)
+HOLE = (*BG, 255)
+STRIPES = ((224, 195, 106), (233, 162, 59), (217, 101, 43), (200, 85, 61))
+img = Image.new("RGBA", (W, H), (*BG, 0))
+d = ImageDraw.Draw(img)
+band, slope = H * 0.058, H * 0.34
+for i, ink in enumerate(STRIPES):
+    y0 = H * 0.52 + (i - 2) * band
+    d.polygon([(0, y0 + slope), (W, y0 - slope), (W, y0 - slope + band * 0.86), (0, y0 + slope + band * 0.86)], fill=(*ink, 255))
+cx = W / 2
+skull = Image.new("L", (W, H), 0)
+s = ImageDraw.Draw(skull)
+s.ellipse([cx - W * 0.31, H * 0.02, cx + W * 0.31, H * 0.74], fill=255)
+s.rounded_rectangle([cx - W * 0.18, H * 0.62, cx + W * 0.18, H * 0.97], radius=H // 28, fill=255)
+yy = np.arange(H)[:, None] / H
+bone = np.array((232, 214, 170), float) * (1 - yy[:, :, None] ** 1.4) + np.array((150, 104, 44), float) * yy[:, :, None] ** 1.4
+xx = np.abs(np.arange(W)[None, :] - cx) / (W * 0.31)
+bone = np.repeat(bone, W, axis=1) * (1 - 0.4 * (xx ** 3).clip(0, 1))[:, :, None]
+head = Image.fromarray(bone.clip(0, 255).astype(np.uint8)).convert("RGBA")
+ring = Image.new("RGBA", (W, H), HOLE)
+ring.putalpha(skull.filter(ImageFilter.MaxFilter(25)))
+img.alpha_composite(ring)
+head.putalpha(skull)
+img.alpha_composite(head)
+d = ImageDraw.Draw(img)
+for side in (-1, 1):  # sockets: wide, tilted inwards
+    ex, ey, rx, ry = cx + side * W * 0.145, H * 0.40, W * 0.105, H * 0.105
+    d.polygon([(ex - rx, ey - ry * 0.25 + side * ry * 0.35), (ex - rx * 0.4, ey - ry * (1.0 + side * 0.25)), (ex + rx * 0.4, ey - ry * (1.0 - side * 0.25)),
+               (ex + rx, ey - ry * 0.25 - side * ry * 0.35), (ex + rx * 0.8, ey + ry * 0.9), (ex - rx * 0.8, ey + ry * 0.9)], fill=HOLE)
+er = W * 0.024
+ex, ey = cx + W * 0.145, H * 0.42
+d.ellipse([ex - er, ey - er, ex + er, ey + er], fill=(233, 62, 40, 255))
+nose = L.arch(int(H * 0.17))
+hole = Image.new("RGBA", nose.size, HOLE)
+hole.putalpha(nose)
+img.alpha_composite(hole, (round(cx - nose.width / 2), round(H * 0.525)))
+for i in range(-2, 3):  # teeth
+    x = cx + i * W * 0.062
+    d.rectangle([x - W * 0.008, H * 0.77, x + W * 0.008, H * 0.97], fill=HOLE)
+d.rectangle([cx - W * 0.2, H * 0.755, cx + W * 0.2, H * 0.772], fill=HOLE)
 
-lines = []
-for r in range(0, ROWS, 2):
-    band = 1 + min(r * 4 // ROWS, 3)  # tape-stripe colours, top to bottom
-    row = "".join("█" if a and b else "▀" if a else "▄" if b else " " for a, b in zip(lit[r], lit[r + 1]))
-    if row.strip():
-        lines.append(f"${band}{row.rstrip()}")
-here = os.path.dirname(os.path.realpath(__file__))
-with open(os.path.join(here, "skull.txt"), "w") as f:
-    f.write("\n".join(lines) + "\n")
-print("\n".join(lines))
+px = np.asarray(img.resize((COLS, ROWS2), Image.BOX)).copy()
+px[1::2, :, :3] = (px[1::2, :, :3] * 0.72).astype(np.uint8)  # scanlines
+L.write(HERE / "skull.txt", L.blocks(Image.fromarray(px, "RGBA"), COLS, ROWS2, BG, resample=Image.NEAREST))

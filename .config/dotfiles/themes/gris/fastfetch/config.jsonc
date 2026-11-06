@@ -1,10 +1,9 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  // Arch logo lit like the grey cube (make_logo.py)
+  // A tilted cube in the four greys with Arch on its face, dithered (make_logo.py)
   "logo": {
-    "type": "file",
+    "type": "file-raw",
     "source": "~/.config/fastfetch/logo.txt",
-    "color": { "1": "38;2;170;170;170", "2": "38;2;85;85;85", "3": "38;2;0;0;0" },
     "padding": { "top": 1, "left": 1, "right": 3 }
   },
   "display": {

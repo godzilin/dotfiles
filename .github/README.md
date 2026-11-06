@@ -59,7 +59,7 @@ Imitación de macOS Sonoma en claro: barra de menús translúcida (menú de Arch
 Dock con `nwg-dock-hyprland`, Spotlight con fuzzel, notificaciones y bloqueo como en macOS, Terminal.app "Basic"
 con el prompt de zsh, Firefox tipo Safari con semáforos y fondos generados por código (`wallpapers/macos.py`, con nombres de hitos de
 Linux: `1991-linux-0.01`, `2002-arch-0.1`, `2021-cachyos`...). Todo lo que era Apple es Linux: el logo de Arch en
-la esquina, "Acerca de CachyOS", el logo de Arch con las franjas del arcoíris de 1977 en fastfetch
+la esquina, "Acerca de CachyOS", el logo de Arch como gominola brillante con las franjas del arcoíris de 1977 y su reflejo en fastfetch
 (`fastfetch/make_logo.py`) y el gestor de archivos con una cara de pingüino (`icons/file-manager.svg`).
 Firefox es Safari: una sola barra arriba con los semáforos, los botones y la dirección centrada, las pestañas debajo
 a partes iguales (la abierta en blanco) y la página de inicio con "Favoritos". En Obsidian, semáforos arriba a la
@@ -79,7 +79,7 @@ Barra de tareas con botón Inicio, botones de ventana y bandeja con los iconos a
 (GTK3 + gtk-layer-shell) con la franja "Linux98", Programas por categorías, Documentos recientes, Configuración,
 Buscar, Ejecutar y el diálogo "Apagar el sistema"; bordes con el degradado azul de la barra de título de Windows 98,
 sin animaciones ni sombras; terminal tipo MS-DOS con `ARCH:\HOME\GODZILIN>`; inicio de sesión "Bienvenido a
-Linux"; botón Inicio y fastfetch con el logo de Arch en los cuatro colores de la bandera (`icons/make_start.py`,
+Linux"; botón Inicio y fastfetch con el logo de Arch como bandera ondeante de cuatro colores y su estela de píxeles (`icons/make_start.py`,
 `fastfetch/make_logo.py`); Firefox como Internet Explorer 5; notificaciones como ventanas de Windows; Qt con el estilo "Windows" de Qt.
 Calendario y tiempo son paneles de Windows 98 ("Propiedades de Fecha y hora").
 
@@ -116,7 +116,7 @@ Un bosque al atardecer: base verde casi negra, musgo, luz de sol, corteza y baya
 "cantos rodados" redondeados que flotan sobre el fondo, con iconos de hojas (cada escritorio es un brote; en el
 que estás ha crecido un árbol). Bordes de ventana con degradado musgo→sol, esquinas muy redondas y animaciones
 lentas con un pequeño rebote, como hojas que se posan; bloqueo con la hora en Fraunces y saludo según la hora;
-terminal con JetBrains Mono y una viñeta del Teide entre abetos en fastfetch (`fastfetch/make_logo.py`); carpetas verdes (Papirus-Verde).
+terminal con JetBrains Mono y una viñeta en fastfetch con el logo de Arch como montaña nevada entre abetos (`fastfetch/make_logo.py`); carpetas verdes (Papirus-Verde).
 Firefox y Obsidian son de cantos rodados: pestañas en píldora con brillo de musgo, una hoja ante la dirección y los
 H1, la página en un hueco redondeado y la nueva pestaña con "Bosque" en Fraunces. Calendario y tiempo son paneles
 propios: el cielo visto bajo las copas.
@@ -178,7 +178,7 @@ Display PostScript, toro, Julia, ciudad de cubos, Lorenz, moiré, curvas de nive
 Synthwave de 1986 pero sin estridencias: noche violeta, acento lavanda y un poco de cian, Orbitron para los titulares
 (la hora del bloqueo, "LINUX" en la nueva pestaña de Firefox, los títulos de Obsidian), Rajdhani para la interfaz y
 Share Tech Mono en la terminal. Parte del Nostromo (barra, cinta numerada en las pestañas, franja de violetas) con
-carpetas violetas (Papirus-Morado), el logo de Arch en franjas de lavanda a cian en fastfetch y calendario y tiempo en
+carpetas violetas (Papirus-Morado), el logo de Arch ante un sol lavanda en rodajas y una rejilla en perspectiva en fastfetch y calendario y tiempo en
 paneles propios.
 
 ![Escritorio](../.config/dotfiles/themes/morado/screenshots/desktop.png)
@@ -194,7 +194,7 @@ mayúsculas B612 (la letra de las cabinas de Airbus), un amarillo de lápiz para
 como recuadros rotulados (la abierta en negativo), la dirección tras "REF.", reglas en los bordes de la página y un
 cajetín abajo ("NO MEDIR SOBRE EL PLANO"); la nueva pestaña pone LINUX con su cota. Obsidian numera los títulos como
 las secciones de un plano (1, 1.1...), las citas son notas en recuadro y la barra de estado es el cajetín. Calendario y
-tiempo son tablas de plano; fastfetch dibuja el logo de Arch de blanco al azul del papel; carpetas cian (Papirus-Cian).
+tiempo son tablas de plano; fastfetch traza el logo de Arch como plano acotado, con puntos Braille; carpetas cian (Papirus-Cian).
 
 ![Escritorio](../.config/dotfiles/themes/cian/screenshots/desktop.png)
 
@@ -217,8 +217,8 @@ reloj están la fase real de la Luna y el signo del Sol (`scripts/luna.py`; al p
 también sale en la pantalla de bloqueo ("La cúpula está cerrada"). Firefox usa la misma escala entre las barras y la
 página, sin marcos ni mayúsculas, y la nueva pestaña pone el planisferio muy tenue detrás de "Linux". Obsidian lee como
 un almanaque: Alegreya, línea de ancho cómodo y citas colgadas de un índice de latón. El calendario marca las fases de la
-Luna en su día, con la salida y puesta de Sol, y el tiempo es otra página de almanaque; las notificaciones son opacas para que no se transparente nada bajo el texto, fastfetch dibuja el logo de
-Arch en latón y las carpetas son de latón pálido (Papirus-Dorado).
+Luna en su día, con la salida y puesta de Sol, y el tiempo es otra página de almanaque; las notificaciones son opacas para que no se transparente nada bajo el texto, fastfetch dibuja un astrolabio de
+latón con el logo de Arch y las carpetas son de latón pálido (Papirus-Dorado).
 
 ![Escritorio](../.config/dotfiles/themes/dorado/screenshots/desktop.png)
 

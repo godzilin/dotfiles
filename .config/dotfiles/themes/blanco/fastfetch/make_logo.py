@@ -1,27 +1,42 @@
 #!/usr/bin/env python3
-"""Write logo.txt: the Arch Linux logo (../icons/archlinux.svg) in solid half blocks, striped top to bottom in the
-six colours of the 1977 rainbow (green, yellow, orange, red, purple, blue; the colours are in config.jsonc).
-Needs rsvg-convert (librsvg). Run: python3 make_logo.py"""
-import io
-import subprocess
+"""Write logo.txt: the Arch logo as a glossy gel gumdrop in the six stripes of the 1977 rainbow, standing on a white
+shelf with its reflection under it. Run: python3 make_logo.py"""
+import sys
 from pathlib import Path
 
-from PIL import Image
+import numpy as np
+from PIL import Image, ImageChops, ImageDraw, ImageFilter
 
-W, H = 44, 40  # pixels; two pixel rows per text row
-here = Path(__file__).parent
-png = subprocess.run(["rsvg-convert", "-w", "440", "-h", "440", str(here.parent / "icons/archlinux.svg")],
-                     capture_output=True, check=True).stdout
-a = Image.open(io.BytesIO(png)).split()[-1].resize((W, H), Image.BOX)
-px = [[a.getpixel((x, y)) > 110 for x in range(W)] for y in range(H)]
-for y in range(1, H - 1):  # fill one-pixel holes the small size leaves inside the shape
-    for x in range(1, W - 1):
-        px[y][x] |= px[y - 1][x] + px[y + 1][x] + px[y][x - 1] + px[y][x + 1] >= 3
-on = lambda x, y: px[y][x]
-rows = H // 2
-out = []
-for r in range(rows):
-    cells = "".join("█" if on(x, 2 * r) and on(x, 2 * r + 1) else "▀" if on(x, 2 * r) else "▄" if on(x, 2 * r + 1) else " "
-                    for x in range(W))
-    out.append(f"${1 + r * 6 // rows}{cells.rstrip()}")
-(here / "logo.txt").write_text("\n".join(out) + "\n")
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parents[2]))
+import logolib as L  # noqa: E402
+
+COLS, ROWS2 = 46, 42
+W, H = L.size(COLS, ROWS2)
+STRIPES = [(97, 187, 70), (253, 184, 39), (245, 130, 31), (224, 58, 62), (150, 61, 151), (0, 157, 220)]
+
+mask = L.arch(H * 74 // 100)
+mw, mh = mask.size
+stripe = np.array(STRIPES, float)[(np.arange(mh) * 6 // mh)]
+body = np.repeat(stripe[:, None, :], mw, axis=1)
+# depth: darker towards the rim, like a lens of coloured glass
+inner = np.asarray(mask.filter(ImageFilter.GaussianBlur(mh / 22)), float) / 255
+body *= (0.62 + 0.38 * np.clip((inner - 0.5) * 2, 0, 1))[:, :, None]
+gem = Image.fromarray(body.clip(0, 255).astype(np.uint8)).convert("RGBA")
+gem.putalpha(mask)
+# gloss: a white crescent over the top half, cut to the shape
+gloss = Image.new("L", mask.size, 0)
+ImageDraw.Draw(gloss).ellipse([-mw * 0.3, -mh * 0.85, mw * 1.3, mh * 0.34], fill=105)
+gloss = ImageChops.multiply(gloss.filter(ImageFilter.GaussianBlur(mh / 60)), mask.filter(ImageFilter.MinFilter(9)))
+gem.alpha_composite(Image.merge("RGBA", (*[Image.new("L", mask.size, 255)] * 3, gloss)))
+
+img = Image.new("RGBA", (W, H), (255, 255, 255, 0))
+x, y = (W - mw) // 2, H * 3 // 100
+img.alpha_composite(gem, (x, y))
+# the reflection fades out on the shelf
+ref = gem.transpose(Image.FLIP_TOP_BOTTOM).crop((0, 0, mw, H - y - mh))
+ramp = np.linspace(0.30, 0, ref.height)[:, None]
+r = np.asarray(ref).astype(float)
+r[:, :, 3] *= ramp
+img.alpha_composite(Image.fromarray(r.astype(np.uint8)), (x, y + mh))
+L.write(HERE / "logo.txt", L.blocks(img, COLS, ROWS2, (255, 255, 255), cut=14))

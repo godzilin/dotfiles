@@ -1,10 +1,9 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  // Arch logo in the four panes of the waving flag (make_logo.py); keys as in "Propiedades del sistema"
+  // Arch as a waving four-pane flag with its pixel trail (make_logo.py); keys as in "Propiedades del sistema"
   "logo": {
-    "type": "file",
+    "type": "file-raw",
     "source": "~/.config/fastfetch/logo.txt",
-    "color": { "1": "38;2;255;0;0", "2": "38;2;0;170;0", "3": "38;2;0;0;255", "4": "38;2;255;204;0" },
     "padding": { "top": 1, "left": 1, "right": 3 }
   },
   "display": {

@@ -1,9 +1,8 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
-    "type": "file",
+    "type": "file-raw",
     "source": "~/.config/fastfetch/logo.txt",
-    "color": { "1": "38;2;243;248;254", "2": "38;2;195;214;238", "3": "38;2;142;174;214", "4": "38;2;88;132;189" },
     "padding": { "top": 1, "left": 1, "right": 3 }
   },
   "display": {
