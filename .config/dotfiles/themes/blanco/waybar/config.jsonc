@@ -6,7 +6,7 @@
     "spacing": 0,
 
     "modules-left": ["custom/arch", "hyprland/workspaces", "hyprland/window"],
-    "modules-right": ["custom/claude", "tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/wallpaper", "custom/spotlight", "custom/control", "custom/clock"],
+    "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/wallpaper", "custom/claude", "custom/spotlight", "custom/control", "custom/clock"],
 
     "custom/claude": {
         "exec": "~/.config/hypr/scripts/claude-spin.py",

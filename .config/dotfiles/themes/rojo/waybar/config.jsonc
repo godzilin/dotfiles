@@ -7,7 +7,7 @@
 
     "modules-left": ["custom/taller", "hyprland/workspaces", "custom/app"],
     "modules-center": ["custom/clock"],
-    "modules-right": ["custom/claude", "tray", "custom/weather", "network", "pulseaudio", "backlight", "battery", "custom/wallpaper", "custom/power"],
+    "modules-right": ["tray", "custom/weather", "network", "pulseaudio", "backlight", "battery", "custom/wallpaper", "custom/claude", "custom/power"],
 
     // The red wedge on the left (ЦЕХ, "workshop"): opens the launcher
     "custom/claude": {

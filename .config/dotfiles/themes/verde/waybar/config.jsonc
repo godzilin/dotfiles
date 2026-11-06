@@ -10,14 +10,14 @@
 
     "modules-left": ["group/home"],
     "modules-center": ["clock"],
-    "modules-right": ["custom/claude", "hyprland/window", "tray", "group/status", "group/end"],
+    "modules-right": ["hyprland/window", "tray", "group/status", "group/end"],
 
     "group/home": { "orientation": "horizontal", "modules": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"] },
     "group/status": {
         "orientation": "horizontal",
         "modules": ["pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery"]
     },
-    "group/end": { "orientation": "horizontal", "modules": ["custom/wallpaper", "custom/notifications", "custom/power"] },
+    "group/end": { "orientation": "horizontal", "modules": ["custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"] },
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
     "group/media": {
