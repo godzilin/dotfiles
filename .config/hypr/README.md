@@ -11,8 +11,8 @@
 | Super+Q / Alt+F4 | Cerrar ventana |
 | Super+Ctrl+Esc | Matar ventana |
 | Super+F / Super+Alt+Espacio | Flotar / teselar |
-| Super+RePág / Super+F11 | Maximizar / pantalla completa |
-| Super+AvPág / Super+Retroceso | "Minimizar" al cajón / mostrar el cajón |
+| Super+M / Super+F11 | Maximizar / pantalla completa |
+| Super+Mayús+M / Super+Retroceso | "Minimizar" al cajón / mostrar el cajón |
 | Super+T | Cambiar dirección del split |
 | Super+P | Fijar ventana (visible en todos los escritorios) |
 | Super+R, flechas, Esc | Modo redimensionar |

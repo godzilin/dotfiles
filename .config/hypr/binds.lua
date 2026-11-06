@@ -45,12 +45,12 @@ hl.bind("ALT + F4",           hl.dsp.window.close(), { description = "Cerrar ven
 hl.bind(mod .. " + CTRL + Escape", hl.dsp.window.kill(), { description = "Forzar cierre (elegir ventana)" })
 hl.bind(mod .. " + F",        hl.dsp.window.float({ action = "toggle" }), { description = "Ventana flotante" })
 hl.bind(mod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }), { description = "Ventana flotante" })
-hl.bind(mod .. " + Prior",    hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Maximizar" })  -- Super+PgUp
+hl.bind(mod .. " + M",        hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Maximizar" })
 hl.bind(mod .. " + F11",      hl.dsp.window.fullscreen(), { description = "Pantalla completa" })
 hl.bind(mod .. " + T",        hl.dsp.layout("togglesplit"), { description = "Girar la división" })
 hl.bind(mod .. " + P",        hl.dsp.window.pin(), { description = "Fijar en todos los escritorios" })
--- "Minimize": Super+PgDown hides into a drawer, Super+Backspace shows/hides the drawer
-hl.bind(mod .. " + Next",      hl.dsp.window.move({ workspace = "special:min", follow = false }), { description = "Minimizar al cajón" })
+-- "Minimize": Super+Shift+M hides into a drawer, Super+Backspace shows/hides the drawer
+hl.bind(mod .. " + SHIFT + M", hl.dsp.window.move({ workspace = "special:min", follow = false }), { description = "Minimizar al cajón" })
 hl.bind(mod .. " + BackSpace", hl.dsp.workspace.toggle_special("min"), { description = "Mostrar u ocultar el cajón" })
 
 hl.bind("ALT + Tab", function()
@@ -96,6 +96,10 @@ hl.bind(mod .. " + CTRL + right",         hl.dsp.focus({ workspace = "r+1" }), {
 hl.bind(mod .. " + CTRL + left",          hl.dsp.focus({ workspace = "r-1" }), { description = "Escritorio anterior" })
 hl.bind(mod .. " + CTRL + SHIFT + right", hl.dsp.window.move({ workspace = "r+1" }), { description = "Mandar ventana al siguiente" })
 hl.bind(mod .. " + CTRL + SHIFT + left",  hl.dsp.window.move({ workspace = "r-1" }), { description = "Mandar ventana al anterior" })
+hl.bind(mod .. " + Next",          hl.dsp.focus({ workspace = "r+1" }), { description = "Escritorio siguiente" })
+hl.bind(mod .. " + Prior",         hl.dsp.focus({ workspace = "r-1" }), { description = "Escritorio anterior" })
+hl.bind(mod .. " + SHIFT + Next",  hl.dsp.window.move({ workspace = "r+1" }), { description = "Mandar ventana al siguiente" })
+hl.bind(mod .. " + SHIFT + Prior", hl.dsp.window.move({ workspace = "r-1" }), { description = "Mandar ventana al anterior" })
 hl.bind(mod .. " + mouse_down",           hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mod .. " + mouse_up",             hl.dsp.focus({ workspace = "e-1" }))
 
