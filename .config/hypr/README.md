@@ -41,6 +41,12 @@
    y fíjate en la versión: `pacman -Qi hyprland | grep Version`.
 4. Guarda los cambios: `dots add -u && dots commit -m "..."`.
 
+## Varios equipos
+
+Los temas, atajos y demás se comparten por `main`. Lo propio de cada máquina (monitores, GPU) va en
+`hosts/<hostname>.lua`, que `env.lua` carga solo en ese equipo. `dots pull` y `dots push` sincronizan a mano.
+El tema activo (`themes/current`) no está en el repo: cada equipo tiene el suyo.
+
 ## Si algo se rompe
 
 - **Barra roja arriba**: error de config. Dice el archivo y la línea.
