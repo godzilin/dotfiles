@@ -116,3 +116,7 @@ tooltip label { color: #1d1d1f; font-size: 12px; }
 #workspaces button.empty { color: #8e8e93; }
 #workspaces button.active { background: rgba(29, 29, 31, 0.85); color: #ffffff; }
 #workspaces button.urgent { background: #ff3b30; color: #ffffff; }
+
+/* Claude: gira mientras piensa */
+#custom-claude { color: #d97757; min-width: 18px; padding: 0 6px; font-size: 16px; }
+#custom-claude.parado { opacity: 0.4; }

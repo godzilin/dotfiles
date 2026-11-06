@@ -6,7 +6,14 @@
     "spacing": 0,
 
     "modules-left": ["custom/arch", "hyprland/workspaces", "hyprland/window"],
-    "modules-right": ["tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/wallpaper", "custom/spotlight", "custom/control", "custom/clock"],
+    "modules-right": ["custom/claude", "tray", "mpris", "custom/weather", "bluetooth", "network", "pulseaudio", "battery", "custom/wallpaper", "custom/spotlight", "custom/control", "custom/clock"],
+
+    "custom/claude": {
+        "exec": "~/.config/hypr/scripts/claude-spin.py",
+        "return-type": "json",
+        "restart-interval": 5,
+        "tooltip": true
+    },
 
     "custom/arch": {
         "format": "",

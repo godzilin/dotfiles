@@ -8,9 +8,16 @@
     "margin-left": 10,
     "spacing": 0,
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "clock", "custom/weather", "custom/media",
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "clock", "custom/claude", "custom/weather", "custom/media",
                      "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery",
                      "custom/wallpaper", "custom/notifications", "tray", "custom/power"],
+
+    "custom/claude": {
+        "exec": "~/.config/hypr/scripts/claude-spin.py",
+        "return-type": "json",
+        "restart-interval": 5,
+        "tooltip": true
+    },
 
     "custom/launcher": {
         "format": "Workspace",

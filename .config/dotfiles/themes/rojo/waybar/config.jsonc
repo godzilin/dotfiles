@@ -7,9 +7,16 @@
 
     "modules-left": ["custom/taller", "hyprland/workspaces", "custom/app"],
     "modules-center": ["custom/clock"],
-    "modules-right": ["tray", "custom/weather", "network", "pulseaudio", "backlight", "battery", "custom/wallpaper", "custom/power"],
+    "modules-right": ["custom/claude", "tray", "custom/weather", "network", "pulseaudio", "backlight", "battery", "custom/wallpaper", "custom/power"],
 
     // The red wedge on the left (ЦЕХ, "workshop"): opens the launcher
+    "custom/claude": {
+        "exec": "~/.config/hypr/scripts/claude-spin.py",
+        "return-type": "json",
+        "restart-interval": 5,
+        "tooltip": true
+    },
+
     "custom/taller": {
         "format": "ЦЕХ",
         "on-click": "pkill fuzzel || fuzzel",

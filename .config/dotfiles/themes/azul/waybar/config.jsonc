@@ -6,7 +6,7 @@
     "spacing": 0,
 
     "modules-left": ["group/start", "hyprland/workspaces", "wlr/taskbar"],
-    "modules-right": ["group/tray"],
+    "modules-right": ["custom/claude", "group/tray"],
 
     "group/start": {
         "orientation": "horizontal",
@@ -19,6 +19,13 @@
         "on-click": "~/.config/dotfiles/themes/current/scripts/launcher.sh",
         "tooltip": false
     },
+    "custom/claude": {
+        "exec": "~/.config/hypr/scripts/claude-spin.py",
+        "return-type": "json",
+        "restart-interval": 5,
+        "tooltip": true
+    },
+
     "custom/start": {
         "format": "Inicio",
         "on-click": "~/.config/dotfiles/themes/current/scripts/launcher.sh",

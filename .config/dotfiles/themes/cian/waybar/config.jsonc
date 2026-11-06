@@ -9,7 +9,7 @@
 
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/notifications", "custom/power"],
+    "modules-right": ["custom/claude", "hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/notifications", "custom/power"],
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
     "group/media": {
@@ -23,6 +23,13 @@
         "signal": 8,
         "on-click": "~/.config/hypr/scripts/media.sh"
     },
+    "custom/claude": {
+        "exec": "~/.config/hypr/scripts/claude-spin.py",
+        "return-type": "json",
+        "restart-interval": 5,
+        "tooltip": true
+    },
+
     "custom/media-prev": {
         "exec": "echo 󰒮",
         "exec-if": "playerctl status",

@@ -10,7 +10,7 @@
 
     "modules-left": ["group/home"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/window", "tray", "group/status", "group/end"],
+    "modules-right": ["custom/claude", "hyprland/window", "tray", "group/status", "group/end"],
 
     "group/home": { "orientation": "horizontal", "modules": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"] },
     "group/status": {
@@ -31,6 +31,13 @@
         "signal": 8,
         "on-click": "~/.config/hypr/scripts/media.sh"
     },
+    "custom/claude": {
+        "exec": "~/.config/hypr/scripts/claude-spin.py",
+        "return-type": "json",
+        "restart-interval": 5,
+        "tooltip": true
+    },
+
     "custom/media-prev": {
         "exec": "echo 󰒮",
         "exec-if": "playerctl status",
