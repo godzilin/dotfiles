@@ -30,11 +30,11 @@ tooltip label { color: @text; }
 
 /* Every readout is a field of the status line, split by a thin rule */
 #custom-launcher, #window, #clock, #tray, #pulseaudio, #backlight, #network, #bluetooth,
-#power-profiles-daemon, #battery, #custom-wallpaper, #custom-notifications, #custom-power, #custom-weather {
+#power-profiles-daemon, #battery, #custom-crt, #custom-notifications, #custom-power, #custom-weather {
     padding: 0 10px;
 }
 #tray, #pulseaudio, #backlight, #network, #bluetooth, #power-profiles-daemon, #battery,
-#custom-wallpaper, #custom-notifications, #custom-power, #custom-weather, #image.cover {
+#custom-crt, #custom-notifications, #custom-power, #custom-weather, #image.cover {
     border-left: 1px solid @line;
 }
 
@@ -60,8 +60,8 @@ window#waybar.empty #window { padding: 0; }
 #battery.warning:not(.charging)  { color: @phos; }
 #battery.critical:not(.charging) { background: @red; color: @bg0; }
 
-#custom-notifications, #custom-wallpaper, #custom-power { color: @muted; }
-#custom-wallpaper:hover, #custom-notifications:hover { color: @text; }
+#custom-notifications, #custom-crt, #custom-power { color: @muted; }
+#custom-crt:hover, #custom-notifications:hover { color: @text; }
 #custom-power:hover { background: @red; color: @bg0; }
 
 /* Now playing */

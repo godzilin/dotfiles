@@ -1,4 +1,4 @@
-# Neón prompt: one line, quiet, amber cursor mark
+# Yoru prompt: one line, quiet, amber cursor mark
 "$schema" = "https://starship.rs/config-schema.json"
 
 add_newline = true
@@ -6,14 +6,14 @@ palette = "nostromo"
 format = "$directory$git_branch$git_state$git_status$python$cmd_duration$status$character"
 
 [palettes.nostromo]
-text = "#f6ecff"
-sub = "#c3aee6"
-muted = "#8a6bbd"
-line = "#553089"
-amber = "#9d7bff"
-orange = "#ff8a3d"
-red = "#ff3864"
-green = "#4dffb4"
+text = "#f1edf8"
+sub = "#c4bbdc"
+muted = "#8f80b8"
+line = "#5c4b8a"
+amber = "#b79bff"
+orange = "#ff9a62"
+red = "#ff6b6b"
+green = "#7fe0b0"
 
 [directory]
 style = "text"

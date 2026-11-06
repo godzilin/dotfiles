@@ -1,16 +1,16 @@
-/* Nostromo for Firefox: a terminal on the bridge. Steel plates with no rounded corners; tabs are numbered cargo bays with
+/* Hi-Fi for Firefox: a panel of the receiver. Steel plates with no rounded corners; tabs are numbered cargo bays with
    the number stencilled, the address is the NAV line, the hull stripes run along the top and hazard tape marks what is
    busy or needs attention. The page sits inset in the console like a screen.
    Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
 
 :root {
-  --n-bg0: #121110; --n-bg: #1a1814; --n-bg1: #24211b; --n-bg2: #2f2b23; --n-line: #3d382d;
-  --n-faint: #4a4438; --n-muted: #857c69; --n-sub: #b3a891; --n-text: #e8dfc8;
-  --n-yellow: #e0c36a; --n-amber: #e9a23b; --n-orange: #d9652b; --n-red: #c8553d;
-  --n-mono: "BlexMono Nerd Font", "IBM Plex Mono", monospace;
-  --n-sans: "IBM Plex Sans", sans-serif;
+  --n-bg0: #15100c; --n-bg: #1e1610; --n-bg1: #2a1f17; --n-bg2: #3a2b20; --n-line: #57432f;
+  --n-faint: #6e5a45; --n-muted: #9a8468; --n-sub: #c9b89a; --n-text: #efe3cb;
+  --n-yellow: #eec068; --n-amber: #f28c28; --n-orange: #e0662a; --n-red: #d6503a;
+  --n-mono: "DM Mono", "DM Mono", monospace;
+  --n-sans: "Barlow", sans-serif;
   --n-radius: 0;
-  --n-stencil: "Saira Stencil One", "BlexMono Nerd Font", sans-serif;
+  --n-stencil: "Michroma", "DM Mono", sans-serif;
   --n-hazard: repeating-linear-gradient(-45deg, var(--n-yellow) 0 6px, var(--n-bg0) 6px 12px);
 
   /* Theme variables: repaint whatever theme is active */
@@ -149,7 +149,7 @@ toolbarbutton .toolbarbutton-icon { transition: fill 120ms ease; }
 #nav-bar toolbarbutton:hover > .toolbarbutton-icon,
 #nav-bar toolbarbutton:hover > .toolbarbutton-badge-stack { fill: var(--n-text) !important; }
 
-/* Address bar: the NAV line of the console */
+/* Address bar: the tuner display */
 #urlbar .urlbar-background {
   border-radius: 0 !important;
   border: 1px solid var(--n-line) !important;
@@ -163,7 +163,7 @@ toolbarbutton .toolbarbutton-icon { transition: fill 120ms ease; }
 }
 #urlbar-input::placeholder { color: var(--n-faint) !important; text-transform: uppercase; letter-spacing: 0.12em; }
 #urlbar .urlbar-input-container::before {
-  content: "NAV";
+  content: "FM";
   font: 400 14px var(--n-stencil);
   color: var(--n-amber);
   align-self: center;

@@ -1,12 +1,12 @@
 {
     "layer": "top",
-    "position": "top",
-    "height": 36,
+    "position": "bottom",
+    "height": 58,
     "spacing": 0,
 
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"],
-    "modules-center": ["custom/mision", "clock"],
-    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"],
+    "modules-center": ["custom/dial", "clock"],
+    "modules-right": ["tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"],
 
     // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
     "group/media": {
@@ -64,12 +64,12 @@
 
     // Bluetooth readout: click toggles power, right click opens the KDE Bluetooth settings
     "bluetooth": {
-        "format": "<span color='#857c69'>BT</span> {status}",
-        "format-on": "<span color='#857c69'>BT</span> ON",
-        "format-off": "<span color='#857c69'>BT</span> OFF",
-        "format-disabled": "<span color='#857c69'>BT</span> OFF",
-        "format-connected": "<span color='#857c69'>BT</span> {device_alias}",
-        "format-connected-battery": "<span color='#857c69'>BT</span> {device_alias} {device_battery_percentage}%",
+        "format": "<span font='Michroma 6.5' color='#57432f'>BT</span>\n{status}",
+        "format-on": "<span font='Michroma 6.5' color='#57432f'>BT</span>\nON",
+        "format-off": "<span font='Michroma 6.5' color='#57432f'>BT</span>\nOFF",
+        "format-disabled": "<span font='Michroma 6.5' color='#57432f'>BT</span>\nOFF",
+        "format-connected": "<span font='Michroma 6.5' color='#57432f'>BT</span>\n{device_alias}",
+        "format-connected-battery": "<span font='Michroma 6.5' color='#57432f'>BT</span>\n{device_alias} {device_battery_percentage}%",
         "max-length": 60,  // counts the colour markup too (~30 chars), so names up to ~30 fit
         "tooltip-format": "{controller_alias} · {status}",
         "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
@@ -80,66 +80,62 @@
     },
 
     "custom/launcher": {
-        "format": "<span color='#e9a23b' size='large'>󰯈</span>",
+        "format": "MENÚ",
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": "A", "2": "B", "3": "C", "4": "D", "5": "E",
-            "6": "F", "7": "G", "8": "H", "9": "I", "default": "··"
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5",
+            "6": "6", "7": "7", "8": "8", "9": "9", "default": "··"
         },
         "persistent-workspaces": { "*": 4 },
         "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
         "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
     },
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 48,
-        "separate-outputs": true
-    },
-    // Mission clock: uptime, as on the bridge console
-    "custom/mision": {
-        "exec": "awk '{printf \"T+ %03d:%02d\", $1 / 3600, $1 % 3600 / 60}' /proc/uptime",
+    // The tuning dial: the hours are the frequencies and the needle is the time of day
+    "custom/dial": {
+        "exec": "~/.config/dotfiles/themes/naranja/scripts/dial.py",
+        "return-type": "json",
         "interval": 30,
-        "tooltip": false
+        "on-click": "~/.config/hypr/scripts/calendar.sh"
     },
     "clock": {
         "locale": "es_ES.utf8",
-        "format": "{:L%a %d %b  <span color='#e8dfc8'>%H:%M</span>}",
+        "format": "<span font='Michroma 6.5' color='#57432f'>{:L%a %d %b}</span>\n<span font='DM Mono Medium 14'>{:%H:%M}</span>",
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/calendar.sh",
         "calendar": {
             "mode": "month",
             "format": {
-                "months": "<span color='#e8dfc8'><b>{}</b></span>",
-                "weekdays": "<span color='#857c69'>{}</span>",
-                "today": "<span color='#e9a23b'><b>{}</b></span>"
+                "months": "<span color='#efe3cb'><b>{}</b></span>",
+                "weekdays": "<span color='#9a8468'>{}</span>",
+                "today": "<span color='#f28c28'><b>{}</b></span>"
             }
         }
     },
     "tray": { "icon-size": 14, "spacing": 8 },
     "pulseaudio": {
-        "format": "<span color='#857c69'>VOL</span> {volume}",
-        "format-muted": "<span color='#857c69'>VOL</span> <span color='#c8553d'>MUTE</span>",
+        "format": "<span font='Michroma 6.5' color='#57432f'>VOLUMEN</span>\n{volume}",
+        "format-muted": "<span font='Michroma 6.5' color='#57432f'>VOLUMEN</span>\n<span color='#c02f1c'>MUTE</span>",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5,
         "tooltip-format": "{desc}"
     },
     "backlight": {
-        "format": "<span color='#857c69'>LUM</span> {percent}"
+        "format": "<span font='Michroma 6.5' color='#57432f'>LUZ</span>\n{percent}"
     },
     "network": {
-        "format-wifi": "<span color='#857c69'>LINK</span> {essid}",
-        "format-ethernet": "<span color='#857c69'>LINK</span> ETH",
-        "format-disconnected": "<span color='#857c69'>LINK</span> <span color='#c8553d'>LOST</span>",
+        "format-wifi": "<span font='Michroma 6.5' color='#57432f'>RED</span>\n{essid}",
+        "format-ethernet": "<span font='Michroma 6.5' color='#57432f'>RED</span>\nETH",
+        "format-disconnected": "<span font='Michroma 6.5' color='#57432f'>RED</span>\n<span color='#c02f1c'>OFF</span>",
         "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
-        "format": "<span color='#857c69'>RCT</span> {icon}",
+        "format": "<span font='Michroma 6.5' color='#57432f'>MODO</span>\n{icon}",
         "format-icons": {
             "default": "BAL",
             "performance": "MAX",
@@ -149,13 +145,13 @@
     },
     "battery": {
         "states": { "warning": 25, "critical": 10 },
-        "format": "<span color='#857c69'>CELL</span> {capacity}",
-        "format-charging": "<span color='#857c69'>CELL</span> {capacity}<span color='#e9a23b'>+</span>",
-        "format-plugged": "<span color='#857c69'>CELL</span> {capacity}<span color='#e9a23b'>=</span>",
+        "format": "<span font='Michroma 6.5' color='#57432f'>PILA</span>\n{capacity}",
+        "format-charging": "<span font='Michroma 6.5' color='#57432f'>PILA</span>\n{capacity}<span color='#f28c28'>+</span>",
+        "format-plugged": "<span font='Michroma 6.5' color='#57432f'>PILA</span>\n{capacity}<span color='#f28c28'>=</span>",
         "tooltip-format": "{timeTo}  ·  {power:.1f} W"
     },
     "custom/wallpaper": {
-        "format": "󰸉",
+        "format": "FONDO",
         "on-click": "~/.config/hypr/scripts/wallpaper.sh",
         "tooltip-format": "Fondo de pantalla"
     },
@@ -164,9 +160,9 @@
         "return-type": "json",
         "format": "{icon}",
         "format-icons": {
-            "notification": "<span color='#e9a23b'>●</span>",
+            "notification": "<span color='#f28c28'>●</span>",
             "none": "○",
-            "dnd-notification": "<span color='#e9a23b'>◐</span>",
+            "dnd-notification": "<span color='#f28c28'>◐</span>",
             "dnd-none": "◐"
         },
         "on-click": "swaync-client -t -sw",
@@ -174,7 +170,7 @@
         "escape": true
     },
     "custom/power": {
-        "format": "⏻",
+        "format": "STANDBY",
         "on-click": "~/.config/hypr/scripts/powermenu.sh",
         "tooltip": false
     }

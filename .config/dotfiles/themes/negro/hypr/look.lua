@@ -1,4 +1,5 @@
--- Fósforo: a green phosphor terminal. Square corners, no shadows, no blur, no animations.
+-- Fósforo: a green phosphor tube. Square corners, no shadows, no blur, no animations; crt.glsl paints the whole screen.
+local home = os.getenv("HOME")
 hl.config({
     general = {
         gaps_in     = 3,
@@ -15,6 +16,7 @@ hl.config({
         rounding = 0,
         shadow   = { enabled = false },
         blur     = { enabled = false },
+        screen_shader = home .. "/.config/dotfiles/themes/negro/hypr/crt.glsl",
     },
     animations = { enabled = false }, -- a terminal just redraws
     dwindle = { preserve_split = true },
@@ -25,6 +27,8 @@ hl.config({
         focus_on_activate       = true,
     },
 })
+
+hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd(home .. "/.config/dotfiles/themes/negro/scripts/crt.sh"))
 
 -- Calendar popup from the waybar clock: floats right above it (the bar is at the bottom)
 hl.window_rule({

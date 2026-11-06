@@ -1,126 +1,101 @@
-/* Nostromo palette */
-@define-color bg0    #121110;
-@define-color bg     #1a1814;
-@define-color bg1    #24211b;
-@define-color bg2    #2f2b23;
-@define-color line   #3d382d;
-@define-color muted  #857c69;
-@define-color sub    #b3a891;
-@define-color text   #e8dfc8;
-@define-color amber  #e9a23b;
-@define-color orange #d9652b;
-@define-color red    #c8553d;
-@define-color green  #8fae7e;
+/* Hi-Fi: the bar is the front panel of a 1970s receiver. Brushed aluminium, printed labels, a lit tuning window. */
+@define-color bg0    #15100c;
+@define-color bg     #1e1610;
+@define-color ink    #2a1f17;
+@define-color print  #57432f;
+@define-color alu1   #d9d4c9;
+@define-color alu2   #b9b3a6;
+@define-color amber  #f28c28;
+@define-color lit    #eec068;
+@define-color red    #c02f1c;
 
 * {
-    font-family: "BlexMono Nerd Font", "IBM Plex Mono", monospace;
-    font-size: 12px;
+    font-family: "Barlow Condensed", "Barlow", sans-serif;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 1px;
     border: none;
     min-height: 0;
 }
 
 window#waybar {
-    background-color: alpha(@bg0, 0.96);
-    /* the four stripes along the lower edge of the plate */
-    background-image: linear-gradient(to bottom, transparent 32px, #e0c36a 32px, #e0c36a 33px, #e9a23b 33px, #e9a23b 34px,
-                                      #d9652b 34px, #d9652b 35px, #c8553d 35px, #c8553d 36px);
-    color: @sub;
-}
-.modules-left, .modules-center, .modules-right { margin-bottom: 4px; }
-
-tooltip {
-    background: @bg;
-    border: 1px solid @line;
-    border-radius: 8px;
-}
-tooltip label { color: @text; }
-
-/* Every readout is a small "cell" separated by a hairline, like a tape deck panel */
-#custom-launcher,
-#window,
-#clock,
-#tray,
-#pulseaudio,
-#backlight,
-#network,
-#bluetooth,
-#power-profiles-daemon,
-#battery,
-#custom-wallpaper,
-#custom-notifications,
-#custom-power {
-    padding: 0 12px;
+    background-image: linear-gradient(to bottom, @alu1, @alu2);
+    border-top: 3px solid #3d2a1c; /* the walnut case */
+    color: @ink;
 }
 
-#pulseaudio,
-#backlight,
-#network,
-#bluetooth,
-#power-profiles-daemon,
-#battery,
-#custom-wallpaper,
-#custom-notifications {
-    border-left: 1px solid @line;
+tooltip { background: @bg; border: 1px solid #57432f; border-radius: 3px; }
+tooltip label { color: #efe3cb; }
+
+/* Two lines each: printed label over its value */
+#custom-launcher, #clock, #tray, #pulseaudio, #backlight, #network, #bluetooth, #power-profiles-daemon, #battery,
+#custom-wallpaper, #custom-notifications, #custom-power, #custom-weather, #custom-claude {
+    padding: 0 11px;
+    color: @ink;
 }
+#clock { padding: 0 16px; color: @ink; }
 
-#custom-launcher {
-    color: @text;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border-right: 1px solid @line;
+/* Push buttons */
+#custom-launcher, #custom-wallpaper, #custom-power {
+    font-family: "Michroma";
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin: 10px 4px;
+    padding: 0 10px;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #f0ece3, #c6c0b3);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6), 0 2px 3px rgba(0, 0, 0, 0.35);
 }
-
-#workspaces { padding: 0 6px; }
-#workspaces button {
-    color: @muted;
-    padding: 0 8px;
-    margin: 4px 1px;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-}
-#workspaces button.empty  { color: @line; }
-#workspaces button.active { background: @amber; color: @bg0; font-weight: 700; }
-#workspaces button.urgent { background: @red; color: @bg0; }
-#workspaces button:hover  { background: @bg2; color: @text; }
-
-#window { color: @muted; }
-window#waybar.empty #window { padding: 0; }
-
-#custom-mision { color: @amber; font-weight: 700; letter-spacing: 2px; padding: 0 12px; border-right: 1px solid @line; }
-#clock { color: @muted; letter-spacing: 2px; }
-
-#pulseaudio, #backlight, #network, #power-profiles-daemon, #battery { color: @text; }
-#pulseaudio.muted { color: @muted; }
-#battery.warning:not(.charging)  { color: @amber; }
-#battery.critical:not(.charging) { color: @red; }
-#power-profiles-daemon.performance { color: @orange; }
-#power-profiles-daemon.power-saver { color: @green; }
-
-#custom-notifications { color: @muted; font-size: 13px; }
-#custom-wallpaper { color: @muted; font-size: 14px; }
-#custom-wallpaper:hover { color: @accent; }
-#custom-power { color: @muted; font-size: 13px; }
+#custom-launcher:hover, #custom-wallpaper:hover, #custom-power:hover { background-image: linear-gradient(to bottom, #fff, #d6d0c4); }
 #custom-power:hover { color: @red; }
 
-/* Now playing */
-#image.cover { padding: 0 2px 0 12px; border-left: 1px solid @line; }
-#custom-media-prev, #mpris, #custom-media-next { padding: 0 5px; color: @sub; font-size: 14px; }
-#custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @amber; }
-#mpris.playing { color: @amber; }
-#custom-media { padding: 0 12px 0 6px; color: @text; }
-#custom-media.paused { color: @muted; }
-#tray { border-left: 1px solid @line; }
+/* Station presets: a row of square keys; the active one is pressed in and its lamp is on */
+#workspaces { padding: 0 8px; }
+#workspaces button {
+    font-family: "Michroma";
+    font-size: 11px;
+    color: @ink;
+    padding: 0 12px;
+    margin: 10px 2px;
+    border-radius: 2px;
+    border-bottom: 3px solid #8f897c;
+    background-image: linear-gradient(to bottom, #f0ece3, #c6c0b3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+#workspaces button.empty  { color: #8f897c; }
+#workspaces button.active {
+    background-image: linear-gradient(to bottom, #a9a397, #c6c0b3);
+    border-bottom: 3px solid @amber;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+#workspaces button.urgent { border-bottom: 3px solid @red; }
+#workspaces button:hover  { background-image: linear-gradient(to bottom, #fff, #d6d0c4); }
 
-/* Weather, right of the clock */
-#custom-weather { padding: 0 12px; color: @text; border-left: 1px solid @line; }
-#bluetooth { color: @text; letter-spacing: 0; }  /* with max-length, letter-spacing makes GTK ellipsize it */
-#bluetooth.off, #bluetooth.disabled { color: @muted; }
-#bluetooth.connected { color: @amber; }
-#custom-weather.offline { color: @muted; }
+/* The lit tuning window */
+#custom-dial {
+    font-family: "DM Mono";
+    font-size: 11px;
+    color: @lit;
+    padding: 2px 14px;
+    margin: 6px 0;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #0f0a06, #241407);
+    box-shadow: inset 0 2px 5px #000, 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#battery.warning:not(.charging)  { color: #a85a10; }
+#battery.critical:not(.charging) { color: @red; }
+#bluetooth { letter-spacing: 0; }
+
+#custom-notifications { color: @ink; font-size: 13px; }
+
+/* Now playing */
+#image.cover { padding: 0 2px 0 12px; }
+#custom-media-prev, #mpris, #custom-media-next { padding: 0 5px; color: @ink; font-size: 15px; }
+#custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @amber; }
+#mpris.playing { color: #b05a0c; }
+#custom-media { padding: 0 12px 0 6px; color: @ink; }
+#custom-media.paused { color: #8f897c; }
 
 /* Claude: gira mientras piensa */
-#custom-claude { color: #d97757; min-width: 18px; padding: 0 12px; font-size: 16px; }
-#custom-claude.parado { opacity: 0.4; }
+#custom-claude { color: #b4552f; min-width: 18px; font-size: 16px; }
+#custom-claude.parado { opacity: 0.45; }

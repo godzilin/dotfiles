@@ -1,27 +1,29 @@
 {
+    // Noche en Tokio: the bar is a pole of vertical street signs on the right edge, read from top to bottom.
     "layer": "top",
-    "position": "top",
-    "height": 30,
-    "margin-top": 6,
-    "margin-left": 8,
-    "margin-right": 8,
-    "spacing": 0,
+    "position": "right",
+    "width": 48,
+    "spacing": 3,
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"],
-    "modules-center": ["clock"],
-    "modules-right": ["hyprland/window", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["clock", "custom/hizuke", "custom/weather"],
+    "modules-right": ["group/media", "tray", "pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery", "custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"],
 
-    // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
     "group/media": {
-        "orientation": "horizontal",
-        "modules": ["image#cover", "custom/media-prev", "mpris", "custom/media-next", "custom/media"]
+        "orientation": "vertical",
+        "modules": ["image#cover", "mpris"]
     },
     "image#cover": {
         "exec": "cat ~/.cache/nostromo/cover-path 2>/dev/null | grep . || echo /nonexistent",
-        "size": 20,
+        "size": 30,
         "interval": 5,
         "signal": 8,
         "on-click": "~/.config/hypr/scripts/media.sh"
+    },
+    "mpris": {
+        "format": "{status_icon}",
+        "status-icons": { "playing": "停", "paused": "再" },
+        "tooltip-format": "{player}: {title}"
     },
     "custom/claude": {
         "exec": "~/.config/hypr/scripts/claude-spin.py",
@@ -29,51 +31,19 @@
         "restart-interval": 5,
         "tooltip": true
     },
-
-    "custom/media-prev": {
-        "exec": "echo 󰒮",
-        "exec-if": "playerctl status",
-        "interval": 2,
-        "on-click": "playerctl previous",
-        "tooltip": false
-    },
-    "mpris": {
-        "format": "{status_icon}",
-        "status-icons": { "playing": "󰏤", "paused": "󰐊" },
-        "tooltip": false
-    },
-    "custom/media-next": {
-        "exec": "echo 󰒭",
-        "exec-if": "playerctl status",
-        "interval": 2,
-        "on-click": "playerctl next",
-        "tooltip": false
-    },
-    "custom/media": {
-        "exec": "~/.config/waybar/scripts/media.py",
-        "restart-interval": 2,  // libplayerctl aborts the script if a player dies abruptly; respawn it
-        "return-type": "json",
-        "escape": false,
-        "on-click": "~/.config/hypr/scripts/media.sh"
-    },
-
-    // Weather (Open-Meteo): icon + °C; click for the full forecast
     "custom/weather": {
-        "exec": "~/.config/hypr/scripts/weather.py bar",
+        "exec": "~/.config/hypr/scripts/weather.py bar | jq -c '.text |= (split(\" \") | join(\"\\n\"))'",
         "return-type": "json",
         "interval": 600,
         "on-click": "~/.config/hypr/scripts/weather.sh"
     },
-
-    // Bluetooth readout: click toggles power, right click opens the KDE Bluetooth settings
     "bluetooth": {
-        "format": "<span color='#8a6bbd'>BT</span> {status}",
-        "format-on": "<span color='#8a6bbd'>BT</span> ON",
-        "format-off": "<span color='#8a6bbd'>BT</span> OFF",
-        "format-disabled": "<span color='#8a6bbd'>BT</span> OFF",
-        "format-connected": "<span color='#8a6bbd'>BT</span> {device_alias}",
-        "format-connected-battery": "<span color='#8a6bbd'>BT</span> {device_alias} {device_battery_percentage}%",
-        "max-length": 60,  // counts the colour markup too (~30 chars), so names up to ~30 fit
+        "format": "藍\n{status}",
+        "format-on": "藍\n入",
+        "format-off": "藍\n切",
+        "format-disabled": "藍\n切",
+        "format-connected": "藍\n接",
+        "format-connected-battery": "藍\n{device_battery_percentage}",
         "tooltip-format": "{controller_alias} · {status}",
         "tooltip-format-connected": "{controller_alias} · {num_connections} conectado(s)\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}",
@@ -81,78 +51,63 @@
         "on-click": "bluetoothctl show | grep -q 'Powered: yes' && bluetoothctl power off || bluetoothctl power on",
         "on-click-right": "systemsettings kcm_bluetooth"
     },
-
     "custom/launcher": {
-        "format": "<span color='#9d7bff' size='large'>󰯈</span>",
+        "format": "夜",
         "on-click": "pkill fuzzel || fuzzel",
-        "tooltip": false
+        "tooltip-format": "Programas"
     },
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": "01", "2": "02", "3": "03", "4": "04", "5": "05",
-            "6": "06", "7": "07", "8": "08", "9": "09", "default": "··"
+            "1": "一", "2": "二", "3": "三", "4": "四", "5": "五",
+            "6": "六", "7": "七", "8": "八", "9": "九", "default": "〇"
         },
         "persistent-workspaces": { "*": 4 },
         "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'",
         "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'"
     },
-    "hyprland/window": {
-        "format": "{}",
-        "max-length": 48,
-        "separate-outputs": true
-    },
     "clock": {
-        "locale": "es_ES.utf8",
-        "format": "{:L%a %d %b  <span color='#f6ecff'>%H:%M</span>}",
+        "format": "{:%H\n%M}",
         "tooltip": false,
-        "on-click": "~/.config/hypr/scripts/calendar.sh",
-        "calendar": {
-            "mode": "month",
-            "format": {
-                "months": "<span color='#f6ecff'><b>{}</b></span>",
-                "weekdays": "<span color='#8a6bbd'>{}</span>",
-                "today": "<span color='#9d7bff'><b>{}</b></span>"
-            }
-        }
+        "on-click": "~/.config/hypr/scripts/calendar.sh"
     },
-    "tray": { "icon-size": 14, "spacing": 8 },
+    // Weekday in kanji over the day of the month
+    "custom/hizuke": {
+        "exec": "python3 -c \"import time; t = time.localtime(); print('月火水木金土日'[t.tm_wday] + chr(10) + str(t.tm_mday))\"",
+        "interval": 600,
+        "tooltip": false,
+        "on-click": "~/.config/hypr/scripts/calendar.sh"
+    },
+    "tray": { "icon-size": 16, "spacing": 8 },
     "pulseaudio": {
-        "format": "<span color='#8a6bbd'>VOL</span> {volume}",
-        "format-muted": "<span color='#8a6bbd'>VOL</span> <span color='#ff3864'>MUTE</span>",
+        "format": "音\n{volume}",
+        "format-muted": "音\n消",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5,
-        "tooltip-format": "{desc}"
+        "tooltip-format": "Sonido: {desc}"
     },
-    "backlight": {
-        "format": "<span color='#8a6bbd'>LUM</span> {percent}"
-    },
+    "backlight": { "format": "光\n{percent}", "tooltip-format": "Brillo" },
     "network": {
-        "format-wifi": "<span color='#8a6bbd'>NET</span> {essid}",
-        "format-ethernet": "<span color='#8a6bbd'>NET</span> ETH",
-        "format-disconnected": "<span color='#8a6bbd'>NET</span> <span color='#ff3864'>OFF</span>",
-        "tooltip-format": "{ifname}  {ipaddr}  {signalStrength}%",
+        "format-wifi": "網\n{signalStrength}",
+        "format-ethernet": "網\n線",
+        "format-disconnected": "網\n断",
+        "tooltip-format": "{essid}  {ifname}  {ipaddr}",
         "on-click": "systemsettings kcm_networkmanagement"
     },
     "power-profiles-daemon": {
-        "format": "<span color='#8a6bbd'>PWR</span> {icon}",
-        "format-icons": {
-            "default": "BAL",
-            "performance": "MAX",
-            "balanced": "BAL",
-            "power-saver": "ECO"
-        }
+        "format": "力\n{icon}",
+        "format-icons": { "default": "中", "performance": "強", "balanced": "中", "power-saver": "弱" }
     },
     "battery": {
         "states": { "warning": 25, "critical": 10 },
-        "format": "<span color='#8a6bbd'>BAT</span> {capacity}",
-        "format-charging": "<span color='#8a6bbd'>BAT</span> {capacity}<span color='#9d7bff'>+</span>",
-        "format-plugged": "<span color='#8a6bbd'>BAT</span> {capacity}<span color='#9d7bff'>=</span>",
+        "format": "電\n{capacity}",
+        "format-charging": "充\n{capacity}",
+        "format-plugged": "充\n{capacity}",
         "tooltip-format": "{timeTo}  ·  {power:.1f} W"
     },
     "custom/wallpaper": {
-        "format": "󰸉",
+        "format": "絵",
         "on-click": "~/.config/hypr/scripts/wallpaper.sh",
         "tooltip-format": "Fondo de pantalla"
     },
@@ -160,19 +115,14 @@
         "exec": "swaync-client -swb",
         "return-type": "json",
         "format": "{icon}",
-        "format-icons": {
-            "notification": "<span color='#9d7bff'>●</span>",
-            "none": "○",
-            "dnd-notification": "<span color='#9d7bff'>◐</span>",
-            "dnd-none": "◐"
-        },
+        "format-icons": { "notification": "報", "none": "〇", "dnd-notification": "黙", "dnd-none": "黙" },
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
     "custom/power": {
-        "format": "⏻",
+        "format": "終",
         "on-click": "~/.config/hypr/scripts/powermenu.sh",
-        "tooltip": false
+        "tooltip-format": "Apagar"
     }
 }

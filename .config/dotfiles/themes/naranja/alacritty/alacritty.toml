@@ -21,56 +21,56 @@ history = 10000
 multiplier = 3
 
 [font]
-normal = { family = "BlexMono Nerd Font", style = "Regular" }
-bold = { family = "BlexMono Nerd Font", style = "Bold" }
-italic = { family = "BlexMono Nerd Font", style = "Italic" }
-bold_italic = { family = "BlexMono Nerd Font", style = "Bold Italic" }
+normal = { family = "DM Mono", style = "Regular" }
+bold = { family = "DM Mono", style = "Bold" }
+italic = { family = "DM Mono", style = "Italic" }
+bold_italic = { family = "DM Mono", style = "Bold Italic" }
 size = 11.0
 
 [colors]
 draw_bold_text_with_bright_colors = false
 
-# Nostromo palette
+# Hi-Fi palette
 [colors.primary]
-background = "#1a1814"
-foreground = "#e8dfc8"
-dim_foreground = "#b3a891"
+background = "#1e1610"
+foreground = "#efe3cb"
+dim_foreground = "#c9b89a"
 
 [colors.cursor]
-text = "#1a1814"
-cursor = "#e9a23b"
+text = "#1e1610"
+cursor = "#f28c28"
 
 [colors.selection]
-text = "#e8dfc8"
-background = "#3d382d"
+text = "#efe3cb"
+background = "#57432f"
 
 [colors.search.matches]
-foreground = "#1a1814"
-background = "#e0c36a"
+foreground = "#1e1610"
+background = "#eec068"
 
 [colors.search.focused_match]
-foreground = "#1a1814"
-background = "#e9a23b"
+foreground = "#1e1610"
+background = "#f28c28"
 
 [colors.normal]
-black = "#24211b"
-red = "#c8553d"
-green = "#8fae7e"
-yellow = "#e0c36a"
-blue = "#7b93a8"
+black = "#2a1f17"
+red = "#d6503a"
+green = "#a3a86b"
+yellow = "#eec068"
+blue = "#8ea0a8"
 magenta = "#b07a8c"
-cyan = "#6f9e98"
-white = "#b3a891"
+cyan = "#7fa39a"
+white = "#c9b89a"
 
 [colors.bright]
-black = "#4a4438"
+black = "#6e5a45"
 red = "#e0705a"
 green = "#a5c294"
 yellow = "#ecd38a"
 blue = "#93aabd"
 magenta = "#c391a2"
 cyan = "#88b5ae"
-white = "#e8dfc8"
+white = "#efe3cb"
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"

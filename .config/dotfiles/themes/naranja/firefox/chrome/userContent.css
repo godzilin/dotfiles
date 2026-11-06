@@ -1,45 +1,45 @@
-/* Nostromo for Firefox's own pages */
+/* Hi-Fi for Firefox's own pages */
 
 @-moz-document url-prefix("about:") {
   :root {
-    --newtab-background-color: #121110 !important;
-    --newtab-background-color-secondary: #24211b !important;
-    --newtab-text-primary-color: #e8dfc8 !important;
-    --background-color-canvas: #1a1814 !important;
-    --background-color-box: #24211b !important;
-    --text-color: #e8dfc8 !important;
-    --text-color-deemphasized: #857c69 !important;
-    --border-color: #3d382d !important;
-    --color-accent-primary: #e9a23b !important;
-    --color-accent-primary-hover: #e0c36a !important;
-    --color-accent-primary-active: #d9652b !important;
-    --link-color: #e9a23b !important;
-    --focus-outline-color: #e9a23b !important;
+    --newtab-background-color: #15100c !important;
+    --newtab-background-color-secondary: #2a1f17 !important;
+    --newtab-text-primary-color: #efe3cb !important;
+    --background-color-canvas: #1e1610 !important;
+    --background-color-box: #2a1f17 !important;
+    --text-color: #efe3cb !important;
+    --text-color-deemphasized: #9a8468 !important;
+    --border-color: #57432f !important;
+    --color-accent-primary: #f28c28 !important;
+    --color-accent-primary-hover: #eec068 !important;
+    --color-accent-primary-active: #e0662a !important;
+    --link-color: #f28c28 !important;
+    --focus-outline-color: #f28c28 !important;
     --border-radius-small: 0 !important;
     --border-radius-medium: 0 !important;
     --border-radius-large: 0 !important;
     --border-radius-xlarge: 0 !important;
-    scrollbar-color: #3d382d transparent;
+    scrollbar-color: #57432f transparent;
   }
   body { background-color: var(--background-color-canvas) !important; }
 }
 
 /* New tab / home: an empty dark screen with the search box */
 @-moz-document url("about:newtab"), url("about:home") {
-  body { background-color: #121110 !important; }
+  body { background-color: #15100c !important; }
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
   .search-handoff-button, .search-inner-wrapper :is(input, button, div) { border-radius: 0 !important; box-shadow: none !important; }
-  .search-handoff-button { background-color: #1a1814 !important; border: 1px solid #3d382d !important; }
+  .search-handoff-button { background-color: #1e1610 !important; border: 1px solid #57432f !important; }
   /* the search box is an embedded address bar: restyle its frame, leave its insides alone */
   .search-inner-wrapper moz-urlbar .urlbar-background {
-    background-color: #1a1814 !important;
-    border: 1px solid #3d382d !important;
+    background-color: #1e1610 !important;
+    border: 1px solid #57432f !important;
     border-radius: 0 !important;
     box-shadow: none !important;
   }
-  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #e9a23b !important; }
-  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "BlexMono Nerd Font", monospace !important; }
-  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #1a1814 !important; border-radius: 0 !important; box-shadow: inset 0 0 0 1px #3d382d !important; }
-  .top-site-outer .title { font-family: "IBM Plex Mono", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #857c69 !important; }
+  .search-inner-wrapper moz-urlbar[focused] .urlbar-background { border-color: #f28c28 !important; }
+  .search-inner-wrapper moz-urlbar .urlbar-input { font-family: "DM Mono", monospace !important; }
+  .top-site-outer .tile, .top-site-outer .top-site-icon { background-color: #1e1610 !important; border-radius: 0 !important; box-shadow: inset 0 0 0 1px #57432f !important; }
+  .top-site-outer .title { font-family: "DM Mono", monospace !important; text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px !important; color: #9a8468 !important; }
 }

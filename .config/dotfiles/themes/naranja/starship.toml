@@ -1,19 +1,19 @@
-# Nostromo prompt: one line, quiet, amber cursor mark
+# Hi-Fi prompt: one line, quiet, amber cursor mark
 "$schema" = "https://starship.rs/config-schema.json"
 
 add_newline = true
-palette = "nostromo"
+palette = "hifi"
 format = "$directory$git_branch$git_state$git_status$python$cmd_duration$status$character"
 
-[palettes.nostromo]
-text = "#e8dfc8"
-sub = "#b3a891"
-muted = "#857c69"
-line = "#4a4438"
-amber = "#e9a23b"
-orange = "#d9652b"
-red = "#c8553d"
-green = "#8fae7e"
+[palettes.hifi]
+text = "#efe3cb"
+sub = "#c9b89a"
+muted = "#9a8468"
+line = "#6e5a45"
+amber = "#f28c28"
+orange = "#e0662a"
+red = "#d6503a"
+green = "#a3a86b"
 
 [directory]
 style = "text"

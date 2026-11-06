@@ -138,6 +138,7 @@ def test():
             assert out["claudeCode.hideOnboarding"] is True, "foreign keys must survive"
             bg0 = out["workbench.colorCustomizations"]["editor.background"]
             for k, c in out["editor.tokenColorCustomizations"].items():
+                c = c["foreground"] if isinstance(c, dict) else c  # {"foreground", "fontStyle"} is also valid
                 assert contrast(c, bg0) >= 4.5, (j.parent.name, k, c)
         by_name = {j.parent.name: j for j in jsons}
         apply(by_name["blanco"], f)

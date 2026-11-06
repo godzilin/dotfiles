@@ -36,6 +36,68 @@
   "kde_colors": "Fosforo",
   "buttons": ":close",
   "daemons": [],
+  "vscode": {
+    "palette": {
+      "bg": "#000000",
+      "bg1": "#000000"
+    },
+    "settings": {
+      "workbench.activityBar.location": "hidden",
+      "workbench.editor.showTabs": "single",
+      "workbench.layoutControl.enabled": false,
+      "window.commandCenter": false,
+      "window.menuBarVisibility": "toggle",
+      "editor.cursorStyle": "block",
+      "terminal.integrated.cursorStyle": "block",
+      "editor.cursorBlinking": "solid",
+      "editor.renderLineHighlight": "none",
+      "editor.minimap.enabled": false,
+      "editor.scrollbar.vertical": "hidden",
+      "editor.folding": false,
+      "editor.glyphMargin": false,
+      "editor.smoothScrolling": false,
+      "workbench.reduceMotion": "on",
+      "breadcrumbs.enabled": false
+    },
+    "colors": {
+      "statusBar.background": "#33ff4d",
+      "statusBar.foreground": "#000000",
+      "statusBar.border": "#33ff4d",
+      "statusBar.noFolderBackground": "#33ff4d",
+      "statusBarItem.hoverBackground": "#a6ffad",
+      "statusBarItem.remoteBackground": "#a6ffad",
+      "statusBarItem.remoteForeground": "#000000",
+      "editor.selectionBackground": "#33ff4d40",
+      "tab.activeBorderTop": "#00000000",
+      "tab.border": "#000000",
+      "terminal.ansiRed": "#ff5a4a",
+      "terminal.ansiYellow": "#a6ffad",
+      "terminal.ansiBlue": "#63cc6c",
+      "terminal.ansiCyan": "#a6ffad",
+      "terminal.ansiMagenta": "#63cc6c"
+    },
+    "tokens": {
+      "comments": {
+        "foreground": "#3f9147",
+        "fontStyle": "italic"
+      },
+      "keywords": {
+        "foreground": "#33ff4d",
+        "fontStyle": "bold"
+      },
+      "strings": "#63cc6c",
+      "numbers": "#c8ff5a",
+      "types": {
+        "foreground": "#a6ffad",
+        "fontStyle": "underline"
+      },
+      "functions": {
+        "foreground": "#a6ffad",
+        "fontStyle": "bold"
+      },
+      "variables": "#a6ffad"
+    }
+  },
   "wallpaper": {
     "title": "FONDOS",
     "random": "ALEATORIO"

@@ -1,32 +1,32 @@
 {
-  "name": "Neón",
-  "description": "Synthwave sobrio: noche violeta, acento lavanda y algo de cian, letras de Orbitron",
+  "name": "Yoru",
+  "description": "Noche en Tokio: barra vertical de rótulos en japonés a la derecha, leída de arriba abajo; calle mojada de lluvia violeta, sin texto; letra Dela Gothic One y Zen Kaku Gothic",
   "palette": {
-    "bg0": "#0b0217",
-    "bg": "#120427",
-    "bg1": "#1b0838",
-    "bg2": "#26104b",
-    "line": "#3a1b6b",
-    "faint": "#553089",
-    "muted": "#8a6bbd",
-    "sub": "#c3aee6",
-    "text": "#f6ecff",
-    "accent": "#9d7bff",
-    "yellow": "#ffd319",
-    "orange": "#ff8a3d",
-    "red": "#ff3864",
-    "green": "#4dffb4",
-    "teal": "#2de2e6",
-    "blue": "#6a7bff"
+    "bg0": "#0e0a1a",
+    "bg": "#15102a",
+    "bg1": "#1e1738",
+    "bg2": "#2a2048",
+    "line": "#40316a",
+    "faint": "#5c4b8a",
+    "muted": "#8f80b8",
+    "sub": "#c4bbdc",
+    "text": "#f1edf8",
+    "accent": "#b79bff",
+    "yellow": "#ffcf6b",
+    "orange": "#ff9a62",
+    "red": "#ff6b6b",
+    "green": "#7fe0b0",
+    "teal": "#6fd9e0",
+    "blue": "#7f9dff"
   },
   "stripes": [
-    "#c3aee6",
-    "#9d7bff",
+    "#c4bbdc",
+    "#b79bff",
     "#6a4a9e",
-    "#3a1b6b"
+    "#40316a"
   ],
-  "font_ui": "Rajdhani",
-  "font_mono": "Share Tech Mono",
+  "font_ui": "Zen Kaku Gothic New",
+  "font_mono": "M PLUS 1 Code",
   "font_size": 10,
   "gtk_theme": "adw-gtk3-dark",
   "color_scheme": "prefer-dark",
@@ -36,6 +36,58 @@
   "kde_colors": "Neon",
   "buttons": ":close",
   "daemons": [],
+  "vscode": {
+    "settings": {
+      "editor.minimap.side": "left",
+      "editor.minimap.renderCharacters": false,
+      "editor.minimap.showSlider": "always",
+      "editor.minimap.size": "fill",
+      "workbench.editor.tabSizing": "fixed",
+      "workbench.editor.wrapTabs": true,
+      "editor.cursorStyle": "underline",
+      "editor.cursorBlinking": "expand",
+      "editor.cursorSmoothCaretAnimation": "on",
+      "workbench.activityBar.iconSize": "large"
+    },
+    "colors": {
+      "editorCursor.foreground": "#6fd9e0",
+      "editorLineNumber.foreground": "#5c4b8a",
+      "editorLineNumber.activeForeground": "#6fd9e0",
+      "editor.selectionBackground": "#2de2e630",
+      "editor.lineHighlightBackground": "#26104b80",
+      "minimap.background": "#15102a",
+      "minimapSlider.background": "#9d7bff30",
+      "tab.activeBackground": "#2a2048",
+      "tab.activeBorderTop": "#00000000",
+      "tab.activeBorder": "#6fd9e0",
+      "activityBar.activeBackground": "#2a2048",
+      "activityBar.activeBorder": "#6fd9e0",
+      "activityBar.foreground": "#6fd9e0",
+      "statusBar.background": "#2a2048",
+      "statusBar.foreground": "#c4bbdc",
+      "statusBarItem.remoteBackground": "#b79bff",
+      "statusBarItem.remoteForeground": "#0e0a1a",
+      "focusBorder": "#6fd9e0",
+      "editorBracketHighlight.foreground1": "#6fd9e0",
+      "editorBracketHighlight.foreground2": "#b79bff",
+      "editorBracketHighlight.foreground3": "#ffcf6b"
+    },
+    "tokens": {
+      "comments": {
+        "foreground": "#8f80b8",
+        "fontStyle": "italic"
+      },
+      "keywords": {
+        "foreground": "#b79bff",
+        "fontStyle": "italic"
+      },
+      "strings": "#6fd9e0",
+      "numbers": "#ffcf6b",
+      "types": "#7fe0b0",
+      "functions": "#b6c0ff",
+      "variables": "#f1edf8"
+    }
+  },
   "wallpaper": {
     "title": "FONDOS",
     "random": "ALEATORIO"

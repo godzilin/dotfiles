@@ -1,16 +1,16 @@
 /* Neón for Thunar: same language as Firefox and waybar.
    Mono labels, amber selection, a framed file view, tape stripes on top. Only applies to Thunar windows. */
 
-@define-color n_bg0 #0b0217;
-@define-color n_bg #120427;
-@define-color n_bg1 #1b0838;
-@define-color n_bg2 #26104b;
-@define-color n_line #3a1b6b;
-@define-color n_faint #553089;
-@define-color n_muted #8a6bbd;
-@define-color n_sub #c3aee6;
-@define-color n_text #f6ecff;
-@define-color n_amber #9d7bff;
+@define-color n_bg0 #0e0a1a;
+@define-color n_bg #15102a;
+@define-color n_bg1 #1e1738;
+@define-color n_bg2 #2a2048;
+@define-color n_line #40316a;
+@define-color n_faint #5c4b8a;
+@define-color n_muted #8f80b8;
+@define-color n_sub #c4bbdc;
+@define-color n_text #f1edf8;
+@define-color n_amber #b79bff;
 
 window.thunar { background-color: @n_bg0; }
 
@@ -22,7 +22,7 @@ window.thunar menubar {
   border: none;
 }
 window.thunar menubar > menuitem {
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   font-size: 9pt;
   letter-spacing: 1px;
   color: @n_muted;
@@ -36,7 +36,7 @@ window.thunar toolbar {
   background: @n_bg0;
   padding: 4px 8px 8px;
   border-top: 4px solid transparent;
-  border-image: linear-gradient(to right, #ffd319 25%, #9d7bff 25%, #9d7bff 50%, #ff8a3d 50%, #ff8a3d 75%, #ff3864 75%) 4 0 0 0;
+  border-image: linear-gradient(to right, #ffcf6b 25%, #b79bff 25%, #b79bff 50%, #ff9a62 50%, #ff9a62 75%, #ff6b6b 75%) 4 0 0 0;
 }
 window.thunar toolbar button {
   border-radius: 6px;
@@ -49,7 +49,7 @@ window.thunar toolbar button:hover { color: @n_text; background: @n_bg2; }
 
 /* Location bar: a terminal prompt */
 window.thunar toolbar entry {
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   font-size: 10pt;
   background: @n_bg1;
   color: @n_text;
@@ -63,7 +63,7 @@ window.thunar toolbar entry:focus { border-color: @n_amber; }
 window.thunar toolbar entry image { color: @n_amber; }
 /* Breadcrumb buttons, if the button-style location bar is chosen */
 window.thunar .path-bar-button {
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   border-radius: 6px;
   color: @n_muted;
 }
@@ -113,7 +113,7 @@ window.thunar treeview.view:selected {
   border-radius: 6px;
 }
 window.thunar treeview.view header button {
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   font-size: 8pt;
   letter-spacing: 1px;
   color: @n_muted;
@@ -130,7 +130,7 @@ window.thunar .split-view-inactive-pane { opacity: 0.6; }
 /* Tabs: tape labels */
 window.thunar notebook > header { background: @n_bg0; border: none; box-shadow: none; padding: 0 8px 6px; }
 window.thunar notebook > header tab {
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   font-size: 9pt;
   color: @n_sub;
   border: 1px solid @n_line;
@@ -146,7 +146,7 @@ window.thunar notebook > header tab:checked label { color: @n_bg0; font-weight: 
 /* Status bar: a tape-deck readout */
 window.thunar statusbar {
   background: @n_bg0;
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   font-size: 8.5pt;
   letter-spacing: 1px;
   color: @n_muted;

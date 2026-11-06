@@ -1,61 +1,61 @@
-/* Default swaync theme + Nostromo palette on top (survives swaync updates) */
+/* Default swaync theme + Hi-Fi palette on top (survives swaync updates) */
 @import url("file:///etc/xdg/swaync/style.css");
 
 :root {
-  --cc-bg: rgba(26, 24, 20, 0.94);
-  --noti-border-color: #3d382d;
-  --noti-bg: 26, 24, 20;
+  --cc-bg: rgba(30, 22, 16, 0.94);
+  --noti-border-color: #57432f;
+  --noti-bg: 30, 22, 16;
   --noti-bg-alpha: 0.96;
-  --noti-bg-darker: #121110;
-  --noti-bg-hover: #24211b;
-  --noti-bg-focus: rgba(47, 43, 35, 0.8);
-  --noti-close-bg: #2f2b23;
-  --noti-close-bg-hover: #3d382d;
-  --text-color: #e8dfc8;
-  --text-color-disabled: #857c69;
-  --bg-selected: #3d382d;
+  --noti-bg-darker: #15100c;
+  --noti-bg-hover: #2a1f17;
+  --noti-bg-focus: rgba(58, 43, 32, 0.8);
+  --noti-close-bg: #3a2b20;
+  --noti-close-bg-hover: #57432f;
+  --text-color: #efe3cb;
+  --text-color-disabled: #9a8468;
+  --bg-selected: #57432f;
   --border-radius: 0;
   --notification-icon-size: 48px;
-  --notification-shadow: 0 4px 16px rgba(18, 17, 16, 0.6);
+  --notification-shadow: 0 4px 16px rgba(21, 16, 12, 0.6);
   --font-size-body: 13px;
   --font-size-summary: 13px;
 }
 
 * {
-  font-family: "BlexMono Nerd Font", monospace;
+  font-family: "DM Mono", monospace;
 }
 
 /* Incoming signal: a steel plate with hazard tape along its left edge and the sender's line stencilled */
 .notification .summary,
 .control-center .widget-title > label {
-  font-family: "Saira Stencil One", "BlexMono Nerd Font", sans-serif;
+  font-family: "Michroma", "DM Mono", sans-serif;
   font-weight: 400;
 }
-.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary { color: #e9a23b; }
-.control-center .widget-title > label { color: #e8dfc8; font-size: 22px; }
+.notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary { color: #f28c28; }
+.control-center .widget-title > label { color: #efe3cb; font-size: 22px; }
 
 .notification-row .notification-background .notification {
-  background-color: #121110;
-  background-image: repeating-linear-gradient(-45deg, #e0c36a 0 5px, #121110 5px 10px);
+  background-color: #15100c;
+  background-image: repeating-linear-gradient(-45deg, #eec068 0 5px, #15100c 5px 10px);
   background-size: 7px 100%;
   background-repeat: no-repeat;
-  border: 1px solid #3d382d;
+  border: 1px solid #57432f;
   border-radius: 0;
   padding-left: 7px;
 }
 .notification-row .notification-background .notification.critical {
-  background-image: repeating-linear-gradient(-45deg, #c8553d 0 5px, #121110 5px 10px);
-  border-color: #c8553d;
+  background-image: repeating-linear-gradient(-45deg, #d6503a 0 5px, #15100c 5px 10px);
+  border-color: #d6503a;
 }
-.notification-row .notification-background .notification.critical .notification-default-action .notification-content .text-box .summary { color: #c8553d; }
+.notification-row .notification-background .notification.critical .notification-default-action .notification-content .text-box .summary { color: #d6503a; }
 
 /* The notification centre hangs from the hull stripes */
 .control-center {
-  background-color: #1a1814;
-  background-image: linear-gradient(to bottom, #e0c36a 0 3px, #e9a23b 3px 6px, #d9652b 6px 9px, #c8553d 9px 12px);
+  background-color: #1e1610;
+  background-image: linear-gradient(to bottom, #eec068 0 3px, #f28c28 3px 6px, #e0662a 6px 9px, #d6503a 9px 12px);
   background-size: 100% 12px;
   background-repeat: no-repeat;
-  border-left: 1px solid #3d382d;
+  border-left: 1px solid #57432f;
   border-radius: 0;
 }
 .control-center button, .notification button, .close-button { border-radius: 0; }

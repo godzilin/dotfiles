@@ -1,123 +1,61 @@
-/* Neón palette */
-@define-color bg0    #0b0217;
-@define-color bg     #120427;
-@define-color bg1    #1b0838;
-@define-color bg2    #26104b;
-@define-color line   #3a1b6b;
-@define-color muted  #8a6bbd;
-@define-color sub    #c3aee6;
-@define-color text   #f6ecff;
-@define-color amber  #9d7bff;
-@define-color orange #ff8a3d;
-@define-color red    #ff3864;
-@define-color green  #4dffb4;
+/* Noche en Tokio: a pole of vertical signs. Each reading is a small lit panel, stacked and read top to bottom. */
+@define-color night  #0e0a1a;
+@define-color panel  #1e1738;
+@define-color line   #40316a;
+@define-color muted  #8f80b8;
+@define-color sub    #c4bbdc;
+@define-color text   #f1edf8;
+@define-color violet #b79bff;
+@define-color lantern #ff6b6b;
+@define-color paper  #ffcf6b;
+@define-color cyan   #6fd9e0;
 
 * {
-    font-family: "Share Tech Mono", "Symbols Nerd Font", "IBM Plex Mono", monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1px;
+    font-family: "Dela Gothic One", "Zen Kaku Gothic New", "Symbols Nerd Font", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
     border: none;
     min-height: 0;
+    min-width: 0;
 }
 
-window#waybar {
-    background: alpha(@bg, 0.92);
-    border: 1px solid @line;
-    border-radius: 10px;
+window#waybar { background: alpha(@night, 0.92); border-left: 2px solid @violet; color: @sub; }
+tooltip { background: @night; border: 1px solid @line; border-radius: 2px; }
+tooltip label { color: @text; font-family: "Zen Kaku Gothic New"; font-size: 13px; }
+
+#custom-launcher, #clock, #custom-hizuke, #custom-weather, #tray, #pulseaudio, #backlight, #network, #bluetooth,
+#power-profiles-daemon, #battery, #custom-wallpaper, #custom-claude, #custom-notifications, #custom-power, #mpris, #image.cover {
+    padding: 3px 0;
+    margin: 0 5px;
+    border-radius: 2px;
+    background: @panel;
     color: @sub;
 }
 
-tooltip {
-    background: @bg;
-    border: 1px solid @line;
-    border-radius: 8px;
-}
-tooltip label { color: @text; }
+/* The big lit signs */
+#custom-launcher { background: @violet; color: @night; font-size: 20px; margin-top: 6px; padding: 5px 0; }
+#clock { background: @paper; color: @night; font-size: 19px; padding: 6px 0; }
+#custom-hizuke { background: @lantern; color: @night; }
 
-/* Every readout is a small "cell" separated by a hairline, like a tape deck panel */
-#custom-launcher,
-#window,
-#clock,
-#tray,
-#pulseaudio,
-#backlight,
-#network,
-#bluetooth,
-#power-profiles-daemon,
-#battery,
-#custom-wallpaper,
-#custom-notifications,
-#custom-power {
-    padding: 0 12px;
-}
-
-#pulseaudio,
-#backlight,
-#network,
-#bluetooth,
-#power-profiles-daemon,
-#battery,
-#custom-wallpaper,
-#custom-notifications {
-    border-left: 1px solid @line;
-}
-
-#custom-launcher {
-    color: @text;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border-right: 1px solid @line;
-}
-
-#workspaces { padding: 0 6px; }
-#workspaces button {
-    color: @muted;
-    padding: 0 7px;
-    margin: 5px 1px;
-    border-radius: 5px;
-    background: transparent;
-    box-shadow: none;
-}
+#workspaces { margin: 0 5px; }
+#workspaces button { color: @muted; padding: 4px 0; margin: 1px 0; border-radius: 2px; background: transparent; box-shadow: none; }
 #workspaces button.empty  { color: @line; }
-#workspaces button.active { background: @amber; color: @bg0; font-weight: 700; }
-#workspaces button.urgent { background: @red; color: @bg0; }
-#workspaces button:hover  { background: @bg2; color: @text; }
+#workspaces button.active { background: @cyan; color: @night; }
+#workspaces button.urgent { background: @lantern; color: @night; }
+#workspaces button:hover  { background: @line; color: @text; }
 
-#window { color: @muted; }
-window#waybar.empty #window { padding: 0; }
+#pulseaudio.muted, #bluetooth.off, #bluetooth.disabled, #custom-weather.offline { color: @muted; }
+#battery.charging, #battery.plugged { color: @cyan; }
+#battery.warning:not(.charging)  { color: @paper; }
+#battery.critical:not(.charging) { background: @lantern; color: @night; }
+#power-profiles-daemon.performance { color: @lantern; }
+#power-profiles-daemon.power-saver { color: @cyan; }
+#mpris.playing { color: @cyan; }
 
-#clock { color: @muted; letter-spacing: 2px; }
-
-#pulseaudio, #backlight, #network, #power-profiles-daemon, #battery { color: @text; }
-#pulseaudio.muted { color: @muted; }
-#battery.warning:not(.charging)  { color: @amber; }
-#battery.critical:not(.charging) { color: @red; }
-#power-profiles-daemon.performance { color: @orange; }
-#power-profiles-daemon.power-saver { color: @green; }
-
-#custom-notifications { color: @muted; font-size: 13px; }
-#custom-wallpaper { color: @muted; font-size: 14px; }
-#custom-wallpaper:hover { color: @accent; }
-#custom-power { color: @muted; font-size: 13px; }
-#custom-power:hover { color: @red; }
-
-/* Now playing */
-#image.cover { padding: 0 2px 0 12px; border-left: 1px solid @line; }
-#custom-media-prev, #mpris, #custom-media-next { padding: 0 5px; color: @sub; font-size: 14px; }
-#custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @amber; }
-#mpris.playing { color: @amber; }
-#custom-media { padding: 0 12px 0 6px; color: @text; }
-#custom-media.paused { color: @muted; }
-#tray { border-left: 1px solid @line; }
-
-/* Weather, right of the clock */
-#custom-weather { padding: 0 12px; color: @text; border-left: 1px solid @line; }
-#bluetooth { color: @text; }
-#bluetooth.off, #bluetooth.disabled { color: @muted; }
-#bluetooth.connected { color: @amber; }
-#custom-weather.offline { color: @muted; }
+#custom-wallpaper:hover, #custom-notifications:hover, #mpris:hover { background: @line; color: @text; }
+#custom-power { margin-bottom: 6px; color: @muted; }
+#custom-power:hover { background: @lantern; color: @night; }
 
 /* Claude: gira mientras piensa */
-#custom-claude { color: #d97757; min-width: 18px; padding: 0 12px; font-size: 16px; }
-#custom-claude.parado { opacity: 0.4; }
+#custom-claude { color: #d97757; }
+#custom-claude.parado { opacity: 0.45; }

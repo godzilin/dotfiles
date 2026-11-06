@@ -1,6 +1,6 @@
 #!/bin/sh
-# One-time setup for the "morado" theme (synthwave). Fonts ship inside the theme (fonts/, OFL: Orbitron, Rajdhani,
-# Share Tech Mono). Builds ~/.local/share/icons/Papirus-Morado: Papirus-Dark with violet folders, without touching /usr.
+# One-time setup for the "morado" theme (Yoru, noche en Tokio). Fonts ship inside the theme (fonts/, OFL: Dela Gothic One, Zen Kaku Gothic New,
+# M PLUS 1 Code). Builds ~/.local/share/icons/Papirus-Morado: Papirus-Dark with violet folders, without touching /usr.
 set -e
 sudo pacman -S --needed papirus-icon-theme adw-gtk-theme
 src=/usr/share/icons/Papirus

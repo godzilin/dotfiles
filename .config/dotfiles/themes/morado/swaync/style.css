@@ -1,41 +1,41 @@
-/* Default swaync theme + Neón palette on top (survives swaync updates) */
+/* Default swaync theme + Yoru palette on top (survives swaync updates) */
 @import url("file:///etc/xdg/swaync/style.css");
 
 :root {
-  --cc-bg: rgba(18, 4, 39, 0.94);
-  --noti-border-color: #3a1b6b;
-  --noti-bg: 18, 4, 39;
+  --cc-bg: rgba(21, 16, 42, 0.94);
+  --noti-border-color: #40316a;
+  --noti-bg: 21, 16, 42;
   --noti-bg-alpha: 0.96;
-  --noti-bg-darker: #0b0217;
-  --noti-bg-hover: #1b0838;
-  --noti-bg-focus: rgba(38, 16, 75, 0.8);
-  --noti-close-bg: #26104b;
-  --noti-close-bg-hover: #3a1b6b;
-  --text-color: #f6ecff;
-  --text-color-disabled: #8a6bbd;
-  --bg-selected: #9d7bff;
+  --noti-bg-darker: #0e0a1a;
+  --noti-bg-hover: #1e1738;
+  --noti-bg-focus: rgba(42, 32, 72, 0.8);
+  --noti-close-bg: #2a2048;
+  --noti-close-bg-hover: #40316a;
+  --text-color: #f1edf8;
+  --text-color-disabled: #8f80b8;
+  --bg-selected: #b79bff;
   --border-radius: 10px;
   --notification-icon-size: 48px;
-  --notification-shadow: 0 4px 16px rgba(11, 2, 23, 0.6);
+  --notification-shadow: 0 4px 16px rgba(14, 10, 26, 0.6);
   --font-size-body: 13px;
   --font-size-summary: 13px;
 }
 
 * {
-  font-family: "Rajdhani", sans-serif;
+  font-family: "Zen Kaku Gothic New", sans-serif;
 }
 
 .notification .summary,
 .control-center .widget-title > label {
-  font-family: "Share Tech Mono", "Symbols Nerd Font", monospace;
+  font-family: "M PLUS 1 Code", "Symbols Nerd Font", monospace;
   font-weight: 600;
   letter-spacing: 1px;
 }
 
 /* Amber accent strip on the left of every notification */
 .notification-row .notification-background .notification {
-  border-left: 3px solid #9d7bff;
+  border-left: 3px solid #b79bff;
 }
 .notification-row .notification-background .notification.critical {
-  border-left-color: #ff3864;
+  border-left-color: #ff6b6b;
 }

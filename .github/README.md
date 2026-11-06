@@ -10,14 +10,14 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 
 | Tema | Estilo |
 |---|---|
-| `naranja` | **Nostromo**: nave de carga minimalista; acero, ámbar y cuatro franjas, esquinas rectas y fondos limpios sin texto |
+| `naranja` | **Hi-Fi**: receptor de los 70; nogal y aluminio, barra con presintonías y dial cuya aguja marca la hora, vúmetros reales |
 | `blanco` | **macOS**: claro y translúcido, barra de menús con menú de Arch, Dock, Spotlight |
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
 | `verde` | **Bosque**: musgo, luz entre pinos y corteza; barra de cantos rodados, fotos de Canarias, laurisilva y montaña |
-| `negro` | **Fósforo**: terminal de fósforo verde; negro puro, todo en IBM 3270, barra como línea de estado |
+| `negro` | **Fósforo**: tubo CRT de fósforo verde sobre toda la pantalla; negro puro, todo en IBM 3270 |
 | `gris` | **LinuxSTEP** (al estilo NeXTSTEP): cuatro grises, biseles finos, menú vertical arriba a la izquierda y Dock a la derecha |
-| `morado` | **Neón**: synthwave sobrio; noche violeta, acento lavanda y algo de cian, titulares en Orbitron |
+| `morado` | **Yoru**: noche en Tokio; barra vertical de rótulos en japonés y calle mojada de lluvia violeta |
 | `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
 | `dorado` | **Astrolabio**: observatorio de noche; el escritorio es un astrolabio que funciona con el cielo real, barra grabada con palabras en vez de iconos, almanaque de Luna y Sol, letra Alegreya |
 
@@ -26,34 +26,13 @@ pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
 Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
 
-## naranja: Nostromo
+## naranja: Hi-Fi
 
-Una nave de carga, minimalista: acero oscuro cálido, ámbar de fósforo, cuatro franjas, IBM Plex y rótulos de plantilla en
-Saira Stencil. Fondos limpios sin texto: un solo dibujo sobre tinta (`wallpapers/nostromo.py`). Barra de plancha pegada
-arriba con las franjas abajo, cubiertas A-D, `T+` de misión y esquinas rectas en las ventanas. Obsidian lleva títulos en
-plantilla y pestañas como bodegas numeradas; Firefox, pestañas iguales, línea `NAV` y nueva pestaña vacía; las
-notificaciones, cinta de peligro, roja en las críticas.
-
-![Escritorio](../.config/dotfiles/themes/naranja/screenshots/desktop.png)
-![Bloqueo](../.config/dotfiles/themes/naranja/screenshots/lock.png)
-
-### Paleta
-
-| | Color | Uso |
-|---|---|---|
-| ![](https://placehold.co/16/121110/121110.png) | `#121110` | fondo profundo |
-| ![](https://placehold.co/16/1a1814/1a1814.png) | `#1a1814` | fondo |
-| ![](https://placehold.co/16/24211b/24211b.png) | `#24211b` | superficies |
-| ![](https://placehold.co/16/3d382d/3d382d.png) | `#3d382d` | líneas y bordes |
-| ![](https://placehold.co/16/857c69/857c69.png) | `#857c69` | texto apagado |
-| ![](https://placehold.co/16/e8dfc8/e8dfc8.png) | `#e8dfc8` | texto (crema) |
-| ![](https://placehold.co/16/e9a23b/e9a23b.png) | `#e9a23b` | acento ámbar |
-| ![](https://placehold.co/16/e0c36a/e0c36a.png) | `#e0c36a` | franja amarilla |
-| ![](https://placehold.co/16/d9652b/d9652b.png) | `#d9652b` | franja naranja |
-| ![](https://placehold.co/16/c8553d/c8553d.png) | `#c8553d` | franja roja / errores |
-
-Fuentes: **IBM Plex Sans** (interfaz) y **BlexMono Nerd Font** (terminal, barra, lanzador).
-Iconos: WhiteSur-orange-dark. Cursor: WhiteSur.
+Un receptor de los años 70. La barra, abajo, es el frontal de aluminio: presintonías como teclas (la pulsada con su
+luz encendida), rótulos impresos sobre cada lectura y un dial iluminado donde las horas son las frecuencias y la aguja
+marca la hora (`scripts/dial.py`). En el escritorio, dos vúmetros de aguja se mueven con lo que suena de verdad
+(`scripts/vumetro.py`, lee el monitor de la salida por defecto con `parec`; quedan bajo las ventanas). Fondos lisos sin
+dibujo (`wallpapers/hifi.py`): nogal, tela de altavoz y aluminio negro. Letra Michroma, Barlow y DM Mono.
 
 ## blanco: macOS
 
@@ -134,21 +113,13 @@ Europa, fiordos...) con el lugar, autor y licencia en una esquina; créditos en
 
 ## negro: Fósforo
 
-Una terminal de mainframe con fósforo verde P1: negro puro, un solo verde en varias intensidades (el rojo solo para
-errores) y todo en la fuente IBM 3270, también la interfaz. Ventanas cuadradas de borde fino, sin sombras, sin blur
-y sin animaciones: la pantalla se redibuja y ya. La barra va abajo como la línea de estado de tmux o de un 3270
-(`READY▮` abre el lanzador, escritorio activo en vídeo inverso, reloj con segundos); el lanzador es un prompt
-`READY.` con selección invertida, y el bloqueo es una pantalla de logon (`USERID ===>`, `PASSWORD ===>`).
-Firefox, Thunar, GTK y Qt van con la misma paleta, y las franjas del Nostromo pasan a ser cuatro intensidades de verde.
-Firefox es un panel 3270/ISPF: pestañas numeradas en vídeo inverso, `COMANDO ===>` como dirección, una línea de
-teclas reales abajo y la nueva pestaña como pantalla de logon LINUX/390. Obsidian añade cabecera EDITAR, flechas
-ISPF y líneas de barrido.
+Un tubo de fósforo verde P1 sobre toda la pantalla: `hypr/crt.glsl` convierte cada color en brillo verde, curva
+ligeramente el cristal y añade líneas de barrido y halo, también en Firefox, fotos o VS Code. Super+Shift+C o la celda
+`CRT` de la barra lo apagan. Sin fondo, negro puro. Todo en IBM 3270, ventanas cuadradas, sin sombras, blur ni animaciones.
 
-![Escritorio](../.config/dotfiles/themes/negro/screenshots/desktop.png)
+Fuente `ttf-3270-nerd` (repos oficiales), carpetas verdes (Papirus-Verde), cursor Capitaine. Primera vez:
+`~/.config/dotfiles/themes/negro/install.sh`.
 
-Fuente `ttf-3270-nerd` (repos oficiales), carpetas verdes (Papirus-Verde, la del tema verde), cursor Capitaine.
-Fondos generados por código con brillo de fósforo y líneas de barrido (`wallpapers/fosforo.py`: READY, volcado
-hexadecimal del propio script, osciloscopio, radar y terreno vectorial). Primera vez: `~/.config/dotfiles/themes/negro/install.sh`.
 
 ## gris: LinuxSTEP (NeXTSTEP)
 
@@ -175,19 +146,13 @@ la construye `install.sh`), cursor Capitaine. Fondos generados y tramados con Ba
 Display PostScript, toro, Julia, ciudad de cubos, Lorenz, moiré, curvas de nivel, galaxia y Lissajous). Primera vez:
 `~/.config/dotfiles/themes/gris/install.sh`.
 
-## morado: Neón
+## morado: Yoru
 
-Synthwave de 1986 pero sin estridencias: noche violeta, acento lavanda y un poco de cian, Orbitron para los titulares
-(la hora del bloqueo, "LINUX" en la nueva pestaña de Firefox, los títulos de Obsidian), Rajdhani para la interfaz y
-Share Tech Mono en la terminal. Parte del Nostromo (barra, cinta numerada en las pestañas, franja de violetas) con
-carpetas violetas (Papirus-Morado), el logo de Arch ante un sol lavanda en rodajas y una rejilla en perspectiva en fastfetch y calendario y tiempo en
-paneles propios.
-
-![Escritorio](../.config/dotfiles/themes/morado/screenshots/desktop.png)
-
-Fuentes Orbitron, Rajdhani y Share Tech Mono (OFL, dentro del tema). Ocho fondos generados por código
-(`wallpapers/synthwave.py`: atardecer de franjas sobre la rejilla, rejilla sola, palmeras, ciudad, LINUX cromado, VHS,
-túnel y el logo de Arch en neón). Primera vez: `~/.config/dotfiles/themes/morado/install.sh`.
+Noche en Tokio. La barra es un poste de rótulos verticales a la derecha, que se lee de arriba abajo: escritorios
+en numerales kanji, hora y fecha en paneles encendidos y cada lectura con su carácter (音 sonido, 光 brillo, 網 red,
+電 batería, 終 apagar). Los textos de ayuda siguen en castellano. Fondos sin texto de calle mojada con lluvia
+(`wallpapers/tokio.py`). Letra Dela Gothic One, Zen Kaku Gothic New y M PLUS 1 Code en `fonts/`.
+Primera vez: `~/.config/dotfiles/themes/morado/install.sh`.
 
 ## cian: Plano
 

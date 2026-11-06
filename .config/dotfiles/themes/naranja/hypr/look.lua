@@ -1,7 +1,7 @@
 hl.config({
     general = {
-        gaps_in     = 3,
-        gaps_out    = 6,
+        gaps_in     = 4,
+        gaps_out    = 10,
         border_size = 2,
         col = {
             active_border   = rgba(C.amber, "dd"),
@@ -11,7 +11,7 @@ hl.config({
         layout = "dwindle",
     },
     decoration = {
-        rounding       = 0, -- steel plates: nothing on this ship is rounded for comfort
+        rounding       = 3, -- the slight radius of machined aluminium
         shadow = {
             enabled      = true,
             range        = 16,
@@ -57,14 +57,14 @@ hl.layer_rule({ name = "blur-waybar", match = { namespace = "^waybar$" },     bl
 hl.layer_rule({ name = "blur-fuzzel", match = { namespace = "^launcher$" },   blur = true, ignore_alpha = 0.2 })
 hl.layer_rule({ name = "blur-swaync", match = { namespace = "^swaync-.*$" },  blur = true, ignore_alpha = 0.2 })
 
--- Calendar popup from the waybar clock: floats right under it
+-- Calendar popup from the waybar clock: floats right above it
 hl.window_rule({
     name  = "calendar-popup",
     match = { class = "^nostromo-calendar$" },
     float = true,
     pin   = true,
     size  = "400 410",
-    move  = "760 44",
+    move  = "760 726",
 })
 
 -- Now-playing popup from the waybar media module
@@ -74,7 +74,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "420 380",
-    move  = "250 44",
+    move  = "250 756",
 })
 
 -- Wallpaper selector from the waybar wallpaper button
@@ -84,7 +84,7 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "580 540",
-    move  = "1330 44",
+    move  = "1330 596",
 })
 
 -- Weather popup from the waybar weather module
@@ -94,5 +94,5 @@ hl.window_rule({
     float = true,
     pin   = true,
     size  = "460 580",
-    move  = "60 44",
+    move  = "60 556",
 })

@@ -21,10 +21,10 @@ history = 10000
 multiplier = 3
 
 [font]
-normal = { family = "Share Tech Mono", style = "Regular" }
-bold = { family = "Share Tech Mono", style = "Regular" }
-italic = { family = "Share Tech Mono", style = "Regular" }
-bold_italic = { family = "Share Tech Mono", style = "Regular" }
+normal = { family = "M PLUS 1 Code", style = "Regular" }
+bold = { family = "M PLUS 1 Code", style = "Regular" }
+italic = { family = "M PLUS 1 Code", style = "Regular" }
+bold_italic = { family = "M PLUS 1 Code", style = "Regular" }
 size = 11.0
 
 [colors]
@@ -32,45 +32,45 @@ draw_bold_text_with_bright_colors = false
 
 # Neón palette
 [colors.primary]
-background = "#120427"
-foreground = "#f6ecff"
-dim_foreground = "#c3aee6"
+background = "#15102a"
+foreground = "#f1edf8"
+dim_foreground = "#c4bbdc"
 
 [colors.cursor]
-text = "#120427"
-cursor = "#9d7bff"
+text = "#15102a"
+cursor = "#b79bff"
 
 [colors.selection]
-text = "#f6ecff"
-background = "#3a1b6b"
+text = "#f1edf8"
+background = "#40316a"
 
 [colors.search.matches]
-foreground = "#120427"
-background = "#ffd319"
+foreground = "#15102a"
+background = "#ffcf6b"
 
 [colors.search.focused_match]
-foreground = "#120427"
-background = "#9d7bff"
+foreground = "#15102a"
+background = "#b79bff"
 
 [colors.normal]
-black = "#1b0838"
-red = "#ff3864"
-green = "#4dffb4"
-yellow = "#ffd319"
-blue = "#6a7bff"
+black = "#1e1738"
+red = "#ff6b6b"
+green = "#7fe0b0"
+yellow = "#ffcf6b"
+blue = "#7f9dff"
 magenta = "#d36bb0"
-cyan = "#2de2e6"
-white = "#c3aee6"
+cyan = "#6fd9e0"
+white = "#c4bbdc"
 
 [colors.bright]
-black = "#553089"
+black = "#5c4b8a"
 red = "#ff6f8a"
 green = "#7dffc9"
 yellow = "#ffe27a"
 blue = "#8a98ff"
-magenta = "#c3aee6"
+magenta = "#c4bbdc"
 cyan = "#7af0f2"
-white = "#f6ecff"
+white = "#f1edf8"
 
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"

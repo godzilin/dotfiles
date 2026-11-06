@@ -1,24 +1,24 @@
-/* Paleta "Nostromo" (themes/naranja/theme.json) sobre music.apple.com */
+/* Paleta "Hi-Fi" (themes/naranja/theme.json) sobre music.apple.com */
 @-moz-document domain("music.apple.com") {
   :root, body {
-    --keyColor: #e9a23b !important; --keyColorBG: #e9a23b !important;
-    --keyColor-rgb: 233,162,59 !important; --keyColor-rollover: #e0c36a !important;
-    --keyColor-pressed: #d9652b !important; --keyColor-disabled: #e9a23b59 !important;
-    --pageBG: #1a1814 !important; --pageBG-dark: #1a1814 !important; --pageBG-dark-rgb: 26,24,20 !important;
-    --navSidebarBG: #121110 !important; --playerBackground: #24211b !important;
-    --playerBackgroundFallback: #24211b !important; --miniPlayerBackground: #24211b !important;
-    --glassMaterialBackground: #24211bee !important; --systemGroupedBackgroundSecondary: #24211b !important;
-    --systemPrimary: #e8dfc8 !important; --systemPrimary-onDark: #e8dfc8 !important;
-    --systemSecondary: #b3a891 !important; --systemSecondary-onDark: #b3a891 !important;
-    --systemTertiary: #857c69 !important; --systemTertiary-onDark: #857c69 !important;
-    --systemQuaternary-onDark: #3d382d !important;
-    --labelDivider: #3d382d !important;
+    --keyColor: #f28c28 !important; --keyColorBG: #f28c28 !important;
+    --keyColor-rgb: 242,140,40 !important; --keyColor-rollover: #eec068 !important;
+    --keyColor-pressed: #e0662a !important; --keyColor-disabled: #e9a23b59 !important;
+    --pageBG: #1e1610 !important; --pageBG-dark: #1e1610 !important; --pageBG-dark-rgb: 30,22,16 !important;
+    --navSidebarBG: #15100c !important; --playerBackground: #2a1f17 !important;
+    --playerBackgroundFallback: #2a1f17 !important; --miniPlayerBackground: #2a1f17 !important;
+    --glassMaterialBackground: #24211bee !important; --systemGroupedBackgroundSecondary: #2a1f17 !important;
+    --systemPrimary: #efe3cb !important; --systemPrimary-onDark: #efe3cb !important;
+    --systemSecondary: #c9b89a !important; --systemSecondary-onDark: #c9b89a !important;
+    --systemTertiary: #9a8468 !important; --systemTertiary-onDark: #9a8468 !important;
+    --systemQuaternary-onDark: #57432f !important;
+    --labelDivider: #57432f !important;
     /* used by the local-music userscript */
-    --lm-stripe-1: #e0c36a; --lm-stripe-2: #e9a23b; --lm-stripe-3: #d9652b; --lm-stripe-4: #c8553d; --lm-error: #c8553d;
-    --lm-text: #e8dfc8; --lm-sub: #b3a891; --lm-muted: #857c69; --lm-track: #3d382d; --lm-surface: #24211b;
-    --lm-accent: #e9a23b; --lm-on-accent: #121110;
-    font-family: "IBM Plex Sans", sans-serif !important;
+    --lm-stripe-1: #eec068; --lm-stripe-2: #f28c28; --lm-stripe-3: #e0662a; --lm-stripe-4: #d6503a; --lm-error: #d6503a;
+    --lm-text: #efe3cb; --lm-sub: #c9b89a; --lm-muted: #9a8468; --lm-track: #57432f; --lm-surface: #2a1f17;
+    --lm-accent: #f28c28; --lm-on-accent: #15100c;
+    font-family: "Barlow", sans-serif !important;
   }
-  body { background: #1a1814 !important; color: #e8dfc8 !important; }
-  ::selection { background: #e9a23b; color: #121110; }
+  body { background: #1e1610 !important; color: #efe3cb !important; }
+  ::selection { background: #f28c28; color: #15100c; }
 }

@@ -1,59 +1,42 @@
 #!/usr/bin/env python3
-"""Write skull.txt: the ship's warning plate. A bone-amber skull whose nasal cavity is the Arch logo, one eye still lit,
-over the four diagonal stripes of the theme, with the scanlines of a CRT. intro.py scans it in. Run: python3 make_logo.py"""
+"""Write logo.txt: a VU meter. Backlit amber face in a walnut case, needle into the red, with the Arch logo where the
+dial prints "VU". intro.py scans it in. Run: python3 make_logo.py"""
+import math
 import sys
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parents[2]))
 import logolib as L  # noqa: E402
 
-COLS, ROWS2 = 50, 40
+COLS, ROWS2 = 50, 36
 W, H = L.size(COLS, ROWS2)
-BG = (0x1a, 0x18, 0x14)
-HOLE = (*BG, 255)
-STRIPES = ((224, 195, 106), (233, 162, 59), (217, 101, 43), (200, 85, 61))
-img = Image.new("RGBA", (W, H), (*BG, 0))
+BG = (0x1e, 0x16, 0x10)
+INK, RED, WOOD = (42, 26, 16, 255), (176, 34, 22, 255), (92, 58, 34, 255)
+img = Image.new("RGBA", (W, H), WOOD)
+yy, xx = np.mgrid[0:H, 0:W]
+glow = np.clip(1 - np.hypot((xx - W / 2) / W, (yy - H * 0.9) / H) * 1.2, 0, 1)[:, :, None]
+face = np.array((184, 120, 50), float) * (1 - glow) + np.array((252, 208, 128), float) * glow
+m = W // 22
+panel = Image.fromarray(face.astype(np.uint8)).convert("RGBA").crop((m, m, W - m, H - m * 2))
+img.paste(panel, (m, m))
 d = ImageDraw.Draw(img)
-band, slope = H * 0.058, H * 0.34
-for i, ink in enumerate(STRIPES):
-    y0 = H * 0.52 + (i - 2) * band
-    d.polygon([(0, y0 + slope), (W, y0 - slope), (W, y0 - slope + band * 0.86), (0, y0 + slope + band * 0.86)], fill=(*ink, 255))
-cx = W / 2
-skull = Image.new("L", (W, H), 0)
-s = ImageDraw.Draw(skull)
-s.ellipse([cx - W * 0.31, H * 0.02, cx + W * 0.31, H * 0.74], fill=255)
-s.rounded_rectangle([cx - W * 0.18, H * 0.62, cx + W * 0.18, H * 0.97], radius=H // 28, fill=255)
-yy = np.arange(H)[:, None] / H
-bone = np.array((232, 214, 170), float) * (1 - yy[:, :, None] ** 1.4) + np.array((150, 104, 44), float) * yy[:, :, None] ** 1.4
-xx = np.abs(np.arange(W)[None, :] - cx) / (W * 0.31)
-bone = np.repeat(bone, W, axis=1) * (1 - 0.4 * (xx ** 3).clip(0, 1))[:, :, None]
-head = Image.fromarray(bone.clip(0, 255).astype(np.uint8)).convert("RGBA")
-ring = Image.new("RGBA", (W, H), HOLE)
-ring.putalpha(skull.filter(ImageFilter.MaxFilter(25)))
-img.alpha_composite(ring)
-head.putalpha(skull)
-img.alpha_composite(head)
-d = ImageDraw.Draw(img)
-for side in (-1, 1):  # sockets: wide, tilted inwards
-    ex, ey, rx, ry = cx + side * W * 0.145, H * 0.40, W * 0.105, H * 0.105
-    d.polygon([(ex - rx, ey - ry * 0.25 + side * ry * 0.35), (ex - rx * 0.4, ey - ry * (1.0 + side * 0.25)), (ex + rx * 0.4, ey - ry * (1.0 - side * 0.25)),
-               (ex + rx, ey - ry * 0.25 - side * ry * 0.35), (ex + rx * 0.8, ey + ry * 0.9), (ex - rx * 0.8, ey + ry * 0.9)], fill=HOLE)
-er = W * 0.024
-ex, ey = cx + W * 0.145, H * 0.42
-d.ellipse([ex - er, ey - er, ex + er, ey + er], fill=(233, 62, 40, 255))
-nose = L.arch(int(H * 0.17))
-hole = Image.new("RGBA", nose.size, HOLE)
-hole.putalpha(nose)
-img.alpha_composite(hole, (round(cx - nose.width / 2), round(H * 0.525)))
-for i in range(-2, 3):  # teeth
-    x = cx + i * W * 0.062
-    d.rectangle([x - W * 0.008, H * 0.77, x + W * 0.008, H * 0.97], fill=HOLE)
-d.rectangle([cx - W * 0.2, H * 0.755, cx + W * 0.2, H * 0.772], fill=HOLE)
-
-px = np.asarray(img.resize((COLS, ROWS2), Image.BOX)).copy()
-px[1::2, :, :3] = (px[1::2, :, :3] * 0.72).astype(np.uint8)  # scanlines
-L.write(HERE / "skull.txt", L.blocks(Image.fromarray(px, "RGBA"), COLS, ROWS2, BG, resample=Image.NEAREST))
+cx, cy, r = W / 2, H * 1.15, H * 0.92
+span = math.radians(60)
+point = lambda a, k: (cx + r * k * math.sin(a), cy - r * k * math.cos(a))
+line = max(3, H // 90)
+for i in range(13):
+    a = -span / 2 + span * i / 12
+    d.line([point(a, 1), point(a, 1.06 if i % 3 else 1.1)], fill=RED if i >= 9 else INK, width=line)
+d.arc([cx - r, cy - r, cx + r, cy + r], math.degrees(-span / 2) - 90, math.degrees(span * 0.25) - 90, fill=INK, width=line)
+d.arc([cx - r, cy - r, cx + r, cy + r], math.degrees(span * 0.25) - 90, math.degrees(span / 2) - 90, fill=RED, width=line * 4)
+arch = L.arch(int(H * 0.32))
+ink = Image.new("RGBA", arch.size, INK)
+ink.putalpha(arch)
+img.alpha_composite(ink, (int(cx - arch.width / 2), int(H * 0.42)))
+d.line([(cx, cy), point(math.radians(23), 1.04)], fill=(20, 12, 8, 255), width=line * 2)
+d.rectangle([m, H - m * 2, W - m, H], fill=WOOD)  # the case hides the pivot
+L.write(HERE / "logo.txt", L.blocks(img, COLS, ROWS2, BG))

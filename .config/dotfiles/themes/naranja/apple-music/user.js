@@ -12,7 +12,7 @@ user_pref("datareporting.policy.dataSubmissionEnabled", false);
 user_pref("browser.tabs.warnOnClose", false);
 user_pref("ui.systemUsesDarkTheme", 1);
 user_pref("layout.css.prefers-color-scheme.content-override", 0);
-user_pref("font.name.sans-serif.x-western", "IBM Plex Sans");
+user_pref("font.name.sans-serif.x-western", "Barlow");
 user_pref("media.hardwaremediakeys.enabled", true);
 // Violentmonkey (en extensions/) se activa sin preguntar; ejecuta local-music/local-music.user.js
 user_pref("extensions.autoDisableScopes", 0);

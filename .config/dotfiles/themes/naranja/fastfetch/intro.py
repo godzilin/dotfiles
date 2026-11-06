@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Terminal intro: the skull logo scans in top to bottom like a CRT (~0.4 s), then the cursor
+"""Terminal intro: the logo scans in top to bottom like a CRT (~0.4 s), then the cursor
 goes back up so fastfetch draws over it in the very same place."""
 import json
 import os
@@ -10,7 +10,7 @@ import time
 here = os.path.dirname(os.path.abspath(__file__))
 conf = json.loads(re.sub(r"^\s*//.*$", "", open(os.path.join(here, "config.jsonc")).read(), flags=re.M))
 pad = conf["logo"]["padding"]
-lines = open(os.path.join(here, "skull.txt")).read().rstrip("\n").split("\n")
+lines = open(os.path.join(here, "logo.txt")).read().rstrip("\n").split("\n")
 
 out = sys.stdout
 out.write("\033[?25l" + "\n" * pad.get("top", 0))

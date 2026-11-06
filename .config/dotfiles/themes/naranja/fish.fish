@@ -1,12 +1,12 @@
-# Nostromo palette for CLI tools (sourced by fish/config.fish)
+# Hi-Fi palette for CLI tools (sourced by fish/config.fish)
 set -gx BAT_THEME ansi
-set -gx FZF_DEFAULT_OPTS "--color=bg+:#2f2b23,bg:-1,fg:#b3a891,fg+:#e8dfc8,hl:#e9a23b,hl+:#e9a23b,border:#3d382d,prompt:#e9a23b,pointer:#e9a23b,marker:#d9652b,info:#857c69,spinner:#e9a23b,header:#857c69 --border=rounded --prompt='› ' --pointer='▮'"
-set -g fish_color_command e8dfc8
-set -g fish_color_param b3a891
-set -g fish_color_quote e0c36a
-set -g fish_color_error c8553d
-set -g fish_color_autosuggestion 4a4438
-set -g fish_color_comment 857c69
-set -g fish_color_operator e9a23b
-set -g fish_color_redirection e9a23b
+set -gx FZF_DEFAULT_OPTS "--color=bg+:#3a2b20,bg:-1,fg:#c9b89a,fg+:#efe3cb,hl:#f28c28,hl+:#f28c28,border:#57432f,prompt:#f28c28,pointer:#f28c28,marker:#e0662a,info:#9a8468,spinner:#f28c28,header:#9a8468 --border=rounded --prompt='› ' --pointer='▮'"
+set -g fish_color_command efe3cb
+set -g fish_color_param c9b89a
+set -g fish_color_quote eec068
+set -g fish_color_error d6503a
+set -g fish_color_autosuggestion 6e5a45
+set -g fish_color_comment 9a8468
+set -g fish_color_operator f28c28
+set -g fish_color_redirection f28c28
 set -g fish_color_valid_path --underline

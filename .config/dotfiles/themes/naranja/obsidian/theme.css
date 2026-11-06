@@ -1,32 +1,32 @@
-/* Nostromo: Obsidian theme generated from this theme's palette (theme.json).
+/* Hi-Fi: Obsidian theme generated from this theme's palette (theme.json).
    Linked into the vault as .obsidian/themes/Tema -> themes/current/obsidian (see `tema`). */
 
 body.theme-dark, body.theme-light {
-  --color-base-00: #1a1814;
+  --color-base-00: #1e1610;
   --color-base-05: #1d1b16;
-  --color-base-10: #24211b;
-  --color-base-20: #121110;
+  --color-base-10: #2a1f17;
+  --color-base-20: #15100c;
   --color-base-25: #2a2620;
-  --color-base-30: #3d382d;
-  --color-base-35: #4a4438;
+  --color-base-30: #57432f;
+  --color-base-35: #6e5a45;
   --color-base-40: #5a5345;
-  --color-base-50: #857c69;
+  --color-base-50: #9a8468;
   --color-base-60: #9a9079;
-  --color-base-70: #b3a891;
-  --color-base-100: #e8dfc8;
-  --color-red: #c8553d;
-  --color-orange: #d9652b;
-  --color-yellow: #e0c36a;
-  --color-green: #8fae7e;
-  --color-cyan: #6f9e98;
-  --color-blue: #7b93a8;
-  --color-purple: #7b93a8;
-  --color-pink: #c8553d;
+  --color-base-70: #c9b89a;
+  --color-base-100: #efe3cb;
+  --color-red: #d6503a;
+  --color-orange: #e0662a;
+  --color-yellow: #eec068;
+  --color-green: #a3a86b;
+  --color-cyan: #7fa39a;
+  --color-blue: #8ea0a8;
+  --color-purple: #8ea0a8;
+  --color-pink: #d6503a;
   --accent-h: 36; --accent-s: 80%; --accent-l: 57%;
-  --text-on-accent: #121110;
-  --font-interface-theme: "IBM Plex Sans";
-  --font-text-theme: "IBM Plex Sans";
-  --font-monospace-theme: "BlexMono Nerd Font";
+  --text-on-accent: #15100c;
+  --font-interface-theme: "Barlow";
+  --font-text-theme: "Barlow";
+  --font-monospace-theme: "DM Mono";
   --radius-s: 0;
   --radius-m: 0;
   --radius-l: 0;
@@ -34,48 +34,48 @@ body.theme-dark, body.theme-light {
 }
 
 /* The ship's log: titles and major headings stencilled on steel, the rest of the structure in tracked mono, the text itself
-   left in IBM Plex Sans for long reading. Square plates, hull stripes under the title and the header, hazard tape
+   left in Barlow for long reading. Square plates, hull stripes under the title and the header, hazard tape
    only on warnings and code on an amber screen. */
 body {
-  --n-stencil: "Saira Stencil One", var(--font-monospace-theme);
-  --n-hazard: repeating-linear-gradient(-45deg, #e0c36a 0 6px, #121110 6px 12px);
-  --n-stripes: linear-gradient(90deg, #e0c36a 0 25%, #e9a23b 25% 50%, #d9652b 50% 75%, #c8553d 75%);
-  --h1-color: #e9a23b; --h2-color: #e0c36a; --h3-color: var(--text-normal);
+  --n-stencil: "Michroma", var(--font-monospace-theme);
+  --n-hazard: repeating-linear-gradient(-45deg, #eec068 0 6px, #15100c 6px 12px);
+  --n-stripes: linear-gradient(90deg, #eec068 0 25%, #f28c28 25% 50%, #e0662a 50% 75%, #d6503a 75%);
+  --h1-color: #f28c28; --h2-color: #eec068; --h3-color: var(--text-normal);
   --h4-color: var(--text-muted); --h5-color: var(--text-muted); --h6-color: var(--text-faint);
   --h1-font: var(--n-stencil); --h2-font: var(--n-stencil); --inline-title-font: var(--n-stencil);
   --h1-weight: 400; --h2-weight: 400; --inline-title-weight: 400; --inline-title-color: var(--text-normal);
   --h3-font: var(--font-monospace-theme); --h4-font: var(--font-monospace-theme); --h5-font: var(--font-monospace-theme); --h6-font: var(--font-monospace-theme);
-  --code-background: #121110; --code-normal: #e9a23b; --code-comment: #857c69; --code-keyword: #e0c36a; --code-string: #d9652b;
-  --code-function: #e8dfc8; --code-value: #e0c36a; --code-property: #b3a891; --code-radius: 0;
-  --blockquote-border-color: #e9a23b; --blockquote-border-thickness: 3px;
-  --tag-radius: 0; --tag-background: #24211b; --tag-border-width: 1px; --tag-border-color: #3d382d; --tag-color: #e9a23b;
-  --checkbox-radius: 0; --checkbox-color: #e9a23b; --checkbox-color-hover: #e0c36a; --checkbox-marker-color: #121110;
+  --code-background: #15100c; --code-normal: #f28c28; --code-comment: #9a8468; --code-keyword: #eec068; --code-string: #e0662a;
+  --code-function: #efe3cb; --code-value: #eec068; --code-property: #c9b89a; --code-radius: 0;
+  --blockquote-border-color: #f28c28; --blockquote-border-thickness: 3px;
+  --tag-radius: 0; --tag-background: #2a1f17; --tag-border-width: 1px; --tag-border-color: #57432f; --tag-color: #f28c28;
+  --checkbox-radius: 0; --checkbox-color: #f28c28; --checkbox-color-hover: #eec068; --checkbox-marker-color: #15100c;
   --callout-radius: 0;
 }
 .inline-title, .markdown-rendered h1, .markdown-rendered h2, .cm-header-1, .cm-header-2 { text-transform: uppercase; letter-spacing: .02em; }
 .markdown-rendered h3, .cm-header-3 { text-transform: uppercase; letter-spacing: .06em; }
 .markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6,
 .cm-header-4, .cm-header-5, .cm-header-6 { text-transform: uppercase; letter-spacing: .12em; }
-.markdown-rendered h3 { border-bottom: 1px solid #3d382d; padding-bottom: .2em; }
+.markdown-rendered h3 { border-bottom: 1px solid #57432f; padding-bottom: .2em; }
 
 /* Hull stripes under the note title */
 .inline-title { padding-bottom: .3em; border-bottom: 4px solid; border-image: var(--n-stripes) 1; }
 
 /* Code on an amber screen: a hairline frame */
-.markdown-rendered pre, .HyperMD-codeblock { background-color: #121110; }
-.markdown-rendered pre { border: 1px solid #3d382d; border-left: 3px solid #e9a23b; }
-.markdown-rendered code { color: #e9a23b; }
+.markdown-rendered pre, .HyperMD-codeblock { background-color: #15100c; }
+.markdown-rendered pre { border: 1px solid #57432f; border-left: 3px solid #f28c28; }
+.markdown-rendered code { color: #f28c28; }
 
 /* Callouts: a plate with a stencilled title; warnings and dangers carry hazard tape */
-.callout { border: 1px solid #3d382d; background: #24211b; }
+.callout { border: 1px solid #57432f; background: #2a1f17; }
 .callout-title-inner { font-family: var(--n-stencil); font-weight: 400; text-transform: uppercase; letter-spacing: .03em; }
 .callout[data-callout="warning"], .callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="caution"], .callout[data-callout="bug"] {
   border-top: 5px solid transparent; border-image: var(--n-hazard) 5; }
-.callout[data-callout="danger"], .callout[data-callout="error"] { --callout-color: 200, 85, 61; }
+.callout[data-callout="danger"], .callout[data-callout="error"] { --callout-color: 214, 80, 58; }
 
 /* Properties */
-.metadata-container { border: 1px solid #3d382d; border-left: 3px solid #e9a23b; background: #1d1b16; padding: .5em .8em; }
-.metadata-property-key-input { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .08em; font-size: .8em; color: #857c69; }
+.metadata-container { border: 1px solid #57432f; border-left: 3px solid #f28c28; background: #1d1b16; padding: .5em .8em; }
+.metadata-property-key-input { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .08em; font-size: .8em; color: #9a8468; }
 
 .status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
 .status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; border-radius: 0; }
@@ -86,15 +86,15 @@ body {
 .mod-root .workspace-tab-header { counter-increment: bay; }
 .workspace-tab-header::before, .workspace-tab-header::after, .workspace-tab-header-inner::after { display: none !important; }
 .mod-root .workspace-tab-header-inner-title { text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
-.mod-root .workspace-tab-header-inner-title::before { content: counter(bay, decimal-leading-zero) "  "; font-family: var(--n-stencil); font-size: 14px; color: #e9a23b; }
-.mod-root .workspace-tab-header.is-active { background: #e9a23b !important; border-radius: 0; }
+.mod-root .workspace-tab-header-inner-title::before { content: counter(bay, decimal-leading-zero) "  "; font-family: var(--n-stencil); font-size: 14px; color: #f28c28; }
+.mod-root .workspace-tab-header.is-active { background: #f28c28 !important; border-radius: 0; }
 .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before { color: #1a1814 !important; font-weight: 600; }
-.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: #1a1814; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-title::before { color: #1e1610 !important; font-weight: 600; }
+.mod-root .workspace-tab-header.is-active .workspace-tab-header-inner-close-button { color: #1e1610; }
 .nav-folder-title-content { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
-.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #e9a23b; border-radius: 0; }
+.nav-file-title.is-active, .tree-item-self.is-active { box-shadow: inset 3px 0 #f28c28; border-radius: 0; }
 .view-header { border-bottom: 3px solid !important; border-image: var(--n-stripes) 1 !important; }
 .view-header-title, .view-header-breadcrumb { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .06em; font-size: 11px; }
-.mod-root .workspace-leaf-content { border: 1px solid #3d382d; border-radius: 0; margin: 0 6px 6px 0; }
-.cm-cursor, .cm-dropCursor { border-left: .55em solid rgba(233, 162, 59, .75) !important; }
-.menu-item.selected:not(.is-disabled):not(.is-label) { box-shadow: inset 3px 0 #e9a23b; }
+.mod-root .workspace-leaf-content { border: 1px solid #57432f; border-radius: 0; margin: 0 6px 6px 0; }
+.cm-cursor, .cm-dropCursor { border-left: .55em solid rgba(242, 140, 40, .75) !important; }
+.menu-item.selected:not(.is-disabled):not(.is-label) { box-shadow: inset 3px 0 #f28c28; }

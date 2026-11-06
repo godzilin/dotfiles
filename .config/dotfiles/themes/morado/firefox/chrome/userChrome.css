@@ -1,13 +1,13 @@
-/* Neón for Firefox: synthwave shell (tabs as neon labels, the page in a glowing frame).
+/* Yoru for Firefox: synthwave shell (tabs as neon labels, the page in a glowing frame).
    Tabs are numbered tape labels, the page sits in a bezel like a monitor, tape stripes run along the top.
    Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
 
 :root {
-  --n-bg0: #0b0217; --n-bg: #120427; --n-bg1: #1b0838; --n-bg2: #26104b; --n-line: #3a1b6b;
-  --n-faint: #553089; --n-muted: #8a6bbd; --n-sub: #c3aee6; --n-text: #f6ecff;
-  --n-yellow: #c3aee6; --n-amber: #9d7bff; --n-orange: #6a4a9e; --n-red: #ff3864;
-  --n-mono: "Share Tech Mono", "Symbols Nerd Font", "IBM Plex Mono", monospace;
-  --n-sans: "Rajdhani", sans-serif;
+  --n-bg0: #0e0a1a; --n-bg: #15102a; --n-bg1: #1e1738; --n-bg2: #2a2048; --n-line: #40316a;
+  --n-faint: #5c4b8a; --n-muted: #8f80b8; --n-sub: #c4bbdc; --n-text: #f1edf8;
+  --n-yellow: #c4bbdc; --n-amber: #b79bff; --n-orange: #6a4a9e; --n-red: #ff6b6b;
+  --n-mono: "M PLUS 1 Code", "Symbols Nerd Font", "IBM Plex Mono", monospace;
+  --n-sans: "Zen Kaku Gothic New", sans-serif;
   --n-radius: 10px;
 
   /* Theme variables: repaint whatever theme is active */
@@ -245,8 +245,8 @@ findbar { background: var(--n-bg0) !important; border-top: 1px solid var(--n-lin
 }
 #main-menubar > menu { border-radius: 5px 5px 0 0; }
 
-/* ── Neón on top of the tape shell: Orbitron for the numbers, a thin violet scale along the top, no glow ────── */
-.tabbrowser-tab:not([pinned]) .tab-content::before { font-family: "Orbitron", sans-serif !important; }
-#urlbar[focused] .urlbar-background { box-shadow: 0 0 0 1px #9d7bff !important; }
-#urlbar .urlbar-input-container::before { color: #2de2e6 !important; }
-#navigator-toolbox { border-image: linear-gradient(90deg, #c3aee6 0 25%, #9d7bff 25% 50%, #6a4a9e 50% 75%, #3a1b6b 75% 100%) 1 !important; }
+/* ── Yoru on top of the tape shell: Dela Gothic One for the numbers, a thin violet scale along the top, no glow ────── */
+.tabbrowser-tab:not([pinned]) .tab-content::before { font-family: "Dela Gothic One", sans-serif !important; }
+#urlbar[focused] .urlbar-background { box-shadow: 0 0 0 1px #b79bff !important; }
+#urlbar .urlbar-input-container::before { color: #6fd9e0 !important; }
+#navigator-toolbox { border-image: linear-gradient(90deg, #c4bbdc 0 25%, #b79bff 25% 50%, #6a4a9e 50% 75%, #40316a 75% 100%) 1 !important; }
