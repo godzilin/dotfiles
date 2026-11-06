@@ -38,6 +38,25 @@
   "daemons": [
     "nwg-dock-hyprland -d -i 48 -mb 8 -nolauncher -g 'nostromo-calendar nostromo-weather nostromo-media about-this-pc'"
   ],
+  "vscode": {
+    "colors": {
+      "editor.selectionBackground": "#b3d7ff", "editor.lineHighlightBackground": "#f4f7fb",
+      "editorLineNumber.foreground": "#aeaeb2", "editorLineNumber.activeForeground": "#1d1d1f",
+      "tab.activeBorderTop": "#00000000", "tab.inactiveBackground": "#e3e3e6",
+      "activityBar.background": "#ececec", "activityBar.foreground": "#1d1d1f",
+      "activityBarBadge.background": "#ff3b30", "activityBarBadge.foreground": "#ffffff",
+      "badge.background": "#ff3b30", "badge.foreground": "#ffffff",
+      "sideBar.background": "#ececec", "editorGroupHeader.tabsBackground": "#ececec",
+      "titleBar.activeBackground": "#ececec",
+      "list.activeSelectionBackground": "#007aff", "list.activeSelectionForeground": "#ffffff",
+      "list.activeSelectionIconForeground": "#ffffff", "list.focusOutline": "#00000000",
+      "statusBar.background": "#f6f6f6", "statusBar.foreground": "#6e6e73"
+    },
+    "tokens": {
+      "comments": "#5d6c79", "keywords": "#9b2393", "strings": "#c41a16", "numbers": "#1c00cf",
+      "types": "#0b4f79", "functions": "#326d74"
+    }
+  },
   "wallpaper": {
     "title": "Fondo de pantalla",
     "random": "Aleatorio"

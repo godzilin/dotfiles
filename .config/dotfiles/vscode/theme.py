@@ -2,7 +2,7 @@
 """Paint VS Code (Code - OSS) with the active theme's palette; it reloads settings.json by itself.
 
 Everything comes from themes/current/theme.json, so a new theme needs nothing here. A theme whose palette
-is not its window colours (azul: MS-DOS terminal) adds "vscode": {"palette": {...}, "colors": {...}} to override them.
+is not its window colours (azul: MS-DOS terminal) adds "vscode": {"palette", "colors", "tokens"} to override them.
 `theme.py --test` checks every theme without touching the real settings.
 """
 import json
@@ -96,6 +96,7 @@ def theme_settings(theme):
         "editor.tokenColorCustomizations": {
             "comments": code["muted"], "keywords": code["accent"], "strings": code["green"],
             "numbers": code["orange"], "types": code["teal"], "functions": code["blue"], "variables": text,
+            **override.get("tokens", {}),
         },
         "editor.fontFamily": mono,
         "terminal.integrated.fontFamily": mono,
