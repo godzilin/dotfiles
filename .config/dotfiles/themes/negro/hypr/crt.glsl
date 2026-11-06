@@ -5,6 +5,13 @@ precision highp float;
 in vec2 v_texcoord;
 uniform sampler2D tex;
 out vec4 fragColor;
+#ifdef GLITCH
+uniform float time;
+
+float random(float x) {
+    return fract(sin(x * 12.9898) * 43758.5453);
+}
+#endif
 
 const float BOW = 0.024;              // barrel distortion of the glass
 const vec3 PHOSPHOR = vec3(0.20, 1.0, 0.30);
@@ -19,6 +26,12 @@ void main() {
     // normalised at the middle of each side: the picture stays inside the glass and only the corners go black
     c *= (1.0 + BOW * dot(c, c)) / (1.0 + BOW);
     vec2 uv = c * 0.5 + 0.5;
+#ifdef GLITCH  // the picture loses sync: bands slip sideways and the frame rolls (scripts/glitch.py)
+    float tick = floor(time * 30.0);
+    float band = floor(v_texcoord.y * 18.0);
+    uv.x += step(0.62, random(band + tick)) * (random(tick + 7.0) - 0.5) * 0.16;
+    uv.y = fract(uv.y + (random(tick + 3.0) - 0.5) * 0.05);
+#endif
 
     vec2 px = 1.6 / size, far = 4.0 / size;
     float halo = (luma(uv + vec2(px.x, 0.0)) + luma(uv - vec2(px.x, 0.0))

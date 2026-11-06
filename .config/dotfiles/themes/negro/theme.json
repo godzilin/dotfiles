@@ -35,7 +35,7 @@
   "cursor_size": 24,
   "kde_colors": "Fosforo",
   "buttons": ":close",
-  "daemons": [],
+  "daemons": ["~/.config/dotfiles/themes/negro/scripts/glitch.py"],
   "vscode": {
     "palette": {
       "bg": "#000000",
