@@ -48,9 +48,20 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
     kwriteconfig6 --file kdeglobals --group General --key LastUsedCustomAccentColor $rgb
     # kded's gtkconfig reacts to a new scheme by replacing ~/.config/gtk-*/gtk.css (our symlinks) with its own
     # file and editing settings.ini (the theme's tracked file): unload it first and put our links back after
+    # It is load-on-demand too: a new scheme wakes it up however it is set, so keep a copy and undo what it writes
     kwriteconfig6 --file kded6rc --group Module-gtkconfig --key autoload false  # stays off when kded restarts
     qdbus6 org.kde.kded6 /kded org.kde.kded6.unloadModule gtkconfig >/dev/null 2>&1
+    set -l inis $dir/$t/gtk-3.0/settings.ini $dir/$t/gtk-4.0/settings.ini
+    for ini in $inis
+        cp $ini $ini.tema
+    end
     plasma-apply-colorscheme (jq -r .kde_colors $json) >/dev/null
+    sleep 1  # shortcut: gtkconfig writes on its own after this returns; raise it if settings.ini still changes
+    qdbus6 org.kde.kded6 /kded org.kde.kded6.unloadModule gtkconfig >/dev/null 2>&1
+    pkill -x xsettingsd  # gtkconfig's, with the old theme
+    for ini in $inis
+        mv -f $ini.tema $ini
+    end
     for v in 3.0 4.0
         rm -f ~/.config/gtk-$v/colors.css
         ln -sfn ../dotfiles/themes/current/gtk-$v/gtk.css ~/.config/gtk-$v/gtk.css
