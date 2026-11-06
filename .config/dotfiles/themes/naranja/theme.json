@@ -1,6 +1,6 @@
 {
   "name": "Nostromo",
-  "description": "Nave de carga: el escritorio es la consola del puente con la telemetría real del portátil, casco en alámbrico, reloj de misión y rótulos de plantilla; acero, ámbar y cuatro franjas",
+  "description": "Nave de carga, minimalista: acero oscuro, ámbar y cuatro franjas; esquinas rectas, rótulos de plantilla y fondos limpios sin texto",
   "palette": {
     "bg0": "#121110",
     "bg": "#1a1814",
@@ -35,7 +35,7 @@
   "cursor_size": 24,
   "kde_colors": "Nostromo",
   "buttons": ":close",
-  "daemons": ["~/.config/dotfiles/themes/naranja/scripts/consola.py"],
+  "daemons": [],
   "wallpaper": {
     "title": "FONDOS",
     "random": "ALEATORIO"

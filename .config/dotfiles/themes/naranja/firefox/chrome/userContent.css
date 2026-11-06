@@ -24,53 +24,11 @@
   body { background-color: var(--background-color-canvas) !important; }
 }
 
-/* New tab / home: the bridge. Bulkhead grid, the hull plotted behind, the ship's name stencilled over the NAV line */
+/* New tab / home: an empty dark screen with the search box */
 @-moz-document url("about:newtab"), url("about:home") {
-  body {
-    background-color: #121110 !important;
-    background-image: url("casco.png"),
-                      linear-gradient(rgba(61, 56, 45, .3) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(61, 56, 45, .3) 1px, transparent 1px) !important;
-    background-size: 960px 420px, 48px 48px, 48px 48px !important;
-    background-position: center 58%, 0 0, 0 0 !important;
-    background-repeat: no-repeat, repeat, repeat !important;
-    background-attachment: fixed !important;
-  }
-  body::after {  /* hazard tape along the foot of the screen */
-    content: "";
-    position: fixed;
-    inset: auto 0 0 0;
-    height: 10px;
-    background: repeating-linear-gradient(-45deg, #e0c36a 0 10px, #121110 10px 20px);
-    opacity: .75;
-  }
+  body { background-color: #121110 !important; }
   .outer-wrapper, main { background: transparent !important; }
   .logo-and-wordmark, .logo-and-wordmark-wrapper { display: none !important; }
-  .search-wrapper::before {
-    content: "NOSTROMO";
-    display: block;
-    align-self: center;
-    width: min(852px, 80vw);
-    text-align: center;
-    margin-bottom: 18px;
-    font: 400 64px "Saira Stencil One", sans-serif;
-    letter-spacing: 0.02em;
-    color: #e8dfc8;
-  }
-  .search-wrapper::after {  /* the hull stripes under the search box */
-    content: "";
-    display: block;
-    align-self: center;
-    width: min(852px, 80vw);
-    height: 12px;
-    margin: 22px auto 0;
-    background: linear-gradient(#e0c36a 0 3px, transparent 3px 3px) top,
-                linear-gradient(#e9a23b 0 3px, transparent 3px) 0 3px,
-                linear-gradient(#d9652b 0 3px, transparent 3px) 0 6px,
-                linear-gradient(#c8553d 0 3px, transparent 3px) 0 9px;
-    background-size: 100% 3px;
-    background-repeat: no-repeat;
-  }
   .search-handoff-button, .search-inner-wrapper :is(input, button, div) { border-radius: 0 !important; box-shadow: none !important; }
   .search-handoff-button { background-color: #1a1814 !important; border: 1px solid #3d382d !important; }
   /* the search box is an embedded address bar: restyle its frame, leave its insides alone */

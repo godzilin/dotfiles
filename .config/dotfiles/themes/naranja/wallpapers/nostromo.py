@@ -5,7 +5,6 @@ import subprocess
 from pathlib import Path
 
 import machines
-import skulls
 
 W, H = 1920, 1200
 BG_TOP, BG_BOTTOM = "#1a1814", "#121110"
@@ -15,24 +14,15 @@ STRIPE_W, STEP = 10, 17  # stripe thickness, distance between stripe centers
 FONT = 'font-family="IBM Plex Mono" letter-spacing="3"'
 
 
-def frame(art, model, side):
-    """Shared background, corner marks and labels around one piece of art."""
-    marks = [f'<path d="M{x-8},{y} h16 M{x},{y-8} v16" stroke="{FAINT}" stroke-width="1.5"/>'
-             for x, y in [(64, 64), (W - 64, 64), (64, H - 64), (W - 64, H - 64)]]
+def frame(art):
+    """A flat warm ground and one drawing: no grid, marks or lettering."""
     return "\n".join([
         f'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
         '<defs>',
         f'<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{BG_TOP}"/><stop offset="1" stop-color="{BG_BOTTOM}"/></linearGradient>',
-        f'<pattern id="dots" width="48" height="48" patternUnits="userSpaceOnUse"><circle cx="24" cy="24" r="1.2" fill="{GRID}"/></pattern>',
         '</defs>',
         f'<rect width="{W}" height="{H}" fill="url(#bg)"/>',
-        f'<rect width="{W}" height="{H}" fill="url(#dots)"/>',
-        *art,
-        *marks,
-        f'<text x="96" y="104" {FONT} font-size="15" font-weight="600" fill="{MUTED}">THINKPAD P14S GEN 5</text>',
-        f'<line x1="96" y1="122" x2="840" y2="122" stroke="{FAINT}" stroke-width="1"/>',
-        f'<text x="96" y="146" {FONT} font-size="12" fill="{FAINT}">RYZEN 7 PRO 8840HS · RADEON 780M · 32 GB · 1 TB NVME · CACHYOS · HYPRLAND</text>',
-        f'<text x="{W-96}" y="{H-92}" {FONT} font-size="12" fill="{FAINT}" text-anchor="end">{model} · {side} · TYPE II · 90 MIN</text>',
+        *(a for a in art if "<text" not in a),
         '</svg>',
     ])
 
@@ -101,18 +91,13 @@ def orbit():
     sx, sy = cx + 640 * math.cos(2.4), cy + 225 * math.sin(2.4)
     a = math.radians(-18)  # ship position after the group rotation, for its callout
     px, py = cx + (sx - cx) * math.cos(a) - (sy - cy) * math.sin(a), cy + (sx - cx) * math.sin(a) + (sy - cy) * math.cos(a)
-    art += [f'<line x1="{px:.1f}" y1="{py:.1f}" x2="{px - 60:.1f}" y2="{py + 90:.1f}" stroke="{MUTED}"/>',
-            f'<text x="{px - 66:.1f}" y="{py + 110:.1f}" {FONT} font-size="12" fill="{MUTED}" text-anchor="end">USCSS · 180924609</text>']
     return art
 
 
 out = Path(__file__).with_name("rotation")
 out.mkdir(exist_ok=True)
-for name, art, model, side in [("a-stripes", stripes(), "MOD. N-1200", "SIDE A"),
-                               ("c-scope", scope(), "MOD. O-0440", "SIDE A"),
-                               ("f-radar", radar(), "MOD. M-0426", "SIDE B"),
-                               ("h-orbit", orbit(), "MOD. L-0426", "SIDE B"),
-                               *((n, f(), m, sd) for n, f, m, sd in skulls.ALL + machines.ALL)]:
+for name, art in [("a-stripes", stripes()), ("c-scope", scope()), ("f-radar", radar()), ("h-orbit", orbit()),
+                  *((n, f()) for n, f in machines.ALL)]:
     png = out / f"{name}.png"
-    subprocess.run(["rsvg-convert", "-o", png], input=frame(art, model, side).encode(), check=True)
+    subprocess.run(["rsvg-convert", "-o", png], input=frame(art).encode(), check=True)
     print(png)

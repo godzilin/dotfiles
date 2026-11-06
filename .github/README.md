@@ -10,7 +10,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 
 | Tema | Estilo |
 |---|---|
-| `naranja` | **Nostromo**: nave de carga; el escritorio es la consola del puente con la telemetría real del portátil, casco en alámbrico y reloj de misión |
+| `naranja` | **Nostromo**: nave de carga minimalista; acero, ámbar y cuatro franjas, esquinas rectas y fondos limpios sin texto |
 | `blanco` | **macOS**: claro y translúcido, barra de menús con menú de Arch, Dock, Spotlight |
 | `azul` | **Windows 95/98**: biseles grises, barra de tareas, menú Inicio, MS-DOS Prompt |
 | `rojo` | **Constructivismo**: papel, tinta negra y rojo de cartel; diagonales y tipografía condensada |
@@ -28,17 +28,11 @@ Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `theme
 
 ## naranja: Nostromo
 
-Una nave de carga industrial: acero oscuro cálido, ámbar de fósforo, cuatro franjas de casco, IBM Plex y rótulos de
-plantilla en Saira Stencil. El escritorio es la consola del puente (`scripts/consola.py`, una capa bajo las ventanas): el
-portátil hace de nave con datos reales (CPU como reactor, memoria como soporte vital, disco como bodega, batería, red),
-el tiempo encendido es el reloj de misión, la bitácora apunta solo lo que cambia de verdad y un casco alámbrico gira a
-pasos. Se muestra con la lámina `0-consola.png` fijada; otra lámina o "Aleatorio" la ocultan. Barra de plancha pegada
-arriba con las franjas abajo, cubiertas A-D, `T+` de misión y esquinas rectas en las ventanas. Primera vez:
-`~/.config/dotfiles/themes/naranja/install.sh`.
-Obsidian es la bitácora: títulos en plantilla, propiedades como `MANIFEST`, pestañas como bodegas numeradas, reglas de
-cinta de peligro y código en la pantalla ámbar; el texto sigue en IBM Plex Sans para leer. Firefox es un terminal del
-puente, con pestañas como bodegas, la línea `NAV` y la nueva pestaña con el casco detrás de `NOSTROMO`. Las notificaciones
-son señales entrantes con cinta de peligro, roja en las críticas.
+Una nave de carga, minimalista: acero oscuro cálido, ámbar de fósforo, cuatro franjas, IBM Plex y rótulos de plantilla en
+Saira Stencil. Fondos limpios sin texto: un solo dibujo sobre tinta (`wallpapers/nostromo.py`). Barra de plancha pegada
+arriba con las franjas abajo, cubiertas A-D, `T+` de misión y esquinas rectas en las ventanas. Obsidian lleva títulos en
+plantilla y pestañas como bodegas numeradas; Firefox, pestañas iguales, línea `NAV` y nueva pestaña vacía; las
+notificaciones, cinta de peligro, roja en las críticas.
 
 ![Escritorio](../.config/dotfiles/themes/naranja/screenshots/desktop.png)
 ![Bloqueo](../.config/dotfiles/themes/naranja/screenshots/lock.png)

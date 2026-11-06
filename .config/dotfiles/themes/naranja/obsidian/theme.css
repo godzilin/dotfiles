@@ -34,8 +34,8 @@ body.theme-dark, body.theme-light {
 }
 
 /* The ship's log: titles and major headings stencilled on steel, the rest of the structure in tracked mono, the text itself
-   left in IBM Plex Sans for long reading. Square plates, hull stripes under the title and the header, hazard tape for
-   rules and warnings, code on the amber screen of the console, and the properties read as a cargo manifest. */
+   left in IBM Plex Sans for long reading. Square plates, hull stripes under the title and the header, hazard tape
+   only on warnings and code on an amber screen. */
 body {
   --n-stencil: "Saira Stencil One", var(--font-monospace-theme);
   --n-hazard: repeating-linear-gradient(-45deg, #e0c36a 0 6px, #121110 6px 12px);
@@ -48,7 +48,6 @@ body {
   --code-background: #121110; --code-normal: #e9a23b; --code-comment: #857c69; --code-keyword: #e0c36a; --code-string: #d9652b;
   --code-function: #e8dfc8; --code-value: #e0c36a; --code-property: #b3a891; --code-radius: 0;
   --blockquote-border-color: #e9a23b; --blockquote-border-thickness: 3px;
-  --hr-color: transparent;
   --tag-radius: 0; --tag-background: #24211b; --tag-border-width: 1px; --tag-border-color: #3d382d; --tag-color: #e9a23b;
   --checkbox-radius: 0; --checkbox-color: #e9a23b; --checkbox-color-hover: #e0c36a; --checkbox-marker-color: #121110;
   --callout-radius: 0;
@@ -62,12 +61,8 @@ body {
 /* Hull stripes under the note title */
 .inline-title { padding-bottom: .3em; border-bottom: 4px solid; border-image: var(--n-stripes) 1; }
 
-/* Rules are hazard tape */
-.markdown-rendered hr, .markdown-source-view.mod-cm6 .cm-line hr { border: none; height: 6px; background: var(--n-hazard); opacity: .7; }
-
-/* Code on the console's amber screen: a hairline frame and faint scanlines */
-.markdown-rendered pre, .HyperMD-codeblock { background-color: #121110;
-  background-image: repeating-linear-gradient(transparent 0 2px, rgba(233, 162, 59, .035) 2px 3px); }
+/* Code on an amber screen: a hairline frame */
+.markdown-rendered pre, .HyperMD-codeblock { background-color: #121110; }
 .markdown-rendered pre { border: 1px solid #3d382d; border-left: 3px solid #e9a23b; }
 .markdown-rendered code { color: #e9a23b; }
 
@@ -78,15 +73,12 @@ body {
   border-top: 5px solid transparent; border-image: var(--n-hazard) 5; }
 .callout[data-callout="danger"], .callout[data-callout="error"] { --callout-color: 200, 85, 61; }
 
-/* Properties: the cargo manifest */
+/* Properties */
 .metadata-container { border: 1px solid #3d382d; border-left: 3px solid #e9a23b; background: #1d1b16; padding: .5em .8em; }
-.metadata-properties-heading, .metadata-properties-heading * { font-size: 0 !important; }
-.metadata-properties-heading::before { content: "MANIFEST"; font: 400 15px var(--n-stencil); color: #e9a23b; }
 .metadata-property-key-input { font-family: var(--font-monospace); text-transform: uppercase; letter-spacing: .08em; font-size: .8em; color: #857c69; }
 
 .status-bar, .nav-folder-title, .workspace-tab-header-inner-title { font-family: var(--font-monospace); }
 .status-bar { text-transform: uppercase; letter-spacing: .08em; font-size: 11px; border-radius: 0; }
-.status-bar::before { content: "GZ-01"; font: 400 13px var(--n-stencil); color: #e9a23b; margin-right: 1em; align-self: center; }
 
 /* The deck: tabs are numbered cargo bays (the open one amber, its number stencilled), folders are small tracked caps,
    the open note has an amber edge, the header carries the hull stripes and the editor sits inset like a screen */
