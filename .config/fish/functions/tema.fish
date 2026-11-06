@@ -64,6 +64,7 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
     end
 
     ~/.config/dotfiles/firefox/theme.sh  # Firefox ignores activeThemeID from user.js once a theme is recorded
+    ~/.config/dotfiles/vscode/theme.py  # VS Code reloads its settings.json live
 
     # Obsidian: the vault's theme "Tema" is this link (ignored by the vault's git/Syncthing); touching it reloads it live
     set -l vault ~/Obsidian/Vault/.obsidian

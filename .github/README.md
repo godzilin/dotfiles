@@ -21,7 +21,7 @@ tema naranja    # cambia de tema y recarga lo que está abierto
 | `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
 | `dorado` | **Astrolabio**: observatorio de noche; el escritorio es un astrolabio que funciona con el cielo real, barra grabada con palabras en vez de iconos, almanaque de Luna y Sol, letra Alegreya |
 
-Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian cambia al momento,
+Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian y VS Code cambian al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
 (si Firefox estaba abierto al cambiar, ciérralo y ejecuta `~/.config/dotfiles/firefox/theme.sh`).
 Si un tema necesita algo de fuera (tema GTK, paquetes), `tema` avisa y su `themes/<color>/install.sh` lo instala.
