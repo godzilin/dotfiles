@@ -31,7 +31,7 @@ hl.bind(mod .. " + N", exec("swaync-client -t -sw"), { description = "Centro de 
 hl.bind(mod .. " + B", exec(scripts .. "powerprofile.sh"), { description = "Cambiar perfil de energía" })
 hl.bind(mod .. " + L", exec("loginctl lock-session"), { description = "Bloquear la sesión" })
 hl.bind("CTRL + ALT + Delete", exec(scripts .. "powermenu.sh"), { description = "Menú de apagado" })
-hl.bind(mod .. " + SHIFT + B", exec("pkill waybar; waybar"), { description = "Reiniciar la barra" })  -- if the bar dies or glitches
+hl.bind(mod .. " + SHIFT + B", exec("pkill -x waybar; " .. scripts .. "waybar.sh"), { description = "Reiniciar la barra" })  -- if the bar dies or glitches
 hl.bind(mod .. " + ALT + W", exec("pkill -x hyprpaper; hyprpaper"), { description = "Siguiente fondo" })  -- next wallpaper: restarting picks a new random one
 
 -- Screenshots (saved to ~/Pictures/Screenshots and copied)
@@ -68,6 +68,12 @@ for _, dir in ipairs({ "left", "right", "up", "down" }) do
     hl.bind(mod .. " + ALT + " .. dir,     hl.dsp.focus({ direction = dir }))
     hl.bind(mod .. " + SHIFT + " .. dir,   hl.dsp.window.move({ direction = dir }), { description = "Mover ventana" })
 end
+
+-- Monitors: Super+, / Super+. focus the other screen; with Shift the window goes there
+hl.bind(mod .. " + comma",          hl.dsp.focus({ monitor = "-1" }), { description = "Pantalla anterior" })
+hl.bind(mod .. " + period",         hl.dsp.focus({ monitor = "+1" }), { description = "Pantalla siguiente" })
+hl.bind(mod .. " + SHIFT + comma",  hl.dsp.window.move({ monitor = "-1" }), { description = "Mandar ventana a la pantalla anterior" })
+hl.bind(mod .. " + SHIFT + period", hl.dsp.window.move({ monitor = "+1" }), { description = "Mandar ventana a la pantalla siguiente" })
 
 -- Resize with Super+R then arrows, Escape to leave
 hl.define_submap("resize", function()

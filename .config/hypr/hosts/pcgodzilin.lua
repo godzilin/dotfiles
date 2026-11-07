@@ -32,3 +32,13 @@ for i = 1, 9 do
         persistent = i <= 4,
     })
 end
+
+-- Two screens: Discord opens on the secondary, Steam and games on the main one (they can be moved afterwards)
+hl.window_rule({ name = "discord-secundaria", match = { class = "^(discord|vesktop)$" }, workspace = "11 silent" })
+hl.window_rule({ name = "steam-principal",    match = { class = "^steam$" },             monitor = "DP-1" })
+
+-- Games: tearing for the lowest latency (VRR still applies in fullscreen, vrr = 2 above)
+hl.config({ general = { allow_tearing = true } })
+hl.window_rule({ name = "juegos", match = { class = "^(steam_app_.*|gamescope)$" }, monitor = "DP-1", immediate = true })
+-- No blanking while something is fullscreen: a gamepad or a film never touches keyboard and mouse
+hl.window_rule({ name = "sin-reposo-a-pantalla-completa", match = { class = ".*" }, idle_inhibit = "fullscreen" })

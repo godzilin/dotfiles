@@ -1,0 +1,88 @@
+{
+  "main": "DP-1",
+  "replace": {
+    "battery": "custom/gpu",
+    "image#bat": null,
+    "backlight": "custom/brillo",
+    "power-profiles-daemon": null
+  },
+  "secondary": {
+    "output": "HDMI-A-1",
+    "height": 30,
+    "left": [
+      [
+        "hyprland/workspaces"
+      ],
+      [
+        "group/media",
+        "mpris",
+        "custom/media"
+      ]
+    ],
+    "center": [
+      [
+        "clock",
+        "custom/clock"
+      ]
+    ],
+    "right": [
+      [
+        "cpu"
+      ],
+      [
+        "temperature"
+      ],
+      [
+        "memory"
+      ],
+      [
+        "custom/gpu"
+      ],
+      [
+        "custom/brillo"
+      ],
+      [
+        "pulseaudio",
+        "image#vol"
+      ],
+      [
+        "custom/claude"
+      ],
+      [
+        "custom/notifications"
+      ]
+    ]
+  },
+  "modules": {
+    "cpu": {
+      "format": "CPU {usage}%",
+      "interval": 3,
+      "tooltip": false
+    },
+    "temperature": {
+      "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+      "input-filename": "temp1_input",
+      "format": "{temperatureC}°C",
+      "critical-threshold": 85,
+      "tooltip": false
+    },
+    "memory": {
+      "format": "RAM {percentage}%",
+      "interval": 5,
+      "tooltip-format": "{used:0.1f} de {total:0.1f} GiB"
+    },
+    "custom/gpu": {
+      "exec": "~/.config/hypr/scripts/gpu.sh",
+      "return-type": "json"
+    },
+    "custom/brillo": {
+      "exec": "~/.config/hypr/scripts/brillo.sh",
+      "return-type": "json",
+      "interval": 60,
+      "signal": 8,
+      "on-scroll-up": "~/.config/hypr/scripts/brillo.sh +",
+      "on-scroll-down": "~/.config/hypr/scripts/brillo.sh -"
+    }
+  },
+  "css": "#cpu, #temperature, #memory, #custom-gpu, #custom-brillo { padding: 0 7px; }"
+}

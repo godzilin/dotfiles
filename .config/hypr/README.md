@@ -52,6 +52,12 @@ y HDMI-A-1 los 11-19, que las barras muestran como 1-9 (`format-icons` de cada t
 el mismo nombre en dos monitores: Waybar marca el activo por nombre. Tampoco hagas `persistent-workspaces` en Waybar: los
 persistentes van en las reglas de Hyprland.
 
+Más archivos de host, opcionales: `hosts/<hostname>-hypridle.conf` sustituye a `hypridle.conf` (en el sobremesa: pantallas
+fuera a los 20 min, bloqueo a la hora, sin suspender) y `hosts/<hostname>-waybar.json` hace que `scripts/waybar.sh` monte
+una barra por monitor a partir de la del tema (`scripts/waybar-host.py`): la principal cambia módulos de portátil por
+otros (batería → GPU, brillo → brillo DDC) y la secundaria muestra escritorios, reloj, CPU, RAM, GPU, volumen y avisos.
+Lanza siempre la barra con `scripts/waybar.sh`, no con `waybar` a secas.
+
 ## Si algo se rompe
 
 - **Barra roja arriba**: error de config. Dice el archivo y la línea.

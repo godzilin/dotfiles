@@ -2,9 +2,10 @@ hl.on("hyprland.start", function()
     -- Plasma Login logs straight into Hyprland (/etc/plasmalogin.conf [Autologin]): lock at once, so the password
     -- is asked by the active theme's hyprlock instead of KDE's greeter. A login typed at the greeter is not locked.
     hl.exec_cmd([[sh -c '[ "$(loginctl show-session "$XDG_SESSION_ID" -p Service --value)" = plasmalogin-autologin ] && exec hyprlock']])
-    hl.exec_cmd("waybar")
+    hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/waybar.sh")  -- one bar per monitor if the host asks for it
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/wallpaper.sh apply")  -- hyprpaper, on the pinned or rotating wallpaper
-    hl.exec_cmd("hypridle")
+    -- hosts/<hostname>-hypridle.conf replaces the laptop's battery-only hypridle.conf
+    hl.exec_cmd([[sh -c 'c=~/.config/hypr/hosts/$(cat /etc/hostname)-hypridle.conf; [ -f "$c" ] && exec hypridle -c "$c"; exec hypridle']])
     hl.exec_cmd("systemctl --user start swaync")  -- same unit D-Bus activation uses, so the two never race
     hl.exec_cmd(os.getenv("HOME") .. "/.config/hypr/scripts/theme-daemons.sh start")  -- Dock etc. of the active theme
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
