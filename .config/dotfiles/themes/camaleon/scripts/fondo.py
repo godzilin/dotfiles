@@ -55,7 +55,7 @@ def steam_libraries():
         return []
 
 
-def workshop():
+def workshop(hidden_too=False):
     """[(folder, preview image, title)] of the Wallpaper Engine wallpapers it can draw, and the assets folder, or ([], None)."""
     if time.time() < we_broken_until or not shutil.which("linux-wallpaperengine"):
         return [], None
@@ -73,11 +73,14 @@ def workshop():
             prev = d / str(p.get("preview", ""))
             if str(p.get("type", "")).lower() in WE_TYPES and prev.is_file():
                 items.append((d, prev, str(p.get("title") or d.name)))
-    bad = {line for f in (BAD, HIDDEN) if f.exists() for line in f.read_text().splitlines()}
+    bad = set(BAD.read_text().splitlines()) if BAD.exists() else set()
     items = [i for i in items if str(i[0]) not in bad]
     CACHE.mkdir(parents=True, exist_ok=True)
     WE_LIST.write_text(json.dumps([{"folder": str(d), "preview": str(pv), "title": t} for d, pv, t in items],
                                   ensure_ascii=False))
+    if not hidden_too:  # the selector lists hidden ones too, in its "Ocultos" tab
+        hidden = set(HIDDEN.read_text().splitlines()) if HIDDEN.exists() else set()
+        items = [i for i in items if str(i[0]) not in hidden]
     return (items, assets) if assets else ([], None)
 
 
@@ -209,7 +212,7 @@ def main():
                 if pin.is_file():  # an image: wallpaper.sh already put it in hyprpaper
                     shown = ("pin", pin, pin)
                 else:
-                    items, assets = workshop()
+                    items, assets = workshop(hidden_too=True)
                     prev = next((pv for d, pv, _ in items if d == pin), None)
                     if prev and start_we(pin, assets):
                         shown = ("pin", pin, prev)

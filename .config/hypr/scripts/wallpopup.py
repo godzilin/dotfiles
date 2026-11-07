@@ -5,6 +5,7 @@ A theme with "wallpaper_engine": true in theme.json (camaleon) gets a second tab
 daemon can draw (~/.cache/nostromo/<theme>-we.json); "Rotar" then rotates through the visible tab only (<theme>-modo).
 A right click on one of those opens a menu: leave it out of "Rotar" or bring it back (<theme>-we-fuera; it can still be
 pinned), hide it (<theme>-we-ocultos) or, for a Workshop one, open its Steam page to unsubscribe (and hide it).
+Hidden ones wait in the "Ocultos" tab: a click there brings one back.
 Looks: the theme's popups/media.css plus popups/wallpaper.css when it exists; texts from theme.json "wallpaper".
 Esc closes; a click outside closes it too (hypr/binds.lua)."""
 import json
@@ -46,6 +47,13 @@ def mode():
         return (CACHE / f"{NAME}-modo").read_text().strip()
     except OSError:
         return "we"
+
+
+def hidden_ones():
+    try:
+        return set(HIDDEN.read_text().splitlines())
+    except OSError:
+        return set()
 
 
 def out_of_rotation():
@@ -111,10 +119,11 @@ class Popup(Gtk.Window):
         if theme.get("wallpaper_engine"):
             self.stack = Gtk.Stack(transition_type=Gtk.StackTransitionType.CROSSFADE)
             self.stack.add_titled(self.grid(images), "img", f"Imágenes · {len(images)}")
-            hidden = set(HIDDEN.read_text().splitlines()) if HIDDEN.exists() else set()  # the daemon's list may be older
-            we = [(w["folder"], Path(w["preview"]), w["title"], "we-" + Path(w["folder"]).name) for w in self.we
-                  if w["folder"] not in hidden]
-            self.stack.add_titled(self.grid(we, toggle=True), "we", f"Wallpaper Engine · {len(we)}")
+            hidden = hidden_ones()
+            we = [(w["folder"], Path(w["preview"]), w["title"], "we-" + Path(w["folder"]).name) for w in self.we]
+            self.stack.add_titled(self.grid([e for e in we if e[0] not in hidden], "we"), "we", "")
+            self.stack.add_titled(self.grid([e for e in we if e[0] in hidden], "hidden"), "hidden", "")
+            self.retitle()
             switch = Gtk.StackSwitcher(stack=self.stack, halign=Gtk.Align.START)
             switch.get_style_context().add_class("tabs")
             root.pack_start(switch, False, False, 0)
@@ -132,30 +141,54 @@ class Popup(Gtk.Window):
         self.connect("key-press-event", lambda _w, e: e.keyval == 0xff1b and Gtk.main_quit())
         self.connect("destroy", Gtk.main_quit)
 
-    def grid(self, entries, toggle=False):
-        """Scrolled grid of (pin value, image, tooltip, thumbnail cache key)."""
+    def grid(self, entries, kind="img"):
+        """Scrolled grid of (pin value, image, tooltip, thumbnail cache key); kind is img, we or hidden."""
         grid = Gtk.FlowBox(max_children_per_line=COLS, min_children_per_line=COLS, homogeneous=True,
                            selection_mode=Gtk.SelectionMode.NONE, row_spacing=8, column_spacing=8)
         scroll = Gtk.ScrolledWindow(hscrollbar_policy=Gtk.PolicyType.NEVER)
         scroll.add(grid)
-        for value, f, tip, key in entries:
-            b = Gtk.Button(tooltip_text=tip, relief=Gtk.ReliefStyle.NONE)
-            b.get_style_context().add_class("thumb")
-            img = Gtk.Image(); img.set_size_request(TW, TH)
-            b.add(img)
-            b.connect("clicked", lambda _b, v=value: self.choose(v))
-            if toggle:
-                b.set_tooltip_text(f"{tip}\nclic derecho: más opciones")
-                b.connect("button-press-event", lambda b, e, v=value: e.button == 3 and self.menu(b, e, v))
-                if value in out_of_rotation():
-                    b.get_style_context().add_class("off")
-            grid.add(b)
-            self.buttons[value] = b
-            self.pending.append((f, img, key))
+        self.flows = getattr(self, "flows", {}) | {kind: grid}
+        for entry in entries:
+            self.add_thumb(kind, entry)
         return scroll
+
+    def add_thumb(self, kind, entry):
+        value, f, tip, key = entry
+        b = Gtk.Button(tooltip_text=tip, relief=Gtk.ReliefStyle.NONE)
+        b.get_style_context().add_class("thumb")
+        img = Gtk.Image(); img.set_size_request(TW, TH)
+        b.add(img)
+        if kind == "hidden":
+            b.set_tooltip_text(f"{tip}\nclic: volver a mostrarlo")
+            b.connect("clicked", lambda b: self.unhide(b, entry))
+        else:
+            b.connect("clicked", lambda _b: self.choose(value))
+            self.buttons[value] = b
+        if kind == "we":
+            b.set_tooltip_text(f"{tip}\nclic derecho: más opciones")
+            b.connect("button-press-event", lambda b, e: e.button == 3 and self.menu(b, e, entry))
+            if value in out_of_rotation():
+                b.get_style_context().add_class("off")
+        self.flows[kind].add(b)
+        b.show_all()
+        self.pending.append((f, img, key))
+        if len(self.pending) == 1 and getattr(self, "loaded", False):
+            GLib.idle_add(self.load_next)  # moved between tabs after the first load finished
+
+    def retitle(self):
+        for kind, label in (("we", "Wallpaper Engine"), ("hidden", "Ocultos")):
+            n = len(self.flows[kind].get_children())
+            self.stack.child_set_property(self.stack.get_child_by_name(kind), "title", f"{label} · {n}")
+
+    def unhide(self, button, entry):
+        HIDDEN.write_text("".join(f"{v}\n" for v in sorted(hidden_ones() - {entry[0]})))
+        button.get_parent().destroy()
+        self.add_thumb("we", entry)
+        self.retitle()
 
     def load_next(self):
         if not self.pending:
+            self.loaded = True
             return False
         f, img, key = self.pending.pop(0)
         try:
@@ -164,14 +197,15 @@ class Popup(Gtk.Window):
             img.set_from_icon_name("image-missing", Gtk.IconSize.DIALOG)
         return True
 
-    def menu(self, button, event, value):
+    def menu(self, button, event, entry):
+        value = entry[0]
         m = Gtk.Menu()
         items = [("Meter en Rotar" if value in out_of_rotation() else "Quitar de Rotar", lambda: self.toggle_out(button, value)),
-                 ("Ocultar", lambda: self.hide(button, value))]
+                 ("Ocultar", lambda: self.hide(button, entry))]
         if "/workshop/content/" in value:  # deleting the folder is useless: Steam downloads it again while subscribed
             items.append(("Desuscribirse en Steam", lambda: (subprocess.Popen(
                 ["steam", f"steam://url/CommunityFilePage/{Path(value).name}"], start_new_session=True,
-                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL), self.hide(button, value))))
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL), self.hide(button, entry))))
         for label, action in items:
             it = Gtk.MenuItem(label=label)
             it.connect("activate", lambda _i, a=action: a())
@@ -181,10 +215,13 @@ class Popup(Gtk.Window):
         m.popup_at_pointer(event)
         return True
 
-    def hide(self, button, value):
+    def hide(self, button, entry):
         with HIDDEN.open("a") as f:
-            f.write(f"{value}\n")
+            f.write(f"{entry[0]}\n")
+        self.buttons.pop(entry[0], None)
         button.get_parent().destroy()  # the FlowBoxChild around it
+        self.add_thumb("hidden", entry)
+        self.retitle()
 
     def toggle_out(self, button, value):
         out = out_of_rotation() ^ {value}
