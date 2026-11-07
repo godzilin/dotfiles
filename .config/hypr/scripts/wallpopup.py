@@ -120,6 +120,7 @@ class Popup(Gtk.Window):
             self.stack = Gtk.Stack(transition_type=Gtk.StackTransitionType.CROSSFADE)
             self.stack.add_titled(self.grid(images), "img", f"Imágenes · {len(images)}")
             hidden = hidden_ones()
+            self.lowres = {w["folder"] for w in self.we if w.get("lowres")}  # never rotated: they look pixelated
             we = [(w["folder"], Path(w["preview"]), w["title"], "we-" + Path(w["folder"]).name) for w in self.we]
             self.stack.add_titled(self.grid([e for e in we if e[0] not in hidden], "we"), "we", "")
             self.stack.add_titled(self.grid([e for e in we if e[0] in hidden], "hidden"), "hidden", "")
@@ -165,8 +166,12 @@ class Popup(Gtk.Window):
             b.connect("clicked", lambda _b: self.choose(value))
             self.buttons[value] = b
         if kind == "we":
-            b.set_tooltip_text(f"{tip}\nclic derecho: más opciones")
+            low = value in getattr(self, "lowres", ())
+            b.set_tooltip_text(f"{tip}\n" + ("baja resolución: se verá pixelado, no entra en Rotar\n" if low else "")
+                               + "clic derecho: más opciones")
             b.connect("button-press-event", lambda b, e: e.button == 3 and self.menu(b, e, entry))
+            if low:
+                b.get_style_context().add_class("lowres")
             if value in out_of_rotation():
                 b.get_style_context().add_class("off")
         self.flows[kind].add(b)
@@ -200,8 +205,9 @@ class Popup(Gtk.Window):
     def menu(self, button, event, entry):
         value = entry[0]
         m = Gtk.Menu()
-        items = [("Meter en Rotar" if value in out_of_rotation() else "Quitar de Rotar", lambda: self.toggle_out(button, value)),
-                 ("Ocultar", lambda: self.hide(button, entry))]
+        items = [] if value in getattr(self, "lowres", ()) else [  # low resolution: never in "Rotar" anyway
+            ("Meter en Rotar" if value in out_of_rotation() else "Quitar de Rotar", lambda: self.toggle_out(button, value))]
+        items.append(("Ocultar", lambda: self.hide(button, entry)))
         if "/workshop/content/" in value:  # deleting the folder is useless: Steam downloads it again while subscribed
             items.append(("Desuscribirse en Steam", lambda: (subprocess.Popen(
                 ["steam", f"steam://url/CommunityFilePage/{Path(value).name}"], start_new_session=True,

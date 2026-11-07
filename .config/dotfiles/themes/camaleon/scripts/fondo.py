@@ -15,6 +15,7 @@ import random
 import re
 import shutil
 import signal
+import struct
 import subprocess
 import sys
 import time
@@ -34,6 +35,7 @@ HIDDEN = CACHE / "camaleon-we-ocultos"  # hidden from the selector and the rotat
 BAD = CACHE / "camaleon-we-malos"  # wallpapers linux-wallpaperengine failed to draw; delete it to retry them
 ROTATE = 30 * 60
 IMAGES = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
+LOW_RES = 1280  # scenes narrower than this are drawn that small and stretched: pixelated, left out of "Rotar"
 WE_TYPES = {"scene", "video"}  # web and application wallpapers rarely work in linux-wallpaperengine
 
 we = None  # the running linux-wallpaperengine
@@ -56,7 +58,7 @@ def steam_libraries():
 
 
 def workshop(hidden_too=False):
-    """[(folder, preview image, title)] of the Wallpaper Engine wallpapers it can draw, and the assets folder, or ([], None)."""
+    """[(folder, preview image, title, low resolution)] of the Wallpaper Engine wallpapers it can draw, and the assets folder, or ([], None)."""
     if time.time() < we_broken_until or not shutil.which("linux-wallpaperengine"):
         return [], None
     libs = steam_libraries()
@@ -72,16 +74,48 @@ def workshop(hidden_too=False):
                 continue
             prev = d / str(p.get("preview", ""))
             if str(p.get("type", "")).lower() in WE_TYPES and prev.is_file():
-                items.append((d, prev, str(p.get("title") or d.name)))
+                low = (scene_width(d) or LOW_RES) < LOW_RES
+                items.append((d, prev, str(p.get("title") or d.name), low))
     bad = set(BAD.read_text().splitlines()) if BAD.exists() else set()
     items = [i for i in items if str(i[0]) not in bad]
     CACHE.mkdir(parents=True, exist_ok=True)
-    WE_LIST.write_text(json.dumps([{"folder": str(d), "preview": str(pv), "title": t} for d, pv, t in items],
+    WE_LIST.write_text(json.dumps([{"folder": str(d), "preview": str(pv), "title": t, "lowres": low}
+                                   for d, pv, t, low in items],
                                   ensure_ascii=False))
     if not hidden_too:  # the selector lists hidden ones too, in its "Ocultos" tab
         hidden = set(HIDDEN.read_text().splitlines()) if HIDDEN.exists() else set()
         items = [i for i in items if str(i[0]) not in hidden]
     return (items, assets) if assets else ([], None)
+
+
+def scene_width(folder):
+    """Width of a scene's orthographic projection (its render size in linux-wallpaperengine), or None (video, 3D)."""
+    try:
+        f = folder / "scene.json"
+        if f.exists():
+            text = f.read_text(errors="ignore")
+        else:  # inside scene.pkg: "PKGV..." then [name, offset, length] entries, then the files
+            b, o = (folder / "scene.pkg").read_bytes(), 0
+
+            def string():
+                nonlocal o
+                n = struct.unpack_from("<I", b, o)[0]
+                o += 4 + n
+                return b[o - n:o].decode(errors="ignore")
+            string()
+            count = struct.unpack_from("<I", b, o)[0]
+            o += 4
+            entries = []
+            for _ in range(count):
+                name = string()
+                entries.append((name, *struct.unpack_from("<II", b, o)))
+                o += 8
+            text = next((b[o + off:o + off + n].decode(errors="ignore") for name, off, n in entries
+                         if name == "scene.json"), "")
+        m = re.search(r'"orthogonalprojection"\s*:\s*\{[^}]*?"width"\s*:\s*(\d+)', text, re.S)
+        return int(m[1]) if m else None
+    except (OSError, struct.error):
+        return None
 
 
 def monitors():
@@ -174,10 +208,10 @@ def pick(current):
     stop_we()
     items, assets = workshop() if mode() == "we" else ([], None)
     out = set(OUT.read_text().splitlines()) if OUT.exists() else set()
-    items = [i for i in items if str(i[0]) not in out]
+    items = [i for i in items if str(i[0]) not in out and not i[3]]
     random.shuffle(items)
     items.sort(key=lambda i: i[0] == current)  # the current one only if it is the only one left
-    for folder, prev, _ in items[:3]:
+    for folder, prev, *_ in items[:3]:
         if start_we(folder, assets):
             return ("we", folder, prev)
         stop_we()
@@ -213,7 +247,7 @@ def main():
                     shown = ("pin", pin, pin)
                 else:
                     items, assets = workshop(hidden_too=True)
-                    prev = next((pv for d, pv, _ in items if d == pin), None)
+                    prev = next((pv for d, pv, *_ in items if d == pin), None)
                     if prev and start_we(pin, assets):
                         shown = ("pin", pin, prev)
                     else:  # cannot draw it: forget the pin and rotate

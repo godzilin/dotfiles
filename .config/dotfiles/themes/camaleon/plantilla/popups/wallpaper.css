@@ -17,3 +17,5 @@ button.thumb.off { opacity: 0.35; border-style: dashed; }
 menu { background: #{{bg}}; border: 1px solid #{{line}}; border-radius: 8px; padding: 4px; }
 menu menuitem { padding: 4px 10px; border-radius: 6px; color: #{{text}}; }
 menu menuitem:hover { background: alpha(#{{accent}}, 0.18); color: #{{accent}}; }
+/* Low-resolution scene: pixelated in linux-wallpaperengine, never rotated */
+button.thumb.lowres { opacity: 0.35; border-color: alpha(#{{red}}, 0.6); border-style: dashed; }
