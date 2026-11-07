@@ -7,7 +7,9 @@ round:
      monitor; its preview image gives the colours. Only where it is installed (the desktop: install.sh).
   2. otherwise, or when it is missing, has no wallpapers or crashes: a random image from ~/Pictures/Wallpapers in
      hyprpaper.
-A picture pinned in the waybar selector (wallpaper-camaleon in ~/.cache/nostromo) stops the rotation until "Rotar"."""
+The waybar selector has a tab per source: a click pins that wallpaper (wallpaper-camaleon in ~/.cache/nostromo holds an
+image or a Wallpaper Engine folder) and "Rotar" goes back to rotating, only through that tab's source (camaleon-modo:
+"we" or "img"). The Wallpaper Engine tab lists camaleon-we.json, written here on every scan."""
 import json
 import random
 import re
@@ -25,6 +27,10 @@ import generar  # noqa: E402
 HOME = Path.home()
 CACHE = HOME / ".cache/nostromo"
 PIN = CACHE / "wallpaper-camaleon"
+MODE = CACHE / "camaleon-modo"
+WE_LIST = CACHE / "camaleon-we.json"
+OUT = CACHE / "camaleon-we-fuera"  # left out of "Rotar" with a right click in the selector; can still be pinned
+HIDDEN = CACHE / "camaleon-we-ocultos"  # hidden from the selector and the rotation (right click > Ocultar)
 BAD = CACHE / "camaleon-we-malos"  # wallpapers linux-wallpaperengine failed to draw; delete it to retry them
 ROTATE = 30 * 60
 IMAGES = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".bmp"}
@@ -50,7 +56,7 @@ def steam_libraries():
 
 
 def workshop():
-    """[(folder, preview image)] of the Wallpaper Engine wallpapers it can draw, and the assets folder, or ([], None)."""
+    """[(folder, preview image, title)] of the Wallpaper Engine wallpapers it can draw, and the assets folder, or ([], None)."""
     if time.time() < we_broken_until or not shutil.which("linux-wallpaperengine"):
         return [], None
     libs = steam_libraries()
@@ -66,7 +72,12 @@ def workshop():
                 continue
             prev = d / str(p.get("preview", ""))
             if str(p.get("type", "")).lower() in WE_TYPES and prev.is_file():
-                items.append((d, prev))
+                items.append((d, prev, str(p.get("title") or d.name)))
+    bad = {line for f in (BAD, HIDDEN) if f.exists() for line in f.read_text().splitlines()}
+    items = [i for i in items if str(i[0]) not in bad]
+    CACHE.mkdir(parents=True, exist_ok=True)
+    WE_LIST.write_text(json.dumps([{"folder": str(d), "preview": str(pv), "title": t} for d, pv, t in items],
+                                  ensure_ascii=False))
     return (items, assets) if assets else ([], None)
 
 
@@ -132,30 +143,42 @@ def repaint(image):
 
 
 def pinned():
+    """The pinned image, or the pinned Wallpaper Engine folder, or None."""
     try:
         p = Path(PIN.read_text().strip())
     except OSError:
         return None
-    return p if p.is_file() else None
+    return p if p.is_file() or (p / "project.json").is_file() else None
+
+
+def mode():
+    try:
+        return MODE.read_text().strip()
+    except OSError:
+        return "we"
+
+
+def mark_bad(folder):
+    CACHE.mkdir(parents=True, exist_ok=True)
+    with BAD.open("a") as f:  # e.g. 3D scenes with a perspective camera: never again
+        f.write(f"{folder}\n")
+    print(f"fondo: linux-wallpaperengine cannot draw {folder}", file=sys.stderr)
 
 
 def pick(current):
     """Next wallpaper as ("we", folder, preview) or ("img", path, path), never the current one if there is a choice."""
     global we_broken_until
     stop_we()
-    items, assets = workshop()
-    bad = set(BAD.read_text().splitlines()) if BAD.exists() else set()
-    items = [i for i in items if str(i[0]) not in bad]
+    items, assets = workshop() if mode() == "we" else ([], None)
+    out = set(OUT.read_text().splitlines()) if OUT.exists() else set()
+    items = [i for i in items if str(i[0]) not in out]
     random.shuffle(items)
     items.sort(key=lambda i: i[0] == current)  # the current one only if it is the only one left
-    for folder, prev in items[:3]:
+    for folder, prev, _ in items[:3]:
         if start_we(folder, assets):
             return ("we", folder, prev)
         stop_we()
-        CACHE.mkdir(parents=True, exist_ok=True)
-        with BAD.open("a") as f:  # e.g. 3D scenes with a perspective camera: never again
-            f.write(f"{folder}\n")
-        print(f"fondo: linux-wallpaperengine cannot draw {folder}", file=sys.stderr)
+        mark_bad(folder)
     else:
         if items:
             we_broken_until = time.time() + 3600  # three in a row failed: broken install or driver, retry in an hour
@@ -177,21 +200,36 @@ def main():
     if pics and not rotation.exists():
         rotation.parent.mkdir(exist_ok=True)
         rotation.symlink_to(pics)
-    shown, painted, since = None, None, 0.0
+    shown, painted, since, rotating = None, None, 0.0, None
     try:
         while True:
             pin = pinned()
-            if pin:
-                if shown != ("pin", pin):
-                    stop_we()  # wallpaper.sh already put the pin in hyprpaper
-                    shown = ("pin", pin)
-            elif (shown is None or shown[0] == "pin" or time.time() - since > ROTATE
-                  or (shown[0] == "we" and we.poll() is not None)):
+            if pin and (shown is None or shown[:2] != ("pin", pin)):
+                stop_we()
+                if pin.is_file():  # an image: wallpaper.sh already put it in hyprpaper
+                    shown = ("pin", pin, pin)
+                else:
+                    items, assets = workshop()
+                    prev = next((pv for d, pv, _ in items if d == pin), None)
+                    if prev and start_we(pin, assets):
+                        shown = ("pin", pin, prev)
+                    else:  # cannot draw it: forget the pin and rotate
+                        stop_we()
+                        mark_bad(pin)
+                        PIN.unlink(missing_ok=True)
+                        continue
+            elif pin and shown[0] == "pin" and not pin.is_file() and we and we.poll() is not None:
+                mark_bad(pin)  # the pinned Wallpaper Engine wallpaper crashed
+                PIN.unlink(missing_ok=True)
+                continue
+            elif not pin and (shown is None or shown[0] == "pin" or time.time() - since > ROTATE
+                              or rotating != mode() or (shown[0] == "we" and we.poll() is not None)):
                 if shown and shown[0] == "we" and we.poll() is not None:
                     we_broken_until = time.time() + 3600  # crashed while running
+                rotating = mode()
                 nxt = pick(shown[1] if shown else None)
                 shown, since = (nxt or ("none", None, None)), time.time()
-            src = shown[1] if shown[0] == "pin" else shown[2]
+            src = shown[2]
             if src and src != painted:
                 repaint(src)
                 painted = src

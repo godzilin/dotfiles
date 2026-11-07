@@ -7,3 +7,13 @@ button.random label { font-size: 9pt; color: #{{muted}}; }
 button.random.on { border-color: #{{accent}}; }
 button.random.on label { color: #{{accent}}; }
 scrollbar slider { background: #{{line}}; min-width: 4px; border-radius: 2px; }
+/* Tabs: images / Wallpaper Engine */
+.tabs button { min-height: 0; padding: 3px 12px; border-radius: 10px; border: 1px solid transparent; background: transparent; box-shadow: none; }
+.tabs button label { color: #{{muted}}; font-weight: 600; font-size: 10pt; }
+.tabs button:checked { background: alpha(#{{accent}}, 0.14); border-color: alpha(#{{accent}}, 0.5); }
+.tabs button:checked label { color: #{{accent}}; }
+/* Wallpaper Engine thumbnail left out of "Rotar" (right click) */
+button.thumb.off { opacity: 0.35; border-style: dashed; }
+menu { background: #{{bg}}; border: 1px solid #{{line}}; border-radius: 8px; padding: 4px; }
+menu menuitem { padding: 4px 10px; border-radius: 6px; color: #{{text}}; }
+menu menuitem:hover { background: alpha(#{{accent}}, 0.18); color: #{{accent}}; }

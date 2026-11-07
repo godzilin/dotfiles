@@ -17,5 +17,6 @@
   "wallpaper": {
     "title": "Fondos",
     "random": "Rotar"
-  }
+  },
+  "wallpaper_engine": true
 }
