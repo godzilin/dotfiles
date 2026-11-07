@@ -1,0 +1,24 @@
+/* Weather panel (hypr/scripts/weatherpanel.py), GTK 3 CSS: the sky seen from under the canopy. Sunlight through
+   leaves by day, moss grey when cloudy, deep teal rain, the forest at night; the cards are rounded stones */
+window.day { background-image: linear-gradient(to bottom, #{{stripe3}}, #{{line}}); }
+window.cloud { background-image: linear-gradient(to bottom, #{{stripe3}}, #{{bg2}}); }
+window.rain { background-image: linear-gradient(to bottom, #{{faint}}, #{{bg1}}); }
+window.night { background-image: linear-gradient(to bottom, #{{bg1}}, #{{bg0}}); }
+* { font-family: "Nunito", "Symbols Nerd Font", sans-serif; color: #{{text}}; }
+.place { font-family: "Fraunces", serif; font-size: 16pt; font-style: italic; }
+.temp { font-family: "Fraunces", serif; font-size: 44pt; font-weight: 400; }
+.desc { font-size: 11pt; font-weight: 700; }
+.hilo { font-size: 10.5pt; font-weight: 600; color: rgba({{text.r}}, {{text.g}}, {{text.b}}, 0.8); }
+.card { background: rgba({{bg0.r}}, {{bg0.g}}, {{bg0.b}}, 0.32); border-radius: 18px; padding: 10px 14px; border: 1px solid rgba({{text.r}}, {{text.g}}, {{text.b}}, 0.08); }
+.card-title { font-size: 8.5pt; font-weight: 800; color: rgba({{text.r}}, {{text.g}}, {{text.b}}, 0.55); }
+.hour { font-size: 9.5pt; font-weight: 700; }
+.hour-icon { font-size: 14pt; color: #{{yellow}}; }
+.rain { font-size: 8pt; color: #{{sub}}; font-weight: 700; }
+.day { font-size: 10.5pt; font-weight: 700; }
+.lo { font-size: 10.5pt; color: rgba({{text.r}}, {{text.g}}, {{text.b}}, 0.55); }
+.hi { font-size: 10.5pt; font-weight: 800; }
+.track { background: rgba(0, 0, 0, 0.25); border-radius: 999px; min-height: 5px; }
+.range { border-radius: 999px; min-height: 5px; background-image: linear-gradient(to right, #{{teal}}, #{{accent}}, #{{yellow}}); }
+.detail-key { font-size: 8.5pt; color: rgba({{text.r}}, {{text.g}}, {{text.b}}, 0.55); font-weight: 800; }
+.detail { font-size: 11pt; font-weight: 700; }
+.offline { font-size: 11pt; }

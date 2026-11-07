@@ -1,0 +1,21 @@
+{
+  "name": "Camaleón",
+  "description": "Camaleón: toma los colores del fondo que haya puesto (Wallpaper Engine en el sobremesa, ~/Pictures/Wallpapers si no) y se repinta solo al cambiarlo; formas de Bosque, letra Nunito",
+  "font_ui": "Nunito",
+  "font_mono": "JetBrains Mono",
+  "font_size": 10,
+  "gtk_theme": "adw-gtk3-dark",
+  "color_scheme": "prefer-dark",
+  "icons": "Papirus-Dark",
+  "cursor": "capitaine-cursors",
+  "cursor_size": 24,
+  "kde_colors": "Camaleon",
+  "buttons": ":close",
+  "daemons": [
+    "~/.config/dotfiles/themes/camaleon/scripts/fondo.py"
+  ],
+  "wallpaper": {
+    "title": "Fondos",
+    "random": "Rotar"
+  }
+}

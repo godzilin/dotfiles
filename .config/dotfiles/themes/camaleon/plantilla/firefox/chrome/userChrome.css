@@ -1,0 +1,145 @@
+/* Camaleón for Firefox: a forest floor at dusk. Everything is a river pebble: tabs, buttons, the address field and
+   menus are soft rounded stones on dark moss; the open tab glows moss green, a small leaf sits before the address
+   and the page rests in a rounded hollow. Nunito everywhere (it ships in the theme's fonts/).
+   Selectors target stable ids/classes; if an update breaks something, the colours block at the top still applies. */
+
+:root {
+  --b-bg0: #{{bg0}}; --b-bg: #{{bg}}; --b-bg1: #{{bg1}}; --b-bg2: #{{bg2}}; --b-line: #{{line}};
+  --b-faint: #{{faint}}; --b-muted: #{{muted}}; --b-sub: #{{sub}}; --b-text: #{{text}};
+  --b-moss: #{{accent}}; --b-sun: #{{yellow}}; --b-bark: #{{orange}}; --b-berry: #{{red}};
+  --b-sans: "Nunito", sans-serif;
+  --b-leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M13.5 2C6.5 2 2.5 5.8 2.5 10.3c0 1.4.4 2.5 1 3.3C4.6 9.6 7.4 7 11 5.7 8 7.6 5.9 10.1 4.8 13.9c.9.5 1.9.7 3 .7 5.2 0 6.5-6.3 5.7-12.6z' fill='%239cc26b'/%3E%3C/svg%3E");
+
+  --lwt-accent-color: var(--b-bg) !important;
+  --lwt-text-color: var(--b-sub) !important;
+  --lwt-header-image: none !important;
+  --lwt-additional-images: none !important;
+  --toolbar-bgcolor: var(--b-bg) !important;
+  --toolbar-color: var(--b-text) !important;
+  --toolbarbutton-icon-fill: var(--b-sub) !important;
+  --toolbarbutton-hover-background: var(--b-bg2) !important;
+  --toolbarbutton-active-background: var(--b-line) !important;
+  --toolbarbutton-border-radius: 999px !important;
+  --toolbar-field-background-color: var(--b-bg1) !important;
+  --toolbar-field-color: var(--b-text) !important;
+  --toolbar-field-border-color: var(--b-line) !important;
+  --toolbar-field-focus-background-color: var(--b-bg1) !important;
+  --toolbar-field-focus-color: var(--b-text) !important;
+  --toolbar-field-focus-border-color: var(--b-moss) !important;
+  --tab-selected-bgcolor: transparent !important;
+  --tab-selected-textcolor: var(--b-moss) !important;
+  --tab-border-radius: 999px !important;
+  --focus-outline-color: var(--b-moss) !important;
+  --chrome-content-separator-color: transparent !important;
+  --arrowpanel-background: var(--b-bg) !important;
+  --arrowpanel-color: var(--b-text) !important;
+  --arrowpanel-border-color: var(--b-line) !important;
+  --arrowpanel-border-radius: 16px !important;
+  --panel-separator-color: var(--b-line) !important;
+  --urlbarView-highlight-background: rgba({{accent.r}}, {{accent.g}}, {{accent.b}}, 0.16) !important;
+  --urlbarView-highlight-color: var(--b-text) !important;
+  --urlbarView-action-color: var(--b-moss) !important;
+  --urlbarView-separator-color: var(--b-line) !important;
+  --sidebar-background-color: var(--b-bg) !important;
+  --sidebar-text-color: var(--b-sub) !important;
+  --sidebar-border-color: var(--b-line) !important;
+  --color-accent-primary: var(--b-moss) !important;
+  --color-accent-primary-hover: var(--b-sun) !important;
+  --button-primary-bgcolor: var(--b-moss) !important;
+  --button-primary-color: var(--b-bg0) !important;
+  --toolbarseparator-color: var(--b-line) !important;
+  --border-radius-small: 8px !important; --border-radius-medium: 12px !important; --border-radius-large: 16px !important;
+}
+
+#navigator-toolbox, #navigator-toolbox * { font-family: var(--b-sans) !important; }
+#navigator-toolbox { background: var(--b-bg) !important; border-bottom: none !important; }
+#TabsToolbar, #nav-bar, #PersonalToolbar, #titlebar { background: transparent !important; background-image: none !important; }
+/* Hyprland draws the window border; Firefox's own min/max/close are noise */
+.titlebar-buttonbox-container, .titlebar-spacer { display: none !important; }
+
+/* ── Tabs: pebbles ────────────────────────────────────────────────────────── */
+
+#TabsToolbar { padding: 6px 8px 0 !important; }
+#TabsToolbar :is(#firefox-view-button, toolbarspring) { display: none !important; }
+.tabbrowser-tab { padding-inline: 2px !important; }
+.tabbrowser-tab[fadein]:not([pinned]) { max-width: 230px !important; }  /* [fadein]: closing tabs still shrink to 0.1px */
+.tab-background { margin-block: 3px !important; border-radius: 999px !important; border: 1px solid transparent !important;
+  box-shadow: none !important; background: transparent !important; }
+.tabbrowser-tab:hover .tab-background:not([selected]) { background: var(--b-bg1) !important; border-color: var(--b-line) !important; }
+.tab-background:is([selected], [multiselected]) {
+  background: rgba({{accent.r}}, {{accent.g}}, {{accent.b}}, 0.13) !important;
+  border-color: rgba({{accent.r}}, {{accent.g}}, {{accent.b}}, 0.45) !important;
+}
+.tab-content { padding-inline: 12px 8px !important; }
+.tab-label { font-size: 13px !important; font-weight: 600 !important; color: var(--b-muted) !important; }
+.tabbrowser-tab:hover .tab-label { color: var(--b-sub) !important; }
+.tabbrowser-tab[selected] .tab-label { color: var(--b-moss) !important; font-weight: 700 !important; }
+.tab-icon-image { filter: saturate(0.6); }
+.tabbrowser-tab[selected] .tab-icon-image { filter: none; }
+.tab-close-button { border-radius: 999px !important; }
+.tabbrowser-tab:not(:hover):not([selected]) .tab-close-button { visibility: collapse !important; }
+.tab-throbber[busy]::before { fill: var(--b-moss) !important; }
+.tabbrowser-tab::after, .tabbrowser-tab::before { display: none !important; }  /* separators */
+#tabs-newtab-button > .toolbarbutton-icon, #new-tab-button > .toolbarbutton-icon { border-radius: 999px !important; }
+
+/* ── Toolbar ───────────────────────────────────────────────────────────────── */
+
+#nav-bar { padding: 6px 8px 8px !important; box-shadow: none !important; border: none !important; }
+#nav-bar toolbarbutton > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { border-radius: 999px !important; }
+#nav-bar toolbarbutton:not([disabled]):hover > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) { fill: var(--b-text) !important; }
+
+/* Address: a long smooth stone with a leaf at its start; moss ring while typing */
+#urlbar, #urlbar-container { --urlbar-height: 34px !important; --urlbar-min-height: 34px !important; }
+#urlbar .urlbar-background { border-radius: 999px !important; border: 1px solid var(--b-line) !important; box-shadow: none !important; }
+#urlbar[focused] .urlbar-background { border-color: var(--b-moss) !important; box-shadow: 0 0 0 3px rgba({{accent.r}}, {{accent.g}}, {{accent.b}}, 0.18) !important; }
+#urlbar[open] .urlbar-background { border-radius: 18px !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important; }
+#urlbar .urlbar-input-container::before { content: ""; width: 15px; height: 15px; align-self: center; margin-inline: 10px 2px;
+  background: var(--b-leaf) center / contain no-repeat; flex-shrink: 0; }
+#urlbar-input { font-size: 13.5px !important; font-weight: 600 !important; }
+#urlbar-input::placeholder { color: var(--b-faint) !important; }
+#identity-box, #tracking-protection-icon-container { opacity: 0.75; }
+.urlbarView { font-family: var(--b-sans) !important; }
+.urlbarView-row { border-radius: 12px !important; }
+.urlbarView-url { color: var(--b-moss) !important; }
+#star-button[starred] { fill: var(--b-sun) !important; }
+
+/* Bookmarks: little pebbles of text */
+#PersonalToolbar { padding: 0 8px 6px !important; }
+toolbarbutton.bookmark-item { border-radius: 999px !important; padding: 3px 10px !important; color: var(--b-sub) !important;
+  font-size: 12.5px !important; font-weight: 600 !important; }
+toolbarbutton.bookmark-item:hover { background: var(--b-bg2) !important; color: var(--b-text) !important; }
+
+/* ── Page: a rounded hollow in the moss ─────────────────────────────────────── */
+
+#tabbrowser-tabbox, #tabbrowser-tabpanels { background: var(--b-bg) !important; }
+#tabbrowser-tabpanels { padding: 0 8px 8px !important; }
+.browserStack > browser, #tabbrowser-tabpanels browser[type="content"] {
+  border-radius: 14px !important; outline: 1px solid var(--b-line) !important; outline-offset: -1px; }
+#sidebar-box { background: var(--b-bg) !important; padding-bottom: 8px !important; }
+#sidebar-splitter { border: none !important; background: var(--b-bg) !important; width: 6px !important; }
+
+/* Link under the mouse: a pebble at the bottom left */
+#statuspanel-label { font: 600 12px var(--b-sans) !important; background: var(--b-bg) !important; color: var(--b-sub) !important;
+  border: 1px solid var(--b-line) !important; border-radius: 999px !important; margin: 0 0 14px 14px !important; padding: 3px 12px !important; }
+
+findbar { background: var(--b-bg) !important; border-top: none !important; }
+findbar .findbar-textbox { border-radius: 999px !important; }
+
+/* ── Menus and panels: rounded, moss for the chosen row ────────────────────── */
+
+menupopup, panel {
+  --panel-background-color: var(--b-bg) !important;
+  --panel-text-color: var(--b-text) !important;
+  --panel-border-color: var(--b-line) !important;
+  --panel-border-radius: 16px !important;
+  --panel-separator-color: var(--b-line) !important;
+}
+menupopup, menupopup menu, menupopup menuitem, panel { font-family: var(--b-sans) !important; }
+menupopup > :is(menu, menuitem) { border-radius: 10px !important; }
+menupopup > :is(menu, menuitem)[_moz-menuactive]:not([disabled]) { background-color: rgba({{accent.r}}, {{accent.g}}, {{accent.b}}, 0.16) !important; color: var(--b-text) !important; }
+menupopup > :is(menu, menuitem)[disabled] { color: var(--b-faint) !important; }
+.subviewbutton { border-radius: 10px !important; }
+#main-menubar > menu[_moz-menuactive] { background-color: var(--b-bg2) !important; color: var(--b-text) !important; border-radius: 999px !important; }
+tooltip { appearance: none !important; background: var(--b-bg) !important; color: var(--b-text) !important;
+  border: 1px solid var(--b-line) !important; border-radius: 12px !important; padding: 4px 10px !important;
+  font: 600 12px var(--b-sans) !important; }

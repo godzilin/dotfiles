@@ -1,0 +1,24 @@
+/* Calendar panel (hypr/scripts/calpanel.py), GTK 3 CSS: a field notebook page in the forest. Fraunces month,
+   today a moss pebble, sunlight dots under busy days, moss and sun bars before events */
+window { background: #{{bg}}; }
+* { font-family: "Nunito", sans-serif; color: #{{text}}; }
+.month { font-family: "Fraunces", serif; font-size: 19pt; font-style: italic; font-weight: 400; color: #{{text}}; }
+.year { font-family: "Fraunces", serif; font-size: 19pt; font-weight: 400; color: #{{muted}}; }
+button.nav { background: #{{bg1}}; border: 1px solid #{{line}}; border-radius: 999px; box-shadow: none; padding: 2px 11px; min-height: 0; }
+button.nav:hover { background: #{{bg2}}; border-color: #{{accent}}; }
+button.nav label { font-size: 10.5pt; font-weight: 700; color: #{{sub}}; }
+.weekday { font-size: 9pt; font-weight: 700; color: #{{muted}}; }
+.weekday.weekend { color: #{{faint}}; }
+.day { font-size: 11pt; font-weight: 600; min-width: 28px; min-height: 28px; border-radius: 999px; }
+.day.weekend { color: #{{muted}}; }
+.day.other { color: #{{line}}; }
+.day.today { background: #{{accent}}; color: #{{bg0}}; font-weight: 800; }
+.dot { font-size: 5pt; color: #{{yellow}}; margin-top: -2px; margin-bottom: 2px; }
+.dot.empty { color: transparent; }
+separator { background: #{{line}}; min-height: 1px; }
+.section { font-family: "Fraunces", serif; font-size: 11pt; font-style: italic; color: #{{sub}}; }
+.event-bar { background: #{{accent}}; min-width: 4px; border-radius: 999px; }
+.event-bar.today { background: #{{yellow}}; }
+.event { font-size: 10.5pt; font-weight: 600; }
+.when { font-size: 9.5pt; color: #{{muted}}; }
+.empty-list { font-size: 10pt; color: #{{muted}}; }

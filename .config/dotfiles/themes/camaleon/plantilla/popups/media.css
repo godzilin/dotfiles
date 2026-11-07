@@ -1,0 +1,24 @@
+/* Now-playing popup (hypr/scripts/mediapopup.py), GTK 3 CSS */
+window { background: #{{bg}}; }
+* { font-family: "Nunito", sans-serif; color: #{{sub}}; }
+.head { font-size: 9pt; color: #{{muted}}; }
+.head-dot { color: #{{accent}}; }
+.stripe-1 { background: #{{yellow}}; } .stripe-2 { background: #{{accent}}; }
+.stripe-3 { background: #{{orange}}; } .stripe-4 { background: #{{red}}; }
+.cover { border: 1px solid #{{line}}; border-radius: 8px; background: #{{bg1}}; }
+.title { font-family: "Nunito", sans-serif; font-size: 13pt; font-weight: 600; color: #{{text}}; letter-spacing: 0; }
+.artist { font-size: 10pt; color: #{{sub}}; }
+.album { font-size: 9pt; color: #{{muted}}; }
+.time { font-size: 9pt; color: #{{muted}}; }
+scale trough { background: #{{bg2}}; min-height: 4px; border-radius: 2px; border: none; }
+scale highlight { background: #{{accent}}; border-radius: 2px; }
+scale slider { background: #{{text}}; min-width: 10px; min-height: 10px; border-radius: 5px; margin: -4px; border: none; box-shadow: none; }
+button { background: transparent; border: none; box-shadow: none; border-radius: 8px; padding: 4px 10px; }
+button label { font-size: 16pt; color: #{{sub}}; }
+button:hover { background: #{{bg2}}; }
+button:hover label { color: #{{text}}; }
+button.main { background: #{{accent}}; }
+button.main label { color: #{{bg0}}; }
+button.main:hover { background: #{{yellow}}; }
+button.on label { color: #{{accent}}; }
+.vol-label { font-size: 9pt; color: #{{muted}}; }

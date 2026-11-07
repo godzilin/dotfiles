@@ -1,0 +1,24 @@
+/* Paleta "Camaleón" (themes/naranja/theme.json) sobre music.apple.com */
+@-moz-document domain("music.apple.com") {
+  :root, body {
+    --keyColor: #{{accent}} !important; --keyColorBG: #{{accent}} !important;
+    --keyColor-rgb: 233,162,59 !important; --keyColor-rollover: #{{yellow}} !important;
+    --keyColor-pressed: #{{orange}} !important; --keyColor-disabled: #{{accent}}59 !important;
+    --pageBG: #{{bg}} !important; --pageBG-dark: #{{bg}} !important; --pageBG-dark-rgb: 26,24,20 !important;
+    --navSidebarBG: #{{bg0}} !important; --playerBackground: #{{bg1}} !important;
+    --playerBackgroundFallback: #{{bg1}} !important; --miniPlayerBackground: #{{bg1}} !important;
+    --glassMaterialBackground: #{{bg1}}ee !important; --systemGroupedBackgroundSecondary: #{{bg1}} !important;
+    --systemPrimary: #{{text}} !important; --systemPrimary-onDark: #{{text}} !important;
+    --systemSecondary: #{{sub}} !important; --systemSecondary-onDark: #{{sub}} !important;
+    --systemTertiary: #{{muted}} !important; --systemTertiary-onDark: #{{muted}} !important;
+    --systemQuaternary-onDark: #{{line}} !important;
+    --labelDivider: #{{line}} !important;
+    /* used by the local-music userscript */
+    --lm-stripe-1: #{{yellow}}; --lm-stripe-2: #{{accent}}; --lm-stripe-3: #{{orange}}; --lm-stripe-4: #{{red}}; --lm-error: #{{red}};
+    --lm-text: #{{text}}; --lm-sub: #{{sub}}; --lm-muted: #{{muted}}; --lm-track: #{{line}}; --lm-surface: #{{bg1}};
+    --lm-accent: #{{accent}}; --lm-on-accent: #{{bg0}};
+    font-family: "Nunito", sans-serif !important;
+  }
+  body { background: #{{bg}} !important; color: #{{text}} !important; }
+  ::selection { background: #{{accent}}; color: #{{bg0}}; }
+}

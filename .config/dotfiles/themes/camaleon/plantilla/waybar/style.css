@@ -1,0 +1,91 @@
+/* Camaleón palette */
+@define-color bg0    #{{bg0}};
+@define-color bg     #{{bg}};
+@define-color bg1    #{{bg1}};
+@define-color bg2    #{{bg2}};
+@define-color line   #{{line}};
+@define-color faint  #{{faint}};
+@define-color muted  #{{muted}};
+@define-color sub    #{{sub}};
+@define-color text   #{{text}};
+@define-color moss   #{{accent}};
+@define-color sun    #{{yellow}};
+@define-color bark   #{{orange}};
+@define-color berry  #{{red}};
+
+* {
+    font-family: "Nunito", "BlexMono Nerd Font";
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    min-height: 0;
+}
+
+/* No bar: the modules float on the wallpaper as rounded pebbles */
+window#waybar { background: transparent; color: @sub; }
+
+tooltip {
+    background: @bg;
+    border: 1px solid @line;
+    border-radius: 14px;
+}
+tooltip label { color: @text; }
+
+#home, #clock, #window, #tray, #status, #end {
+    background: alpha(@bg, 0.88);
+    border: 1px solid alpha(@line, 0.9);
+    border-radius: 14px;
+    padding: 0 6px;
+}
+window#waybar.empty #window { background: transparent; border-color: transparent; padding: 0; }
+
+#custom-launcher { padding: 0 8px 0 10px; }
+#custom-launcher:hover { color: @sun; }
+
+#workspaces { padding: 0 2px; }
+#workspaces button {
+    color: @muted;
+    padding: 0 7px;
+    margin: 3px 1px;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: none;
+    font-weight: 700;
+}
+#workspaces button.empty  { color: @faint; }
+#workspaces button.active { color: @moss; background: alpha(@moss, 0.14); }
+#workspaces button.urgent { color: @berry; }
+#workspaces button:hover  { background: @bg2; color: @text; }
+
+#custom-weather { padding: 0 10px 0 6px; color: @text; }
+#custom-weather.offline { color: @muted; }
+
+#clock { color: @sub; padding: 0 16px; font-weight: 600; }
+
+#window { color: @sub; padding: 0 14px; font-weight: 500; }
+
+#tray { padding: 0 12px; }
+
+#pulseaudio, #backlight, #network, #bluetooth, #power-profiles-daemon, #battery { color: @text; padding: 0 8px; }
+#pulseaudio.muted { color: @muted; }
+#bluetooth.off, #bluetooth.disabled { color: @muted; }
+#battery.warning:not(.charging)  { color: @sun; }
+#battery.critical:not(.charging) { color: @berry; }
+
+#custom-wallpaper, #custom-notifications, #custom-power { color: @muted; padding: 0 8px; font-size: 14px; }
+#custom-wallpaper:hover { color: @moss; }
+#custom-notifications:hover { color: @text; }
+#custom-power:hover { color: @berry; }
+
+/* Now playing */
+#media { padding: 0 4px; }
+#image.cover { padding: 0 2px 0 6px; }
+#custom-media-prev, #mpris, #custom-media-next { padding: 0 4px; color: @sub; font-size: 15px; }
+#custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @moss; }
+#mpris.playing { color: @moss; }
+#custom-media { padding: 0 4px 0 6px; color: @text; }
+#custom-media.paused { color: @muted; }
+
+/* Claude: gira mientras piensa */
+#custom-claude { color: #{{orange}}; min-width: 18px; padding: 0 8px; font-size: 16px; }
+#custom-claude.parado { opacity: 0.4; }

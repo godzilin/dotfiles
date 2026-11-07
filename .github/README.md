@@ -23,6 +23,7 @@ para que uno aparezca basta con ponerle `description` en `binds.lua`.
 | `morado` | **Yoru**: noche en Tokio; barra vertical de rótulos, escritorios que suben y bajan, fotos reales de la ciudad y lluvia viva |
 | `cian` | **Plano**: plano técnico; cianotipia azul de Prusia, líneas blancas, rejilla, cotas y cajetín, letra B612 |
 | `dorado` | **Astrolabio**: observatorio de noche; el escritorio es un astrolabio que funciona con el cielo real, barra grabada con palabras en vez de iconos, almanaque de Luna y Sol, letra Alegreya |
+| `camaleon` | **Camaleón**: coge los colores del fondo y se repinta solo; Wallpaper Engine en el sobremesa, `~/Pictures/Wallpapers` en el portátil |
 
 Firefox, Apple Music y las terminales ya abiertas cogen el tema nuevo al reiniciarlas; Obsidian y VS Code cambian al momento,
 pero las fuentes propias del tema (`fonts/`) solo las ve tras reiniciarlo
@@ -208,6 +209,25 @@ generadas por código (`wallpapers/astrolabio.py`), oscuras a propósito para ir
 astrolabio con el tímpano calculado para Bilbao, fases de la Luna, el sistema solar el día del eclipse, el eclipse del
 12 de agosto de 2026, estrellas circumpolares sobre una cúpula, Arcus Linuxianus (el contorno del logo de Arch como
 constelación), Orión y la Osa Mayor. Primera vez: `~/.config/dotfiles/themes/dorado/install.sh`.
+
+## camaleon: Camaleón
+
+El tema que no tiene colores propios: los saca del fondo que haya puesto. `scripts/fondo.py` (daemon del tema) cambia
+de fondo cada 30 minutos y `generar.py` toma el tono dominante de la imagen, monta la paleta de siempre (fondos oscuros
+teñidos de ese tono, acento en él, rojo/verde/azul... arrimados un poco) y rellena `plantilla/`, que son los archivos
+de Bosque con los colores cambiados por `{{clave}}`. Luego recarga Hyprland, waybar, swaync, VS Code y Obsidian; el
+logo de fastfetch es el de Arch recortado del propio fondo. En el repo solo están `plantilla/` y los scripts: lo que
+genera (theme.json incluido) es de cada equipo. Si no existe aún, `install.sh` lo pinta una vez.
+
+De dónde salen los fondos, mirando de nuevo en cada vuelta (lo que añadas entra en la siguiente):
+
+1. **Wallpaper Engine** (sobremesa): fondos de escena y vídeo del Workshop, dibujados por `linux-wallpaperengine`
+   en todos los monitores; la paleta sale de su imagen de vista previa. Hace falta Wallpaper Engine instalado en
+   Steam (por sus `assets`) y suscribirse a fondos. Si falta, no hay fondos o se cae, una hora con lo siguiente.
+2. **`~/Pictures/Wallpapers`** (o `wallpapers`) en hyprpaper: en el portátil siempre.
+
+El botón de fondos de waybar lista esa carpeta: fijar una imagen para la rotación, "Rotar" la reanuda.
+Excepción a la filosofía: `linux-wallpaperengine-git` es de AUR y solo lo instala el sobremesa.
 
 ## Cómo están organizados los temas
 
