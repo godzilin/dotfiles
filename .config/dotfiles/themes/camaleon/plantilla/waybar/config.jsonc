@@ -65,7 +65,8 @@
 
     // Weather (Open-Meteo): icon + °C; click for the full forecast
     "custom/weather": {
-        "exec": "~/.config/hypr/scripts/weather.py bar",
+        // Nerd Font icons overhang into Nunito's narrow space: three spaces after it (weather.py is shared with the mono themes)
+        "exec": "~/.config/hypr/scripts/weather.py bar | sed -E 's/\"text\": \"([^ ]+) /\"text\": \"\\1   /'",
         "return-type": "json",
         "interval": 600,
         "on-click": "~/.config/hypr/scripts/weather.sh"
