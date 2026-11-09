@@ -31,18 +31,31 @@ tooltip {
 }
 tooltip label { color: @text; }
 
+/* Each pebble wears a thin iridescent skin along its bottom: the wallpaper's four tones, so it shifts with it */
 #home, #clock, #window, #tray, #status, #end {
-    background: alpha(@bg, 0.88);
+    background-color: alpha(@bg, 0.88);
+    background-image: linear-gradient(to right, #{{stripe0}}, #{{stripe1}}, #{{stripe2}}, #{{stripe3}});
+    background-size: 70% 2px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
     border: 1px solid alpha(@line, 0.9);
     border-radius: 14px;
     padding: 0 6px;
 }
-window#waybar.empty #window { background: transparent; border-color: transparent; padding: 0; }
+window#waybar.empty #window { background: transparent; background-image: none; border-color: transparent; padding: 0; }
 
 #custom-launcher { padding: 0 8px 0 10px; }
 #custom-launcher:hover { color: @sun; }
 
 #workspaces { padding: 0 2px; }
+/* Roman numerals in Fraunces: italic and quiet, upright and in the accent when active */
+#workspaces button label {  /* on the label: the * rule above would win over an inherited font */
+    font-family: "Fraunces";
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 400;
+}
+#workspaces button.active label { font-style: normal; font-weight: 600; }
 #workspaces button {
     color: @muted;
     padding: 0 7px;
@@ -50,7 +63,6 @@ window#waybar.empty #window { background: transparent; border-color: transparent
     border-radius: 10px;
     background: transparent;
     box-shadow: none;
-    font-weight: 700;
 }
 #workspaces button.empty  { color: @faint; }
 #workspaces button.active { color: @moss; background: alpha(@moss, 0.14); }

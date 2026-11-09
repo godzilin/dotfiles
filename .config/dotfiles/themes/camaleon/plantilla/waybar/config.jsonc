@@ -1,4 +1,4 @@
-// Camaleón: slim rounded pills floating on the wallpaper, coloured by it; plain numbers for the desktops
+// Camaleón: slim rounded pills floating on the wallpaper, coloured by it; Roman numerals for the desktops
 {
     "layer": "top",
     "position": "top",
@@ -95,12 +95,13 @@
         "on-click": "pkill fuzzel || fuzzel",
         "tooltip": false
     },
-    // Numbers; the second monitor's 11-19 show as 1-9 (hosts/pcgodzilin.lua)
+    // Roman numerals; the second monitor's 11-19 show as I-IX (hosts/pcgodzilin.lua)
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9",
-            "11": "1", "12": "2", "13": "3", "14": "4", "15": "5", "16": "6", "17": "7", "18": "8", "19": "9", "default": "·"
+            "1": "I", "2": "II", "3": "III", "4": "IV", "5": "V", "6": "VI", "7": "VII", "8": "VIII", "9": "IX",
+            "11": "I", "12": "II", "13": "III", "14": "IV", "15": "V", "16": "VI", "17": "VII", "18": "VIII", "19": "IX",
+            "default": "·"
         },
         "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m-1\" })'",
         "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"m+1\" })'"
@@ -112,7 +113,7 @@
     },
     "clock": {
         "locale": "es_ES.utf8",
-        "format": "{:L%A %d de %B  <span color='#{{text}}' weight='800'>%H:%M</span>}",
+        "format": "{:L%A %d de %B  <span font_family='Fraunces' color='#{{text}}' weight='600'>%H:%M</span>}",
         "tooltip": false,
         "on-click": "~/.config/hypr/scripts/calendar.sh"
     },
