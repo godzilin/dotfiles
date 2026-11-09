@@ -4,26 +4,24 @@
     "position": "top",
     "height": 28,
     "margin-top": 5,
-    "margin-left": 10,
-    "margin-right": 10,
-    "spacing": 8,
+    "margin-left": 6,
+    "margin-right": 6,
+    "spacing": 0,  // pills keep 8px apart with margins in style.css: the music pill is several modules side by side
 
-    "modules-left": ["group/home"],
-    "modules-center": ["clock"],
+    "modules-left": ["group/home", "custom/media-prev", "mpris", "custom/media-next", "image#cover", "custom/media"],
+    "modules-center": ["group/time"],
     "modules-right": ["hyprland/window", "tray", "group/status", "group/end"],
 
-    "group/home": { "orientation": "horizontal", "modules": ["custom/launcher", "hyprland/workspaces", "custom/weather", "group/media"] },
+    "group/home": { "orientation": "horizontal", "modules": ["custom/launcher", "hyprland/workspaces"] },
+    "group/time": { "orientation": "horizontal", "modules": ["custom/weather", "clock"] },
     "group/status": {
         "orientation": "horizontal",
         "modules": ["pulseaudio", "backlight", "network", "bluetooth", "power-profiles-daemon", "battery"]
     },
     "group/end": { "orientation": "horizontal", "modules": ["custom/wallpaper", "custom/claude", "custom/notifications", "custom/power"] },
 
-    // Now playing: cover, prev / play-pause / next, title + progress. Click cover or text for the popup.
-    "group/media": {
-        "orientation": "horizontal",
-        "modules": ["image#cover", "custom/media-prev", "mpris", "custom/media-next", "custom/media"]
-    },
+    // Now playing, its own pill between the desktops and the clock: prev / play-pause / next, cover, title.
+    // Loose modules, not a group: a group would leave an empty pill when nothing plays. Click cover or text for the popup.
     "image#cover": {
         "exec": "cat ~/.cache/nostromo/cover-path 2>/dev/null | grep . || echo /nonexistent",
         "size": 20,

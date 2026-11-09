@@ -32,7 +32,7 @@ tooltip {
 tooltip label { color: @text; }
 
 /* Each pebble wears a thin iridescent skin along its bottom: the wallpaper's four tones, so it shifts with it */
-#home, #clock, #window, #tray, #status, #end {
+#home, #time, #window, #tray, #status, #end {
     background-color: alpha(@bg, 0.88);
     background-image: linear-gradient(to right, #{{stripe0}}, #{{stripe1}}, #{{stripe2}}, #{{stripe3}});
     background-size: 70% 2px;
@@ -41,6 +41,7 @@ tooltip label { color: @text; }
     border: 1px solid alpha(@line, 0.9);
     border-radius: 14px;
     padding: 0 6px;
+    margin: 0 4px;
 }
 window#waybar.empty #window { background: transparent; background-image: none; border-color: transparent; padding: 0; }
 
@@ -72,7 +73,7 @@ window#waybar.empty #window { background: transparent; background-image: none; b
 #custom-weather { padding: 0 10px 0 6px; color: @text; }
 #custom-weather.offline { color: @muted; }
 
-#clock { color: @sub; padding: 0 16px; font-weight: 600; }
+#clock { color: @sub; padding: 0 16px 0 6px; font-weight: 600; }
 
 #window { color: @sub; padding: 0 14px; font-weight: 500; }
 
@@ -89,13 +90,19 @@ window#waybar.empty #window { background: transparent; background-image: none; b
 #custom-notifications:hover { color: @text; }
 #custom-power:hover { color: @berry; }
 
-/* Now playing */
-#media { padding: 0 4px; }
-#image.cover { padding: 0 2px 0 6px; }
-#custom-media-prev, #mpris, #custom-media-next { padding: 0 4px; color: @sub; font-size: 15px; }
+/* Now playing: a pill of its own, drawn piece by piece (each module hides itself when nothing plays) */
+#custom-media-prev, #mpris, #custom-media-next, #image.cover, #custom-media {
+    background: alpha(@bg, 0.88);
+    border-top: 1px solid alpha(@line, 0.9);
+    border-bottom: 1px solid alpha(@line, 0.9);
+}
+#custom-media-prev { margin-left: 4px; border-left: 1px solid alpha(@line, 0.9); border-radius: 14px 0 0 14px; padding: 0 4px 0 12px; }
+#custom-media { margin-right: 4px; border-right: 1px solid alpha(@line, 0.9); border-radius: 0 14px 14px 0; padding: 0 14px 0 6px; color: @text; }
+#custom-media-prev, #mpris, #custom-media-next { color: @sub; font-size: 15px; }
+#mpris, #custom-media-next { padding: 0 4px; }
+#image.cover { padding: 0 2px 0 8px; }
 #custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @moss; }
 #mpris.playing { color: @moss; }
-#custom-media { padding: 0 4px 0 6px; color: @text; }
 #custom-media.paused { color: @muted; }
 
 /* Claude: gira mientras piensa */
