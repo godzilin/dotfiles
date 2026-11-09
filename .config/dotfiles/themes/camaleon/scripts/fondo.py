@@ -43,9 +43,17 @@ we_broken_until = 0.0
 
 
 def pictures():
-    # Bosque's wallpapers when there is no folder of your own (the laptop): otherwise nothing to show or paint from
+    """First folder with images: yours, else Bosque's (an empty ~/Pictures/Wallpapers would leave nothing to show).
+    Points wallpapers/rotation, what the waybar selector lists and pins from, at it."""
     for d in (HOME / "Pictures/Wallpapers", HOME / "Pictures/wallpapers", HERE.parent / "verde/wallpapers/rotation"):
-        if d.is_dir():
+        if d.is_dir() and any(f.suffix.lower() in IMAGES for f in d.rglob("*")):
+            rotation = HERE / "wallpapers/rotation"
+            if not rotation.exists() or rotation.is_symlink() and rotation.resolve() != d.resolve():
+                rotation.parent.mkdir(exist_ok=True)
+                tmp = rotation.with_name("rotation.tmp")
+                tmp.unlink(missing_ok=True)
+                tmp.symlink_to(d)
+                tmp.replace(rotation)
             return d
     return None
 
@@ -233,11 +241,7 @@ def pick(current):
 def main():
     global we_broken_until
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))  # theme-daemons.sh stop: finally kills the wallpaper engine
-    pics = pictures()
-    rotation = HERE / "wallpapers/rotation"  # what the waybar selector lists and pins from
-    if pics and not rotation.exists():
-        rotation.parent.mkdir(exist_ok=True)
-        rotation.symlink_to(pics)
+    pictures()  # points the selector's wallpapers/rotation at the right folder
     shown, painted, since, rotating = None, None, 0.0, None
     try:
         while True:
