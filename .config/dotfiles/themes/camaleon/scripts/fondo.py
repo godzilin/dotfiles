@@ -5,8 +5,8 @@ Every ROTATE seconds it picks a new wallpaper, looked up again each time, so any
 round:
   1. a Wallpaper Engine wallpaper (Workshop subscriptions, its built-in ones and your own; scene or video), drawn by linux-wallpaperengine on every
      monitor; its preview image gives the colours. Only where it is installed (the desktop: install.sh).
-  2. otherwise, or when it is missing, has no wallpapers or crashes: a random image from ~/Pictures/Wallpapers in
-     hyprpaper.
+  2. otherwise, or when it is missing, has no wallpapers or crashes: a random image from ~/Pictures/Wallpapers (or
+     Bosque's wallpapers if that folder does not exist) in hyprpaper.
 The waybar selector has a tab per source: a click pins that wallpaper (wallpaper-camaleon in ~/.cache/nostromo holds an
 image or a Wallpaper Engine folder) and "Rotar" goes back to rotating, only through that tab's source (camaleon-modo:
 "we" or "img"). The Wallpaper Engine tab lists camaleon-we.json, written here on every scan."""
@@ -43,7 +43,8 @@ we_broken_until = 0.0
 
 
 def pictures():
-    for d in (HOME / "Pictures/Wallpapers", HOME / "Pictures/wallpapers"):
+    # Bosque's wallpapers when there is no folder of your own (the laptop): otherwise nothing to show or paint from
+    for d in (HOME / "Pictures/Wallpapers", HOME / "Pictures/wallpapers", HERE.parent / "verde/wallpapers/rotation"):
         if d.is_dir():
             return d
     return None

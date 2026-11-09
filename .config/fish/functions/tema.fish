@@ -5,13 +5,19 @@ function tema --description 'Cambia el tema del escritorio: tema <color>; sin ar
         for t in (path filter -d $dir/* | path basename | string match -v current)
             set -l mark ' '
             test $t = $actual; and set mark '*'
-            printf '%s %-8s %s\n' $mark $t (jq -r .name $dir/$t/theme.json)
+            set -l json $dir/$t/theme.json
+            test -f $json; or set json $dir/$t/plantilla/theme.json  # camaleon before its first `tema`
+            printf '%s %-8s %s\n' $mark $t (jq -r .name $json)
         end
         return
     end
 
     set -l t $argv[1]
     set -l json $dir/$t/theme.json
+    # camaleon's theme.json is generated per machine, not tracked: paint it the first time
+    if not test -f $json; and test -f $dir/$t/generar.py
+        python3 $dir/$t/generar.py; or return 1
+    end
     if not test -f $json
         echo "tema: no existe '$t' (temas: "(path filter -d $dir/* | path basename | string match -v current | string join ', ')")" >&2
         return 1

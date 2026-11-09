@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Paint the "camaleon" theme from an image: python3 generar.py IMAGE
+"""Paint the "camaleon" theme from an image: python3 generar.py [IMAGE]
+
+Without IMAGE it takes one from ~/Pictures/Wallpapers, or Bosque's wallpapers if there is none (first run, `tema`).
 
 Takes the image's dominant hue, builds the usual 16-colour palette around it (dark backgrounds tinted with that hue,
 the accent in it, the semantic colours nudged towards it) and renders plantilla/ into the theme folder, plus
@@ -88,6 +90,15 @@ def logo(img, bg):
     L.write(HERE / "fastfetch/logo.txt", L.blocks(canvas, cols, rows2, rgb))
 
 
+def default_image():
+    """Any wallpaper to paint from when none is given: the user's, else Bosque's (always in the repo)."""
+    for d in (Path.home() / "Pictures/Wallpapers", Path.home() / "Pictures/wallpapers", HERE.parent / "verde/wallpapers/rotation"):
+        files = sorted(f for f in d.glob("*") if f.suffix.lower() in (".jpg", ".jpeg", ".png")) if d.is_dir() else []
+        if files:
+            return files[0]
+    sys.exit("generar: no image to paint from")
+
+
 def main(image):
     img = Image.open(image)
     img.seek(0)  # animated GIF previews: first frame
@@ -106,6 +117,6 @@ def main(image):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) > 2:
         sys.exit(__doc__)
-    main(Path(sys.argv[1]).expanduser().resolve())
+    main(Path(sys.argv[1]).expanduser().resolve() if len(sys.argv) == 2 else default_image())
