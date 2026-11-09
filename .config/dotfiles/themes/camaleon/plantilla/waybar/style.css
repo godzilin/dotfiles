@@ -91,7 +91,7 @@ window#waybar.empty #window { background: transparent; background-image: none; b
 #custom-power:hover { color: @berry; }
 
 /* Now playing: a pill of its own, drawn piece by piece (each module hides itself when nothing plays) */
-#custom-media-prev, #mpris, #custom-media-next, #image.cover, #custom-media {
+#custom-media-prev, #mpris, #custom-media-next, #image.cover image, #custom-media {
     background: alpha(@bg, 0.88);
     border-top: 1px solid alpha(@line, 0.9);
     border-bottom: 1px solid alpha(@line, 0.9);
@@ -100,7 +100,8 @@ window#waybar.empty #window { background: transparent; background-image: none; b
 #custom-media { margin-right: 4px; border-right: 1px solid alpha(@line, 0.9); border-radius: 0 14px 14px 0; padding: 0 14px 0 6px; color: @text; }
 #custom-media-prev, #mpris, #custom-media-next { color: @sub; font-size: 15px; }
 #mpris, #custom-media-next { padding: 0 4px; }
-#image.cover { padding: 0 2px 0 8px; }
+/* on the image, not its box: with no cover waybar hides the image but leaves the box, which would show a sliver */
+#image.cover image { padding: 0 2px 0 8px; }
 #custom-media-prev:hover, #mpris:hover, #custom-media-next:hover { color: @moss; }
 #mpris.playing { color: @moss; }
 #custom-media.paused { color: @muted; }
