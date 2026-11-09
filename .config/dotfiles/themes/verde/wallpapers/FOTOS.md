@@ -32,3 +32,9 @@ De Wikimedia Commons; cada una lleva su crédito en la esquina.
 - p30-teno.jpg: [Macizo de Teno 01.jpg](https://commons.wikimedia.org/wiki/File:Macizo_de_Teno_01.jpg) — H. Zell, CC BY-SA 3.0
 - p31-chio.jpg: [20250708 Mirador de Chío 02.jpg](https://commons.wikimedia.org/wiki/File:20250708_Mirador_de_Ch%C3%ADo_02.jpg) — Flocci Nivis, CC BY 4.0
 - p32-dragos.jpg: [Los Dragos Gemelos - Breña Alta - La Palma 02.jpg](https://commons.wikimedia.org/wiki/File:Los_Dragos_Gemelos_-_Bre%C3%B1a_Alta_-_La_Palma_02.jpg) — H. Zell, CC BY-SA 3.0
+- p33-bandama.jpg: [Pico de Bandama 2016 02.jpg](https://commons.wikimedia.org/wiki/File:Pico_de_Bandama_2016_02.jpg) — Bengt Nyman, CC BY-SA 4.0
+- p34-bandama-mirador.jpg: [Caldera de Bandama, from the viewpoint.jpg](https://commons.wikimedia.org/wiki/File:Caldera_de_Bandama%2C_from_the_viewpoint.jpg) — AndyScott, CC0
+- p35-tilos-moya.jpg: [Árboles tila en el Laurisilva de Los Tilos.jpg](https://commons.wikimedia.org/wiki/File:%C3%81rboles_tila_en_el_Laurisilva_de_Los_Tilos.jpg) — Fährtenleser, CC BY-SA 4.0
+- p36-tamadaba.jpg: [Pinar de Tamadaba I.JPG](https://commons.wikimedia.org/wiki/File:Pinar_de_Tamadaba_I.JPG) — Hecsuag, CC BY-SA 3.0 es
+- p37-tejeda.jpg: [Caldera de Tejeda, nubes se bajan a la derecha, Roque Nublo izquierda.jpg](https://commons.wikimedia.org/wiki/File:Caldera_de_Tejeda%2C_nubes_se_bajan_a_la_derecha%2C_Roque_Nublo_izquierda.jpg) — Tamara k, CC BY-SA 4.0
+- p38-guayadeque.jpg: [Barranco de Guayadeque 2016 01.jpg](https://commons.wikimedia.org/wiki/File:Barranco_de_Guayadeque_2016_01.jpg) — Bengt Nyman, CC BY-SA 4.0

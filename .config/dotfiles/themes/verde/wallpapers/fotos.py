@@ -62,6 +62,13 @@ PHOTOS = [
     ("p30-teno", "Macizo de Teno 01.jpg", "Macizo de Teno · Tenerife", 0.5),
     ("p31-chio", "20250708 Mirador de Chío 02.jpg", "Pinar y Teide desde el Mirador de Chío · Tenerife", 0.5),
     ("p32-dragos", "Los Dragos Gemelos - Breña Alta - La Palma 02.jpg", "Los Dragos Gemelos · Breña Alta (La Palma)", 0.5),
+    ("p33-bandama", "Pico de Bandama 2016 02.jpg", "Caldera de Bandama desde el Pico · Gran Canaria", 0.5),
+    ("p34-bandama-mirador", "Caldera de Bandama, from the viewpoint.jpg", "Caldera de Bandama · Gran Canaria", 0.5),
+    ("p35-tilos-moya", "Árboles tila en el Laurisilva de Los Tilos.jpg", "Laurisilva · Los Tilos de Moya (Gran Canaria)", 0.5),
+    ("p36-tamadaba", "Pinar de Tamadaba I.JPG", "Pinar de Tamadaba · Gran Canaria", 0.5),
+    ("p37-tejeda", "Caldera de Tejeda, nubes se bajan a la derecha, Roque Nublo izquierda.jpg",
+     "Roque Nublo sobre la Caldera de Tejeda · Gran Canaria", 0.1),
+    ("p38-guayadeque", "Barranco de Guayadeque 2016 01.jpg", "Barranco de Guayadeque · Gran Canaria", 0.5),
 ]
 
 
