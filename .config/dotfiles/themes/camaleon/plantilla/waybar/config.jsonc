@@ -118,14 +118,14 @@
     },
     "tray": { "icon-size": 15, "spacing": 10 },
     "pulseaudio": {
-        "format": "<span color='#{{muted}}'>󰕾</span> {volume}",
+        "format": "<span color='#{{muted}}'>󰕾</span>   {volume}",  // three spaces: Nerd Font icons overhang into Nunito's narrow space
         "format-muted": "<span color='#{{red}}'>󰝟</span>",
         "on-click": "pavucontrol",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "scroll-step": 5,
         "tooltip-format": "{desc}"
     },
-    "backlight": { "format": "<span color='#{{muted}}'>󰃠</span> {percent}" },
+    "backlight": { "format": "<span color='#{{muted}}'>󰃠</span>   {percent}" },
     "network": {
         "format-wifi": "<span color='#{{muted}}'>󰖩</span> {essid}",
         "format-ethernet": "<span color='#{{muted}}'>󰈀</span>",
