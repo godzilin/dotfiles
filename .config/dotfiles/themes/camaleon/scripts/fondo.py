@@ -271,6 +271,12 @@ def main():
                 rotating = mode()
                 nxt = pick(shown[1] if shown else None)
                 shown, since = (nxt or ("none", None, None)), time.time()
+            # wallpaper.sh apply (autostart runs it alongside this) links rotation/ and restarts hyprpaper, which then
+            # shows and rotates other images than the one painted: put ours back, or keep hyprpaper off over Wallpaper Engine
+            if shown[0] == "img" and (CACHE / "wallpaper").resolve() != shown[1].resolve():
+                hyprpaper(shown[1])
+            elif we and we.poll() is None and subprocess.run(["pgrep", "-x", "hyprpaper"], capture_output=True).returncode == 0:
+                restart_hyprpaper(start=False)
             src = shown[2]
             if src and src != painted:
                 repaint(src)
