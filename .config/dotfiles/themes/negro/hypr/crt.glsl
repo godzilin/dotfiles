@@ -41,7 +41,7 @@ void main() {
                 + luma(uv + vec2(0.0, px.y)) + luma(uv - vec2(0.0, px.y))) * 0.25;
     float glow = (luma(uv + far) + luma(uv - far)
                 + luma(uv + vec2(far.x, -far.y)) + luma(uv - vec2(far.x, -far.y))) * 0.25;
-    float v = luma(uv) * 0.75 + halo * 0.3 + glow * 0.4;
+    float v = luma(uv) * 0.9 + halo * 0.15 + glow * 0.12;
 
     // Raster lines: the beam is thicker where it is brighter, so bright text fills the gaps and only dim areas show them.
     float line = 0.5 + 0.5 * sin(v_texcoord.y * size.y * 2.0944);       // one dark line every 3 pixels
