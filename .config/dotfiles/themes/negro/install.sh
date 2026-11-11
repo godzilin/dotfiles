@@ -4,5 +4,3 @@
 set -e
 sudo pacman -S --needed ttf-3270-nerd papirus-icon-theme adw-gtk-theme capitaine-cursors
 [ -d "$HOME/.local/share/icons/Papirus-Verde" ] || "$(dirname "$0")/../verde/install.sh"
-# Katakana rain frames for the lock screen (generated, 22 MB: not in the repo)
-python3 "$(dirname "$0")/wallpapers/lluvia.py"
