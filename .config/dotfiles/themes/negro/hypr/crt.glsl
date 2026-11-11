@@ -49,7 +49,7 @@ void main() {
     float mask = 0.88 + 0.12 * sin(v_texcoord.x * size.x * 2.0944);     // faint phosphor stripes
     float vignette = 1.0 - 0.4 * pow(dot(c, c) * 0.5, 1.4);
     vec2 edge = smoothstep(vec2(1.0), vec2(0.985), abs(c));          // soft edge of the tube
-    vec3 lit = PHOSPHOR * v * scan * mask * 1.5;
+    vec3 lit = PHOSPHOR * v * scan * mask * 1.3;
     lit = 1.0 - exp(-lit * 1.4);                                         // soft clip instead of a hard white-out
     // A real tube is never pure black: the raster and the glass glow faintly, brightest in the middle.
     vec3 haze = vec3(0.002, 0.016, 0.006) * (1.0 - 0.6 * dot(c, c) * 0.5);
