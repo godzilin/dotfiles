@@ -13,11 +13,14 @@ float random(float x) {
 }
 #endif
 
-const float BOW = 0.024;              // barrel distortion of the glass
+const float BOW = 0.036;              // barrel distortion of the glass
 const vec3 PHOSPHOR = vec3(0.20, 1.0, 0.30);
 
+// Brightness the electron beam gets from a pixel: weighted towards green, because that is what P1 phosphor shows.
+// The curve lifts the dim greens (muted text, borders) that a plain luma left almost black.
 float luma(vec2 uv) {
-    return dot(texture(tex, uv).rgb, vec3(0.299, 0.587, 0.114));
+    float l = dot(texture(tex, uv).rgb, vec3(0.22, 0.62, 0.16));
+    return pow(l, 0.78);
 }
 
 void main() {
@@ -38,10 +41,17 @@ void main() {
                 + luma(uv + vec2(0.0, px.y)) + luma(uv - vec2(0.0, px.y))) * 0.25;
     float glow = (luma(uv + far) + luma(uv - far)
                 + luma(uv + vec2(far.x, -far.y)) + luma(uv - vec2(far.x, -far.y))) * 0.25;
-    float v = luma(uv) * 0.8 + halo * 0.3 + glow * 0.3;
+    float v = luma(uv) * 0.75 + halo * 0.3 + glow * 0.4;
 
-    float scan = 0.74 + 0.26 * sin(v_texcoord.y * size.y * 2.0944); // one dark line every 3 pixels
-    float vignette = 1.0 - 0.5 * pow(dot(c, c) * 0.5, 1.4);
+    // Raster lines: the beam is thicker where it is brighter, so bright text fills the gaps and only dim areas show them.
+    float line = 0.5 + 0.5 * sin(v_texcoord.y * size.y * 2.0944);       // one dark line every 3 pixels
+    float scan = 1.0 - line * mix(0.65, 0.2, clamp(v, 0.0, 1.0));
+    float mask = 0.88 + 0.12 * sin(v_texcoord.x * size.x * 2.0944);     // faint phosphor stripes
+    float vignette = 1.0 - 0.4 * pow(dot(c, c) * 0.5, 1.4);
     vec2 edge = smoothstep(vec2(1.0), vec2(0.985), abs(c));          // soft edge of the tube
-    fragColor = vec4(PHOSPHOR * v * scan * vignette * edge.x * edge.y * 1.3 + vec3(0.0, 0.016, 0.005), 1.0);
+    vec3 lit = PHOSPHOR * v * scan * mask * 1.5;
+    lit = 1.0 - exp(-lit * 1.4);                                         // soft clip instead of a hard white-out
+    // A real tube is never pure black: the raster and the glass glow faintly, brightest in the middle.
+    vec3 haze = vec3(0.002, 0.016, 0.006) * (1.0 - 0.6 * dot(c, c) * 0.5);
+    fragColor = vec4((lit + haze) * vignette * edge.x * edge.y, 1.0);
 }
